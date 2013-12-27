@@ -4,3 +4,7 @@ html, body {
     overflow: hidden;
     padding: 0;
 }
+
+.gamename {
+    background-color: #55ff00;
+}
