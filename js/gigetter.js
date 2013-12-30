@@ -25,6 +25,8 @@ gi = {
             difficulty: 2.8,
             rating: 7.33,
             rank: -1,
+            bggrating: 9.1,
+            numraters: 100,
             valid: true,
             message: ''
         };
@@ -42,8 +44,11 @@ gi = {
                     info.imageUrl = $respJq.find('image').text();
                     var $stats = $respJq.find("statistics ratings");
                     info.rating = $stats.find("average").attr("value");
-                    info.difficulty = $stats.find("averageweight").attr("value");
+                    info.bggrating = $stats.find("bayesaverage").attr("value");
+                    info.difficulty = parseFloat($stats.find("averageweight").attr("value")).toFixed(2);
                     info.rank = $stats.find('rank[type="subtype"]').attr("value");
+                    info.numraters = $stats.find("usersrated").attr("value");
+
 //                        info.minage = $respJq.find('minage').attr('value');
                 }
                 catch (err) {
@@ -86,17 +91,32 @@ gi = {
             },
             function (response) {
                 var $rankPage = $(response);
-                var $colltable = $rankPage.find("#maincontent #main_content #collection #collectionitems #row");
-                var gamelist = $colltable.map(function(index, $gamerow){
-                    var $gamelink = $gamerow.find("#results_objectname1 a");
-                    var linkval = $gamelink.attr('href');
-                    var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
-                    return {
-                        id: gameNo,
-                        name: $gamelink.text()
-                    };
+                var $colltable = $rankPage.find("#maincontent #main_content #collection #collectionitems #row_");
+                var gamecount = 0;
+                var $gamelist = $($.parseXML('<items/>'));
+                var $gameitems = $gamelist.find('items');
+                $colltable.each(function(index, gamerow){
+                    try {
+                        gamecount++;
+                        var $gamelink = $(gamerow).find("div[id*='results_objectname'] a");
+                        var linkval = $gamelink.attr('href');
+                        var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
+                        $gameitems.append($('<item/>', {
+                            id: gameNo
+                        }));
+                        $gameitems.find('item').last().append($('<name/>',
+                            {
+                                value: $gamelink.text()
+                            }
+                        ));
+                    } catch (err) {
+                        console.log("At game number " + gamecount++);
+                        console.log(gamerow);
+                        return ;
+                    }
                 }).get();
-                cb(gamelist);
+                $gamelist.find('items').attr("total", gamecount);
+                cb($gamelist);
             },
             "html"
         );

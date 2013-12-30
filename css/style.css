@@ -3,12 +3,24 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  padding: 0;
+  padding: 5px;
 }
 .gamename {
-  background-color: #55ff00;
 }
 .gameimage {
   max-height: 400px;
   max-width: 300px;
+}
+.alignedtop {
+  vertical-align: top;
+}
+.gamestats .alignedtop td {
+  vertical-align: middle;
+}
+.gamestats span {
+  font-size: 20px;
+  font-family: 'arial', sans-serif;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
 }

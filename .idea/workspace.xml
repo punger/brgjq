@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/less/style.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Rank list&#10;&#10;Bootstrap templates&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/ratingsUI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/brgjq.iml" afterPath="$PROJECT_DIR$/.idea/brgjq.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="$PROJECT_DIR$/js/gigetter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/srchres.html" afterPath="$PROJECT_DIR$/html-frag/srchres.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/top.html" afterPath="$PROJECT_DIR$/html-frag/top.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -38,16 +38,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="17" selection-start="420" selection-end="420" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1955">
+            <state line="168" column="18" selection-start="6421" selection-end="6421" vertical-scroll-proportion="-16.846153" vertical-offset="2418" max-vertical-offset="3009">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="top.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html-frag/top.html">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="56" selection-start="301" selection-end="301" vertical-scroll-proportion="0.11908932" vertical-offset="0" max-vertical-offset="571">
+            <state line="5" column="14" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
               <folding />
             </state>
           </provider>
@@ -56,8 +56,19 @@
       <file leaf-file-name="srchres.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="47" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="153">
+            <state line="1" column="47" selection-start="53" selection-end="53" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="153">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html-frag/top.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="27" selection-start="756" selection-end="756" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="357">
+              <folding>
+                <marker date="1388387920632" expanded="true" signature="85:846" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,7 +76,16 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html-frag/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="35" selection-start="68" selection-end="68" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="136">
+            <state line="4" column="13" selection-start="142" selection-end="142" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="901">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ratingsUI.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="0" selection-start="968" selection-end="968" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -74,18 +94,16 @@
       <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/less/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="340">
-              <folding>
-                <marker date="1388178561105" expanded="true" signature="134:178" placeholder="{...}" />
-              </folding>
+            <state line="48" column="2" selection-start="739" selection-end="739" vertical-scroll-proportion="-31.384615" vertical-offset="0" max-vertical-offset="918">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gigetter.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="gigetter.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/gigetter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="46" selection-start="3447" selection-end="3447" vertical-scroll-proportion="0.0" vertical-offset="949" max-vertical-offset="1870">
+            <state line="114" column="31" selection-start="4325" selection-end="4325" vertical-scroll-proportion="0.8006483" vertical-offset="1444" max-vertical-offset="2210">
               <folding />
             </state>
           </provider>
@@ -114,14 +132,15 @@
         <option value="$PROJECT_DIR$/mods/mod1.js" />
         <option value="$PROJECT_DIR$/require/r.js" />
         <option value="$PROJECT_DIR$/dojo-index.html" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/html-frag/list.html" />
-        <option value="$PROJECT_DIR$/js/gigetter.js" />
         <option value="$PROJECT_DIR$/html-frag/srchres.html" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/html-frag/main.html" />
         <option value="$PROJECT_DIR$/less/style.less" />
+        <option value="$PROJECT_DIR$/html-frag/main.html" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/html-frag/top.html" />
+        <option value="$PROJECT_DIR$/js/ratingsUI.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/gigetter.js" />
       </list>
     </option>
   </component>
@@ -184,12 +203,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="style.less" />
-              <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
+              <option name="myItemId" value="less" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -251,18 +280,6 @@
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="restartRequiresConfirmation" value="true" />
-  </component>
-  <component name="PublishConfig" serverName="loc-apache" serverId="2cb5a0d0-44e2-4fb6-9171-af9da08bf712" createEmptyFolders="true" uploadOnCheckin="2cb5a0d0-44e2-4fb6-9171-af9da08bf712" autoUpload="true" autoUploadExternalChanges="true">
-    <servers>
-      <server id="2cb5a0d0-44e2-4fb6-9171-af9da08bf712">
-        <serverdata>
-          <mappings>
-            <mapping deploy="brgjq" local="$PROJECT_DIR$" web="brgjq" />
-          </mappings>
-        </serverdata>
-      </server>
-    </servers>
-    <option name="myUploadOnCheckinName" value="loc-apache" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -356,7 +373,11 @@
       <created>1388131214702</created>
       <updated>1388131214702</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight">
+      <created>1388178788908</created>
+      <updated>1388178788908</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -365,14 +386,14 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53920513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53813106" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20434527" sideWeight="0.670247" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20410557" sideWeight="0.67132115" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497103" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38865095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20434527" sideWeight="0.5198711" order="2" side_tool="true" content_ui="tabs" />
@@ -384,6 +405,11 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -394,7 +420,8 @@
     <MESSAGE value="Just trying to get started" />
     <MESSAGE value="Main image display&#10;locate by id&#10;search and show right hand list&#10;jump to selected search result&#10;start of rank display" />
     <MESSAGE value="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight" />
+    <MESSAGE value="Rank list&#10;&#10;Bootstrap templates&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rank list&#10;&#10;Bootstrap templates&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -407,7 +434,44 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="1" selection-start="3170" selection-end="3220" vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="2227">
+        <state line="37" column="73" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/top.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="221">
+          <folding>
+            <marker date="1388387920632" expanded="true" signature="85:846" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="24" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="14" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="102" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="38" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
@@ -431,55 +495,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/w2ui/w2ui-1.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="109" selection-start="1925" selection-end="1925" vertical-scroll-proportion="-25.231544" vertical-offset="23305" max-vertical-offset="189516">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="44" column="109" selection-start="1925" selection-end="1925" vertical-scroll-proportion="-25.231544" vertical-offset="23305" max-vertical-offset="189516" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dojo-index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="6" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0011520737" vertical-offset="169" max-vertical-offset="1938">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
+        <state line="10" column="6" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0011520737" vertical-offset="169" max-vertical-offset="1938" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/w2ui/w2ui-1.3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="2" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="1981" max-vertical-offset="34986">
-          <folding />
-        </state>
+        <state line="20" column="2" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="1981" max-vertical-offset="34986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mods/mod1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="707" selection-end="3238" vertical-scroll-proportion="0.96570796" vertical-offset="555" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="47" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="28" selection-start="0" selection-end="121" vertical-scroll-proportion="0.22742476" vertical-offset="0" max-vertical-offset="598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="46" selection-start="3447" selection-end="3447" vertical-scroll-proportion="0.0" vertical-offset="949" max-vertical-offset="1870">
-          <folding />
-        </state>
+        <state line="84" column="0" selection-start="707" selection-end="3238" vertical-scroll-proportion="0.96570796" vertical-offset="555" max-vertical-offset="1530" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/less/style.css">
@@ -489,32 +520,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="35" selection-start="68" selection-end="68" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="136">
+        <state line="1" column="47" selection-start="53" selection-end="53" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="153">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="340">
-          <folding>
-            <marker date="1388178561105" expanded="true" signature="134:178" placeholder="{...}" />
-          </folding>
+        <state line="48" column="2" selection-start="739" selection-end="739" vertical-scroll-proportion="-31.384615" vertical-offset="0" max-vertical-offset="918">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="420" selection-end="420" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1955">
+        <state line="5" column="14" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/top.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="56" selection-start="301" selection-end="301" vertical-scroll-proportion="0.11908932" vertical-offset="0" max-vertical-offset="571">
+        <state line="13" column="27" selection-start="756" selection-end="756" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="357">
+          <folding>
+            <marker date="1388387920632" expanded="true" signature="85:846" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="142" selection-end="142" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="968" selection-end="968" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="18" selection-start="6421" selection-end="6421" vertical-scroll-proportion="-16.846153" vertical-offset="2418" max-vertical-offset="3009">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="31" selection-start="4325" selection-end="4325" vertical-scroll-proportion="0.8006483" vertical-offset="1444" max-vertical-offset="2210">
           <folding />
         </state>
       </provider>

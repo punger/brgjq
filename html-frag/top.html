@@ -1,6 +1,16 @@
-<input id="gamenum" placeholder="Game id" type="number" value="102794"/>
-<button id="getGame" value="Get Game Info">Get Game Info</button>
-<input id="gamesearch" placeholder="Game name"/>
-<button id="searchGame">Search for a board game</button>
-<img id="loading" src="resources/ajax-loader.gif" hidden showcount="0"/>
-<span id="brgmessage"></span>
+<h1 id="greeting">Better Board Game Geek </h1>
+
+<form class="form-inline" role="form">
+    <div class="form-group form-inline">
+        <label class="sr-only" for="gamenum">Game ID number</label>
+        <input id="gamenum" placeholder="Game id" type="number" class="form-control" value="102794"/>
+    </div>
+    <button id="getGame" type="button" class="btn btn-default" value="Get Game Info">Get Game Info</button>
+    <div class="form-group form-inline">
+        <label class="sr-only" for="gamesearch">Game ID number</label>
+        <input id="gamesearch" class="form-control" type="text" placeholder="Game name"/>
+    </div>
+    <button id="searchGame" type="button" class="btn btn-default">Search for a board game</button>
+    <img id="loading" src="resources/ajax-loader.gif" hidden showcount="0"/>
+    <span id="brgmessage"></span>
+</form>
