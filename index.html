@@ -27,15 +27,20 @@ $( function () {
             spacing_open: 2,
             spacing_closed: 2,
             applyDefaultStyles: true
+            ,   closable:					true	// pane can open & close
+            ,	resizable:					true	// when open, pane can be resized
+            ,	slidable:					true	// when closed, pane can 'slide' open over other panes - closes on mouse-out
+            ,	livePaneResizing:			true
         },
         north: {
+            slidable: false,
             minSize: 125,
-            resizable: true
+            size:    'auto'
         },
         east: {
-            initClosed: true,
-            spacing_closed: 0,
-            spacing_open: 9,
+            initHidden: true,
+            spacing_closed: 4,
+            spacing_open: 4,
             resizable: true,
             slidable: true,
             contentSelector: '.content'
@@ -49,16 +54,32 @@ $( function () {
     var currgamerank = -1;
 
 
+    var loadandshowlist = function () {
+        $.get("html-frag/srchres.html", function (r) {
+            $('.ui-layout-east').html(r);
+            $('.gameranknav').hide();
+            pg.addCloseBtn("#srchlistclose", 'east');
+        });
+    };
     var showranklist = function (ranktarget) {
         $("#brgmessage").html("Retrieving games by rank ...");
-
-//        w2ui['bgpage'].show('right');
-//        w2ui['bgpage'].load('right', 'html-frag/srchres.html' );
-        $.get("html-frag/srchres.html", function (r) { $('.ui-layout-east').html(r);});
+        loadandshowlist();
         gi.gamerank(ranktarget, function ($gl) {
+            $('.gameranknav').show();
             showlist($gl);
             var rankbase = Math.floor((ranktarget - 1) / 100) * 100 + 1;
             $("#searchresults").attr('start', rankbase);
+            $('#prevranklist').tooltip({
+                'show': true,
+                'placement': 'left',
+                'title': "Previous 100"
+            });
+            $('#nextranklist').tooltip({
+                'show': true,
+                'placement': 'bottom',
+                'title': "Next 100"
+            });
+            $('.gameranknav').show();
             pg.open('east');
             pg.initContent('east');
         });
@@ -68,7 +89,6 @@ $( function () {
         var numGames = $gamelist.find('items').attr("total");
         if (!numGames) {
             $("#brgmessage").html("No games found");
-//            w2ui['bgpage'].hide('right');
             return;
         }
         $("#brgmessage").html(""+numGames +" games found");
@@ -130,9 +150,7 @@ $( function () {
             return;
         }
         $("#brgmessage").html("Searching ...");
-//        w2ui['bgpage'].show('right');
-//        w2ui['bgpage'].load('right', 'html-frag/srchres.html' );
-        $.get("html-frag/srchres.html", function (r) { $('.ui-layout-east').html(r);});
+        loadandshowlist();
         gi.gamesearch(q, function ($gl) {
             showlist($gl);
             pg.open('east');
@@ -174,7 +192,7 @@ $( function () {
         var gameNo = $("#gamenum").val();
         setgameinfo(gameNo);
     });
-    $(document).on('click', "#searchGame", function x() {showsearchresults()});
+    $(document).on('click', "#searchGame", function () {showsearchresults()});
     $(document).on(
             'click',
             "#gamestat-rank",
@@ -184,6 +202,17 @@ $( function () {
                 return false;
             }
     );
+    $(document).on('click', '#prevranklist', function () {
+        var currbase = $('#searchresults').attr('start');
+        if (!currbase || currbase < 100) return;
+        showranklist(parseInt(currbase) - 100);
+    });
+
+    $(document).on('click', '#nextranklist', function () {
+        var currbase = $('#searchresults').attr('start');
+        if (!currbase || currbase < 0) return;
+        showranklist(parseInt(currbase) + 100);
+    });
 
 });
 

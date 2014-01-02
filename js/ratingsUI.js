@@ -17,7 +17,7 @@ var showRating = function(rating, $anchor) {
         x1: 20, y1: 0,
         x2: 120, y2: 0,
         c1: 'black',	c2: 'red',	c3: 'yellow',	c4: 'green',	c5: 'black',
-        s1: 0,          s2: 0.1,	s3: 0.5,        s4: 0.9,        s5: 1
+        s1: 0,          s2: 0.1,	s3: 0.45,        s4: 0.9,        s5: 1
     });
     $c.drawRect({
         fillStyle: gradient,
