@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   overflow: hidden;
   padding: 5;
+  font-size: inherit;
 }
 
 .gamename {
@@ -10,8 +11,8 @@ html, body {
 }
 
 .gameimage {
-  max-height: 400px;
-  max-width: 300px;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 .alignedtop {
@@ -22,28 +23,97 @@ html, body {
   .alignedtop canvas {
     vertical-align: middle;
   }
-  span {
-    font-size: 20px;
-    font-family:'arial',sans-serif;
-    padding: 5px;
-    font-weight: bold;
-    text-align: center;
+  h4 {
+    margin-bottom: 2px;
+    margin-top: 0;
+//    font-size: 20px;
+//    font-family:'arial',sans-serif;
+//    padding: 5px;
+//    font-weight: bold;
+//    text-align: center;
   }
 }
+// With jquery.layout
+#srchres-container {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#srchreslist-container  {
+//  overflow-y: auto;
+//  overflow-x: hidden;
+//  position: absolute;
+//  padding-left: 4px;
+//  top: 40px;
+//  z-index: 300;
+//  height: 100%;
+//  width: 100%;
+}
+
+#searchresults {
+//  overflow-y: auto;
+//  overflow-x: hidden;
+//  position: absolute;
+//  z-index: 200;
+//  list-style-position: inside;
+//  left: -30px;
+}
+
+#searchres-header {
+//  overflow: hidden;
+//  position: absolute;
+//  width: inherit;
+//  z-index: 250;
+//  background-color: #F5F6F7;
+//  display: block;
+//  width: 100%;
+}
+
+
+.ui-layout-pane-east {
+  overflow:		hidden !important;
+}
 /*
-input {
-//  border: 1px #000000 solid;
-//  font-family: Arial, Helvetica, sans-serif;
-//  font-size: 11px;
-  border: 0px;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 1px;
-  padding-right: 0px;
-  padding-bottom: 1px;
-  padding-left: 2px;
-  height: 18px
+.ui-layout-container {
+//  font-size: inherit  !important;
+}
+*/
+
+/*  Relevant for w2ui floating button at top
+#srchres-container {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#srchreslist-container  {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  padding-left: 4px;
+  top: 40px;
+  z-index: 300;
+  height: 100%;
+  width: 100%;
+}
+
+#searchresults {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 200;
+  list-style-position: inside;
+  left: -30px;
+}
+
+#searchres-header {
+  overflow: hidden;
+  position: absolute;
+  width: inherit;
+  z-index: 250;
+  background-color: #F5F6F7;
+  display: block;
+  width: 100%;
 }
 */

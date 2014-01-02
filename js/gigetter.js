@@ -48,6 +48,9 @@ gi = {
                     info.difficulty = parseFloat($stats.find("averageweight").attr("value")).toFixed(2);
                     info.rank = $stats.find('rank[type="subtype"]').attr("value");
                     info.numraters = $stats.find("usersrated").attr("value");
+                    info.description = $respJq.find('description').text();
+                    info.yearpublished = $respJq.find('yearpublished').attr("value");
+                    info.playingtime = $respJq.find('playingtime').attr("value");
 
 //                        info.minage = $respJq.find('minage').attr('value');
                 }
@@ -95,24 +98,31 @@ gi = {
                 var gamecount = 0;
                 var $gamelist = $($.parseXML('<items/>'));
                 var $gameitems = $gamelist.find('items');
-                $colltable.each(function(index, gamerow){
+                $colltable.each(function (index, gamerow) {
                     try {
                         gamecount++;
                         var $gamelink = $(gamerow).find("div[id*='results_objectname'] a");
+                        var gameyear = $(gamerow).find("div[id*='results_objectname'] span").text();
                         var linkval = $gamelink.attr('href');
                         var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
                         $gameitems.append($('<item/>', {
                             id: gameNo
                         }));
-                        $gameitems.find('item').last().append($('<name/>',
+                        var $curritem = $gameitems.find('item').last();
+                        $curritem.append($('<name/>',
                             {
                                 value: $gamelink.text()
+                            }
+                        ));
+                        $curritem.append($('<yearpublished/>',
+                            {
+                                value: gameyear
                             }
                         ));
                     } catch (err) {
                         console.log("At game number " + gamecount++);
                         console.log(gamerow);
-                        return ;
+                        return;
                     }
                 }).get();
                 $gamelist.find('items').attr("total", gamecount);
