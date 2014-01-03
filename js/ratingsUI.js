@@ -12,8 +12,6 @@ var eyecandy = {
             var lineloc = baseloc + (rangeloc *(rating - base)) / (high - base);
 
             var $c = $anchor.find('canvas');
-//    $c.width(140).height(65);
-//    $c.appendTo($anchor);
             $c.clearCanvas();
             var gradient = $c.createGradient({
                 x1: 20, y1: 0,
@@ -36,36 +34,48 @@ var eyecandy = {
                 x2: lineloc, y2: 20
             });
         },
-    showDifficulty: function (diff) {
-        // Create and populate the data table.
-        var data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Difficulty', diff]
-        ]);
-
-        var options = {
-            width: 120, height: 120,
-            redFrom: 4, redTo: 5,
-            yellowFrom:1, yellowTo: 2,
-            greenFrom: 2, greenTo: 4,
-            majorTicks: ['Easy', 'Moderate', 'Hard'],
-            min: 1, max: 5
-        };
-
-        // Create and draw the visualization.
-        try {
-            this._diffGauge.draw(data, options);
-        } catch (err) {
-            alert("Gauge drawing err "+err);
-        }
+    initDifficulty: function (gaugedivname) {
+//        AmCharts.ready(function () {
+//            // create angular gauge
+//            this._chart = new AmCharts.AmAngularGauge();
+//            this._chart.addTitle("Speedometer");
+//
+//            // create this._chart
+//            this._chart = new AmCharts.GaugeAxis();
+//            this._axis.startValue = 0;
+//            this._axis.endValue = 220;
+//            // color bands
+//            var band1 = new AmCharts.GaugeBand();
+//            band1.startValue = 0;
+//            band1.endValue = 90;
+//            band1.color = "#00CC00";
+//
+//            var band2 = new AmCharts.GaugeBand();
+//            band2.startValue = 90;
+//            band2.endValue = 130;
+//            band2.color = "#ffac29";
+//
+//            var band3 = new AmCharts.GaugeBand();
+//            band3.startValue = 130;
+//            band3.endValue = 220;
+//            band3.color = "#ea3838";
+//            band3.innerRadius = "95%";
+//
+//            this._axis.bands = [band1, band2, band3];
+//
+//            // bottom text
+//            this._axis.bottomTextYOffset = -20;
+//            this._axis.setBottomText("0 km/h");
+//            this._chart.addAxis(this._axis);
+//
+//            // gauge this._arrow
+//            this._arrow = new AmCharts.GaugeArrow();
+//            this._chart.addArrow(this._arrow);
+//            this._chart.write(gaugedivname);
+//
+//        });
+//
     },
-    initializeDifficultyGauge: function ( anchorid) {
-        try {
-            this._diffGauge = new google.visualization.Gauge(
-                document.getElementById(anchorid));
-        } catch (err) {
-            alert('Gauge initialization error '+err);
-        }
-
+    showDifficulty: function(diff, gaugedivid) {
     }
 };

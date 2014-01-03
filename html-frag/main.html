@@ -1,10 +1,10 @@
-<h2 id="gametitle" class="gamename">No Game Selected</h2>
+<h2  id="gametitle" > <span style="float: right"><span> <img height="40px" src="resources/bgg_cornerlogo.png"/></span></span> <span id="gamename">No Game Selected</span></h2>
 <table id="gameinfotable" border="0" class="gamestats">
     <tr>
         <td>
             <img class="gameimage" id="gamepic"/>
         </td>
-        <td class="alignedtop" >
+        <td class="alignedtop" style="padding: 30px">
             <table>
                 <tr>
                     <td>
@@ -38,10 +38,15 @@
                     <td>
                         <h4 id="gamestat-minage"/>
                     </td>
+                    <td>
+                        <h4 id="gamestat-numplayers"/>
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         <h4 id="gamestat-difficulty"/>
+                    </td>
+                    <td>
                         <div id="difficultygauge"></div>
                     </td>
                 </tr>
@@ -56,10 +61,9 @@
     </span>
 </h3>
 <p id="gamestat-description" class="collapse in"/>
-<h3>Reviews
+<h3 data-toggle="collapse" data-target="#gamestat-reviews">Reviews
     <span style="float: right">
-        <span class="glyphicon glyphicon-chevron-up"
-              data-toggle="collapse" data-target="#gamestat-reviews"></span>
+        <span class="glyphicon glyphicon-chevron-up"></span>
     </span>
 </h3>
 <ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"/>
@@ -74,12 +78,12 @@
             <div id="reviewcontent" class="modal-body">
                 ...
             </div>
-            <!--
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <!--    <button type="button" class="btn btn-primary">Save changes</button>
             -->
+            </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

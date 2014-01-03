@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Reviews&#10;&#10;Also, incomplete difficulty gauge">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Gauge and sorted reviews&#10;&#10;Completed gauge with AmCharts (boo Google Visualization)&#10;And reviews are now sorted by popularity.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index-googlegauge.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/brgjq.iml" afterPath="$PROJECT_DIR$/.idea/brgjq.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="$PROJECT_DIR$/js/gigetter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/ratingsUI.js" afterPath="$PROJECT_DIR$/js/ratingsUI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -34,7 +37,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.659118" vertical-offset="2835" max-vertical-offset="7084">
+            <state line="16" column="4" selection-start="692" selection-end="692" vertical-scroll-proportion="0.47058824" vertical-offset="0" max-vertical-offset="5933">
               <folding />
             </state>
           </provider>
@@ -43,7 +46,16 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html-frag/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="-31.225807" vertical-offset="0" max-vertical-offset="1980">
+            <state line="4" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1598">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="srchres.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="52" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
@@ -52,7 +64,7 @@
       <file leaf-file-name="gigetter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/gigetter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="3079" max-vertical-offset="3938">
+            <state line="160" column="42" selection-start="6421" selection-end="6421" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3927">
               <folding />
             </state>
           </provider>
@@ -61,7 +73,7 @@
       <file leaf-file-name="ratingsUI.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="18" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.0" vertical-offset="800" max-vertical-offset="1672">
+            <state line="79" column="0" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="1462">
               <folding />
             </state>
           </provider>
@@ -98,19 +110,18 @@
         <option value="$PROJECT_DIR$/testlayout.html" />
         <option value="$PROJECT_DIR$/html-frag/top.html" />
         <option value="$PROJECT_DIR$/html-frag/srchres.html" />
-        <option value="$PROJECT_DIR$/js/gigetter.js" />
-        <option value="$PROJECT_DIR$/html-frag/main.html" />
-        <option value="$PROJECT_DIR$/js/ratingsUI.js" />
         <option value="$PROJECT_DIR$/less/style.less" />
+        <option value="$PROJECT_DIR$/js/ratingsUI.js" />
+        <option value="$PROJECT_DIR$/html-frag/main.html" />
+        <option value="$PROJECT_DIR$/js/gigetter.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1064" />
+    <option name="x" value="-3" />
+    <option name="width" value="1926" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -175,7 +186,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,6 +205,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,13 +294,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
     <property name="FullScreen" value="false" />
@@ -289,25 +314,33 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/html-frag" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/html-frag" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" engineId="firefox" uri="http://localhost/brgjq/index.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -320,8 +353,19 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -331,11 +375,8 @@
       <setting name="preferredDebugBrowser" value="CHROME" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <browser start="false" url="" with-js-debugger="false" />
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <list size="1">
@@ -403,29 +444,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1064" extended-state="0" />
+    <frame x="-3" y="0" width="1926" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.111821085" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3258547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53739315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1086262" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38865095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10795155" sideWeight="0.43683085" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53755367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32869378" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32869378" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -447,7 +488,8 @@
     <MESSAGE value="JQuery layout&#10;&#10;Integrate jQuery layout as replacement for w2ui.  &#10;Get header for search/rank list working" />
     <MESSAGE value="Rank navigation buttons&#10;&#10;Nav rank shows and search hides up and down buttons for the rank list.&#10;North and east panes open and close, but do not resize." />
     <MESSAGE value="Reviews&#10;&#10;Also, incomplete difficulty gauge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reviews&#10;&#10;Also, incomplete difficulty gauge" />
+    <MESSAGE value="Gauge and sorted reviews&#10;&#10;Completed gauge with AmCharts (boo Google Visualization)&#10;And reviews are now sorted by popularity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Gauge and sorted reviews&#10;&#10;Completed gauge with AmCharts (boo Google Visualization)&#10;And reviews are now sorted by popularity." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -458,6 +500,97 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="10" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.0" vertical-offset="1976" max-vertical-offset="5950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="52" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="42" selection-start="6421" selection-end="6421" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3927">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="5474">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="18" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="5474">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="18" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="54" selection-start="955" selection-end="955" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908">
@@ -564,18 +697,6 @@
         <state line="5" column="0" selection-start="128" selection-end="196" vertical-scroll-proportion="0.096700795" vertical-offset="0" max-vertical-offset="879" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="52" selection-start="305" selection-end="305" vertical-scroll-proportion="0.11751152" vertical-offset="0" max-vertical-offset="868" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3043">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="1" selection-start="604" selection-end="604" vertical-scroll-proportion="0.34007135" vertical-offset="616" max-vertical-offset="2750">
@@ -583,23 +704,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index-googlegauge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="35" selection-start="300" selection-end="300" vertical-scroll-proportion="0.15437004" vertical-offset="0" max-vertical-offset="5474">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="18" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.0" vertical-offset="800" max-vertical-offset="1672">
+        <state line="79" column="0" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="52" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="-31.225807" vertical-offset="0" max-vertical-offset="1980">
+        <state line="4" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="42" selection-start="6421" selection-end="6421" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3927">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.659118" vertical-offset="2835" max-vertical-offset="7084">
+        <state line="16" column="4" selection-start="692" selection-end="692" vertical-scroll-proportion="0.47058824" vertical-offset="0" max-vertical-offset="5933">
           <folding />
         </state>
       </provider>

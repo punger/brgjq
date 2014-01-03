@@ -51,6 +51,9 @@ gi = {
                     info.description = $respJq.find('description').text();
                     info.yearpublished = $respJq.find('yearpublished').attr("value");
                     info.playingtime = $respJq.find('playingtime').attr("value");
+                    info.minplayers = $respJq.find('minplayers').attr('value');
+                    info.maxplayers = $respJq.find('maxplayers').attr('value');
+
 
 //                        info.minage = $respJq.find('minage').attr('value');
                 }
@@ -132,7 +135,7 @@ gi = {
         );
 
     },
-    gamereviews: function (gamenum, cb) {
+    gamereviews: function (gamenum, gamename, cb) {
         $.get("/xdproxy/proxy.php",
             {
                 id: gamenum,
@@ -142,13 +145,45 @@ gi = {
             function (response) {
                 var $respJq = gi.$xResp(response);
                 var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
+                var uri = forumid+'/'+gi.slugify(gamename)+'/reviews';
                 $.get("/xdproxy/proxy.php",
                     {
-                        id: forumid,
-                        destination: 'http://www.boardgamegeek.com/xmlapi2/forum'
+//                        id: forumid,
+                        destination: 'http://www.boardgamegeek.com/forum/'+uri
                     },
                     function (flresp) {
-                        cb(gi.$xResp(flresp));
+                        var $reviewlistpage = $(flresp);
+                        var $reviewtable = $reviewlistpage.
+                            find('table[class="forum_table"]').eq(1);
+                        var actualreviewcount = 0;
+                        var $reviewitems = $reviewtable.find('> tbody > tr');
+                        var revarray = [];
+                        $reviewitems.each(function (index) {
+                            var $cells = $(this).find ('> td');
+                            var thumbs = parseInt($cells.eq(0).text());
+                            if (!thumbs) {
+                                return true;
+                            }
+                            var $thread = $cells.find('span[class="forum_index_subject"] a');
+                            var revurl = $thread.attr('href');
+                            var threadid = revurl.match(/\/([0-9]+)/gi)[0].substr(1);
+                            var $item = $('<thread/>',{
+                                id: threadid,
+                                subject: $thread.text(),
+                                thumbs: thumbs,
+                                replies: $cells.eq(2).text()
+                            });
+                            revarray[actualreviewcount] = $item;
+                            actualreviewcount++;
+                        });
+                        var sortedrevs = revarray.sort(function ($a, $b) {
+                           return  parseInt($b.attr('thumbs')) - parseInt($a.attr('thumbs'));
+                        });
+                        var $revlist = $('<reviews/>', {
+                            numthreads: actualreviewcount
+                        });
+                        $revlist.append(sortedrevs);
+                        cb($revlist);
                     },
                     'html'
                 );
@@ -170,5 +205,22 @@ gi = {
             'html'
         );
 
+    },
+    slugify: function (str) {
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+
+        // remove accents, swap ñ for n, etc
+        var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+        var to   = "aaaaeeeeiiiioooouuuunc------";
+        for (var i=0, l=from.length ; i<l ; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+        return str;
     }
 };
