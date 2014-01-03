@@ -22,37 +22,8 @@
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
 </head>
 <body class="container">
-<!-- <div id="bgpage" class="container" style="height: 100%"></div> -->
 
-<script>
-google.setOnLoadCallback(function () {
-    // Create and populate the data table.
-    var diff = 3.4;
-    var data = google.visualization.arrayToDataTable([
-        ['Label', 'Value'],
-        ['Difficulty', diff]
-    ]);
-
-    var options = {
-        width: 120, height: 120,
-        redFrom: 4, redTo: 5,
-        yellowFrom:1, yellowTo: 2,
-        greenFrom: 2, greenTo: 4,
-        majorTicks: ['Easy', 'Moderate', 'Hard'],
-        min: 1, max: 5
-    };
-
-    // Create and draw the visualization.
-    try {
-        this._diffGauge = new google.visualization.Gauge(
-                document.getElementById('gtest'));
-        this._diffGauge.draw(data, options);
-    } catch (err) {
-        alert("Gauge drawing err "+err);
-    }
-
-});
-
+<script type="text/javascript">
 $( function () {
     var pg = $('body').layout({
         defaults: {
@@ -79,10 +50,12 @@ $( function () {
             initHidden: true
         }
     });
-    $.get("html-frag/main.html", function (r) {
-        $('.ui-layout-center').html(r);
-        google.setOnLoadCallback(eyecandy.initializeDifficultyGauge('difficultygauge'));
-    });
+    $.get("html-frag/main.html",
+            function (r) {
+                $('.ui-layout-center').html(r);
+            }
+    );
+
     $.get("html-frag/top.html", function (r) { $('.ui-layout-north').html(r);});
     var currgamerank = -1;
 
@@ -156,6 +129,37 @@ $( function () {
                     eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
                     $("#gamestat-raters").html("Number of Raters: "+gameinfo.numraters);
                     $("#gamestat-difficulty").html("Game Difficulty: "+gameinfo.difficulty);
+//                    alert('check');
+                    google.setOnLoadCallback(function () {
+                        // Create and populate the data table.
+                        var diff = 3.4;
+                        var data = google.visualization.arrayToDataTable([
+                            ['Label', 'Value'],
+                            ['Difficulty', diff]
+                        ]);
+
+                        var options = {
+                            width: 120, height: 120,
+                            redFrom: 4, redTo: 5,
+                            yellowFrom:1, yellowTo: 2,
+                            greenFrom: 2, greenTo: 4,
+                            majorTicks: ['Easy', 'Moderate', 'Hard'],
+                            min: 1, max: 5
+                        };
+
+                        // Create and draw the visualization.
+                        try {
+
+                            var g = new google.visualization.Gauge(
+                                    document.getElementById('difficultygauge'));
+//                            eyecandy._diffgauge = g;
+//                eyecandy.initializeDifficultyGauge('difficultygauge')
+                            g.draw(data, options);
+                        } catch (err) {
+                            alert("Gauge drawing err "+err);
+                        }
+
+                    });
                     eyecandy.showDifficulty(gameinfo.difficulty);
                     $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
                     $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
@@ -298,12 +302,16 @@ $( function () {
 <div class="ui-layout-east">
 </div>
 
-<div id="gtest"/>
 <script type="application/javascript" src="js/gigetter.js"></script>
 <script type="application/javascript" src="js/ratingsUI.js"></script>
 <script src="libs/jcanvas.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<div id="gtest"></div>
+
+
 
 </body>
 </html>

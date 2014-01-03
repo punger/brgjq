@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/index.html" libraries="{bootstrap, dojo, jquery, less}" />
-    <file url="PROJECT" libraries="{bootstrap, google.visualization-DefinitelyTyped, jQuery-2.0.0, jquery.ui.layout-DefinitelyTyped, less}" />
+    <file url="file://$PROJECT_DIR$/index.html" libraries="{dojo, jquery}" />
+    <file url="PROJECT" libraries="{bootstrap-DefinitelyTyped, google.visualization-DefinitelyTyped, jQuery-2.0.0, jquery.ui.layout-DefinitelyTyped, less-DefinitelyTyped, node-DefinitelyTyped}" />
   </component>
 </project>
 
