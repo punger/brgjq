@@ -10,6 +10,7 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery.ui.layout-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="google.visualization-DefinitelyTyped" level="application" />
   </component>
 </module>
 

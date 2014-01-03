@@ -131,5 +131,44 @@ gi = {
             "html"
         );
 
+    },
+    gamereviews: function (gamenum, cb) {
+        $.get("/xdproxy/proxy.php",
+            {
+                id: gamenum,
+                type: 'thing',
+                destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
+            },
+            function (response) {
+                var $respJq = gi.$xResp(response);
+                var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
+                $.get("/xdproxy/proxy.php",
+                    {
+                        id: forumid,
+                        destination: 'http://www.boardgamegeek.com/xmlapi2/forum'
+                    },
+                    function (flresp) {
+                        cb(gi.$xResp(flresp));
+                    },
+                    'html'
+                );
+            },
+            'html'
+        );
+
+    },
+    threadcontent: function (threadid, cb) {
+        $.get("/xdproxy/proxy.php",
+            {
+                id: threadid,
+                destination: 'http://www.boardgamegeek.com/xmlapi2/thread'
+            },
+            function (response) {
+                var $respJq = gi.$xResp(response);
+                cb($respJq);
+            },
+            'html'
+        );
+
     }
 };
