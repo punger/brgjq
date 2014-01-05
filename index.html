@@ -18,6 +18,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js" type="text/javascript"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="libs/jquery.isotope.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
     <script type="application/javascript" src="js/gigetter.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
@@ -64,6 +65,135 @@ $( function () {
     $.get("html-frag/top.html", function (r) { $('.ui-layout-north').html(r);});
     var currgamerank = -1;
 
+
+    var setgameinfo = function (gameNo) {
+        $("#brgmessage").html("Retrieving game information ...");
+        $('#gamestat-reviews').find('li').remove();
+        var $viditems = $('#gamestat-videos').find('.gameviditem');
+        if ($viditems.length) {
+            $('#gamestat-videos').isotope('destroy');
+            $viditems.remove();
+        } else {
+            $('#gamestat-videos >').remove();
+        }
+
+        gi.gameinfo(gameNo, function(gameinfo) {
+            if (gameinfo.valid) {
+                try {
+                    var gamename = gameinfo.name;
+                    gi.gamereviews(gameNo, gamename, function ($reviewlist) {
+                        var numReviews = $reviewlist.attr("numthreads");
+                        var $reviewitem = $("<li/>", {
+                            html: "<span hidden class='review-id'/><a class='review-title'/>",
+                            "class": "review-item"
+                        });
+
+                        var $reviewlisthtml = $("#gamestat-reviews");
+                        for (var reviewindex = 0; reviewindex < numReviews; reviewindex++) {
+                            var $newReviewItem = $reviewitem.clone();
+                            var $item = $reviewlist.find('thread').eq(reviewindex);
+                            $newReviewItem.find(".review-id").html($item.attr("id"));
+
+                            $newReviewItem.find(".review-title").html($item.attr('subject'));
+                            $reviewlisthtml.append($newReviewItem);
+                        }
+
+                    });
+                    $('#gamenum').val(gameNo);
+                    $("#gamename").html(gamename +'  ('+gameinfo.yearpublished+')');
+                    $("#gamepic").attr("src", gameinfo.imageUrl);
+                    $("#gamestat-rating").html("Rating: "+parseFloat(gameinfo.rating).toFixed(2));
+                    eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
+                    $("#gamestat-raters").html("Number of Raters: "+gameinfo.numraters);
+                    $("#gamestat-difficulty").html("Game Difficulty: "+gameinfo.difficulty);
+//                    eyecandy.showDifficulty(gameinfo.difficulty, 'difficultygauge');
+//                    alert('Writing to '+ $("#difficultygauge")[0]);
+//                    $("#difficultygauge").width(160).height(160);
+                    chart.write('difficultygauge');
+                    arrow.setValue(gameinfo.difficulty - 1);
+
+                    chart.invalidateSize();
+
+
+                    $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
+                    $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
+                    $("#gamestat-length").html("Length: "+gameinfo.playingtime+" minutes");
+                    $("#gamestat-description").html(gameinfo.description.replace(/&#10;/g, "<br/>"));
+                    $("#gamestat-numplayers").html("Players: "+gameinfo.minplayers +
+                            ((gameinfo.minplayers == gameinfo.maxplayers) ? '' : ' to '+ gameinfo.maxplayers));
+
+                    currgamerank = gameinfo.rank;
+                } catch (err) {
+                    alert("Error " + err);
+                }
+            } else {
+                $("#gamename").html('<pre> Error: '+gameinfo.message+'</pre>');
+                $("#gamename").css("backgroundColor", "orange");
+            }
+        });
+        gi.vidlist(gameNo, function (vidlistobj) {
+            var $vidparent = $("#gamestat-videos");
+            if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length == 0) {
+                $vidparent.append($("<h3>No videos found</h3>"));
+                return;
+            }
+            var gamename = $(vidlistobj.videos[0].objectlink).text();
+            gi.hotvideos(gameNo, gamename, function(vidinfo) {
+                $.get('html-frag/videotile.html', function (vtiletemplate) {
+
+                    var $vttmpl = $(vtiletemplate);
+                    // This is only the first page so it is limited to 15 whereas vidlistobj is not
+                    for (var i = 0; i < vidinfo.length; i++) {
+                        var vidid = vidinfo[i].videoid;
+                        var videntry = vidlistobj.videos[i];
+                        var $viditem = $vttmpl.clone();
+                        $viditem.attr('ordinal', i);
+                        $viditem.attr('thumbs', videntry.numrecommend);
+                        $viditem.attr('comments', videntry.numcomments);
+                        $viditem.find('.gamevidpreview').attr('src', vidinfo[i].vidpic);
+                        var vidsource = 'http://' +
+                                ((videntry.videohost == 'youtube' ? 'youtu.be' : videntry.videohost)) +
+                                '/' + videntry.extvideoid;
+                        $viditem.find('.gamevidlink').attr('href', vidsource);
+                        $viditem.find('.gamevidtitle').html(videntry.title);
+                        $vidparent.append($viditem);
+                    }
+                    if (vidinfo.length < vidlistobj.videos.length) {
+                        var $viditem = $vttmpl.clone();
+                        $viditem.attr('ordinal', 1000000);
+                        $viditem.attr('thumbs', 0);
+                        $viditem.attr('comments', 0);
+                        $viditem.find('.gamevidpreview').attr('src', 'resources/bgg_cornerlogo.png');
+                        $viditem.find('.gamevidlink')
+                                .attr('href', 'http://boardgamegeek.com/boardgame/'+gameNo + '#videos')
+                                .attr('target', '_blank');
+                        $viditem.find('.gamevidtitle').html('More ...');
+                        $vidparent.append($viditem);
+                    }
+                    try {
+                        $vidparent.isotope({
+                            itemSelector: '.gameviditem',
+                            layoutMode: 'fitRows',
+                            getSortData: {
+                                ord: function ($e) {
+                                    return parseInt($e.find('[ordinal]').attr('ordinal'));
+                                },
+                                numthumbs: function ($e) {
+                                    return parseInt($e.find('[thumbs]').attr('ordinal'));
+                                }
+                            },
+                            sortBy: 'ord'
+                        });
+                        $vidparent.isotope('bindResize')
+                    } catch (err) {
+                        console.log("vid layout err "+err);
+                    }
+                });
+            });
+        });
+
+
+    };
 
     var loadandshowlist = function () {
         $.get("html-frag/srchres.html", function (r) {
@@ -120,67 +250,6 @@ $( function () {
             $newGameItem.find(".srchres-gamename").html(linkcontent);
             $gamelisthtml.append($newGameItem);
         }
-    };
-
-    var setgameinfo = function (gameNo) {
-        $("#brgmessage").html("Retrieving game information ...");
-        $('#gamestat-reviews').find('li').remove();
-
-        gi.gameinfo(gameNo, function(gameinfo) {
-            if (gameinfo.valid) {
-                try {
-                    var gamename = gameinfo.name;
-                    gi.gamereviews(gameNo, gamename, function ($reviewlist) {
-                        var numReviews = $reviewlist.attr("numthreads");
-                        var $reviewitem = $("<li/>", {
-                            html: "<span hidden class='review-id'/><a class='review-title'/>",
-                            "class": "review-item"
-                        });
-
-                        var $reviewlisthtml = $("#gamestat-reviews");
-                        for (var reviewindex = 0; reviewindex < numReviews; reviewindex++) {
-                            var $newReviewItem = $reviewitem.clone();
-                            var $item = $reviewlist.find('thread').eq(reviewindex);
-                            $newReviewItem.find(".review-id").html($item.attr("id"));
-
-                            $newReviewItem.find(".review-title").html($item.attr('subject'));
-                            $reviewlisthtml.append($newReviewItem);
-                        }
-
-                    });
-                    $('#gamenum').val(gameNo);
-                    $("#gamename").html(gamename +'  ('+gameinfo.yearpublished+')');
-                    $("#gamepic").attr("src", gameinfo.imageUrl);
-                    $("#gamestat-rating").html("Rating: "+parseFloat(gameinfo.rating).toFixed(2));
-                    eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
-                    $("#gamestat-raters").html("Number of Raters: "+gameinfo.numraters);
-                    $("#gamestat-difficulty").html("Game Difficulty: "+gameinfo.difficulty);
-//                    eyecandy.showDifficulty(gameinfo.difficulty, 'difficultygauge');
-//                    alert('Writing to '+ $("#difficultygauge")[0]);
-                    $("#difficultygauge").width(160).height(160);
-                    chart.write('difficultygauge');
-                    arrow.setValue(gameinfo.difficulty - 1);
-
-                    chart.invalidateSize();
-
-
-                    $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
-                    $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
-                    $("#gamestat-length").html("Length: "+gameinfo.playingtime+" minutes");
-                    $("#gamestat-description").html(gameinfo.description.replace(/&#10;/g, "<br/>"));
-                    $("#gamestat-numplayers").html("Players: "+gameinfo.minplayers +
-                            ((gameinfo.minplayers == gameinfo.maxplayers) ? '' : ' to '+ gameinfo.maxplayers));
-
-                    currgamerank = gameinfo.rank;
-                } catch (err) {
-                    alert("Error " + err);
-                }
-            } else {
-                $("#gamename").html('<pre> Error: '+gameinfo.message+'</pre>');
-                $("#gamename").css("backgroundColor", "orange");
-            }
-        });
-
     };
 
     var showsearchresults = function () {
@@ -260,7 +329,7 @@ $( function () {
     $(document).on('click', '.review-item', function (evt) {
         var $this = $( this );
         var revid = $this.find('.review-id').html();
-        var reviewText = gi.threadcontent(revid, function($resp) {
+        gi.threadcontent(revid, function($resp) {
             var reviewSubject = $this.find('.review-title').html();
             $("#reviewSubjectModal").html(reviewSubject);
             var firstreview = $resp.find('article').first().find('body').text();
@@ -276,6 +345,10 @@ $( function () {
         var gameNo = $this.find('.srchres-gameid').text();
         setgameinfo(gameNo);
     });
+
+    $(document).on('click', '#reviewModal', function(evt) {
+        $("#reviewModal").modal('hide');
+    });
     $(document).on('hidden.bs.modal', function(evt) {
         pg.resetOverflow('center');
     });
@@ -289,6 +362,7 @@ $( function () {
 
         // create chart
         axis = new AmCharts.GaugeAxis();
+        // weirdly, these values work for the tick labelling, but values need to be zero-based
         axis.startValue = 1;
         axis.endValue = 5;
         // color bands
@@ -306,7 +380,7 @@ $( function () {
         band3.startValue = 3;
         band3.endValue = 4;
         band3.color = "red";
-        band3.innerRadius = "95%";
+        band3.innerRadius = "90%";
 
         axis.bands = [band1, band2, band3];
         axis.valueInterval = 1;

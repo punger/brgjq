@@ -16,6 +16,17 @@ gi = {
         var respXml = $.parseXML(respXmlString);
         return $(respXml);
     },
+    jResp: function (response) {
+        var respJsonString;
+        var htmLoc = response.indexOf('<html');
+        if (htmLoc < 0) {
+            respJsonString = response;
+        }
+        else {
+            respJsonString = response.substr(0, htmLoc);
+        }
+        return $.parseJSON(respJsonString);
+    },
     gameinfo: function (gamenum, cb) {
         var info = {
             id: gamenum,
@@ -34,6 +45,7 @@ gi = {
             {
                 id: gamenum,
                 stats: 1,
+                videos: 1,
                 destination: 'http://www.rpggeek.com/xmlapi2/thing'
             },
             function (response) {
@@ -53,6 +65,7 @@ gi = {
                     info.playingtime = $respJq.find('playingtime').attr("value");
                     info.minplayers = $respJq.find('minplayers').attr('value');
                     info.maxplayers = $respJq.find('maxplayers').attr('value');
+                    info.$videos = $respJq.find('videos');
 
 
 //                        info.minage = $respJq.find('minage').attr('value');
@@ -222,5 +235,58 @@ gi = {
             .replace(/-+/g, '-'); // collapse dashes
 
         return str;
+    },
+    vidlist: function (gameno, cb) {
+        $.get('/xdproxy/proxy.php', {
+            destination: 'http://boardgamegeek.com/video/module',
+            ajax: 1,
+            domain: '',
+            filter: '{"languagefilter":0,"categoryfilter":0}',
+            filter_objecttype: '',
+            gallery: 'all',
+            languageid: 0,
+            nosession: 1,
+            objectid: gameno,
+            objecttype: 'thing',
+            pageid: 1,
+            showcount: 16,
+            sort: 'hot',
+            subdomainid: '',
+            version: 'v2'
+        },
+        function (resp) {
+            cb(gi.jResp(resp));
+        },
+        'html');
+    },
+    hotvideos: function (gameno, gamename, cb) {
+        //http://boardgamegeek.com/videos/thing/102794/caverna-the-cave-farmers?sort=hot&date=alltime&gallery=&B1=Go
+        var dest = 'http://www.boardgamegeek.com/videos/thing/';
+        dest += gameno + '/';
+        dest += this.slugify(gamename);
+        $.get("/xdproxy/proxy.php",
+            {
+                destination:  dest,
+                sort: 'hot',
+                date: 'alltime',
+                gallery: '',
+                B1: 'Go'
+            },
+            function (response) {
+                var $respJq = $(response);
+                var $vidtable = $respJq.find('#maincontent #main_content .forum_table a[href*="/video"]');
+                var vidarray = [];
+                $vidtable.each(function(index) {
+                    var $this = $(this);
+                    var vidloc = $this.attr('href');
+                    var vidid = vidloc.match(/\/([0-9]+)/gi)[0].substr(1);
+                    vidarray[index] = {};
+                    vidarray[index].videoid = vidid;
+                    vidarray[index].vidpic = $this.find('img').attr('src');
+                });
+                cb(vidarray);
+            },
+            'html'
+        );
     }
 };
