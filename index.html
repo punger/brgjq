@@ -21,6 +21,7 @@
     <script src="libs/jquery.isotope.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
     <script type="application/javascript" src="js/gigetter.js"></script>
+    <script type="application/javascript" src="js/gamehistoryitem.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
     <script src="libs/jcanvas.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -64,9 +65,10 @@ $( function () {
 
     $.get("html-frag/top.html", function (r) { $('.ui-layout-north').html(r);});
     var currgamerank = -1;
+    var gamehistory = new gamelist();
 
-
-    var setgameinfo = function (gameNo) {
+    var setgameinfo = function (gameNo, bNoAdd) {
+        if (!gameNo) return;
         $("#brgmessage").html("Retrieving game information ...");
         $('#gamestat-reviews').find('li').remove();
         var $viditems = $('#gamestat-videos').find('.gameviditem');
@@ -123,6 +125,9 @@ $( function () {
                             ((gameinfo.minplayers == gameinfo.maxplayers) ? '' : ' to '+ gameinfo.maxplayers));
 
                     currgamerank = gameinfo.rank;
+                    if (!bNoAdd) {
+                        gamehistory.add(gameNo);
+                    }
                 } catch (err) {
                     alert("Error " + err);
                 }
@@ -158,6 +163,7 @@ $( function () {
                         $viditem.find('.gamevidtitle').html(videntry.title);
                         $vidparent.append($viditem);
                     }
+                    // If there were more than 15 videos, show a more thumbnail with a link to the bgg page
                     if (vidinfo.length < vidlistobj.videos.length) {
                         var $viditem = $vttmpl.clone();
                         $viditem.attr('ordinal', 1000000);
@@ -195,16 +201,17 @@ $( function () {
 
     };
 
-    var loadandshowlist = function () {
+    var loadandshowlist = function (listheader) {
         $.get("html-frag/srchres.html", function (r) {
             $('.ui-layout-east').html(r);
             $('.gameranknav').hide();
+            $("#sidelistheader").html(listheader);
             pg.addCloseBtn("#srchlistclose", 'east');
         });
     };
     var showranklist = function (ranktarget) {
         $("#brgmessage").html("Retrieving games by rank ...");
-        loadandshowlist();
+        loadandshowlist('Games by Rank');
         gi.gamerank(ranktarget, function ($gl) {
             $('.gameranknav').show();
             showlist($gl);
@@ -259,11 +266,12 @@ $( function () {
             return;
         }
         $("#brgmessage").html("Searching ...");
-        loadandshowlist();
+        loadandshowlist('Search Results');
         gi.gamesearch(q, function ($gl) {
             showlist($gl);
             pg.open('east');
             pg.initContent('east');
+
         })
     };
 
@@ -311,6 +319,16 @@ $( function () {
                 return false;
             }
     );
+    $(document).on('click', '.gameitemnav', function () {
+        if (gamehistory.empty()) return false;
+        if ($(this).attr('id') == 'nextgame') {
+            if (!gamehistory.next()) return false;
+        }
+        else {
+            if (!gamehistory.prev()) return false;
+        }
+        setgameinfo(gamehistory.get(), true);
+    });
     $(document).on('click', '#prevranklist', function () {
         var currbase = $('#searchresults').attr('start');
         if (!currbase || currbase < 100) return;

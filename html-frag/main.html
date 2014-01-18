@@ -1,4 +1,20 @@
-<h2  id="gametitle" > <span style="float: right"><span> <img height="40px" src="resources/bgg_cornerlogo.png"/></span></span> <span id="gamename">No Game Selected</span></h2>
+<h2>
+    <a>
+        <span  id="prevgame" class="gameitemnav glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a >
+        <span  id="nextgame" class="gameitemnav glyphicon glyphicon-chevron-right"></span>
+    </a>
+    <span id="gametitle">
+        <span id="gamename">No Game Selected</span>
+        <span style="float: right">
+            <span>
+                <img height="40px" src="resources/bgg_cornerlogo.png"/>
+            </span>
+        </span>
+
+    </span>
+</h2>
 <table id="gameinfotable" border="0" class="gamestats">
     <tr>
         <td>
@@ -54,10 +70,10 @@
         </td>
     </tr>
 </table>
-<h3>Description
+<h3 data-toggle="collapse" data-target="#gamestat-description">Description
     <span style="float: right">
         <span class="glyphicon glyphicon-chevron-up"
-              data-toggle="collapse" data-target="#gamestat-description"></span>
+              ></span>
     </span>
 </h3>
 <p id="gamestat-description" class="collapse in"/>
@@ -68,10 +84,9 @@
 </h3>
 <ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"/>
 
-<h3>Videos
+<h3 data-toggle="collapse" data-target="#gamestat-videos">Videos
     <span style="float: right">
-        <span class="glyphicon glyphicon-chevron-up"
-              data-toggle="collapse" data-target="#gamestat-videos"></span>
+        <span class="glyphicon glyphicon-chevron-up"></span>
     </span>
 </h3>
 <div id="gamestat-videos" class="collapse in"/>

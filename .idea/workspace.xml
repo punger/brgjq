@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Videos&#10;&#10;Display videos in thumbed order&#10;Show thumbnails and links&#10;Jump to additional videos on bgg game page&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html-frag/videotile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="$PROJECT_DIR$/js/gigetter.js" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/gamehistoryitem.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/srchres.html" afterPath="$PROJECT_DIR$/html-frag/srchres.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -30,20 +29,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="414" column="0" selection-start="16487" selection-end="16487" vertical-scroll-proportion="-16.307692" vertical-offset="6614" max-vertical-offset="7191">
+            <state line="329" column="45" selection-start="14154" selection-end="14154" vertical-scroll-proportion="0.69042057" vertical-offset="5002" max-vertical-offset="7497">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.isotope.min.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.min.js">
+      <file leaf-file-name="gamehistoryitem.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="15714" selection-start="16033" selection-end="16033" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-              <folding />
+            <state line="64" column="19" selection-start="1824" selection-end="1824" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1258">
+              <folding>
+                <element signature="n#!!doc;n#gamelist#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,25 +61,27 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html-frag/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="50" selection-start="1591" selection-end="1591" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="1751">
-              <folding />
+            <state line="7" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="2006">
+              <folding>
+                <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/less/style.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="-7.730769" vertical-offset="598" max-vertical-offset="2329">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gigetter.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gigetter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/gigetter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="32" selection-start="7372" selection-end="7372" vertical-scroll-proportion="0.33333334" vertical-offset="2893" max-vertical-offset="5049">
+            <state line="182" column="32" selection-start="7372" selection-end="7372" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="5049">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="srchres.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="33" selection-start="324" selection-end="336" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -114,7 +117,6 @@
         <option value="$PROJECT_DIR$/css/layout-default-latest.css" />
         <option value="$PROJECT_DIR$/testlayout.html" />
         <option value="$PROJECT_DIR$/html-frag/top.html" />
-        <option value="$PROJECT_DIR$/html-frag/srchres.html" />
         <option value="$PROJECT_DIR$/js/ratingsUI.js" />
         <option value="$PROJECT_DIR$/libs/masonry.pkgd.min.js" />
         <option value="$PROJECT_DIR$/html-frag/videotile.js" />
@@ -123,8 +125,10 @@
         <option value="$PROJECT_DIR$/libs/isotope.pkgd.js" />
         <option value="$PROJECT_DIR$/js/gigetter.js" />
         <option value="$PROJECT_DIR$/libs/jquery.isotope.min.js" />
-        <option value="$PROJECT_DIR$/html-frag/main.html" />
         <option value="$PROJECT_DIR$/less/style.less" />
+        <option value="$PROJECT_DIR$/html-frag/srchres.html" />
+        <option value="$PROJECT_DIR$/html-frag/main.html" />
+        <option value="$PROJECT_DIR$/js/gamehistoryitem.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -197,6 +201,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,7 +296,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -441,27 +445,31 @@
       <created>1388792978170</created>
       <updated>1388792978170</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Videos&#10;&#10;Display videos in thumbed order&#10;Show thumbnails and links&#10;Jump to additional videos on bgg game page&#10;">
+      <created>1388881684310</created>
+      <updated>1388881684310</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2742279" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32692307" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254818" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53739315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26890308" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38865095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10795155" sideWeight="0.43683085" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -503,6 +511,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="32" selection-start="7372" selection-end="7372" vertical-scroll-proportion="0.0" vertical-offset="2893" max-vertical-offset="5049">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="0" selection-start="4769" selection-end="4769" vertical-scroll-proportion="0.0" vertical-offset="1278" max-vertical-offset="6222">
@@ -520,7 +535,9 @@
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="66" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.0" vertical-offset="883" max-vertical-offset="1751">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -555,7 +572,9 @@
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1598">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -590,7 +609,9 @@
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1530">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,7 +639,9 @@
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1530">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -751,11 +774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/masonry.pkgd.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24748" selection-start="24884" selection-end="24884" vertical-scroll-proportion="0.15212528" vertical-offset="0" max-vertical-offset="894">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="8" column="24748" selection-start="24884" selection-end="24884" vertical-scroll-proportion="0.15212528" vertical-offset="0" max-vertical-offset="894" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
@@ -767,19 +786,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/isotope.pkgd.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3394" selection-start="35519" selection-end="35519" vertical-scroll-proportion="0.13310961" vertical-offset="0" max-vertical-offset="894">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="7" column="3394" selection-start="35519" selection-end="35519" vertical-scroll-proportion="0.13310961" vertical-offset="0" max-vertical-offset="894" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/isotope.pkgd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3854" column="13" selection-start="126028" selection-end="126028" vertical-scroll-proportion="0.97651005" vertical-offset="64645" max-vertical-offset="65620">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="3854" column="13" selection-start="126028" selection-end="126028" vertical-scroll-proportion="0.97651005" vertical-offset="64645" max-vertical-offset="65620" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="15714" selection-start="16033" selection-end="16033" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="2329">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -790,44 +815,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="52" selection-start="305" selection-end="305" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="272">
+        <state line="182" column="32" selection-start="7372" selection-end="7372" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="5049">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.min.js">
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="15714" selection-start="16033" selection-end="16033" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+        <state line="15" column="33" selection-start="324" selection-end="336" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="510">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="50" selection-start="1591" selection-end="1591" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="1751">
-          <folding />
+        <state line="7" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="2006">
+          <folding>
+            <element signature="n#style#0;n#span#1;n#span#0;n#h2#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/less/style.less">
+    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="-7.730769" vertical-offset="598" max-vertical-offset="2329">
-          <folding />
+        <state line="64" column="19" selection-start="1824" selection-end="1824" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1258">
+          <folding>
+            <element signature="n#!!doc;n#gamelist#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="414" column="0" selection-start="16487" selection-end="16487" vertical-scroll-proportion="-16.307692" vertical-offset="6614" max-vertical-offset="7191">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="32" selection-start="7372" selection-end="7372" vertical-scroll-proportion="0.33333334" vertical-offset="2893" max-vertical-offset="5049">
+        <state line="329" column="45" selection-start="14154" selection-end="14154" vertical-scroll-proportion="0.69042057" vertical-offset="5002" max-vertical-offset="7497">
           <folding />
         </state>
       </provider>
