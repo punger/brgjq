@@ -2,7 +2,7 @@
  * Created by paul on 1/18/14.
  */
 
-function gamelist () {
+function GameList () {
     var games = [];
     var gameindex = -1;
 

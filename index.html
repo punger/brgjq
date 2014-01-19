@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" href="css/layout-default-latest.css"/>
-    <!-- Scripts for gauge -->
-    <script type="text/javascript" src="amcharts/amcharts.js"></script>
-    <script type="text/javascript" src="amcharts/gauge.js"></script>
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 
@@ -21,16 +18,23 @@
     <script src="libs/jquery.isotope.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
     <script type="application/javascript" src="js/gigetter.js"></script>
+    <script type="application/javascript" src="js/diffgauge.js"></script>
     <script type="application/javascript" src="js/gamehistoryitem.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
     <script src="libs/jcanvas.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
 </head>
 <body class="container">
 
 <script type="text/javascript">
 $( function () {
+    var gi = new GameInfo();
+    var currgamerank = -1;
+    var gamehistory = new GameList();
+    var diffgauge = new DiffGauge();
+
     var pg = $('body').layout({
         defaults: {
             spacing_open: 2,
@@ -64,8 +68,6 @@ $( function () {
     );
 
     $.get("html-frag/top.html", function (r) { $('.ui-layout-north').html(r);});
-    var currgamerank = -1;
-    var gamehistory = new gamelist();
 
     var setgameinfo = function (gameNo, bNoAdd) {
         if (!gameNo) return;
@@ -111,11 +113,12 @@ $( function () {
 //                    eyecandy.showDifficulty(gameinfo.difficulty, 'difficultygauge');
 //                    alert('Writing to '+ $("#difficultygauge")[0]);
 //                    $("#difficultygauge").width(160).height(160);
-                    chart.write('difficultygauge');
-                    arrow.setValue(gameinfo.difficulty - 1);
+//                    chart.write('difficultygauge');
+//                    arrow.setValue(gameinfo.difficulty - 1);
+//
+//                    chart.invalidateSize();
 
-                    chart.invalidateSize();
-
+                    diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
 
                     $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
                     $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
@@ -371,52 +374,52 @@ $( function () {
         pg.resetOverflow('center');
     });
 
-    var chart, axis, arrow;
-
-    AmCharts.ready(function () {
-        // create angular gauge
-        chart = new AmCharts.AmAngularGauge();
-        chart.addTitle("Difficulty");
-
-        // create chart
-        axis = new AmCharts.GaugeAxis();
-        // weirdly, these values work for the tick labelling, but values need to be zero-based
-        axis.startValue = 1;
-        axis.endValue = 5;
-        // color bands
-        var band1 = new AmCharts.GaugeBand();
-        band1.startValue = 0;
-        band1.endValue = 1;
-        band1.color = "yellow";
-
-        var band2 = new AmCharts.GaugeBand();
-        band2.startValue = 1;
-        band2.endValue = 3;
-        band2.color = "green";
-
-        var band3 = new AmCharts.GaugeBand();
-        band3.startValue = 3;
-        band3.endValue = 4;
-        band3.color = "red";
-        band3.innerRadius = "90%";
-
-        axis.bands = [band1, band2, band3];
-        axis.valueInterval = 1;
-
-        // bottom text
-//        axis.bottomTextYOffset = -20;
-//        axis.setBottomText("0 km/h");
-        chart.addAxis(axis);
-
-        // gauge arrow
-        arrow = new AmCharts.GaugeArrow();
-        arrow.setValue(0);
-
-        chart.addArrow(arrow);
-//        alert('Writing to '+ $("#difficultygauge")[0]);
-//        chart.write('difficultygauge');
-
-    });
+//    var chart, axis, arrow;
+//
+//    AmCharts.ready(function () {
+//        // create angular gauge
+//        chart = new AmCharts.AmAngularGauge();
+//        chart.addTitle("Difficulty");
+//
+//        // create chart
+//        axis = new AmCharts.GaugeAxis();
+//        // weirdly, these values work for the tick labelling, but values need to be zero-based
+//        axis.startValue = 1;
+//        axis.endValue = 5;
+//        // color bands
+//        var band1 = new AmCharts.GaugeBand();
+//        band1.startValue = 0;
+//        band1.endValue = 1;
+//        band1.color = "yellow";
+//
+//        var band2 = new AmCharts.GaugeBand();
+//        band2.startValue = 1;
+//        band2.endValue = 3;
+//        band2.color = "green";
+//
+//        var band3 = new AmCharts.GaugeBand();
+//        band3.startValue = 3;
+//        band3.endValue = 4;
+//        band3.color = "red";
+//        band3.innerRadius = "90%";
+//
+//        axis.bands = [band1, band2, band3];
+//        axis.valueInterval = 1;
+//
+//        // bottom text
+////        axis.bottomTextYOffset = -20;
+////        axis.setBottomText("0 km/h");
+//        chart.addAxis(axis);
+//
+//        // gauge arrow
+//        arrow = new AmCharts.GaugeArrow();
+//        arrow.setValue(0);
+//
+//        chart.addArrow(arrow);
+////        alert('Writing to '+ $("#difficultygauge")[0]);
+////        chart.write('difficultygauge');
+//
+//    });
 
 
 });
