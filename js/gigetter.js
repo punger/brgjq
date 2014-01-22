@@ -3,10 +3,6 @@
  */
 
 function GameInfo () {
-    var gaugeinited = false;
-    var $target;
-    var gvgauge;
-    var diff = 3;
 
     var $xResp= function (response) {
         var respXmlString;
@@ -17,8 +13,14 @@ function GameInfo () {
         else {
             respXmlString = response.substr(0, htmLoc);
         }
-        var respXml = $.parseXML(respXmlString);
-        return $(respXml);
+        try {
+            // Embedded script tags make the xml parsing barf
+            var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+            var respXml = $.parseXML(rxmlnoscript);
+            return $(respXml);
+        } catch (e) {
+            alert('xml parse problem: '+ e);
+        }
     };
     var jResp = function (response) {
         var respJsonString;
@@ -46,7 +48,7 @@ function GameInfo () {
             .replace(/\s+/g, '-') // collapse whitespace and replace by -
             .replace(/-+/g, '-'); // collapse dashes
 
-        return str;
+        return str.substr(0, 50);
     };
     return {
         gameinfo: function (gamenum, cb) {
@@ -88,6 +90,7 @@ function GameInfo () {
                         info.minplayers = $respJq.find('minplayers').attr('value');
                         info.maxplayers = $respJq.find('maxplayers').attr('value');
                         info.$videos = $respJq.find('videos');
+                        info.$links = $respJq.find('link').filter('[type!="boardgamepublisher"]');
 
                     }
                     catch (err) {
@@ -132,8 +135,8 @@ function GameInfo () {
                     var $rankPage = $(response);
                     var $colltable = $rankPage.find("#maincontent #main_content #collection #collectionitems #row_");
                     var gamecount = 0;
-                    var $gamelist = $($.parseXML('<items/>'));
-                    var $gameitems = $gamelist.find('items');
+                    // The following might be wrong
+                    var $gamelist = $('<items/>');
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
@@ -141,28 +144,28 @@ function GameInfo () {
                             var gameyear = $(gamerow).find("div[id*='results_objectname'] span").text();
                             var linkval = $gamelink.attr('href');
                             var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
-                            $gameitems.append($('<item/>', {
+
+                            var $curritem = $("<item/>", {
                                 id: gameNo
+                            });
+                            $curritem.append($("<name/>", {
+                                value: $gamelink.text()
                             }));
-                            var $curritem = $gameitems.find('item').last();
-                            $curritem.append($('<name/>',
-                                {
-                                    value: $gamelink.text()
-                                }
-                            ));
-                            $curritem.append($('<yearpublished/>',
-                                {
-                                    value: gameyear
-                                }
-                            ));
+                            $curritem.append($('<yearpublished/>', {
+                                value: gameyear
+                            }));
+                            $gamelist.append($curritem);
                         } catch (err) {
+                            console.log('rank list error '+ err);
                             console.log("At game number " + gamecount++);
                             console.log(gamerow);
                             return;
                         }
                     }).get();
-                    $gamelist.find('items').attr("total", gamecount);
-                    cb($gamelist);
+                    $gamelist.attr("total", gamecount);
+                    var $dummy = $("<dummy/>");
+                    $dummy.append($gamelist);
+                    cb($dummy);
                 },
                 "html"
             );
@@ -291,6 +294,121 @@ function GameInfo () {
                 },
                 'html'
             );
+        },
+        familylist: function(fid, ftype, start, count, cb) {
+            var chunksize = 18;
+            var page = 1;
+            $.get("/xdproxy/proxy.php",
+                {
+                    destination:  'http://boardgamegeek.com/geekitem.php',
+                    instanceid: 5,      // not relevant?
+                    objecttype: 'property',
+                    objectid: fid,
+                    subtype: ftype,
+                    pageid: page,
+                    sort: 'rank',
+                    view: 'boardgames',
+                    modulename: 'linkeditems',
+                    callback: '',
+                    showcount: chunksize,
+                    "filters[categoryfilter]": '',
+                    "filters[mechanicfilter]": '',
+                    action: 'linkeditems',
+                    ajax: 1
+                },
+                function(response) {
+                    var $rankPage = $(response);
+                    var $colltable = $rankPage.find(".innermoduletable > tbody > tr");
+                    var gamecount = 0;
+                    var $gamelist = $('<items/>');
+                    $colltable.each(function (index, gamerow) {
+                        try {
+                            gamecount++;
+                            var $gr = $(gamerow);
+                            var $gamelink = $gr.find(".geekitem_linkeditems_title a");
+                            var linkval = $gamelink.attr('href');
+                            var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
+
+                            var $statstable = $gr.find('.sf');
+                            var $thirdcol = $($statstable[0].rows[0].cells[2]);
+                            var gameyear = $($thirdcol.find('table')[0].rows[2].cells[1]).text().trim();
+                            //$gr.find("div[id*='results_objectname'] span").text();
+
+                            var $curritem = $("<item/>", {
+                                id: gameNo
+                            });
+                            $curritem.append($("<name/>", {
+                                value: $gamelink.text()
+                            }));
+                            $curritem.append($('<yearpublished/>', {
+                                value: gameyear
+                            }));
+                            $gamelist.append($curritem);
+                        } catch (err) {
+                            console.log("At game number " + gamecount++);
+                            console.log(gamerow);
+                            return;
+                        }
+                    }).get();
+                    $gamelist.attr("total", gamecount);
+                    var $dummy = $("<dummy/>");
+                    $dummy.append($gamelist);
+                    cb($dummy);
+
+                });
+
+            /*
+            For a category:
+            http://boardgamegeek.com/geekitem.php
+            ?instanceid=5           Not meaningful
+            &objecttype=property
+            &objectid=1021
+            &subtype=boardgamecategory
+            &pageid=1
+            &sort=name
+            &view=boardgames
+            &modulename=linkeditems
+            &callback=
+            &showcount=1
+            0&filters[categoryfilter]=
+            &filters[mechanicfilter]=
+            &action=linkeditems
+            &ajax=1
+
+            For a mechanic:
+             http://boardgamegeek.com/geekitem.php
+             ?instanceid=5
+             &objecttype=property
+             &objectid=2072
+             &subtype=boardgamemechanic
+             &pageid=2
+             &sort=name
+             &view=boardgames
+             &modulename=linkeditems
+             &callback=
+             &showcount=10
+             &filters[categoryfilter]=
+             &filters[mechanicfilter]=
+             &action=linkeditems
+             &ajax=1
+
+            For a person:
+             http://boardgamegeek.com/geekitem.php
+             ?instanceid=8
+             &objecttype=person
+             &objectid=140
+             &subtype=boardgamedesigner
+             &pageid=1
+             &sort=name
+             &view=boardgamedesigner
+             &modulename=linkeditems
+             &callback=
+             &showcount=10
+             &filters[categoryfilter]=
+             &filters[mechanicfilter]=
+             &action=linkeditems
+             &ajax=1
+             */
         }
     };
 }

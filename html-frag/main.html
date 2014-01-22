@@ -5,14 +5,16 @@
     <a >
         <span  id="nextgame" class="gameitemnav glyphicon glyphicon-chevron-right"></span>
     </a>
+    <span id="bgplink" class="pull-right">
+        <img src="resources/bgplogo.png" height="40px"/>
+    </span>
     <span id="gametitle">
         <span id="gamename">No Game Selected</span>
-        <span style="float: right">
+        <span class="pull-right">
             <span>
                 <img height="40px" src="resources/bgg_cornerlogo.png"/>
             </span>
         </span>
-
     </span>
 </h2>
 <table id="gameinfotable" border="0" class="gamestats">
@@ -20,14 +22,14 @@
         <td>
             <img class="gameimage" id="gamepic"/>
         </td>
-        <td class="alignedtop" style="padding: 30px">
+        <td class="alignedtop">
             <table>
                 <tr>
                     <td>
                         <table border="0">
                             <tr>
                                 <td>
-                                    <h4 id="gamestat-rating"/>
+                                    <h4 id="gamestat-rating"/><div id="gamestat-ratinggraph"/>
                                 </td>
                                 <td >
                                     <span id="gamerankparent">
@@ -63,34 +65,52 @@
                         <h4 id="gamestat-difficulty"/>
                     </td>
                     <td>
-                        <div hidden id="difficultygauge"></div>
                         <div id="difficultygauge-g"></div>
                     </td>
                 </tr>
             </table>
         </td>
+        <td class="alignedtop">
+            <div id="gamestat-related-block" style="padding: 1px">
+                <h4 id="gamestat-related">Related Items</h4>
+                <ul id="gamestat-related-list"/>
+            </div>
+        </td>
     </tr>
 </table>
-<h3 data-toggle="collapse" data-target="#gamestat-description">Description
-    <span style="float: right">
-        <span class="glyphicon glyphicon-chevron-up"
-              ></span>
-    </span>
-</h3>
+
+<div  class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-description">
+        Description
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"
+                  ></span>
+        </a>
+    </h3>
+</div>
 <p id="gamestat-description" class="collapse in"/>
-<h3 data-toggle="collapse" data-target="#gamestat-reviews">Reviews
-    <span style="float: right">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </span>
-</h3>
+
+<div class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-reviews">
+        Reviews
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </h3>
+</div>
 <ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"/>
 
-<h3 data-toggle="collapse" data-target="#gamestat-videos">Videos
-    <span style="float: right">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </span>
-</h3>
-<div id="gamestat-videos" class="collapse in"/>
+<div class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-videos-container">
+        Videos
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </h3>
+</div>
+<div id="gamestat-videos-container" class="collapse in">
+    <div id="gamestat-videos"/>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewSubjectModal" aria-hidden="true">

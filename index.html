@@ -21,6 +21,7 @@
     <script type="application/javascript" src="js/diffgauge.js"></script>
     <script type="application/javascript" src="js/gamehistoryitem.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
+    <script type="application/javascript" src="js/relateditemmap.js"></script>
     <script src="libs/jcanvas.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -31,7 +32,7 @@
 <script type="text/javascript">
 $( function () {
     var gi = new GameInfo();
-    var currgamerank = -1;
+//    var currgamerank = -1;
     var gamehistory = new GameList();
     var diffgauge = new DiffGauge();
 
@@ -67,12 +68,26 @@ $( function () {
             }
     );
 
-    $.get("html-frag/top.html", function (r) { $('.ui-layout-north').html(r);});
+    $.get("html-frag/top.html", function (r) {
+        $('.ui-layout-north').html(r);
+        var arg = window.location.search.substring(1);
+        if (arg) {
+            var gameNo = parseInt(arg);
+            if (gameNo) {
+                $("#gamenum").val(arg);
+                setgameinfo(gameNo);
+            } else {
+                $("#gamesearch").val(decodeURI( arg));
+                showsearchresults();
+            }
+        }
+    });
 
     var setgameinfo = function (gameNo, bNoAdd) {
         if (!gameNo) return;
         $("#brgmessage").html("Retrieving game information ...");
         $('#gamestat-reviews').find('li').remove();
+        $('#gamestat-related-list').find('li').remove();
         var $viditems = $('#gamestat-videos').find('.gameviditem');
         if ($viditems.length) {
             $('#gamestat-videos').isotope('destroy');
@@ -105,29 +120,96 @@ $( function () {
                     });
                     $('#gamenum').val(gameNo);
                     $("#gamename").html(gamename +'  ('+gameinfo.yearpublished+')');
+                    $("#gamename").data('gname', gamename);
+
                     $("#gamepic").attr("src", gameinfo.imageUrl);
                     $("#gamestat-rating").html("Rating: "+parseFloat(gameinfo.rating).toFixed(2));
                     eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
                     $("#gamestat-raters").html("Number of Raters: "+gameinfo.numraters);
-                    $("#gamestat-difficulty").html("Game Difficulty: "+gameinfo.difficulty);
-//                    eyecandy.showDifficulty(gameinfo.difficulty, 'difficultygauge');
-//                    alert('Writing to '+ $("#difficultygauge")[0]);
-//                    $("#difficultygauge").width(160).height(160);
-//                    chart.write('difficultygauge');
-//                    arrow.setValue(gameinfo.difficulty - 1);
-//
-//                    chart.invalidateSize();
 
+                    $("#gamestat-difficulty").html("Game Difficulty: ");
                     diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
 
                     $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
                     $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
+                    $("#gamestat-rank").data('rank',gameinfo.rank);
+
                     $("#gamestat-length").html("Length: "+gameinfo.playingtime+" minutes");
                     $("#gamestat-description").html(gameinfo.description.replace(/&#10;/g, "<br/>"));
                     $("#gamestat-numplayers").html("Players: "+gameinfo.minplayers +
                             ((gameinfo.minplayers == gameinfo.maxplayers) ? '' : ' to '+ gameinfo.maxplayers));
 
-                    currgamerank = gameinfo.rank;
+                    var relatedmap = {};
+                    gameinfo.$links.each(function(index, linkitem){
+                        var $linkitem = $(linkitem);
+                        var famtype = $linkitem.attr("type");
+                        var famname = $linkitem.attr('value');
+                        var baseid = 0;
+                        var linktypeoverride = relateditemmap[famtype].renameoninbound;
+                        if (linktypeoverride) {
+                            if ($linkitem.attr('inbound')) {
+                                famtype = linktypeoverride;
+                            }
+                            baseid = $linkitem.attr('id');
+                        }
+                        if (typeof relatedmap[famtype] === "undefined") {
+                            relatedmap[famtype] = [];
+                        }
+                        relatedmap[famtype].push({
+                            "familytype": famtype,
+                            "famid": $linkitem.attr('id'),
+                            "family": $linkitem.attr('value'),
+                            "familylisttitle": relateditemmap[famtype].relatedtitle + '"'+$linkitem.attr('value') + '"',
+                            "baseid": baseid
+                        });
+                    });
+/**
+ * Structure:
+ * div                      id="gamestat-related-block"
+ *  ul                      id="gamestat-related-list"
+ *      li                  class="gamestat-related-item-parent"
+ *          div             class="gamestat-related-itemsblock"
+ *              ul          class="gamestat-related-items"
+ *                  li      class="gamestat-related-item"
+ * OR
+ *      li                  class="gamestat-related-item gamestat-related-item-parent"
+ */
+                    var $relatedlinkparent = $('#gamestat-related-list');
+                    for (var section in relatedmap) {
+                        var $rellink;
+                        var relations = relatedmap[section];
+                        if (relations.length > 1) {
+                            var $relul = $('<ul/>', {
+                                "class": "gamestat-related-items"  // this class may be unused
+                            });
+                            var $relitemproto = $('<li/>', {
+                                "class": "gamestat-related-item"
+                            });
+                            for (var i = 0; i < relations.length; i++) {
+                                var $relitem = $relitemproto.clone();
+                                $relitem.data(relations[i]);
+                                $relitem.text($relitem.data('family'));
+                                $relul.append($relitem);
+                            }
+                            var $reldiv = $('<div/>', {
+                                "class": "gamestat-related-itemsblock"
+                            });
+                            $reldiv.append($relul);
+                            $rellink = $('<li/>', {
+                                "class": 'gamestat-related-item-parent'
+                            });
+                            $rellink.text(relateditemmap[section].relatedprompt);
+                            $rellink.append($reldiv);
+                        } else {
+                            $rellink = $('<li/>', {
+                                "class": 'gamestat-related-item gamestat-related-item-parent'
+                            });
+                            $rellink.data(relations[0]);
+                            $rellink.text(relateditemmap[section].relatedprompt + '"' + $rellink.data('family') + '"');
+                        }
+                        $relatedlinkparent.append($rellink);
+
+                    }
                     if (!bNoAdd) {
                         gamehistory.add(gameNo);
                     }
@@ -142,7 +224,7 @@ $( function () {
         gi.vidlist(gameNo, function (vidlistobj) {
             var $vidparent = $("#gamestat-videos");
             if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length == 0) {
-                $vidparent.append($("<h3>No videos found</h3>"));
+                $vidparent.append($("<h4 class='alert alert-info'>No videos found</h4>"));
                 return;
             }
             var gamename = $(vidlistobj.videos[0].objectlink).text();
@@ -191,7 +273,8 @@ $( function () {
                                     return parseInt($e.find('[thumbs]').attr('ordinal'));
                                 }
                             },
-                            sortBy: 'ord'
+                            sortBy: 'original-order', // 'ord'
+                            resizable: true
                         });
                         $vidparent.isotope('bindResize')
                     } catch (err) {
@@ -317,6 +400,7 @@ $( function () {
             'click',
             "#gamestat-rank",
             function (eo) {
+                var currgamerank = $("#gamestat-rank").data('rank');
                 if (currgamerank > 0)
                     showranklist(currgamerank);
                 return false;
@@ -347,6 +431,41 @@ $( function () {
         var gameNo = $("#gamenum").val();
         window.open('http://boardgamegeek.com/boardgame/'+gameNo);
     });
+
+    $(document).on('click', "#bgplink", function (evt) {
+        var gamename = $("#gamename").data('gname');
+        window.open('http://boardgameprices.com/search/'+gamename);
+    });
+    $(document).on('click', ".gamestat-related-item", function () {
+        var $this = $(this);
+        var gameNo = $this.data('baseid');
+        if (gameNo) {
+            setgameinfo(gameNo);
+            return;
+        }
+        $("#brgmessage").html("Retrieving related games ...");
+        var listtitle = $this.data('familylisttitle');
+        loadandshowlist(listtitle);
+        var famtype = $this.data('familytype');
+        var famid = $this.data('famid');
+        gi.familylist(famid, famtype, 1, 100, function($gl) {
+            showlist($gl);
+            pg.open('east');
+            pg.initContent('east');
+
+        });
+    });
+
+    $(document).on('click', ".gameregion", function() {
+        var $this = $(this);
+        var $chevloc = $this.find('.glyphicon-chevron-up');
+        if ($chevloc.length > 0) {
+            $chevloc.removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+        } else {
+            $chevloc = $this.find('.glyphicon-chevron-down');
+            $chevloc.removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        }
+    });
     $(document).on('click', '.review-item', function (evt) {
         var $this = $( this );
         var revid = $this.find('.review-id').html();
@@ -370,56 +489,9 @@ $( function () {
     $(document).on('click', '#reviewModal', function(evt) {
         $("#reviewModal").modal('hide');
     });
-    $(document).on('hidden.bs.modal', function(evt) {
+    $(document).on('hidden.bs.modal', '#reviewModal', function(evt) {
         pg.resetOverflow('center');
     });
-
-//    var chart, axis, arrow;
-//
-//    AmCharts.ready(function () {
-//        // create angular gauge
-//        chart = new AmCharts.AmAngularGauge();
-//        chart.addTitle("Difficulty");
-//
-//        // create chart
-//        axis = new AmCharts.GaugeAxis();
-//        // weirdly, these values work for the tick labelling, but values need to be zero-based
-//        axis.startValue = 1;
-//        axis.endValue = 5;
-//        // color bands
-//        var band1 = new AmCharts.GaugeBand();
-//        band1.startValue = 0;
-//        band1.endValue = 1;
-//        band1.color = "yellow";
-//
-//        var band2 = new AmCharts.GaugeBand();
-//        band2.startValue = 1;
-//        band2.endValue = 3;
-//        band2.color = "green";
-//
-//        var band3 = new AmCharts.GaugeBand();
-//        band3.startValue = 3;
-//        band3.endValue = 4;
-//        band3.color = "red";
-//        band3.innerRadius = "90%";
-//
-//        axis.bands = [band1, band2, band3];
-//        axis.valueInterval = 1;
-//
-//        // bottom text
-////        axis.bottomTextYOffset = -20;
-////        axis.setBottomText("0 km/h");
-//        chart.addAxis(axis);
-//
-//        // gauge arrow
-//        arrow = new AmCharts.GaugeArrow();
-//        arrow.setValue(0);
-//
-//        chart.addArrow(arrow);
-////        alert('Writing to '+ $("#difficultygauge")[0]);
-////        chart.write('difficultygauge');
-//
-//    });
 
 
 });

@@ -4,48 +4,51 @@
 
 function DiffGauge () {
     var gaugeinited = false;
-    var $target;
     var gvgauge;
-    var diff = 3;
+    var diff = 1.001;
+    var data;
+
+    var options = {
+        max: 5,
+        min: 1,
+        yellowFrom: 1,
+        yellowTo: 2,
+        greenFrom: 2,
+        greenTo: 4,
+        redFrom: 4,
+        redTo: 5,
+        majorTicks: ["easy", "moderate", "hard"],
+        minorTicks: 4,
+        animation: {
+            duration: 1000
+        },
+        height: 160,
+        width: 160
+    };
+
 
 
     var drawgauge = function () {
-        var data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['', diff]
-        ]);
 
-        var options = {
-            max: 5,
-            min: 1,
-            yellowFrom: 1,
-            yellowTo: 2,
-            greenFrom: 2,
-            greenTo: 4,
-            redFrom: 4,
-            redTo: 5,
-            majorTicks: ["easy", "moderate", "hard"],
-            minorTicks: 4,
-            "animation.duration": 4000
-        };
+        // Update and draw the visualization.
+        try {
+            data.setValue(0, 1, diff);
+            gvgauge.draw(data, options);
+        } catch (e) {
+            alert('gauge error: '+ e);
+        }
 
-        // Create and draw the visualization.
-        gvgauge.draw(data, options);
-
-    };
-    var creategauge = function() {
-        gvgauge = new google.visualization.Gauge($target[0]);
-        drawgauge();
     };
     var initgauge = function (targetid) {
         gaugeinited = true;
-        $target = $('#'+targetid);
-        google.load("visualization", "1", {"packages": ["gauge"], "callback": creategauge});
-//            $('body').append(
-//                '<script type="text/javascript">' +
-//                    'google.load("visualization", "1", {packages: ["gauge"], "callback": this.drawgauge});</script>');
-
-
+        google.load("visualization", "1", {"packages": ["gauge"], "callback": function() {
+            gvgauge = new google.visualization.Gauge(document.getElementById(targetid));
+            data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                ['', 1.0]
+            ]);
+            drawgauge();
+        }});
     };
 
     return {
@@ -59,9 +62,9 @@ function DiffGauge () {
             }
             if (!gaugeinited) {
                 initgauge(targetid);
-                return;
+            } else {
+                drawgauge();
             }
-            drawgauge();
         }
     };
 }
