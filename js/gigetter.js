@@ -296,21 +296,23 @@ function GameInfo () {
             );
         },
         familylist: function(fid, ftype, start, count, cb) {
-            var chunksize = 18;
-            var page = 1;
+            var page = Math.floor(start / count) +1 ;
+            var lt = relateditemmap[ftype].listtype;
+            var objtype = (lt == "person") ? 'person' : 'property';
+            var view = (lt == "person") ? ftype : 'boardgames';
             $.get("/xdproxy/proxy.php",
                 {
                     destination:  'http://boardgamegeek.com/geekitem.php',
                     instanceid: 5,      // not relevant?
-                    objecttype: 'property',
+                    objecttype: objtype,
                     objectid: fid,
                     subtype: ftype,
                     pageid: page,
                     sort: 'rank',
-                    view: 'boardgames',
+                    view: view,
                     modulename: 'linkeditems',
                     callback: '',
-                    showcount: chunksize,
+                    showcount: count,
                     "filters[categoryfilter]": '',
                     "filters[mechanicfilter]": '',
                     action: 'linkeditems',
@@ -369,8 +371,8 @@ function GameInfo () {
             &view=boardgames
             &modulename=linkeditems
             &callback=
-            &showcount=1
-            0&filters[categoryfilter]=
+            &showcount=10
+            &filters[categoryfilter]=
             &filters[mechanicfilter]=
             &action=linkeditems
             &ajax=1
@@ -409,6 +411,27 @@ function GameInfo () {
              &action=linkeditems
              &ajax=1
              */
+        },
+        gamelist: function (listtype, cb, start, count, args) {
+            switch (listtype) {
+                case 'search':
+                    if (typeof start === "string") {
+                        this.gamesearch(start, cb);
+                    } else if (typeof start === "number" && typeof args === "string") {
+                        this.gamesearch(args, cb);
+                    }
+                    break;
+                case 'rank':
+                    this.gamerank(start, cb);
+                    break;
+                case 'family':
+                    this.familylist(args.fid, args.ftype, start, count, cb);
+                    break;
+                case 'person':
+                    break;
+                default:
+            }
+
         }
     };
 }

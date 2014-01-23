@@ -276,7 +276,7 @@ $( function () {
                             sortBy: 'original-order', // 'ord'
                             resizable: true
                         });
-                        $vidparent.isotope('bindResize')
+//                        $vidparent.isotope('bindResize');
                     } catch (err) {
                         console.log("vid layout err "+err);
                     }
@@ -295,14 +295,28 @@ $( function () {
             pg.addCloseBtn("#srchlistclose", 'east');
         });
     };
+
+
     var showranklist = function (ranktarget) {
+        var rankbase = Math.floor((ranktarget - 1) / 100) * 100 + 1;
+        showgamelist(
+                "Retrieving games by rank ...",
+                'Games by Rank',
+                'rank',
+                rankbase,
+                100,
+                null,
+                true
+        );
+    };
+    var old_showranklist = function (ranktarget) {
         $("#brgmessage").html("Retrieving games by rank ...");
         loadandshowlist('Games by Rank');
         gi.gamerank(ranktarget, function ($gl) {
             $('.gameranknav').show();
             showlist($gl);
             var rankbase = Math.floor((ranktarget - 1) / 100) * 100 + 1;
-            $("#searchresults").attr('start', rankbase);
+            $("#searchresults").data('start', rankbase);
             $('#prevranklist').tooltip({
                 'show': true,
                 'placement': 'left',
@@ -320,6 +334,9 @@ $( function () {
     };
 
     var showlist = function ($gamelist) {
+        var $gamelisthtml = $("#searchresults");
+        $gamelisthtml.find('li').remove();
+
         var numGames = $gamelist.find('items').attr("total");
         if (!numGames) {
             $("#brgmessage").html("No games found");
@@ -331,7 +348,6 @@ $( function () {
             "class": "gameitem"
         });
 
-        var $gamelisthtml = $("#searchresults");
         for (var srchlistindex = 0; srchlistindex < numGames; srchlistindex++) {
             var $newGameItem = $gameitem.clone();
             var $item = $gamelist.find('item').eq(srchlistindex);
@@ -345,7 +361,69 @@ $( function () {
         }
     };
 
+    var showgamelist =
+        function(
+                processprompt,
+                listheader,
+                listtype,
+                start,
+                count,
+                arg,
+                bcontinue
+                )
+        {
+            $("#brgmessage").html(processprompt);
+            loadandshowlist(listheader);
+            gi.gamelist(listtype, function($gl) {
+                var liststate = {
+                    processprompt: processprompt,
+                    listheader: listheader,
+                    listtype: listtype,
+                    start: start,
+                    count: count,
+                    arg: arg,
+                    bcontinue: bcontinue
+                }
+                $("#searchresults").data(liststate);
+                $("#searchresults").attr('start', start);
+                showlist($gl);
+                if (!bcontinue) {
+                    $('.gameranknav').hide();
+                } else {
+                    $('#prevranklist').tooltip({
+                        'show': true,
+                        'placement': 'left',
+                        'title': "Previous " + count
+                    });
+                    $('#nextranklist').tooltip({
+                        'show': true,
+                        'placement': 'bottom',
+                        'title': "Next " + count
+                    });
+                    $('.gameranknav').show();
+                }
+                pg.open('east');
+                pg.initContent('east');
+
+            },
+            start, count, arg
+            );
+
+        };
+
     var showsearchresults = function () {
+        var q = $("#gamesearch").val();
+        if (!q || !q.trim()) {
+            $("#brgmessage").html("Nothing to search");
+            return;
+        }
+        showgamelist("Searching ...",
+                "Search Results",'search',
+                1, 1000,
+                q, false);
+
+    };
+    var old_showsearchresults = function () {
         var q = $("#gamesearch").val();
         if (!q || !q.trim()) {
             $("#brgmessage").html("Nothing to search");
@@ -416,17 +494,32 @@ $( function () {
         }
         setgameinfo(gamehistory.get(), true);
     });
-    $(document).on('click', '#prevranklist', function () {
-        var currbase = $('#searchresults').attr('start');
-        if (!currbase || currbase < 100) return;
-        showranklist(parseInt(currbase) - 100);
+    $(document).on('click', '.gameranknav', function () {
+        var listparams = $('#searchresults').data();
+        var delta = ($(this).attr('id') == "prevranklist") ? -1 : 1;
+        var currbase = parseInt(listparams.start);
+        if (!currbase) return;
+        var nextbase = currbase + (delta * parseInt(listparams.count));
+        if (nextbase <= 0) return;
+        showgamelist(listparams.processprompt,
+                listparams.listheader,
+                listparams.listtype,
+                nextbase,
+                listparams.count,
+                listparams.arg,
+                listparams.bcontinue);
     });
-
-    $(document).on('click', '#nextranklist', function () {
-        var currbase = $('#searchresults').attr('start');
-        if (!currbase || currbase < 0) return;
-        showranklist(parseInt(currbase) + 100);
-    });
+//    $(document).on('click', '#prevranklist', function () {
+//        var currbase = $('#searchresults').data('start');
+//        if (!currbase || currbase < 100) return;
+//        showranklist(parseInt(currbase) - 100);
+//    });
+//
+//    $(document).on('click', '#nextranklist', function () {
+//        var currbase = $('#searchresults').data('start');
+//        if (!currbase || currbase < 0) return;
+//        showranklist(parseInt(currbase) + 100);
+//    });
     $(document).on('click', "#gametitle", function (evt) {
         var gameNo = $("#gamenum").val();
         window.open('http://boardgamegeek.com/boardgame/'+gameNo);
@@ -443,17 +536,28 @@ $( function () {
             setgameinfo(gameNo);
             return;
         }
-        $("#brgmessage").html("Retrieving related games ...");
-        var listtitle = $this.data('familylisttitle');
-        loadandshowlist(listtitle);
-        var famtype = $this.data('familytype');
-        var famid = $this.data('famid');
-        gi.familylist(famid, famtype, 1, 100, function($gl) {
-            showlist($gl);
-            pg.open('east');
-            pg.initContent('east');
-
-        });
+        showgamelist("Retrieving related games ...",
+                $this.data('familylisttitle'),
+                'family',
+                1,
+                20,
+                {
+                    fid:  $this.data('famid'),
+                    ftype: $this.data('familytype')
+                },
+                true
+        )
+//        $("#brgmessage").html("Retrieving related games ...");
+//        var listtitle = $this.data('familylisttitle');
+//        loadandshowlist(listtitle);
+//        var famtype = $this.data('familytype');
+//        var famid = $this.data('famid');
+//        gi.familylist(famid, famtype, 1, 100, function($gl) {
+//            showlist($gl);
+//            pg.open('east');
+//            pg.initContent('east');
+//
+//        });
     });
 
     $(document).on('click', ".gameregion", function() {
@@ -491,6 +595,12 @@ $( function () {
     });
     $(document).on('hidden.bs.modal', '#reviewModal', function(evt) {
         pg.resetOverflow('center');
+    });
+    $(window).on('resize', function () {
+        var $viditems = $('#gamestat-videos').find('.gameviditem');
+        if ($viditems.length) {
+            $viditems.isotope('layout');
+        }
     });
 
 

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Related Items&#10;&#10;* Hover over tag shows related items in a dropdown list.&#10;* Relations with multiple objects show in a submenu&#10;* Items are clickable&#10;* Game items jump to target game&#10;* Groups or families show list of items in right hand pane">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/bgplogo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/ratinggraph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/relateditemmap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/brgjq.iml" afterPath="$PROJECT_DIR$/.idea/brgjq.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/diffgauge.js" afterPath="$PROJECT_DIR$/js/diffgauge.js" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="$PROJECT_DIR$/js/gigetter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/relateditemmap.js" afterPath="$PROJECT_DIR$/js/relateditemmap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/srchres.html" afterPath="$PROJECT_DIR$/html-frag/srchres.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -34,26 +28,37 @@
     <favorites_list name="brgjq" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.584127">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="252" column="28" selection-start="12187" selection-end="12187" vertical-scroll-proportion="0.7392857" vertical-offset="4374" max-vertical-offset="9804">
-                  <folding />
+                <state line="604" column="0" selection-start="24871" selection-end="24871" vertical-scroll-proportion="-71.43396" vertical-offset="6246" max-vertical-offset="10450">
+                  <folding>
+                    <element signature="e#1827#2562#0" expanded="false" />
+                    <element signature="e#2623#2748#0" expanded="false" />
+                    <element signature="e#2802#3202#0" expanded="false" />
+                    <element signature="e#14545#15342#0" expanded="false" />
+                    <element signature="e#18497#18898#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gigetter.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="gigetter.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/gigetter.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="349" column="28" selection-start="15097" selection-end="15097" vertical-scroll-proportion="0.0" vertical-offset="5219" max-vertical-offset="6764">
+                <state line="4" column="22" selection-start="63" selection-end="63" vertical-scroll-proportion="0.085011184" vertical-offset="0" max-vertical-offset="3173">
                   <folding>
+                    <element signature="e#1713#4321#0" expanded="false" />
+                    <element signature="e#4364#4796#0" expanded="false" />
+                    <element signature="e#4838#7074#0" expanded="false" />
+                    <element signature="e#7130#9940#0" expanded="false" />
                     <element signature="e#9989#10371#0" expanded="false" />
                     <element signature="e#10412#11202#0" expanded="false" />
                     <element signature="e#11255#12545#0" expanded="false" />
+                    <element signature="e#13595#15527#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -102,23 +107,32 @@
               </provider>
             </entry>
           </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/less/style.less">
+          <file leaf-file-name="srchres.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="111" column="12" selection-start="1817" selection-end="1817" vertical-scroll-proportion="0.7050611" vertical-offset="1705" max-vertical-offset="2755">
+                <state line="5" column="5" selection-start="263" selection-end="263" vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="342">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="relateditemmap.js" pinned="false" current="false" current-in-tab="false">
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/less/style.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="127" column="0" selection-start="2025" selection-end="2025" vertical-scroll-proportion="-19.607143" vertical-offset="1864" max-vertical-offset="2755">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="relateditemmap.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="4" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="1159">
+                <state line="60" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="1.0055127" vertical-offset="228" max-vertical-offset="1368">
                   <folding />
                 </state>
               </provider>
@@ -163,14 +177,14 @@
         <option value="$PROJECT_DIR$/libs/isotope.pkgd.min.js" />
         <option value="$PROJECT_DIR$/libs/isotope.pkgd.js" />
         <option value="$PROJECT_DIR$/libs/jquery.isotope.min.js" />
-        <option value="$PROJECT_DIR$/html-frag/srchres.html" />
         <option value="$PROJECT_DIR$/js/gamehistoryitem.js" />
         <option value="$PROJECT_DIR$/js/diffgauge.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/relateditemmap.js" />
         <option value="$PROJECT_DIR$/less/style.less" />
         <option value="$PROJECT_DIR$/html-frag/main.html" />
         <option value="$PROJECT_DIR$/js/ratinggraph.js" />
+        <option value="$PROJECT_DIR$/html-frag/srchres.html" />
+        <option value="$PROJECT_DIR$/js/relateditemmap.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/gigetter.js" />
       </list>
     </option>
@@ -485,7 +499,11 @@
       <created>1390116393805</created>
       <updated>1390116393805</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Related Items&#10;&#10;* Hover over tag shows related items in a dropdown list.&#10;* Relations with multiple objects show in a submenu&#10;* Items are clickable&#10;* Game items jump to target game&#10;* Groups or families show list of items in right hand pane">
+      <created>1390367148985</created>
+      <updated>1390367148985</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -494,7 +512,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -561,9 +579,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="235" column="28" selection-start="9444" selection-end="9444" vertical-scroll-proportion="0.0" vertical-offset="3496" max-vertical-offset="4471">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -578,7 +601,13 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="127" column="10" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.0" vertical-offset="1976" max-vertical-offset="5950">
-          <folding />
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,9 +632,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="160" column="42" selection-start="6421" selection-end="6421" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3927">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -620,7 +654,13 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="5474">
-          <folding />
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -638,9 +678,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3043">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -655,7 +700,13 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="5474">
-          <folding />
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -673,9 +724,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3043">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -690,7 +746,13 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="54" selection-start="955" selection-end="955" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908">
-          <folding />
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -705,9 +767,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="3079" max-vertical-offset="3938">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -722,7 +789,13 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908">
-          <folding />
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -737,9 +810,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="3079" max-vertical-offset="3938">
           <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
             <element signature="e#9989#10371#0" expanded="false" />
             <element signature="e#10412#11202#0" expanded="false" />
             <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -844,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="33" selection-start="324" selection-end="336" vertical-scroll-proportion="-10.961538" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/bgplogo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -861,22 +932,6 @@
         <state line="4" column="14" selection-start="54" selection-end="54" vertical-scroll-proportion="-0.08379272" vertical-offset="114" max-vertical-offset="1406">
           <folding>
             <element signature="n#!!doc;n#GameList#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="1159">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="0" selection-start="1857" selection-end="1857" vertical-scroll-proportion="-21.214285" vertical-offset="1610" max-vertical-offset="2755">
-          <folding>
-            <marker date="1390354108629" expanded="true" signature="2058:2130" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -907,21 +962,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+    <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="28" selection-start="15097" selection-end="15097" vertical-scroll-proportion="0.0" vertical-offset="5219" max-vertical-offset="6764">
+        <state line="116" column="0" selection-start="1857" selection-end="1857" vertical-scroll-proportion="-21.214285" vertical-offset="1610" max-vertical-offset="2755">
           <folding>
-            <element signature="e#9989#10371#0" expanded="false" />
-            <element signature="e#10412#11202#0" expanded="false" />
-            <element signature="e#11255#12545#0" expanded="false" />
+            <marker date="1390354108629" expanded="true" signature="2058:2130" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="1.0055127" vertical-offset="228" max-vertical-offset="1368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="5" selection-start="263" selection-end="263" vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="342">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="28" selection-start="12187" selection-end="12187" vertical-scroll-proportion="0.7392857" vertical-offset="4374" max-vertical-offset="9804">
-          <folding />
+        <state line="604" column="0" selection-start="24871" selection-end="24871" vertical-scroll-proportion="-71.43396" vertical-offset="6246" max-vertical-offset="10450">
+          <folding>
+            <element signature="e#1827#2562#0" expanded="false" />
+            <element signature="e#2623#2748#0" expanded="false" />
+            <element signature="e#2802#3202#0" expanded="false" />
+            <element signature="e#14545#15342#0" expanded="false" />
+            <element signature="e#18497#18898#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="22" selection-start="63" selection-end="63" vertical-scroll-proportion="0.085011184" vertical-offset="0" max-vertical-offset="3173">
+          <folding>
+            <element signature="e#1713#4321#0" expanded="false" />
+            <element signature="e#4364#4796#0" expanded="false" />
+            <element signature="e#4838#7074#0" expanded="false" />
+            <element signature="e#7130#9940#0" expanded="false" />
+            <element signature="e#9989#10371#0" expanded="false" />
+            <element signature="e#10412#11202#0" expanded="false" />
+            <element signature="e#11255#12545#0" expanded="false" />
+            <element signature="e#13595#15527#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
