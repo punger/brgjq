@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>BBGG 2</title>
+    <!-- Style related links -->
     <link rel="stylesheet/less" type="text/css" href="less/style.less" />
 
     <!-- Latest compiled and minified Bootstrap CSS -->
@@ -11,17 +12,26 @@
     <link rel="stylesheet" href="css/layout-default-latest.css"/>
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js" type="text/javascript"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="libs/jquery.isotope.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
-    <script type="application/javascript" src="js/gigetter.js"></script>
+    <script src="libs/ba-tiny-pubsub.js" type="text/javascript"></script>
+
+    <!-- Local scripts -->
+    <script type="application/javascript" src="js/relateditemmap.js"></script>
+    <script type="application/javascript" src="js/accessutil.js"></script>
+    <script type="application/javascript" src="js/gamelists.js"></script>
+    <script type="application/javascript" src="js/gameinfo.js"></script>
     <script type="application/javascript" src="js/diffgauge.js"></script>
+    <script type="application/javascript" src="js/centerpane.js"></script>
+    <script type="application/javascript" src="js/listpane.js"></script>
+    <script type="application/javascript" src="js/headerpane.js"></script>
     <script type="application/javascript" src="js/gamehistoryitem.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
-    <script type="application/javascript" src="js/relateditemmap.js"></script>
+
     <script src="libs/jcanvas.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -31,12 +41,9 @@
 
 <script type="text/javascript">
 $( function () {
-    var gi = new GameInfo();
-//    var currgamerank = -1;
-    var gamehistory = new GameList();
-    var diffgauge = new DiffGauge();
+    var App = {};
 
-    var pg = $('body').layout({
+    App.pg = $('body').layout({
         defaults: {
             spacing_open: 2,
             spacing_closed: 2,
@@ -61,549 +68,39 @@ $( function () {
             initHidden: true
         }
     });
-    $.get("html-frag/main.html",
-            function (r) {
-                $('.ui-layout-center').html(r);
-//                eyecandy.initDifficulty('difficultygauge');
-            }
-    );
 
-    $.get("html-frag/top.html", function (r) {
-        $('.ui-layout-north').html(r);
+    $.subscribe('layout.addclosebutton', function (_, srchbtnselector) {
+        App.pg.addCloseBtn(srchbtnselector, 'east');
+    });
+    $.subscribe('layout.hidemodal', function () {
+        App.pg.resetOverflow('center');
+    });
+
+    $.subscribe('layout.showmodal', function () {
+        App.pg.allowOverflow('center');
+    });
+    $.subscribe('layout.showlist', function () {
+        App.pg.open('east');
+        App.pg.initContent('east');
+    });
+
+    App.main = new CenterPane('.ui-layout-center');
+
+    App.list = new ListPane('.ui-layout-east');
+
+    App.head = new HeaderPane('.ui-layout-north', function () {
         var arg = window.location.search.substring(1);
         if (arg) {
             var gameNo = parseInt(arg);
             if (gameNo) {
-                $("#gamenum").val(arg);
-                setgameinfo(gameNo);
+                $.publish('setgame', [gameNo]);
             } else {
-                $("#gamesearch").val(decodeURI( arg));
-                showsearchresults();
+                var srchstr = decodeURI( arg);
+                $.publish('list.search', [srchstr]);
+                $.publish('gamesearchchange', [srchstr]);
             }
         }
     });
-
-    var setgameinfo = function (gameNo, bNoAdd) {
-        if (!gameNo) return;
-        $("#brgmessage").html("Retrieving game information ...");
-        $('#gamestat-reviews').find('li').remove();
-        $('#gamestat-related-list').find('li').remove();
-        var $viditems = $('#gamestat-videos').find('.gameviditem');
-        if ($viditems.length) {
-            $('#gamestat-videos').isotope('destroy');
-            $viditems.remove();
-        } else {
-            $('#gamestat-videos >').remove();
-        }
-
-        gi.gameinfo(gameNo, function(gameinfo) {
-            if (gameinfo.valid) {
-                try {
-                    var gamename = gameinfo.name;
-                    gi.gamereviews(gameNo, gamename, function ($reviewlist) {
-                        var numReviews = $reviewlist.attr("numthreads");
-                        var $reviewitem = $("<li/>", {
-                            html: "<span hidden class='review-id'/><a class='review-title'/>",
-                            "class": "review-item"
-                        });
-
-                        var $reviewlisthtml = $("#gamestat-reviews");
-                        for (var reviewindex = 0; reviewindex < numReviews; reviewindex++) {
-                            var $newReviewItem = $reviewitem.clone();
-                            var $item = $reviewlist.find('thread').eq(reviewindex);
-                            $newReviewItem.find(".review-id").html($item.attr("id"));
-
-                            $newReviewItem.find(".review-title").html($item.attr('subject'));
-                            $reviewlisthtml.append($newReviewItem);
-                        }
-
-                    });
-                    $('#gamenum').val(gameNo);
-                    $("#gamename").html(gamename +'  ('+gameinfo.yearpublished+')');
-                    $("#gamename").data('gname', gamename);
-
-                    $("#gamepic").attr("src", gameinfo.imageUrl);
-                    $("#gamestat-rating").html("Rating: "+parseFloat(gameinfo.rating).toFixed(2));
-                    eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
-                    $("#gamestat-raters").html("Number of Raters: "+gameinfo.numraters);
-
-                    $("#gamestat-difficulty").html("Game Difficulty: ");
-                    diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
-
-                    $("#gamestat-minage").html("Minimum Age: "+gameinfo.minage);
-                    $("#gamestat-rank").html("Boardgame Rank: <a>"+gameinfo.rank+"</a>");
-                    $("#gamestat-rank").data('rank',gameinfo.rank);
-
-                    $("#gamestat-length").html("Length: "+gameinfo.playingtime+" minutes");
-                    $("#gamestat-description").html(gameinfo.description.replace(/&#10;/g, "<br/>"));
-                    $("#gamestat-numplayers").html("Players: "+gameinfo.minplayers +
-                            ((gameinfo.minplayers == gameinfo.maxplayers) ? '' : ' to '+ gameinfo.maxplayers));
-
-                    var relatedmap = {};
-                    gameinfo.$links.each(function(index, linkitem){
-                        var $linkitem = $(linkitem);
-                        var famtype = $linkitem.attr("type");
-                        var famname = $linkitem.attr('value');
-                        var baseid = 0;
-                        var linktypeoverride = relateditemmap[famtype].renameoninbound;
-                        if (linktypeoverride) {
-                            if ($linkitem.attr('inbound')) {
-                                famtype = linktypeoverride;
-                            }
-                            baseid = $linkitem.attr('id');
-                        }
-                        if (typeof relatedmap[famtype] === "undefined") {
-                            relatedmap[famtype] = [];
-                        }
-                        relatedmap[famtype].push({
-                            "familytype": famtype,
-                            "famid": $linkitem.attr('id'),
-                            "family": $linkitem.attr('value'),
-                            "familylisttitle": relateditemmap[famtype].relatedtitle + '"'+$linkitem.attr('value') + '"',
-                            "baseid": baseid
-                        });
-                    });
-/**
- * Structure:
- * div                      id="gamestat-related-block"
- *  ul                      id="gamestat-related-list"
- *      li                  class="gamestat-related-item-parent"
- *          div             class="gamestat-related-itemsblock"
- *              ul          class="gamestat-related-items"
- *                  li      class="gamestat-related-item"
- * OR
- *      li                  class="gamestat-related-item gamestat-related-item-parent"
- */
-                    var $relatedlinkparent = $('#gamestat-related-list');
-                    for (var section in relatedmap) {
-                        var $rellink;
-                        var relations = relatedmap[section];
-                        if (relations.length > 1) {
-                            var $relul = $('<ul/>', {
-                                "class": "gamestat-related-items"  // this class may be unused
-                            });
-                            var $relitemproto = $('<li/>', {
-                                "class": "gamestat-related-item"
-                            });
-                            for (var i = 0; i < relations.length; i++) {
-                                var $relitem = $relitemproto.clone();
-                                $relitem.data(relations[i]);
-                                $relitem.text($relitem.data('family'));
-                                $relul.append($relitem);
-                            }
-                            var $reldiv = $('<div/>', {
-                                "class": "gamestat-related-itemsblock"
-                            });
-                            $reldiv.append($relul);
-                            $rellink = $('<li/>', {
-                                "class": 'gamestat-related-item-parent'
-                            });
-                            $rellink.text(relateditemmap[section].relatedprompt);
-                            $rellink.append($reldiv);
-                        } else {
-                            $rellink = $('<li/>', {
-                                "class": 'gamestat-related-item gamestat-related-item-parent'
-                            });
-                            $rellink.data(relations[0]);
-                            $rellink.text(relateditemmap[section].relatedprompt + '"' + $rellink.data('family') + '"');
-                        }
-                        $relatedlinkparent.append($rellink);
-
-                    }
-                    if (!bNoAdd) {
-                        gamehistory.add(gameNo);
-                    }
-                } catch (err) {
-                    alert("Error " + err);
-                }
-            } else {
-                $("#gamename").html('<pre> Error: '+gameinfo.message+'</pre>');
-                $("#gamename").css("backgroundColor", "orange");
-            }
-        });
-        gi.vidlist(gameNo, function (vidlistobj) {
-            var $vidparent = $("#gamestat-videos");
-            if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length == 0) {
-                $vidparent.append($("<h4 class='alert alert-info'>No videos found</h4>"));
-                return;
-            }
-            var gamename = $(vidlistobj.videos[0].objectlink).text();
-            gi.hotvideos(gameNo, gamename, function(vidinfo) {
-                $.get('html-frag/videotile.html', function (vtiletemplate) {
-
-                    var $vttmpl = $(vtiletemplate);
-                    // This is only the first page so it is limited to 15 whereas vidlistobj is not
-                    for (var i = 0; i < vidinfo.length; i++) {
-                        var vidid = vidinfo[i].videoid;
-                        var videntry = vidlistobj.videos[i];
-                        var $viditem = $vttmpl.clone();
-                        $viditem.attr('ordinal', i);
-                        $viditem.attr('thumbs', videntry.numrecommend);
-                        $viditem.attr('comments', videntry.numcomments);
-                        $viditem.find('.gamevidpreview').attr('src', vidinfo[i].vidpic);
-                        var vidsource = 'http://' +
-                                ((videntry.videohost == 'youtube' ? 'youtu.be' : videntry.videohost)) +
-                                '/' + videntry.extvideoid;
-                        $viditem.find('.gamevidlink').attr('href', vidsource);
-                        $viditem.find('.gamevidtitle').html(videntry.title);
-                        $vidparent.append($viditem);
-                    }
-                    // If there were more than 15 videos, show a more thumbnail with a link to the bgg page
-                    if (vidinfo.length < vidlistobj.videos.length) {
-                        var $viditem = $vttmpl.clone();
-                        $viditem.attr('ordinal', 1000000);
-                        $viditem.attr('thumbs', 0);
-                        $viditem.attr('comments', 0);
-                        $viditem.find('.gamevidpreview').attr('src', 'resources/bgg_cornerlogo.png');
-                        $viditem.find('.gamevidlink')
-                                .attr('href', 'http://boardgamegeek.com/boardgame/'+gameNo + '#videos')
-                                .attr('target', '_blank');
-                        $viditem.find('.gamevidtitle').html('More ...');
-                        $vidparent.append($viditem);
-                    }
-                    try {
-                        $vidparent.isotope({
-                            itemSelector: '.gameviditem',
-                            layoutMode: 'fitRows',
-                            getSortData: {
-                                ord: function ($e) {
-                                    return parseInt($e.find('[ordinal]').attr('ordinal'));
-                                },
-                                numthumbs: function ($e) {
-                                    return parseInt($e.find('[thumbs]').attr('ordinal'));
-                                }
-                            },
-                            sortBy: 'original-order', // 'ord'
-                            resizable: true
-                        });
-//                        $vidparent.isotope('bindResize');
-                    } catch (err) {
-                        console.log("vid layout err "+err);
-                    }
-                });
-            });
-        });
-
-
-    };
-
-    var loadandshowlist = function (listheader) {
-        $.get("html-frag/srchres.html", function (r) {
-            $('.ui-layout-east').html(r);
-            $('.gameranknav').hide();
-            $("#sidelistheader").html(listheader);
-            pg.addCloseBtn("#srchlistclose", 'east');
-        });
-    };
-
-
-    var showranklist = function (ranktarget) {
-        var rankbase = Math.floor((ranktarget - 1) / 100) * 100 + 1;
-        showgamelist(
-                "Retrieving games by rank ...",
-                'Games by Rank',
-                'rank',
-                rankbase,
-                100,
-                null,
-                true
-        );
-    };
-    var old_showranklist = function (ranktarget) {
-        $("#brgmessage").html("Retrieving games by rank ...");
-        loadandshowlist('Games by Rank');
-        gi.gamerank(ranktarget, function ($gl) {
-            $('.gameranknav').show();
-            showlist($gl);
-            var rankbase = Math.floor((ranktarget - 1) / 100) * 100 + 1;
-            $("#searchresults").data('start', rankbase);
-            $('#prevranklist').tooltip({
-                'show': true,
-                'placement': 'left',
-                'title': "Previous 100"
-            });
-            $('#nextranklist').tooltip({
-                'show': true,
-                'placement': 'bottom',
-                'title': "Next 100"
-            });
-            $('.gameranknav').show();
-            pg.open('east');
-            pg.initContent('east');
-        });
-    };
-
-    var showlist = function ($gamelist) {
-        var $gamelisthtml = $("#searchresults");
-        $gamelisthtml.find('li').remove();
-
-        var numGames = $gamelist.find('items').attr("total");
-        if (!numGames) {
-            $("#brgmessage").html("No games found");
-            return;
-        }
-        $("#brgmessage").html(""+numGames +" games found");
-        var $gameitem = $("<li/>", {
-            html: "<span hidden class='srchres-gameid'/><span class='srchres-gamename'/>",
-            "class": "gameitem"
-        });
-
-        for (var srchlistindex = 0; srchlistindex < numGames; srchlistindex++) {
-            var $newGameItem = $gameitem.clone();
-            var $item = $gamelist.find('item').eq(srchlistindex);
-            $newGameItem.find(".srchres-gameid").html($item.attr("id"));
-            var linkcontent = (
-                    $item.find('name').attr('value') +
-                    " <a>(" + $item.find('yearpublished').attr('value')+")</a>")
-                        .replace(/\(\(/g, '(').replace(/\)\)/g,')');
-            $newGameItem.find(".srchres-gamename").html(linkcontent);
-            $gamelisthtml.append($newGameItem);
-        }
-    };
-
-    var showgamelist =
-        function(
-                processprompt,
-                listheader,
-                listtype,
-                start,
-                count,
-                arg,
-                bcontinue
-                )
-        {
-            $("#brgmessage").html(processprompt);
-            loadandshowlist(listheader);
-            gi.gamelist(listtype, function($gl) {
-                var liststate = {
-                    processprompt: processprompt,
-                    listheader: listheader,
-                    listtype: listtype,
-                    start: start,
-                    count: count,
-                    arg: arg,
-                    bcontinue: bcontinue
-                }
-                $("#searchresults").data(liststate);
-                $("#searchresults").attr('start', start);
-                showlist($gl);
-                if (!bcontinue) {
-                    $('.gameranknav').hide();
-                } else {
-                    $('#prevranklist').tooltip({
-                        'show': true,
-                        'placement': 'left',
-                        'title': "Previous " + count
-                    });
-                    $('#nextranklist').tooltip({
-                        'show': true,
-                        'placement': 'bottom',
-                        'title': "Next " + count
-                    });
-                    $('.gameranknav').show();
-                }
-                pg.open('east');
-                pg.initContent('east');
-
-            },
-            start, count, arg
-            );
-
-        };
-
-    var showsearchresults = function () {
-        var q = $("#gamesearch").val();
-        if (!q || !q.trim()) {
-            $("#brgmessage").html("Nothing to search");
-            return;
-        }
-        showgamelist("Searching ...",
-                "Search Results",'search',
-                1, 1000,
-                q, false);
-
-    };
-    var old_showsearchresults = function () {
-        var q = $("#gamesearch").val();
-        if (!q || !q.trim()) {
-            $("#brgmessage").html("Nothing to search");
-            return;
-        }
-        $("#brgmessage").html("Searching ...");
-        loadandshowlist('Search Results');
-        gi.gamesearch(q, function ($gl) {
-            showlist($gl);
-            pg.open('east');
-            pg.initContent('east');
-
-        })
-    };
-
-    /**
-     * Show loading gif when waiting for AJAX results.
-     * It turns out that you need to keep a use count because more than one of these fires.
-     */
-    $(document).bind("ajaxSend", function(){
-        var $ld = $("#loading");
-        $ld.attr('showcount', parseInt($ld.attr('showcount')) + 1);
-        $ld.show();
-    }).bind("ajaxComplete", function(){
-        var $ld = $("#loading");
-        var showcount = parseInt($ld.attr('showcount')) - 1;
-        if (showcount <= 0) {
-            $("#loading").hide();
-            $ld.attr('showcount', 0);
-        } else $ld.attr('showcount', showcount);
-    });
-
-    $(document).on('keypress', '#gamenum', (function (e){
-        if (e.which == 13) {
-            var gameNo = $("#gamenum").val();
-            setgameinfo(gameNo);
-        }
-    }));
-
-    $(document).on('keypress', '#gamesearch', (function (e){
-        if (e.which == 13) {
-            showsearchresults();
-       }
-    }));
-
-    $(document).on('click', "#getGame", function (evt) {
-        var gameNo = $("#gamenum").val();
-        setgameinfo(gameNo);
-    });
-    $(document).on('click', "#searchGame", function () {showsearchresults()});
-    $(document).on(
-            'click',
-            "#gamestat-rank",
-            function (eo) {
-                var currgamerank = $("#gamestat-rank").data('rank');
-                if (currgamerank > 0)
-                    showranklist(currgamerank);
-                return false;
-            }
-    );
-    $(document).on('click', '.gameitemnav', function () {
-        if (gamehistory.empty()) return false;
-        if ($(this).attr('id') == 'nextgame') {
-            if (!gamehistory.next()) return false;
-        }
-        else {
-            if (!gamehistory.prev()) return false;
-        }
-        setgameinfo(gamehistory.get(), true);
-    });
-    $(document).on('click', '.gameranknav', function () {
-        var listparams = $('#searchresults').data();
-        var delta = ($(this).attr('id') == "prevranklist") ? -1 : 1;
-        var currbase = parseInt(listparams.start);
-        if (!currbase) return;
-        var nextbase = currbase + (delta * parseInt(listparams.count));
-        if (nextbase <= 0) return;
-        showgamelist(listparams.processprompt,
-                listparams.listheader,
-                listparams.listtype,
-                nextbase,
-                listparams.count,
-                listparams.arg,
-                listparams.bcontinue);
-    });
-//    $(document).on('click', '#prevranklist', function () {
-//        var currbase = $('#searchresults').data('start');
-//        if (!currbase || currbase < 100) return;
-//        showranklist(parseInt(currbase) - 100);
-//    });
-//
-//    $(document).on('click', '#nextranklist', function () {
-//        var currbase = $('#searchresults').data('start');
-//        if (!currbase || currbase < 0) return;
-//        showranklist(parseInt(currbase) + 100);
-//    });
-    $(document).on('click', "#gametitle", function (evt) {
-        var gameNo = $("#gamenum").val();
-        window.open('http://boardgamegeek.com/boardgame/'+gameNo);
-    });
-
-    $(document).on('click', "#bgplink", function (evt) {
-        var gamename = $("#gamename").data('gname');
-        window.open('http://boardgameprices.com/search/'+gamename);
-    });
-    $(document).on('click', ".gamestat-related-item", function () {
-        var $this = $(this);
-        var gameNo = $this.data('baseid');
-        if (gameNo) {
-            setgameinfo(gameNo);
-            return;
-        }
-        showgamelist("Retrieving related games ...",
-                $this.data('familylisttitle'),
-                'family',
-                1,
-                20,
-                {
-                    fid:  $this.data('famid'),
-                    ftype: $this.data('familytype')
-                },
-                true
-        )
-//        $("#brgmessage").html("Retrieving related games ...");
-//        var listtitle = $this.data('familylisttitle');
-//        loadandshowlist(listtitle);
-//        var famtype = $this.data('familytype');
-//        var famid = $this.data('famid');
-//        gi.familylist(famid, famtype, 1, 100, function($gl) {
-//            showlist($gl);
-//            pg.open('east');
-//            pg.initContent('east');
-//
-//        });
-    });
-
-    $(document).on('click', ".gameregion", function() {
-        var $this = $(this);
-        var $chevloc = $this.find('.glyphicon-chevron-up');
-        if ($chevloc.length > 0) {
-            $chevloc.removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-        } else {
-            $chevloc = $this.find('.glyphicon-chevron-down');
-            $chevloc.removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-        }
-    });
-    $(document).on('click', '.review-item', function (evt) {
-        var $this = $( this );
-        var revid = $this.find('.review-id').html();
-        gi.threadcontent(revid, function($resp) {
-            var reviewSubject = $this.find('.review-title').html();
-            $("#reviewSubjectModal").html(reviewSubject);
-            var firstreview = $resp.find('article').first().find('body').text();
-            $("#reviewcontent").html(firstreview);
-            pg.allowOverflow('center');
-            $('#reviewModal').modal({
-                backdrop: false // only this seems to work
-            });
-        });
-    });
-    $(document).on('click', '.gameitem', function (evt) {
-        var $this = $( this );
-        var gameNo = $this.find('.srchres-gameid').text();
-        setgameinfo(gameNo);
-    });
-
-    $(document).on('click', '#reviewModal', function(evt) {
-        $("#reviewModal").modal('hide');
-    });
-    $(document).on('hidden.bs.modal', '#reviewModal', function(evt) {
-        pg.resetOverflow('center');
-    });
-    $(window).on('resize', function () {
-        var $viditems = $('#gamestat-videos').find('.gameviditem');
-        if ($viditems.length) {
-            $viditems.isotope('layout');
-        }
-    });
-
-
 });
 
 </script>

@@ -3,53 +3,34 @@
  */
 
 function GameInfo () {
+    var BgList = function() {
+        var $gamelist = $('<items/>');
+        var gamecount = 0;
 
-    var $xResp= function (response) {
-        var respXmlString;
-        var htmLoc = response.indexOf('<html');
-        if (htmLoc < 0) {
-            respXmlString = response;
-        }
-        else {
-            respXmlString = response.substr(0, htmLoc);
-        }
-        try {
-            // Embedded script tags make the xml parsing barf
-            var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-            var respXml = $.parseXML(rxmlnoscript);
-            return $(respXml);
-        } catch (e) {
-            alert('xml parse problem: '+ e);
-        }
+        return {
+            additem: function (gameNo, name, year) {
+                gamecount++;
+                var $curritem = $("<item/>", {
+                    id: gameNo
+                });
+                $curritem.append($("<name/>", {
+                    value: name
+                }));
+                $curritem.append($('<yearpublished/>', {
+                    value: year
+                }));
+                $gamelist.append($curritem);
+
+            },
+            $getparent: function () {
+                $gamelist.attr("total", gamecount);
+                var $dummy = $("<dummy/>");
+                $dummy.append($gamelist);
+                return $dummy;
+            }
+        };
     };
-    var jResp = function (response) {
-        var respJsonString;
-        var htmLoc = response.indexOf('<html');
-        if (htmLoc < 0) {
-            respJsonString = response;
-        }
-        else {
-            respJsonString = response.substr(0, htmLoc);
-        }
-        return $.parseJSON(respJsonString);
-    };
-    var slugify = function (str) {
-        str = str.replace(/^\s+|\s+$/g, ''); // trim
-        str = str.toLowerCase();
 
-        // remove accents, swap ñ for n, etc
-        var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-        var to   = "aaaaeeeeiiiioooouuuunc------";
-        for (var i=0, l=from.length ; i<l ; i++) {
-            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-        }
-
-        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-            .replace(/\s+/g, '-') // collapse whitespace and replace by -
-            .replace(/-+/g, '-'); // collapse dashes
-
-        return str.substr(0, 50);
-    };
     return {
         gameinfo: function (gamenum, cb) {
             var info = {
@@ -136,7 +117,7 @@ function GameInfo () {
                     var $colltable = $rankPage.find("#maincontent #main_content #collection #collectionitems #row_");
                     var gamecount = 0;
                     // The following might be wrong
-                    var $gamelist = $('<items/>');
+                    var gamelist = new BgList();
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
@@ -144,17 +125,7 @@ function GameInfo () {
                             var gameyear = $(gamerow).find("div[id*='results_objectname'] span").text();
                             var linkval = $gamelink.attr('href');
                             var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
-
-                            var $curritem = $("<item/>", {
-                                id: gameNo
-                            });
-                            $curritem.append($("<name/>", {
-                                value: $gamelink.text()
-                            }));
-                            $curritem.append($('<yearpublished/>', {
-                                value: gameyear
-                            }));
-                            $gamelist.append($curritem);
+                            gamelist.additem(gameNo,  $gamelink.text(), gameyear);
                         } catch (err) {
                             console.log('rank list error '+ err);
                             console.log("At game number " + gamecount++);
@@ -162,10 +133,7 @@ function GameInfo () {
                             return;
                         }
                     }).get();
-                    $gamelist.attr("total", gamecount);
-                    var $dummy = $("<dummy/>");
-                    $dummy.append($gamelist);
-                    cb($dummy);
+                    cb(gamelist.$getparent());
                 },
                 "html"
             );
@@ -298,8 +266,8 @@ function GameInfo () {
         familylist: function(fid, ftype, start, count, cb) {
             var page = Math.floor(start / count) +1 ;
             var lt = relateditemmap[ftype].listtype;
-            var objtype = (lt == "person") ? 'person' : 'property';
-            var view = (lt == "person") ? ftype : 'boardgames';
+            var objtype = (lt === "person") ? 'person' : 'property';
+            var view = (lt === "person") ? ftype : 'boardgames';
             $.get("/xdproxy/proxy.php",
                 {
                     destination:  'http://boardgamegeek.com/geekitem.php',
@@ -322,7 +290,7 @@ function GameInfo () {
                     var $rankPage = $(response);
                     var $colltable = $rankPage.find(".innermoduletable > tbody > tr");
                     var gamecount = 0;
-                    var $gamelist = $('<items/>');
+                    var gamelist = new BgList();
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
@@ -336,26 +304,14 @@ function GameInfo () {
                             var gameyear = $($thirdcol.find('table')[0].rows[2].cells[1]).text().trim();
                             //$gr.find("div[id*='results_objectname'] span").text();
 
-                            var $curritem = $("<item/>", {
-                                id: gameNo
-                            });
-                            $curritem.append($("<name/>", {
-                                value: $gamelink.text()
-                            }));
-                            $curritem.append($('<yearpublished/>', {
-                                value: gameyear
-                            }));
-                            $gamelist.append($curritem);
+                            gamelist.additem(gameNo,  $gamelink.text(), gameyear);
                         } catch (err) {
                             console.log("At game number " + gamecount++);
                             console.log(gamerow);
                             return;
                         }
                     }).get();
-                    $gamelist.attr("total", gamecount);
-                    var $dummy = $("<dummy/>");
-                    $dummy.append($gamelist);
-                    cb($dummy);
+                    cb(gamelist.$getparent());
 
                 });
 
