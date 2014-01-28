@@ -1,0 +1,137 @@
+<div>
+<h2>
+    <a>
+        <span  id="prevgame" class="gameitemnav glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a >
+        <span  id="nextgame" class="gameitemnav glyphicon glyphicon-chevron-right"></span>
+    </a>
+    <span id="bgplink" class="pull-right">
+        <img src="resources/bgplogo.png" height="40px"/>
+    </span>
+    <span id="gametitle">
+        <span><span id="gamename">No Game Selected</span> (<span id="gameyear"></span>)</span>
+        <span class="pull-right">
+            <span>
+                <img height="40px" src="resources/bgg_cornerlogo.png"/>
+            </span>
+        </span>
+    </span>
+</h2>
+<table id="gameinfotable" border="0" class="gamestats">
+    <tr>
+        <td>
+            <img class="gameimage" id="gamepic"/>
+        </td>
+        <td class="alignedtop">
+            <table>
+                <tr>
+                    <td>
+                        <table border="0">
+                            <tr>
+                                <td>
+                                    <h4>Rating: <span id="gamestat-rating"></span></h4>
+                                </td>
+                                <td >
+                                    <span id="gamerankparent">
+                                        <canvas id="rankCanvas" width="140" height="20" >
+                                            Your browser does not support the HTML5 canvas tag.</canvas>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <h4>Length: <span id="gamestat-length"></span>  minutes</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Boardgame Rank: <a id="gamestat-rank"></a></h4>
+                    </td>
+                    <td>
+                        <h4 id="gamestat-numplayers"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Number of Raters: <span id="gamestat-raters"></span></h4>
+                    </td>
+                    <td>
+                        <h4>Minimum Age: <span id="gamestat-minage"></span></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 id="gamestat-difficulty">Game Difficulty</h4>
+                    </td>
+                    <td>
+                        <div id="difficultygauge-g"></div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="alignedtop">
+            <div id="gamestat-related-block" style="padding: 1px">
+                <h4 id="gamestat-related">Related Items</h4>
+                <ul id="gamestat-related-list"/>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div  class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-description">
+        Description
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"
+                  ></span>
+        </a>
+    </h3>
+</div>
+<p id="gamestat-description" class="collapse in"/>
+
+<div class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-reviews">
+        Reviews
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </h3>
+</div>
+<ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"/>
+
+<div class="gameregion">
+    <h3 data-toggle="collapse" data-target="#gamestat-videos-container">
+        Videos
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </h3>
+</div>
+<div id="gamestat-videos-container" class="collapse in">
+    <div id="gamestat-videos"/>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewSubjectModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="reviewSubjectModal">Modal title</h4>
+            </div>
+            <div id="reviewcontent" class="modal-body">
+                ...
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <!--    <button type="button" class="btn btn-primary">Save changes</button>
+            -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <!-- end of main.html -->
+</div>

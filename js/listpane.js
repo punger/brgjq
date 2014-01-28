@@ -11,9 +11,8 @@ function ListPane(parentpaneselector) {
     // Load the HTML
     $.get("html-frag/srchres.html", function (r) {
         $(ptsel).html(r);
-        $('.gameranknav').hide();
+//        $('.gameranknav').hide();
         $srchlist = $('#searchresults');
-//        $("#sidelistheader").html(listheader);
         $.publish('layout.addclosebutton', ['#srchlistclose']);
     });
 
@@ -21,8 +20,6 @@ function ListPane(parentpaneselector) {
     var initlist = function (listheader) {
         $('.gameranknav').hide();
         $("#sidelistheader").html(listheader);
-//            $.publish('layout.addclosebutton');
-//            App.pg.addCloseBtn("#srchlistclose", 'east');
     };
 
 
@@ -40,7 +37,6 @@ function ListPane(parentpaneselector) {
     };
 
     var displaylistitems = function ($gamelist) {
-//        var $gamelisthtml = $("#searchresults");
         $srchlist.find('li').remove();
 
         var numGames = $gamelist.find('items').attr("total");

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Refactor for pub-sub&#10;&#10;* Create classes for each pane, header, main and list&#10;* Establish messages for each pane:&#10;   - header can update contents of each edit, update status message and show loading gif&#10;   - main can set the game information&#10;   - list can show rank, search or family/person list&#10;* Split gigetter into three classes&#10;   - gameinfo.js gets game related information&#10;   - gamelist.js gets list related info&#10;   - accessutil.js has common methods for manipulating returned text&#10;* index.html now only creates the layout and pane classes and provides support for layout manipulation requests&#10;* No more global variables other than App. (Except for relateditemmap)&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/accessutil.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/centerpane.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/gameinfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/gamelists.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/headerpane.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/listpane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="$PROJECT_DIR$/js/gigetter.js" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html-frag/main-pure.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/centerpane.js" afterPath="$PROJECT_DIR$/js/centerpane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/ratingsUI.js" afterPath="$PROJECT_DIR$/js/ratingsUI.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/listpane.js" afterPath="$PROJECT_DIR$/js/listpane.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -33,24 +29,23 @@
     <favorites_list name="brgjq" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48492306">
+    <splitter split-orientation="horizontal" split-proportion="0.528">
       <split-first>
         <leaf>
           <file leaf-file-name="centerpane.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/centerpane.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="24" selection-start="657" selection-end="657" vertical-scroll-proportion="-1.52" vertical-offset="342" max-vertical-offset="5092">
+                <state line="78" column="0" selection-start="3366" selection-end="3508" vertical-scroll-proportion="0.0" vertical-offset="978" max-vertical-offset="5491">
                   <folding>
                     <element signature="n#!!doc;n#CenterPane#0" expanded="false" />
-                    <element signature="e#1421#2284#0" expanded="false" />
-                    <element signature="e#11542#11919#0" expanded="false" />
-                    <element signature="e#11980#12056#0" expanded="false" />
-                    <element signature="e#12115#12243#0" expanded="false" />
-                    <element signature="e#12301#12707#0" expanded="false" />
-                    <element signature="e#12770#13368#0" expanded="false" />
-                    <element signature="e#13430#13478#0" expanded="false" />
-                    <element signature="e#13550#13630#0" expanded="false" />
-                    <element signature="e#13690#13874#0" expanded="false" />
+                    <element signature="e#11652#12029#0" expanded="false" />
+                    <element signature="e#12090#12166#0" expanded="false" />
+                    <element signature="e#12225#12353#0" expanded="false" />
+                    <element signature="e#12411#12817#0" expanded="false" />
+                    <element signature="e#12880#13478#0" expanded="false" />
+                    <element signature="e#13540#13588#0" expanded="false" />
+                    <element signature="e#13660#13740#0" expanded="false" />
+                    <element signature="e#13800#13984#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -67,40 +62,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="listpane.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="listpane.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/listpane.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="144" column="12" selection-start="4600" selection-end="4600" vertical-scroll-proportion="0.36589697" vertical-offset="2283" max-vertical-offset="3591">
+                <state line="39" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="-1.52" vertical-offset="456" max-vertical-offset="3515">
                   <folding>
                     <element signature="n#!!doc;n#ListPane#0" expanded="false" />
-                    <element signature="e#774#1050#0" expanded="false" />
+                    <element signature="e#617#893#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+          <file leaf-file-name="main-pure.html" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/html-frag/main-pure.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="16" selection-start="277" selection-end="280" vertical-scroll-proportion="57.964287" vertical-offset="1775" max-vertical-offset="2641">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="top.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/top.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="0" selection-start="128" selection-end="196" vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="399">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="srchres.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="25" selection-start="396" selection-end="409" vertical-scroll-proportion="-2.8679245" vertical-offset="0" max-vertical-offset="342">
+                <state line="9" column="18" selection-start="288" selection-end="288" vertical-scroll-proportion="0.19745958" vertical-offset="0" max-vertical-offset="2698">
                   <folding />
                 </state>
               </provider>
@@ -110,30 +87,44 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/index.html">
+          <file leaf-file-name="gameinfo.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="114" column="0" selection-start="4161" selection-end="4161" vertical-scroll-proportion="0.68037385" vertical-offset="1346" max-vertical-offset="1881">
+                <state line="6" column="0" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3040">
                   <folding>
-                    <element signature="e#2220#2955#0" expanded="false" />
+                    <element signature="n#!!doc;n#GameInfo#0" expanded="false" />
+                    <element signature="e#5681#6066#0" expanded="false" />
+                    <element signature="e#6107#6900#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gigetter.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/gigetter.js">
+          <file leaf-file-name="index-vidsfromxmlapi.html" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index-vidsfromxmlapi.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="12" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="2014">
+                <state line="4" column="24" selection-start="83" selection-end="83" vertical-scroll-proportion="0.087759815" vertical-offset="0" max-vertical-offset="1710">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pure.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/libs/pure.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="167" column="188" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.0" vertical-offset="2875" max-vertical-offset="16454">
                   <folding>
-                    <element signature="e#924#3532#0" expanded="false" />
-                    <element signature="e#3575#4007#0" expanded="false" />
-                    <element signature="e#5796#8606#0" expanded="false" />
-                    <element signature="e#8655#9037#0" expanded="false" />
-                    <element signature="e#9078#9868#0" expanded="false" />
-                    <element signature="e#9921#11211#0" expanded="false" />
-                    <element signature="e#11272#15224#0" expanded="false" />
+                    <element signature="n#!!doc" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="videotile.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html-frag/videotile.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="23" selection-start="12" selection-end="23" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="437">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -199,9 +190,12 @@
         <option value="$PROJECT_DIR$/js/ratingsUI.js" />
         <option value="$PROJECT_DIR$/js/gamelists.js" />
         <option value="$PROJECT_DIR$/js/headerpane.js" />
-        <option value="$PROJECT_DIR$/js/centerpane.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/listpane.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/centerpane.js" />
+        <option value="$PROJECT_DIR$/libs/pure.js" />
+        <option value="$PROJECT_DIR$/html-frag/main-pure.html" />
+        <option value="$PROJECT_DIR$/index-vidsfromxmlapi.html" />
       </list>
     </option>
   </component>
@@ -305,20 +299,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brgjq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brgjq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -374,7 +354,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.lastSelected" value="reference.settings.deploy.options" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
     <property name="FullScreen" value="false" />
@@ -406,8 +386,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/html-frag" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -537,7 +517,11 @@
       <created>1390439293461</created>
       <updated>1390439293461</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactor for pub-sub&#10;&#10;* Create classes for each pane, header, main and list&#10;* Establish messages for each pane:&#10;   - header can update contents of each edit, update status message and show loading gif&#10;   - main can set the game information&#10;   - list can show rank, search or family/person list&#10;* Split gigetter into three classes&#10;   - gameinfo.js gets game related information&#10;   - gamelist.js gets list related info&#10;   - accessutil.js has common methods for manipulating returned text&#10;* index.html now only creates the layout and pane classes and provides support for layout manipulation requests&#10;* No more global variables other than App. (Except for relateditemmap)&#10;">
+      <created>1390796172143</created>
+      <updated>1390796172143</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -546,7 +530,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32371795" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -604,29 +588,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="1462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="5474">
-          <folding>
-            <element signature="e#2220#2955#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="48" selection-start="1632" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/gigetter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6267" selection-end="6267" vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3043">
@@ -653,7 +614,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="2" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="5474">
           <folding>
-            <element signature="e#2220#2955#0" expanded="false" />
+            <element signature="e#2295#3030#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -691,7 +652,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="54" selection-start="955" selection-end="955" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908">
           <folding>
-            <element signature="e#2220#2955#0" expanded="false" />
+            <element signature="e#2295#3030#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -729,7 +690,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908">
           <folding>
-            <element signature="e#2220#2955#0" expanded="false" />
+            <element signature="e#2295#3030#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -835,13 +796,6 @@
         <state line="12" column="15714" selection-start="16033" selection-end="16033" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/videotile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="23" selection-start="12" selection-end="23" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/bgplogo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -909,20 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="94" selection-end="94" vertical-scroll-proportion="0.08379272" vertical-offset="0" max-vertical-offset="907">
-          <folding>
-            <element signature="n#!!doc;n#GameInfo#0" expanded="false" />
-            <element signature="e#149#2760#0" expanded="false" />
-            <element signature="e#2816#5632#0" expanded="false" />
-            <element signature="e#5681#6066#0" expanded="false" />
-            <element signature="e#6107#6900#0" expanded="false" />
-            <element signature="e#149#2760#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/gamelists.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="209" column="9" selection-start="7919" selection-end="7919" vertical-scroll-proportion="4.186801" vertical-offset="228" max-vertical-offset="4161">
@@ -933,20 +873,6 @@
     <entry file="file://$PROJECT_DIR$/html-frag/top.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="128" selection-end="196" vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="399">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="16" selection-start="277" selection-end="280" vertical-scroll-proportion="57.964287" vertical-offset="1775" max-vertical-offset="2641">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="396" selection-end="409" vertical-scroll-proportion="-2.8679245" vertical-offset="0" max-vertical-offset="342">
           <folding />
         </state>
       </provider>
@@ -962,7 +888,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/gigetter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="12" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="2014">
+        <state line="24" column="12" selection-start="642" selection-end="642" vertical-scroll-proportion="-0.12751678" vertical-offset="570" max-vertical-offset="2014">
           <folding>
             <element signature="e#924#3532#0" expanded="false" />
             <element signature="e#3575#4007#0" expanded="false" />
@@ -975,40 +901,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="25" selection-start="396" selection-end="409" vertical-scroll-proportion="-2.8679245" vertical-offset="0" max-vertical-offset="342">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/videotile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="12" selection-end="23" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="0" selection-start="4161" selection-end="4161" vertical-scroll-proportion="0.68037385" vertical-offset="1346" max-vertical-offset="1881">
+        <state line="15" column="22" selection-start="0" selection-end="4275" vertical-scroll-proportion="0.33767772" vertical-offset="0" max-vertical-offset="1900">
           <folding>
-            <element signature="e#2220#2955#0" expanded="false" />
+            <element signature="e#2295#3030#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="3040">
+          <folding>
+            <element signature="n#!!doc;n#GameInfo#0" expanded="false" />
+            <element signature="e#5681#6066#0" expanded="false" />
+            <element signature="e#6107#6900#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="16" selection-start="277" selection-end="280" vertical-scroll-proportion="0.17551963" vertical-offset="0" max-vertical-offset="2641">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/listpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="-1.52" vertical-offset="456" max-vertical-offset="3515">
+          <folding>
+            <element signature="n#!!doc;n#ListPane#0" expanded="false" />
+            <element signature="e#617#893#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/centerpane.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="657" selection-end="657" vertical-scroll-proportion="-1.52" vertical-offset="342" max-vertical-offset="5092">
+        <state line="78" column="0" selection-start="3366" selection-end="3508" vertical-scroll-proportion="0.0" vertical-offset="978" max-vertical-offset="5491">
           <folding>
             <element signature="n#!!doc;n#CenterPane#0" expanded="false" />
-            <element signature="e#1421#2284#0" expanded="false" />
-            <element signature="e#11542#11919#0" expanded="false" />
-            <element signature="e#11980#12056#0" expanded="false" />
-            <element signature="e#12115#12243#0" expanded="false" />
-            <element signature="e#12301#12707#0" expanded="false" />
-            <element signature="e#12770#13368#0" expanded="false" />
-            <element signature="e#13430#13478#0" expanded="false" />
-            <element signature="e#13550#13630#0" expanded="false" />
-            <element signature="e#13690#13874#0" expanded="false" />
+            <element signature="e#11652#12029#0" expanded="false" />
+            <element signature="e#12090#12166#0" expanded="false" />
+            <element signature="e#12225#12353#0" expanded="false" />
+            <element signature="e#12411#12817#0" expanded="false" />
+            <element signature="e#12880#13478#0" expanded="false" />
+            <element signature="e#13540#13588#0" expanded="false" />
+            <element signature="e#13660#13740#0" expanded="false" />
+            <element signature="e#13800#13984#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/listpane.js">
+    <entry file="file://$PROJECT_DIR$/libs/pure.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="12" selection-start="4600" selection-end="4600" vertical-scroll-proportion="0.36589697" vertical-offset="2283" max-vertical-offset="3591">
+        <state line="167" column="188" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.0" vertical-offset="2875" max-vertical-offset="16454">
           <folding>
-            <element signature="n#!!doc;n#ListPane#0" expanded="false" />
-            <element signature="e#774#1050#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main-pure.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="288" selection-end="288" vertical-scroll-proportion="0.19745958" vertical-offset="0" max-vertical-offset="2698">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-vidsfromxmlapi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="24" selection-start="83" selection-end="83" vertical-scroll-proportion="0.087759815" vertical-offset="0" max-vertical-offset="1710">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -97,7 +97,8 @@ function CenterPane(parentpaneselector) {
                         "familytype": famtype,
                         "famid": $linkitem.attr('id'),
                         "family": $linkitem.attr('value'),
-                        "familylisttitle": relateditemmap[famtype].relatedtitle + '"' + $linkitem.attr('value') + '"',
+                        "familylisttitle": relateditemmap[famtype].relatedtitle +
+                            '"' + $linkitem.attr('value') + '"',
                         "baseid": baseid
                     });
                 });
@@ -143,7 +144,9 @@ function CenterPane(parentpaneselector) {
                             "class": 'gamestat-related-item gamestat-related-item-parent'
                         });
                         $rellink.data(relations[0]);
-                        $rellink.text(relateditemmap[section].relatedprompt + '"' + $rellink.data('family') + '"');
+                        $rellink.text(
+                            relateditemmap[section].relatedprompt +
+                                '"' + $rellink.data('family') + '"');
                     }
                     $relatedlinkparent.append($rellink);
 
@@ -176,13 +179,14 @@ function CenterPane(parentpaneselector) {
                         $viditem.attr('comments', videntry.numcomments);
                         $viditem.find('.gamevidpreview').attr('src', vidinfo[i].vidpic);
                         var vidsource = 'http://' +
-                            ((videntry.videohost === 'youtube' ? 'youtu.be' : videntry.videohost)) +
+                            (videntry.videohost === 'youtube' ? 'youtu.be' : videntry.videohost) +
                             '/' + videntry.extvideoid;
                         $viditem.find('.gamevidlink').attr('href', vidsource);
                         $viditem.find('.gamevidtitle').html(videntry.title);
                         $vidparent.append($viditem);
                     }
-                    // If there were more than 15 videos, show a more thumbnail with a link to the bgg page
+                    // If there were more than 15 videos, show a more thumbnail with a link
+                    // to the bgg page
                     if (vidinfo.length < vidlistobj.videos.length) {
                         var $viditem = $vttmpl.clone();
                         $viditem.attr('ordinal', 1000000);
