@@ -65,6 +65,10 @@ function DiffGauge () {
             } else {
                 drawgauge();
             }
+        },
+        reinit: function () {
+            gaugeinited = false;
+            gvgauge = null;
         }
     };
 }

@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" href="css/layout-default-latest.css"/>
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <!-- Optional theme --
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js" type="text/javascript"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="libs/jquery.isotope.min.js" type="text/javascript"></script>
+    <script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.isotope.v2.js"></script>
     <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
-    <script src="libs/ba-tiny-pubsub.js" type="text/javascript"></script>
+    <script type="application/javascript" src="libs/jquery.cookie.js"></script>
+    <script type="text/javascript" src="libs/ba-tiny-pubsub.js"></script>
 
     <!-- Local scripts -->
     <script type="application/javascript" src="js/relateditemmap.js"></script>
@@ -30,12 +31,14 @@
     <script type="application/javascript" src="js/listpane.js"></script>
     <script type="application/javascript" src="js/headerpane.js"></script>
     <script type="application/javascript" src="js/gamehistoryitem.js"></script>
+    <script type="application/javascript" src="js/gamelistdisplayer.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
+    <script type="application/javascript" src="js/statuspane.js"></script>
 
-    <script src="libs/jcanvas.min.js"></script>
-    <script src="//github.com/pure/pure/raw/master/libs/pure.js"></script>
+    <script type="application/javascript" src="libs/jcanvas.min.js"></script>
+    <script type="application/javascript" src="libs/pure.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
 </head>
 <body class="container">
@@ -66,42 +69,33 @@ $( function () {
             contentSelector: '.content'
         },
         south:{
-            initHidden: true
+            minSize: 125
         }
     });
 
     $.subscribe('layout.addclosebutton', function (_, srchbtnselector) {
         App.pg.addCloseBtn(srchbtnselector, 'east');
     });
-    $.subscribe('layout.hidemodal', function () {
-        App.pg.resetOverflow('center');
-    });
 
     $.subscribe('layout.showmodal', function () {
         App.pg.allowOverflow('center');
+    });
+
+    $.subscribe('layout.hidemodal', function () {
+        App.pg.resetOverflow('center');
     });
     $.subscribe('layout.showlist', function () {
         App.pg.open('east');
         App.pg.initContent('east');
     });
 
+    App.status = new StatusPane('.ui-layout-south');
+
     App.main = new CenterPane('.ui-layout-center');
 
     App.list = new ListPane('.ui-layout-east');
 
-    App.head = new HeaderPane('.ui-layout-north', function () {
-        var arg = window.location.search.substring(1);
-        if (arg) {
-            var gameNo = parseInt(arg);
-            if (gameNo) {
-                $.publish('setgame', [gameNo]);
-            } else {
-                var srchstr = decodeURI( arg);
-                $.publish('list.search', [srchstr]);
-                $.publish('gamesearchchange', [srchstr]);
-            }
-        }
-    });
+    App.head = new HeaderPane('.ui-layout-north', window.location.search.substring(1));
 });
 
 </script>

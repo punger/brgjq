@@ -6,122 +6,82 @@ function CenterPane(parentpaneselector) {
     var pane = parentpaneselector;
     var gi = new GameInfo();
     var diffgauge = new DiffGauge();
-//    var gamehistory = new GameHistory();
+    var gamehistory = new GameHistory();
     var eyecandy = new EyeCandy();
-    var gld = new GameListDisplayer();
-    var currGame = -1;
-
-
-    // PURE directives
-    var pseudo_vidinfo;
-    var vidlistDirective = {
-        "#gamestat-videos .gameviditem": {
-            "video<-videos": {
-                "@data-ordinal": function (v) {
-//                    console.log("At pos "+ v.pos+" seeing item "+ JSON.stringify( v.item));
-                    return v.pos;
-                },
-                "@data-thumbs": "video.numrecommend",
-                "@data-comments": "video.numcomments",
-                ".gamevidpreview@src": function (v) {
-                    if (v.pos >= pseudo_vidinfo.length) {
-                        return v.item.bggpic;
-                    }
-                    return pseudo_vidinfo[v.pos].vidpic;
-                },
-                ".gamevidlink@href": function(v) {
-                    if (v.pos >= pseudo_vidinfo.length) {
-                        return v.item.bgglink;
-                    }
-                    return 'http://' +
-                        (v.item.videohost === 'youtube' ? 'youtu.be' : v.item.videohost) +
-                        '/' + v.item.extvideoid;
-                },
-                ".gamevidtitle": "video.title"
-            }
-        }
-    };
-    var vidDirFn;
-    var gamestatDirective = {
-        "span#gamename, #gamename@data-gname":"name",
-        "#gameyear": "yearpublished",
-        "#gamepic@src": "imageUrl",
-        "#gamestat-rating": function (g) {return "" + parseFloat(g.context.rating).toFixed(2);},
-        "#gamestat-raters":"numraters",
-        "#gamestat-minage": 'minage',
-        "#gamestat-rank, #gamestat-rank@data-rank": 'rank',
-        "#gamestat-length": "playingtime",
-        "#gamestat-description": function (g) {
-            return g.context.description.replace(/&#10;/g, "<br/>");
-        },
-        "#gamestat-numplayers": function (g) {
-            return "Players: " + g.context.minplayers +
-                ((g.context.minplayers === g.context.maxplayers) ? '' : ' to ' + g.context.maxplayers);
-        }
-    };
-    var reviewDirective = {
-        ".review-item": {
-            "review<-reviews": {
-                "a.review-title": "review.subject",
-                "span.review-id": "review.id"
-            }
-        }
-    };
+    var currGame = 0;
 
     // The local functions
     var fillingameinfo = function (gameNo, bNoAdd) {
         if (!gameNo) {
             return;
         }
-        // The load
-        $.get("html-frag/main.html", function (r) {
-            $(pane).empty();
-            var $m = $(r);
-            $(pane).append($m);
-            // initial load only so we have something to look at
-            if (gameNo < 0) {
+        $.publish('statusmessage', ["Retrieving game information ..."]);
+
+        // Clean up any existing info
+        $('#gamestat-reviews').find('li').remove();
+        $('#gamestat-related-list').find('li').remove();
+        var $viditems = $('#gamestat-videos').find('.gameviditem');
+        if ($viditems.length) {
+            $('#gamestat-videos').isotope('destroy');
+            $viditems.remove();
+        } else {
+            $('#gamestat-videos >').remove();
+        }
+
+        gi.gameinfo(gameNo, function(gameinfo) {
+            var $gamename = $("#gamename");
+            if (!gameinfo.valid) {
+                $gamename.html('<pre> Error: ' + gameinfo.message + '</pre>');
+                $gamename.css("backgroundColor", "orange");
                 return;
             }
-            currGame = gameNo;
-            $.publish('statusmessage', ["Retrieving game information ..."]);
-            diffgauge.reinit();
-            vidDirFn = $p("#gamestat-videos").compile(vidlistDirective);
-            gi.gameinfo(gameNo, function (gameinfo) {
+            try {
+                currGame = gameNo;
                 $.publish('gamenumchange', gameNo);
-                try {
-                    // Basic game info
-                    $m.render(gameinfo, gamestatDirective);
-                } catch (e) {
-                    console.error('pure error '+e);
-                }
-
-                // Reviews
-                gi.gamereviewsJSON(gameNo, gameinfo.name, function (revList) {
-                    var $reviewlisthtml = $("#gamestat-reviews");
-                    // I could externalize this with another html fragment, but it seems like overkill
+                var gamename = gameinfo.name;
+                gi.gamereviews(gameNo, gamename, function ($reviewlist) {
+                    var numReviews = $reviewlist.attr("numthreads");
                     var $reviewitem = $("<li/>", {
                         html: "<span hidden class='review-id'/><a class='review-title'/>",
                         "class": "review-item"
                     });
-                    $reviewlisthtml.append($reviewitem);
-                    try {
-                        $reviewlisthtml.render(revList, reviewDirective);
-                    } catch (e) {
-                        console.error('pure error (reviews) '+e);
+
+                    var $reviewlisthtml = $("#gamestat-reviews");
+                    for (var reviewindex = 0; reviewindex < numReviews; reviewindex++) {
+                        var $newReviewItem = $reviewitem.clone();
+                        var $item = $reviewlist.find('thread').eq(reviewindex);
+                        $newReviewItem.find(".review-id").html($item.attr("id"));
+
+                        $newReviewItem.find(".review-title").html($item.attr('subject'));
+                        $reviewlisthtml.append($newReviewItem);
                     }
 
                 });
+                $gamename.html(gamename + '  (' + gameinfo.yearpublished + ')');
+                $gamename.data('gname', gamename);
 
-                // Graphics
+                $("#gamepic").attr("src", gameinfo.imageUrl);
+                $("#gamestat-rating").html("Rating: " + parseFloat(gameinfo.rating).toFixed(2));
                 eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
+                $("#gamestat-raters").html("Number of Raters: " + gameinfo.numraters);
+
+                $("#gamestat-difficulty").html("Game Difficulty: ");
                 diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
 
-                // Related items
+                $("#gamestat-minage").html("Minimum Age: " + gameinfo.minage);
+                $("#gamestat-rank").html("Boardgame Rank: <a>" + gameinfo.rank + "</a>");
+                $("#gamestat-rank").data('rank', gameinfo.rank);
+
+                $("#gamestat-length").html("Length: " + gameinfo.playingtime + " minutes");
+                $("#gamestat-description").html(gameinfo.description.replace(/&#10;/g, "<br/>"));
+                $("#gamestat-numplayers").html("Players: " + gameinfo.minplayers +
+                    ((gameinfo.minplayers === gameinfo.maxplayers) ? '' : ' to ' + gameinfo.maxplayers));
+
                 var relatedmap = {};
                 gameinfo.$links.each(function (index, linkitem) {
                     var $linkitem = $(linkitem);
                     var famtype = $linkitem.attr("type");
-//                    var famname = $linkitem.attr('value');
+                    var famname = $linkitem.attr('value');
                     var baseid = 0;
                     var linktypeoverride = relateditemmap[famtype].renameoninbound;
                     if (linktypeoverride) {
@@ -192,53 +152,67 @@ function CenterPane(parentpaneselector) {
 
                 }
                 if (!bNoAdd) {
-                    gamehistory.add({
-                        "gameNo":gameNo,
-                        "name": gameinfo.name,
-                        "year": gameinfo.yearpublished
-                    });
+                    gamehistory.add(gameNo);
                 }
+            } catch (err) {
+                console.error("Game info error " + err);
+            }
+        });
+        gi.vidlist(gameNo, function (vidlistobj) {
+            var $vidparent = $("#gamestat-videos");
+            if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length === 0) {
+                $vidparent.append($("<h4 class='alert alert-info'>No videos found</h4>"));
+                return;
+            }
+            var gamename = $(vidlistobj.videos[0].objectlink).text();
+            gi.hotvideos(gameNo, gamename, function(vidinfo) {
+                $.get('html-frag/videotile.html', function (vtiletemplate) {
 
-            });
-            // Video list
-            gi.vidlist(gameNo, function (vidlistobj) {
-                if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length === 0) {
-                    $("#gamestat-videos-none").show();
-                    return;
-                }
-                $("#gamestat-videos-none").hide();
-                var $vidparent = $("#gamestat-videos");
-                $vidparent.show();
-                var gamename = $(vidlistobj.videos[0].objectlink).text();
-                gi.hotvideos(gameNo, gamename, function(vidinfo) {
-                    pseudo_vidinfo = vidinfo;
+                    var $vttmpl = $(vtiletemplate);
+                    // This is only the first page so it is limited to 15 whereas vidlistobj is not
+                    for (var i = 0; i < vidinfo.length; i++) {
+                        var vidid = vidinfo[i].videoid;
+                        var videntry = vidlistobj.videos[i];
+                        var $viditem = $vttmpl.clone();
+                        $viditem.attr('ordinal', i);
+                        $viditem.attr('thumbs', videntry.numrecommend);
+                        $viditem.attr('comments', videntry.numcomments);
+                        $viditem.find('.gamevidpreview').attr('src', vidinfo[i].vidpic);
+                        var vidsource = 'http://' +
+                            (videntry.videohost === 'youtube' ? 'youtu.be' : videntry.videohost) +
+                            '/' + videntry.extvideoid;
+                        $viditem.find('.gamevidlink').attr('href', vidsource);
+                        $viditem.find('.gamevidtitle').html(videntry.title);
+                        $vidparent.append($viditem);
+                    }
+                    // If there were more than 15 videos, show a more thumbnail with a link
+                    // to the bgg page
                     if (vidinfo.length < vidlistobj.videos.length) {
-                        vidlistobj.videos.slice(0, vidinfo.length);
-                        vidlistobj.videos[vidinfo.length] = {
-                            "numrecommend": "0",
-                            "comments": "0",
-                            "bgglink": "http://boardgamegeek.com/boardgame/"+gameNo + "#videos",
-                            "bggpic": "resources/bgg_cornerlogo.png",
-                            "title": "More ..."
-                        };
-                    }
-
-                    try {
-                        $("#gamestat-videos").render(vidlistobj, vidlistDirective);
-                        console.log("After render\n"+$vidparent[0]);
-                    } catch (e) {
-                        console.error('pure error (videos) '+e);
+                        var $viditem = $vttmpl.clone();
+                        $viditem.attr('ordinal', 1000000);
+                        $viditem.attr('thumbs', 0);
+                        $viditem.attr('comments', 0);
+                        $viditem.find('.gamevidpreview').attr('src', 'resources/bgg_cornerlogo.png');
+                        $viditem.find('.gamevidlink')
+                            .attr('href', 'http://boardgamegeek.com/boardgame/'+gameNo + '#videos')
+                            .attr('target', '_blank');
+                        $viditem.find('.gamevidtitle').html('More ...');
+                        $vidparent.append($viditem);
                     }
                     try {
-                        $("#gamestat-videos").isotope({
-                            "itemSelector": '.gameviditem',
-                            "layoutMode": 'fitRows',
-                            "getSortData": {
-                                "ord": '[data-ordinal] parseInt',
-                                "numthumbs": '[data-thumbs] parseInt'
+                        $vidparent.isotope({
+                            itemSelector: '.gameviditem',
+                            layoutMode: 'fitRows',
+                            getSortData: {
+                                ord: function ($e) {
+                                    return parseInt($e.find('[ordinal]').attr('ordinal'));
+                                },
+                                numthumbs: function ($e) {
+                                    return parseInt($e.find('[thumbs]').attr('ordinal'));
+                                }
                             },
-                            "sortBy": 'original-order'
-//                                , resizable: true
+                            sortBy: 'original-order', // 'ord'
+                            resizable: true
                         });
 //                        $vidparent.isotope('bindResize');
                     } catch (err) {
@@ -248,16 +222,7 @@ function CenterPane(parentpaneselector) {
             });
         });
 
-        // Clean up any existing info
-//        $('#gamestat-reviews').find('li').remove();
-//        $('#gamestat-related-list').find('li').remove();
-//        var $viditems = $('#gamestat-videos').find('.gameviditem');
-//        if ($viditems.length) {
-//            $('#gamestat-videos').isotope('destroy');
-//            $viditems.remove();
-//        } else {
-//            $('#gamestat-videos >').remove();
-//        }
+
 
     };
 
@@ -284,41 +249,11 @@ function CenterPane(parentpaneselector) {
         ]);
     });
 
-    var longpresstimer;
-    var gamenavlistdropped = false;
-
-    var origmouseevent;
-    $(document).on('mousedown', '.gameitemnav', function (evt) {
-        origmouseevent = evt;
-        longpresstimer = setTimeout(function () {
-            console.info("mousedown timeout fired");
-            var $source = $(origmouseevent.originalEvent.srcElement);
-            var glist = ($source.attr('id') === 'nextgame') ? gamehistory.after() : gamehistory.before();
-            gld.writelistitems_obj(glist, $("#gamesvisitedlistparent"));
-            $("#gamesvisitedblock").show();
-            gamenavlistdropped = true;
-        }, 1000);
-    });
-
-
-
-    $(document).on('mouseleave', '.gameitemnav', function () {
-        if (gamenavlistdropped) {
-            $("#gamesvisitedblock").hide();
-            gamenavlistdropped = false;
-        }
-    });
-    $(document).on('mouseup', '.gameitemnav', function () {
-        clearTimeout(longpresstimer);
-        if (gamenavlistdropped) {
-            return;
-        }
+    $(document).on('click', '.gameitemnav', function () {
         if (gamehistory.empty()) {
             return false;
         }
-        // relies on the fact that the mouse event was captured on mouse down above
-        var $source = $(origmouseevent.originalEvent.srcElement);
-        if ($source.attr('id') === 'nextgame') {
+        if ($(this).attr('id') === 'nextgame') {
             if (!gamehistory.next()) {
                 return false;
             }
@@ -328,12 +263,7 @@ function CenterPane(parentpaneselector) {
                 return false;
             }
         }
-        var g = gamehistory.get();
-        if (parseInt(g)) {
-            fillingameinfo(g, true);
-        } else if (typeof g === "object") {
-            fillingameinfo(g.gameNo, true);
-        }
+        fillingameinfo(gamehistory.get(), true);
     });
 
     $(document).on('click', "#gametitle", function (evt) {
@@ -387,19 +317,18 @@ function CenterPane(parentpaneselector) {
         return false;
     });
 
-    // Initialize
-    fillingameinfo(currGame);
 
     // The subscriptions
     $.subscribe('setgame', function (_, gameNo, bNoAdd) {
         fillingameinfo(gameNo, bNoAdd);
     });
 
-    var gamehistory = new GameHistory(true);
-
-    $.subscribe('selectgamehistoryindex', function (_, gameIndex) {
-        gamehistory.select(gameIndex);
-    });
+    // The load
+    $.get("html-frag/main.html",
+        function (r) {
+            $(pane).html(r);
+        }
+    );
 
     return {
         setgame: function (gameNo, bNoAdd) {

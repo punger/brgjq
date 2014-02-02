@@ -5,6 +5,7 @@
 function ListPane(parentpaneselector) {
     var ptsel = parentpaneselector;
     var gl = new GameLister();
+    var gld = new GameListDisplayer();
     var $srchlist;
 
 
@@ -36,31 +37,37 @@ function ListPane(parentpaneselector) {
         );
     };
 
-    var displaylistitems = function ($gamelist) {
-        $srchlist.find('li').remove();
+//    var displaygameitems = function($gamelist, $parent) {
+//        $parent.empty();
+//
+//        var numGames = $gamelist.find('items').attr("total");
+//        if (!numGames) {
+//            $.publish('statusmessage', ["No games found"]);  //$("#brgmessage").html("No games found");
+//            return;
+//        }
+//        $.publish('statusmessage', [""+numGames +" games found"]);
+//        $.get("html-frag/listitem.html", function (r) {
+//            var $gameitem = $(r);
+//
+//            for (var srchlistindex = 0; srchlistindex < numGames; srchlistindex++) {
+//                var $newGameItem = $gameitem.clone();
+//                var $item = $gamelist.find('item').eq(srchlistindex);
+//                $newGameItem.find(".listitem-id").text($item.attr("id"));
+//                $newGameItem.find(".listitem-name").text($item.find('name').attr('value'));
+//                $newGameItem.find(".listitem-year").text($item.find('yearpublished').attr('value'));
+//                $parent.append($newGameItem);
+//            }
+//        });
+//    };
 
-        var numGames = $gamelist.find('items').attr("total");
+    var displaygamelist = function (gamelist) {
+        var numGames = gamelist.total;
         if (!numGames) {
             $.publish('statusmessage', ["No games found"]);  //$("#brgmessage").html("No games found");
             return;
         }
         $.publish('statusmessage', [""+numGames +" games found"]);
-        var $gameitem = $("<li/>", {
-            html: "<span hidden class='srchres-gameid'/><span class='srchres-gamename'/>",
-            "class": "gameitem"
-        });
-
-        for (var srchlistindex = 0; srchlistindex < numGames; srchlistindex++) {
-            var $newGameItem = $gameitem.clone();
-            var $item = $gamelist.find('item').eq(srchlistindex);
-            $newGameItem.find(".srchres-gameid").html($item.attr("id"));
-            var linkcontent = (
-                $item.find('name').attr('value') +
-                    " <a>(" + $item.find('yearpublished').attr('value')+")</a>")
-                .replace(/\(\(/g, '(').replace(/\)\)/g,')');
-            $newGameItem.find(".srchres-gamename").html(linkcontent);
-            $srchlist.append($newGameItem);
-        }
+        gld.writelistitems_obj(gamelist, $srchlist);
     };
 
     var showgamelist = function(
@@ -89,7 +96,7 @@ function ListPane(parentpaneselector) {
                 };
                 $srchlist.data(liststate);
                 $srchlist.attr('start', start);
-                displaylistitems($gl);
+                displaygamelist($gl);
                 if (!bcontinue) {
                     $('.gameranknav').hide();
                 } else {
@@ -105,6 +112,7 @@ function ListPane(parentpaneselector) {
                     });
                     $('.gameranknav').show();
                 }
+//                $(".gameitem").tooltip({"html": true});
                 $.publish('layout.showlist');
             },
             start, count, arg
@@ -130,8 +138,21 @@ function ListPane(parentpaneselector) {
 
     $(document).on('click', '.gameitem', function () {
         var $this = $( this );
-        var gameNo = $this.find('.srchres-gameid').text();
-        $.publish('setgame', [gameNo]);
+        var gameNo = $this.find('.listitem-id').text();
+        // Don't add if we're not in the search panel
+        var searchParent = $this.parents("#searchresults");
+        if (searchParent.length !== 0) {
+            $.publish('setgame', [gameNo]);
+        } else {
+            // If we can find a game index, tell the historylist to move to it
+            $.publish('setgame', [gameNo, true]);
+            var gameindex = $this.find('.listitem-histindex').text();
+            if (typeof gameindex === "string" && gameindex.length > 0) {
+                $.publish('selectgamehistoryindex', [parseInt(gameindex)]);
+            } else if (typeof gameindex === "number") {
+                $.publish('selectgamehistoryindex', [gameindex]);
+            }
+        }
     });
     $(document).on('click', '.gameranknav', function () {
         var listparams = $srchlist.data();

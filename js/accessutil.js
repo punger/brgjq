@@ -3,24 +3,30 @@
  */
 
 function AccessUtil  () {
+    var respAsXML = function (response) {
+        var respXmlString;
+        var htmLoc = response.indexOf('<html');
+        if (htmLoc < 0) {
+            respXmlString = response;
+        } else {
+            respXmlString = response.substr(0, htmLoc);
+        }
+        try {
+            // Embedded script tags make the xml parsing barf
+            var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+            var respXml = $.parseXML(rxmlnoscript);
+            return respXml;
+        } catch (e) {
+            alert('xml parse problem: '+ e);
+        }
+
+    };
     return {
         "$xResp": function (response) {
-            var respXmlString;
-            var htmLoc = response.indexOf('<html');
-            if (htmLoc < 0) {
-                respXmlString = response;
-            }
-            else {
-                respXmlString = response.substr(0, htmLoc);
-            }
-            try {
-                // Embedded script tags make the xml parsing barf
-                var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-                var respXml = $.parseXML(rxmlnoscript);
-                return $(respXml);
-            } catch (e) {
-                alert('xml parse problem: '+ e);
-            }
+            return $(respAsXML(response));
+        },
+        "xmlResp": function (response) {
+            return respAsXML(response);
         },
         "jResp": function (response) {
             var respJsonString;

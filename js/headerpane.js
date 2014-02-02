@@ -2,7 +2,7 @@
  * Created by paul on 1/25/14.
  */
 
-function HeaderPane(paneselector, initComplete) {
+function HeaderPane(paneselector, arg) {
     var pane = paneselector;
     var showCount = 0;
     var $ld;
@@ -26,9 +26,15 @@ function HeaderPane(paneselector, initComplete) {
                     showCount--;
                 }
             });
-
-        if (typeof initComplete === "function") {
-            initComplete();
+        if (arg) {
+            var gameNo = parseInt(arg);
+            if (gameNo) {
+                $.publish('setgame', [gameNo]);
+            } else {
+                var srchstr = decodeURI( arg);
+                $.publish('list.search', [srchstr]);
+                $.publish('gamesearchchange', [srchstr]);
+            }
         }
     });
 

@@ -14,6 +14,7 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="less" level="application" />
     <orderEntry type="library" name="google.visualization-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="google-viz" level="project" />
   </component>
 </module>
 

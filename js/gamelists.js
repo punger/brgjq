@@ -5,29 +5,82 @@
 function GameLister() {
     var au = new AccessUtil();
     var BgList = function() {
-        var $gamelist = $('<items/>');
         var gamecount = 0;
+        var gamelist = [];
+        var $jqtemplate;
+//        $jqtemplate.load('html-frag/gamelist.xml');
+        var loadtemplate = function(cb) {
+            $.get('html-frag/gamelist.xml', function(r) {
+                $jqtemplate = $(r);
+                if (cb) {
+                    cb();
+                }
+            });
+        };
+        var asObj = function () {
+            return {
+                "total": gamecount,
+                "items":gamelist
+            };
+        };
+
+//        var glDir = {
+//            "items@total": "total",
+//            "item":{
+//                "it<-items": {
+//                    "@id": "it.gameNo",
+//                    "name@value": "it.name",
+//                    "yearpublished@value": "it.year"
+//                }
+//            }
+//        };
 
         return {
             additem: function (gameNo, name, year) {
-                gamecount++;
-                var $curritem = $("<item/>", {
-                    id: gameNo
-                });
-                $curritem.append($("<name/>", {
-                    value: name
-                }));
-                $curritem.append($('<yearpublished/>', {
-                    value: year
-                }));
-                $gamelist.append($curritem);
-
+                gamelist[gamecount++] = {
+                    "name": name,
+                    "gameNo": gameNo,
+                    "year": year
+                };
             },
-            $getparent: function () {
-                $gamelist.attr("total", gamecount);
-                var $dummy = $("<dummy/>");
-                $dummy.append($gamelist);
-                return $dummy;
+//            $additem: function (gameNo, name, year) {
+//                gamecount++;
+//                var $curritem = $("<item/>", {
+//                    id: gameNo
+//                });
+//                $curritem.append($("<name/>", {
+//                    value: name
+//                }));
+//                $curritem.append($('<yearpublished/>', {
+//                    value: year
+//                }));
+//                $gamelist.append($curritem);
+//
+//            },
+            $getparent: function (cb) {
+                loadtemplate(function() {
+//                    var me = asObj();
+//                    $jqtemplate.render(me, glDir);
+                    var $items = $jqtemplate.find('items');
+                    $items.attr('total', gamecount);
+                    var $item = $jqtemplate.find('item');
+                    $items.empty();
+                    $.each(gamelist, function (i, item){
+                        var $ti = $item.clone();
+                        $ti.attr('id', item.gameNo);
+                        $ti.find('name').attr('value', item.name);
+                        $ti.find('yearpublished').attr('value', item.year);
+                        $items.append($ti);
+                    });
+                    cb($jqtemplate);
+                });
+//                var $gamelist = $('<items/>');
+//                $gamelist.attr("total", gamecount);
+//                $dummy.append($gamelist);
+//                return $dummy;
+            },
+            getparent: function () {
+                return asObj();
             }
         };
     };
@@ -41,8 +94,18 @@ function GameLister() {
                     destination: 'http://www.rpggeek.com/xmlapi2/search'
                 },
                 function (response) {
+                    var itemlist = new BgList();
                     var $respJq = au.$xResp(response);
-                    cb($respJq);
+                    $respJq.find("item").each(function(i, item){
+                        var $item = $(item);
+                        itemlist.additem(
+                            $item.attr('id'),
+                            $item.find('name').attr('value'),
+                            $item.find('yearpublished').attr('value')
+                        );
+                    });
+                    cb(itemlist.getparent());
+//                    itemlist.$getparent(cb);
                 },
                 "html"
             );
@@ -67,6 +130,7 @@ function GameLister() {
                             gamecount++;
                             var $gamelink = $(gamerow).find("div[id*='results_objectname'] a");
                             var gameyear = $(gamerow).find("div[id*='results_objectname'] span").text();
+                            gameyear = gameyear.replace(/\(|\)/g, '');
                             var linkval = $gamelink.attr('href');
                             var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
                             gamelist.additem(gameNo,  $gamelink.text(), gameyear);
@@ -77,7 +141,7 @@ function GameLister() {
                             return;
                         }
                     }).get();
-                    cb(gamelist.$getparent());
+                    cb(gamelist.getparent());
                 },
                 "html"
             );
@@ -131,7 +195,7 @@ function GameLister() {
                             return;
                         }
                     }).get();
-                    cb(gamelist.$getparent());
+                    cb(gamelist.getparent());
 
                 });
 

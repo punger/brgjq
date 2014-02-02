@@ -63,6 +63,63 @@ function GameInfo () {
             );
             return info;
         },
+        gamereviewsJSON: function (gamenum, gamename, cb) {
+            $.get("/xdproxy/proxy.php",
+                {
+                    id: gamenum,
+                    type: 'thing',
+                    destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
+                },
+                function (response) {
+                    var $respJq = au.$xResp(response);
+                    var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
+                    var uri = forumid+'/'+au.slugify(gamename)+'/reviews';
+                    $.get("/xdproxy/proxy.php",
+                        {
+//                        id: forumid,
+                            destination: 'http://www.boardgamegeek.com/forum/'+uri
+                        },
+                        function (flresp) {
+                            var $reviewlistpage = $(flresp);
+                            var $reviewtable = $reviewlistpage.
+                                find('table[class="forum_table"]').eq(1);
+                            var actualreviewcount = 0;
+                            var $reviewitems = $reviewtable.find('> tbody > tr');
+                            var revarray = [];
+                            $reviewitems.each(function (index) {
+                                var $cells = $(this).find ('> td');
+                                var thumbs = parseInt($cells.eq(0).text());
+                                if (!thumbs) {
+                                    return true;
+                                }
+                                var $thread = $cells.find('span[class="forum_index_subject"] a');
+                                var revurl = $thread.attr('href');
+                                var threadid = revurl.match(/\/([0-9]+)/gi)[0].substr(1);
+
+                                revarray[actualreviewcount] = {
+                                    id: threadid,
+                                    subject: $thread.text(),
+                                    thumbs: thumbs,
+                                    replies: $cells.eq(2).text()
+                                };
+                                actualreviewcount++;
+                            });
+                            var sortedrevs = revarray.sort(function (a, b) {
+                                return  parseInt(b.thumbs) - parseInt(a.thumbs);
+                            });
+                            var revlist = {
+                                "numReviews": actualreviewcount,
+                                "reviews": revarray
+                            };
+                            cb(revlist);
+                        },
+                        'html'
+                    );
+                },
+                'html'
+            );
+
+        },
         gamereviews: function (gamenum, gamename, cb) {
             $.get("/xdproxy/proxy.php",
                 {

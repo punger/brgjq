@@ -1,22 +1,37 @@
-<h2>
-    <a>
-        <span  id="prevgame" class="gameitemnav glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a >
-        <span  id="nextgame" class="gameitemnav glyphicon glyphicon-chevron-right"></span>
-    </a>
-    <span id="bgplink" class="pull-right">
-        <img src="resources/bgplogo.png" height="40px"/>
+<div>
+    <span class="gameitemnav" style="display: inline">
+        <h2 style="display: inline">
+            <a>
+                <span  id="prevgame" class="glyphicon glyphicon-chevron-left"></span>
+                <!--    <ul id="prevgamelist" style="display: none; position: absolute;" >
+                        <li class="prevgameentry"><span class="gnavgameitem"></span> (<span class="gnavitemyear"></span>) </li>
+                        </ul>
+                -->
+
+            </a>
+            <a >
+                <span  id="nextgame" class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </h2>
+        <div id="gamesvisitedblock" hidden
+                   style="position: absolute; background-color: #eeeeee; max-width: 160px; display: none">
+        <ul id="gamesvisitedlistparent">
+
+        </ul></div>
     </span>
-    <span id="gametitle">
-        <span id="gamename">No Game Selected</span>
-        <span class="pull-right">
-            <span>
-                <img height="40px" src="resources/bgg_cornerlogo.png"/>
+    <h2 style="display: inline">
+        <span id="bgplink" class="pull-right">
+            <img src="resources/bgplogo.png" height="40px"/>
+        </span>
+        <span id="gametitle">
+            <span><span id="gamename">No Game Selected</span> (<span id="gameyear"></span>)</span>
+            <span class="pull-right">
+                <span>
+                    <img height="40px" src="resources/bgg_cornerlogo.png"/>
+                </span>
             </span>
         </span>
-    </span>
-</h2>
+    </h2>
 <table id="gameinfotable" border="0" class="gamestats">
     <tr>
         <td>
@@ -29,7 +44,7 @@
                         <table border="0">
                             <tr>
                                 <td>
-                                    <h4 id="gamestat-rating"/><div id="gamestat-ratinggraph"/>
+                                    <h4>Rating: <span id="gamestat-rating"></span></h4>
                                 </td>
                                 <td >
                                     <span id="gamerankparent">
@@ -41,12 +56,12 @@
                         </table>
                     </td>
                     <td>
-                        <h4 id="gamestat-length"/>
+                        <h4>Length: <span id="gamestat-length"></span>  minutes</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4 id="gamestat-rank"/>
+                        <h4>Boardgame Rank: <a id="gamestat-rank"></a></h4>
                     </td>
                     <td>
                         <h4 id="gamestat-numplayers"/>
@@ -54,15 +69,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <h4 id="gamestat-raters"/>
+                        <h4>Number of Raters: <span id="gamestat-raters"></span></h4>
                     </td>
                     <td>
-                        <h4 id="gamestat-minage"/>
+                        <h4>Minimum Age: <span id="gamestat-minage"></span></h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4 id="gamestat-difficulty"/>
+                        <h4 id="gamestat-difficulty">Game Difficulty</h4>
                     </td>
                     <td>
                         <div id="difficultygauge-g"></div>
@@ -108,9 +123,29 @@
         </a>
     </h3>
 </div>
-<div id="gamestat-videos-container" class="collapse in">
-    <div id="gamestat-videos"/>
-</div>
+    <div id="gamestat-videos-container" class="collapse in">
+        <h4 id="gamestat-videos-none" hidden class='alert alert-info'>No videos found</h4>
+        <div id="gamestat-videos" class="gvihidden">
+            <div class="gameviditem">
+                <table>
+                    <tr>
+                        <td>
+                            <a class="gamevidlink" href="#" target="_blank">
+                                <img class="gamevidpreview" src="resources/bgg_cornerlogo.png"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="gamevidlink" href="#" target="_blank">
+                                <h4 class="gamevidtitle"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewSubjectModal" aria-hidden="true">
@@ -132,3 +167,5 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+    <!-- end of main.html -->
+</div>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="LessManager">
-    <option name="lessProfiles">
+    <option name="lessProfileMap">
       <map>
-        <entry key="brg">
+        <entry key="0">
           <value>
             <LessProfile>
               <option name="cssDirectories">
@@ -13,6 +13,7 @@
                   </CssDirectory>
                 </list>
               </option>
+              <option name="id" value="0" />
               <option name="includePattern" value="*.less" />
               <option name="lessDirPath" value="$PROJECT_DIR$/less" />
               <option name="name" value="brg" />
