@@ -31,9 +31,22 @@ function GameHistory (shouldset) {
         showstatus();
     };
 
+    var findByGameId = function (gno) {
+        if (!games) return -1;
+        for (var i = 0; i < games.length; i++) {
+            if (games[i].gameNo === gno) return i;
+        }
+        return -1;
+    };
+
     me = {
         "add": function (game) {
             if (typeof game === "undefined") {
+                return;
+            }
+            var foundAt = findByGameId(game.gameNo);
+            if (foundAt >= 0) {
+                this.select(foundAt);
                 return;
             }
             gameindex++;

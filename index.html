@@ -26,14 +26,16 @@
     <script type="application/javascript" src="js/accessutil.js"></script>
     <script type="application/javascript" src="js/gamelists.js"></script>
     <script type="application/javascript" src="js/gameinfo.js"></script>
-    <script type="application/javascript" src="js/diffgauge.js"></script>
     <script type="application/javascript" src="js/centerpane.js"></script>
     <script type="application/javascript" src="js/listpane.js"></script>
     <script type="application/javascript" src="js/headerpane.js"></script>
     <script type="application/javascript" src="js/gamehistoryitem.js"></script>
     <script type="application/javascript" src="js/gamelistdisplayer.js"></script>
     <script type="application/javascript" src="js/ratingsUI.js"></script>
+    <script type="application/javascript" src="js/ratinggraph.js"></script>
     <script type="application/javascript" src="js/statuspane.js"></script>
+<!--    <script type="application/javascript" src="js/diffgauge.js"></script> -->
+    <script type="application/javascript" src="js/gviz.js"></script>
 
     <script type="application/javascript" src="libs/jcanvas.min.js"></script>
     <script type="application/javascript" src="libs/pure.js"></script>
@@ -69,7 +71,8 @@ $( function () {
             contentSelector: '.content'
         },
         south:{
-            minSize: 125
+            minSize: 125,
+            initClosed: true
         }
     });
 

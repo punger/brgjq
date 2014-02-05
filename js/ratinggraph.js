@@ -3,68 +3,64 @@
  */
 
 function RatingGraph () {
-        var graphinited = false;
-        var gvgraph;
-        var diff = 1.001;
-        var data;
+    var graphinited = false;
+    var gvgraph;
+    var data;
 
-        var options = {
-            max: 5,
-            min: 1,
-            yellowFrom: 1,
-            yellowTo: 2,
-            greenFrom: 2,
-            greenTo: 4,
-            redFrom: 4,
-            redTo: 5,
-            majorTicks: ["easy", "moderate", "hard"],
-            minorTicks: 4,
-            animation: {
-                duration: 1000
-            },
-            height: 160,
-            width: 160
-        };
+    var options = {
+        height: 160,
+        width: 160
+    };
 
 
+    var convertToGDataTable = function (inputmap) {
+        // Array of [Object { val, votes array of number } ]
+        var gdt = [ ['Age', 'Votes'] ];
+        var numbars = 0;
+        $.each(inputmap, function(i, val) {
+            var $val = $(val);
+            var age = $val.attr('value');
+            var votes = $val.attr('numvotes');
+            ++numbars;
+            gdt.push([age, votes]);
+        });
+        return google.visualization.arrayToDataTable(gdt);
+    };
 
-        var drawgraph = function () {
+    var drawgraph = function (inputmap) {
+        // Update and draw the visualization.
+        try {
+//            data.setValue(0, 1, diff);
+            data = convertToGDataTable(inputmap);
+            gvgraph.draw(data, options);
+        } catch (e) {
+            alert('graph error: '+ e);
+        }
 
-            // Update and draw the visualization.
-            try {
-                data.setValue(0, 1, diff);
-                gvgraph.draw(data, options);
-            } catch (e) {
-                alert('graph error: '+ e);
+    };
+    var initgraph = function (targetid, inputmap) {
+        graphinited = true;
+        google.load("visualization", "1", {"packages": ["corechart"], "callback": function() {
+            gvgraph = new google.visualization.BarChart(document.getElementById(targetid));
+            data = google.visualization.arrayToDataTable([
+                ['Age', 'Votes'],
+                ['1', 0]
+            ]);
+            drawgraph(inputmap);
+        }});
+    };
+
+    return {
+        updategraph: function (targetid, inputmap) {
+
+            if (typeof inputmap !== "object") {
+                return;
             }
-
-        };
-        var initgraph = function (targetid) {
-            graphinited = true;
-            google.load("visualization", "1", {"packages": ["corechart"], "callback": function() {
-                gvgraph = new google.visualization.Gauge(document.getElementById(targetid));
-                data = google.visualization.arrayToDataTable([
-                    ['Label', 'Value'],
-                    ['', 1.0]
-                ]);
-                drawgraph();
-            }});
-        };
-
-        return {
-            updategraph: function (targetid, inputmap) {
-                if (typeof inputmap === "string") {
-                    diff = parseFloat(inputmap);
-                } else if (typeof inputmap === "number") {
-                    diff = inputmap;
-                } else {
-                    return;
-                }
-                if (!graphinited) {
-                    initgraph(targetid);
-                } else {
-                    drawgraph();
-                }
+            if (!graphinited) {
+                initgraph(targetid);
+            } else {
+                drawgraph(inputmap);
             }
-        };
-    }
+        }
+    };
+}

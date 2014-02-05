@@ -5,9 +5,11 @@
 function CenterPane(parentpaneselector) {
     var pane = parentpaneselector;
     var gi = new GameInfo();
-    var diffgauge = new DiffGauge();
+//    var diffgauge = new DiffGauge();
 //    var gamehistory = new GameHistory();
+    var gv = new GoogleVisualizations();
     var eyecandy = new EyeCandy();
+    var agepollgraph = new RatingGraph();
     var gld = new GameListDisplayer();
     var currGame = -1;
 
@@ -84,7 +86,7 @@ function CenterPane(parentpaneselector) {
             }
             currGame = gameNo;
             $.publish('statusmessage', ["Retrieving game information ..."]);
-            diffgauge.reinit();
+//            diffgauge.reinit();
             vidDirFn = $p("#gamestat-videos").compile(vidlistDirective);
             gi.gameinfo(gameNo, function (gameinfo) {
                 $.publish('gamenumchange', gameNo);
@@ -114,7 +116,15 @@ function CenterPane(parentpaneselector) {
 
                 // Graphics
                 eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
-                diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
+                // The target parameter to the following is a target id not a selector
+                if (parseFloat(gameinfo.difficulty) !== 0.0) {
+                    gv.gaugereinit().updategauge(gameinfo.difficulty, "difficultygauge-g");
+                } else {
+                    // No real need for an indication here
+                    console.log('No difficulty value found');
+                }
+//                diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
+//                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
 
                 // Related items
                 var relatedmap = {};

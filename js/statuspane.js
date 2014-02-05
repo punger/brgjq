@@ -5,16 +5,15 @@
 function StatusPane(parentpaneselector) {
     var pane = parentpaneselector;
 
-    var gi;
     var currghl;
 
     var statDirective = {
-        "#status-gameindex": "gameindex",
+        "#status-gameindex": function (i) {return i.context.gameindex + 1;},
         "#status-gamecount": "total",
         "#status-table .status-colheader": {
             "game<-items" : {
                 ".status-colhdrval": function(g) {
-                    return g.pos;
+                    return g.pos + 1;
                 }
             }
         },

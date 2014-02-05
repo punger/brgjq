@@ -39,14 +39,21 @@ function DiffGauge () {
         }
 
     };
+    var gauginiting = false;
     var initgauge = function (targetid) {
-        gaugeinited = true;
+        if (gauginiting) {
+            drawgauge();
+            return;
+        }
         google.load("visualization", "1", {"packages": ["gauge"], "callback": function() {
+            gauginiting = true;
             gvgauge = new google.visualization.Gauge(document.getElementById(targetid));
             data = google.visualization.arrayToDataTable([
                 ['Label', 'Value'],
                 ['', 1.0]
             ]);
+            gaugeinited = true;
+            gauginiting = false;
             drawgauge();
         }});
     };

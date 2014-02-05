@@ -1,7 +1,7 @@
 <div>
     <span class="gameitemnav" style="display: inline">
         <h2 style="display: inline">
-            <a>
+            <a class="gamenavarrows">
                 <span  id="prevgame" class="glyphicon glyphicon-chevron-left"></span>
                 <!--    <ul id="prevgamelist" style="display: none; position: absolute;" >
                         <li class="prevgameentry"><span class="gnavgameitem"></span> (<span class="gnavitemyear"></span>) </li>
@@ -9,15 +9,14 @@
                 -->
 
             </a>
-            <a >
+            <a  class="gamenavarrows">
                 <span  id="nextgame" class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </h2>
         <div id="gamesvisitedblock" hidden
                    style="position: absolute; background-color: #eeeeee; max-width: 160px; display: none">
-        <ul id="gamesvisitedlistparent">
-
-        </ul></div>
+            <ul id="gamesvisitedlistparent"></ul>
+        </div>
     </span>
     <h2 style="display: inline">
         <span id="bgplink" class="pull-right">
@@ -72,7 +71,11 @@
                         <h4>Number of Raters: <span id="gamestat-raters"></span></h4>
                     </td>
                     <td>
-                        <h4>Minimum Age: <span id="gamestat-minage"></span></h4>
+                        <h4>
+                            Minimum Age:
+                            <span id="gamestat-minage"></span>
+                            <div id="gamestat-minchart" style="display: none; position: absolute"></div>
+                        </h4>
                     </td>
                 </tr>
                 <tr>

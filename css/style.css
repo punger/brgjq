@@ -4,23 +4,88 @@ body {
   margin: 0;
   overflow: hidden;
   padding: 5px;
-}
-.gamename {
+  font-size: inherit;
 }
 .gameimage {
-  max-height: 400px;
-  max-width: 300px;
+  max-height: 200px;
+  max-width: 200px;
 }
 .alignedtop {
   vertical-align: top;
+  padding-left: 10px;
 }
-.gamestats .alignedtop td {
+.gamestats .alignedtop canvas {
   vertical-align: middle;
 }
-.gamestats span {
-  font-size: 20px;
-  font-family: 'arial', sans-serif;
+.gamestats h4 {
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+#srchres-container {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#difficultygauge {
+  width: 160px;
+  height: 160px;
+}
+.gameviditem {
+  margin: 10px;
+  width: 200px;
+  height: 300px;
+}
+.gvihidden {
+  display: none;
+}
+.ui-layout-pane-east {
+  overflow: hidden !important;
+}
+#gamestat-related-block #gamestat-related-list {
+  display: none;
+  position: absolute;
+}
+#gamestat-related-block:hover #gamestat-related-list {
+  display: block;
+  position: absolute;
+}
+.gamestat-related-item-parent .gamestat-related-itemsblock {
+  display: none;
+}
+.gamestat-related-item-parent:hover .gamestat-related-itemsblock {
+  display: block;
+}
+.gamestat-related-itemsblock {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 200px;
+}
+.gamestat-related-item-parent {
+  position: relative;
+  max-width: 200px;
+}
+#gamestat-related-list li {
+  list-style: none;
+  background-color: #FFFFFF;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#gamestat-related-list li:hover {
+  background-color: #eeeeee;
+  border: 1px;
+  border-color: #FFFFFF;
+}
+#gamestat-related {
+  background-color: #eeeeee;
   padding: 5px;
-  font-weight: bold;
-  text-align: center;
+  top: -5px;
+  position: relative;
+}
+a {
+  cursor: pointer;
+}
+.gamenavarrows {
+  background-color: #eeeeee;
+  display: inline;
 }
