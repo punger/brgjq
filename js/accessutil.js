@@ -52,7 +52,23 @@ function AccessUtil  () {
 
             str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
                 .replace(/\s+/g, '-') // collapse whitespace and replace by -
-                .replace(/-+/g, '-'); // collapse dashes
+                .replace(/\bthe\b/gi, '-')
+                .replace(/\bin\b/gi, '-')
+                .replace(/\bof\b/gi, '-')
+                .replace(/\bto\b/gi, '-')
+                .replace(/\bfor\b/gi, '-')
+                .replace(/\bby\b/gi, '-')
+                .replace(/\bwith\b/gi, '-')
+                .replace(/\bat\b/gi, '-')
+                .replace(/\bon\b/gi, '-')
+                .replace(/\bfrom\b/gi, '-')
+                .replace(/\bas\b/gi, '-')
+                .replace(/\binto\b/gi, '-')
+                .replace(/\blike\b/gi, '-')
+                .replace(/\ba\b/gi, '-')
+                .replace(/\ban\b/gi, '-')
+                .replace(/-+/g, '-')    // collapse dashes
+                .replace(/^-/, '');     // remove a dash at the beginning
 
             return str.substr(0, 50);
         }

@@ -3,7 +3,8 @@
  */
 
 function GameInfo () {
-    var au = new AccessUtil();
+    var au;
+    au = new AccessUtil();
 
     return {
         gameinfo: function (gamenum, cb) {
@@ -20,13 +21,16 @@ function GameInfo () {
                 valid: true,
                 message: ''
             };
-            $.get("/xdproxy/proxy.php",
-                {
-                    id: gamenum,
-                    stats: 1,
-                    videos: 1,
-                    destination: 'http://www.rpggeek.com/xmlapi2/thing'
-                },
+            $.get("/PHP/proxy.php",
+                'http://www.rpggeek.com/xmlapi2/thing?id='+gamenum +
+                    '&stats=1&videos=1',
+            //$.get("/xdproxy/proxy.php",
+            //    {
+            //        id: gamenum,
+            //        stats: 1,
+            //        videos: 1,
+            //        destination: 'http://www.rpggeek.com/xmlapi2/thing'
+            //    },
                 function (response) {
                     try {
                         var $respJq = au.$xResp(response);
@@ -72,21 +76,26 @@ function GameInfo () {
 
         },
         gamereviewsJSON: function (gamenum, gamename, cb) {
-            $.get("/xdproxy/proxy.php",
-                {
-                    id: gamenum,
-                    type: 'thing',
-                    destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
-                },
+            $.get("/PHP/proxy.php",
+                'http://www.boardgamegeek.com/xmlapi2/forumlist?id=' + gamenum +
+                    '&type=thing',
+            //$.get("/xdproxy/proxy.php",
+            //    {
+            //        id: gamenum,
+            //        type: 'thing',
+            //        destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
+            //    },
                 function (response) {
                     var $respJq = au.$xResp(response);
                     var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
                     var uri = forumid+'/'+au.slugify(gamename)+'/reviews';
+                    var u = "/PHP/proxy.php?https://www.boardgamegeek.com/forum/"+uri;
+                    console.log("Troublesome URL (gamereviewsJSON) "+u);
                     $.ajax({
-                        url: "/xdproxy/proxy.php",
-                        data: {
-                            destination: 'http://www.boardgamegeek.com/forum/'+uri
-                        },
+                        url: u,
+                        //data: {
+                        //    destination: 'http://www.boardgamegeek.com/forum/'+uri
+                        //},
                         dataType: 'html',
                         success: function (flresp) {
                             var $reviewlistpage = $(flresp);
@@ -175,22 +184,28 @@ function GameInfo () {
         },
         gamereviews: function (gamenum, gamename, cb) {
             $.ajax({
-                url:"/xdproxy/proxy.php",
-                data: {
-                    id: gamenum,
-                    type: 'thing',
-                    destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
-                },
+                url:"/PHP/proxy.php",
+                data: 'http://www.boardgamegeek.com/xmlapi2/forumlist?id='+gamenum+
+                    '&type=thing',
+                //data: {
+                //    id: gamenum,
+                //    type: 'thing',
+                //    destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
+                //},
                 dataType: 'html',
                 success: function (response) {
                     var $respJq = au.$xResp(response);
                     var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
                     var uri = forumid+'/'+au.slugify(gamename)+'/reviews';
+                    var u =  "/PHP/proxy.php?http://www.boardgamegeek.com/forum/"+uri;
+                    console.log('Troublesome URL= (gamereviews) ' + u);
                     $.ajax({
-                        url: "/xdproxy/proxy.php",
-                        data: {
-                            destination: 'http://www.boardgamegeek.com/forum/'+uri
-                        },
+                        url: u,
+                        //url: "/PHP/proxy.php",
+                        //data: 'http://www.boardgamegeek.com/forum/'+uri,
+                        //data: {
+                        //    destination: 'http://www.boardgamegeek.com/forum/'+uri
+                        //},
                         dataType: 'html',
                         success: function (flresp) {
                             var $reviewlistpage = $(flresp);
@@ -291,11 +306,12 @@ function GameInfo () {
 
         },
         threadcontent: function (threadid, cb) {
-            $.get("/xdproxy/proxy.php",
-                {
-                    id: threadid,
-                    destination: 'http://www.boardgamegeek.com/xmlapi2/thread'
-                },
+            $.get("/PHP/proxy.php",
+                'http://www.boardgamegeek.com/xmlapi2/thread?id='+threadid,
+                //{
+                //    id: threadid,
+                //    destination: 'http://www.boardgamegeek.com/xmlapi2/thread'
+                //},
                 function (response) {
                     var $respJq = au.$xResp(response);
                     cb($respJq);
@@ -305,23 +321,32 @@ function GameInfo () {
 
         },
         vidlist: function (gameno, cb) {
-            $.get('/xdproxy/proxy.php', {
-                    destination: 'http://boardgamegeek.com/video/module',
-                    ajax: 1,
-                    domain: '',
-                    filter: '{"languagefilter":0,"categoryfilter":0}',
-                    filter_objecttype: '',
-                    gallery: 'all',
-                    languageid: 0,
-                    nosession: 1,
-                    objectid: gameno,
-                    objecttype: 'thing',
-                    pageid: 1,
-                    showcount: 16,
-                    sort: 'hot',
-                    subdomainid: '',
-                    version: 'v2'
-                },
+
+            //http://boardgamegeek.com/video/module?ajax=1&domain=&filter={"languagefilter":0,"categoryfilter":0}
+            // &filter_objecttype=&gallery=all&languageid=0&nosession=1&objectid=102794&objecttype=thing&pageid=1&
+            // showcount=16&sort=hot&subdomainid=&version=v2
+            $.get('/PHP/proxy.php',
+                'http://boardgamegeek.com/video/module?objectid=' + gameno +
+                '&ajax=1&domain=&filter={"languagefilter":0,"categoryfilter":0}&filter_objecttype=' +
+                '&gallery=all&languageid=0&nosession=1&objecttype=thing&pageid=1&showcount=16' +
+                '&sort=hot&subdomainid=&version=v2',
+            //$.get('/xdproxy/proxy.php', {
+            //        destination: 'http://boardgamegeek.com/video/module',
+            //        ajax: 1,
+            //        domain: '',
+            //        filter: '{"languagefilter":0,"categoryfilter":0}',
+            //        filter_objecttype: '',
+            //        gallery: 'all',
+            //        languageid: 0,
+            //        nosession: 1,
+            //        objectid: gameno,
+            //        objecttype: 'thing',
+            //        pageid: 1,
+            //        showcount: 16,
+            //        sort: 'hot',
+            //        subdomainid: '',
+            //        version: 'v2'
+            //    },
                 function (resp) {
                     cb(au.jResp(resp));
                 },
@@ -333,14 +358,15 @@ function GameInfo () {
             var dest = 'http://www.boardgamegeek.com/videos/thing/';
             dest += gameno + '/';
             dest += au.slugify(gamename);
-            $.get("/xdproxy/proxy.php",
-                {
-                    destination:  dest,
-                    sort: 'hot',
-                    date: 'alltime',
-                    gallery: '',
-                    B1: 'Go'
-                },
+            $.get("/PHP/proxy.php",
+                dest+'?sort=hot&date=alltime&galler=&B1=Go',
+                //{
+                //    destination:  dest,
+                //    sort: 'hot',
+                //    date: 'alltime',
+                //    gallery: '',
+                //    B1: 'Go'
+                //},
                 function (response) {
                     var $respJq = $(response);
                     var $vidtable = $respJq.find('#maincontent #main_content .forum_table a[href*="/video"]');

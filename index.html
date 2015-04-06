@@ -6,20 +6,20 @@
     <!-- Style related links -->
     <link rel="stylesheet/less" type="text/css" href="less/style.less" />
 
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+    <!-- New bower js includes   -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/jquery-layout/source/stable/layout-default.css">
 
-    <link rel="stylesheet" href="css/layout-default-latest.css"/>
     <!-- Optional theme --
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"> -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js" type="text/javascript"></script>
+    <script type="application/javascript" src="bower_components/less/dist/less.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-    <script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script type="text/javascript" src="libs/jquery.isotope.v2.js"></script>
-    <script type="text/javascript" src="libs/jquery.layout-latest.js"></script>
-    <script type="application/javascript" src="libs/jquery.cookie.js"></script>
-    <script type="text/javascript" src="libs/ba-tiny-pubsub.js"></script>
+    <script type="application/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="application/javascript" src="bower_components/isotope/dist/isotope.pkgd.js"></script>
+    <script type="application/javascript" src="bower_components/jquery-layout/source/stable/jquery.layout_and_plugins.js"></script>
+    <script type="application/javascript" src="bower_components/jquery-cookie/jquery.cookie.js"></script>
+    <script type="application/javascript" src="bower_components/jquery-tiny-pubsub/dist/ba-tiny-pubsub.js"></script>
 
     <!-- Local scripts -->
     <script type="application/javascript" src="js/relateditemmap.js"></script>
@@ -37,10 +37,10 @@
 <!--    <script type="application/javascript" src="js/diffgauge.js"></script> -->
     <script type="application/javascript" src="js/gviz.js"></script>
 
-    <script type="application/javascript" src="libs/jcanvas.min.js"></script>
-    <script type="application/javascript" src="libs/pure.js"></script>
+    <script type="application/javascript" src="bower_components/jcanvas/jcanvas.js"></script>
+    <script type="application/javascript" src="bower_components/beebole-pure/libs/pure.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script type="application/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
 </head>
 <body class="container">
@@ -77,7 +77,7 @@ $( function () {
     });
 
     $.subscribe('layout.addclosebutton', function (_, srchbtnselector) {
-        App.pg.addCloseBtn(srchbtnselector, 'east');
+//        App.pg.addCloseBtn(srchbtnselector, 'east');  // problem with jquery.layout...
     });
 
     $.subscribe('layout.showmodal', function () {

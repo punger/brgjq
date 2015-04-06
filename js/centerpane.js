@@ -96,7 +96,10 @@ function CenterPane(parentpaneselector) {
                 } catch (e) {
                     console.error('pure error '+e);
                 }
-
+                if (typeof gameinfo.name === "undefined") {
+                    console.log("game id "+gameNo+" looks like it's undefined");
+                    return;
+                }
                 // Reviews
                 gi.gamereviewsJSON(gameNo, gameinfo.name, function (revList) {
                     var $reviewlisthtml = $("#gamestat-reviews");
@@ -124,7 +127,7 @@ function CenterPane(parentpaneselector) {
                     console.log('No difficulty value found');
                 }
 //                diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
-//                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
+                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
 
                 // Related items
                 var relatedmap = {};
@@ -133,6 +136,7 @@ function CenterPane(parentpaneselector) {
                     var famtype = $linkitem.attr("type");
 //                    var famname = $linkitem.attr('value');
                     var baseid = 0;
+                    console.log('Family type: '+famtype);
                     var linktypeoverride = relateditemmap[famtype].renameoninbound;
                     if (linktypeoverride) {
                         if ($linkitem.attr('inbound')) {
@@ -352,7 +356,7 @@ function CenterPane(parentpaneselector) {
 
     $(document).on('click', "#bgplink", function (evt) {
         var gamename = $("#gamename").data('gname');
-        window.open('http://boardgameprices.com/search/'+gamename);
+        window.open('http://boardgameprices.com/compare-prices-for-'+gamename);
     });
 
     $(document).on('click', ".gameregion", function() {

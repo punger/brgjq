@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="loc-apache" createEmptyFolders="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="bgxamp" createEmptyFolders="true" showNewOnTargetInSync="false">
     <serverData>
-      <paths name="loc-apache">
+      <paths name="bgxamp">
         <serverdata>
           <mappings>
-            <mapping deploy="brgjq" local="$PROJECT_DIR$" web="/brgjq" />
+            <mapping deploy="\" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -13,4 +13,3 @@
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
-

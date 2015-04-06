@@ -5,24 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Implement general Google Visualization wrapper using queued requests&#10;&#10;* GoogleVisualization class centralizes calls to Google Visualization functions&#10;* Rather than invoking classes directly, multiple GV classes can be embedded and their calls are serialized using a jquery function queue&#10;* Add proxy.php to the project&#10;* Update proxy.php to identify BGG redirects and change them to reinvocations of proxy with the proper address">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/gviz.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xdproxy/proxy.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/centerpane-jq.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/gigetter.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/accessutil.js" afterPath="$PROJECT_DIR$/js/accessutil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/brgjq.iml" afterPath="$PROJECT_DIR$/.idea/brgjq.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/centerpane.js" afterPath="$PROJECT_DIR$/js/centerpane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/diffgauge.js" afterPath="$PROJECT_DIR$/js/diffgauge.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gamehistoryitem.js" afterPath="$PROJECT_DIR$/js/gamehistoryitem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gameinfo.js" afterPath="$PROJECT_DIR$/js/gameinfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gamelists.js" afterPath="$PROJECT_DIR$/js/gamelists.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/ratinggraph.js" afterPath="$PROJECT_DIR$/js/ratinggraph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/statuspane.js" afterPath="$PROJECT_DIR$/js/statuspane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,104 +32,57 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="brgjq" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="81" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-10.5" vertical-offset="390" max-vertical-offset="2299">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="79" column="88" selection-start-line="79" selection-start-column="88" selection-end-line="79" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gameinfo.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gameinfo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="32" selection-start="6179" selection-end="6179" vertical-scroll-proportion="0.33274338" vertical-offset="2187" max-vertical-offset="6992">
+            <state vertical-scroll-proportion="-10.941176">
+              <caret line="329" column="18" selection-start-line="329" selection-start-column="18" selection-end-line="329" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proxy.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xdproxy/proxy.php">
+      <file leaf-file-name="gamelists.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/gamelists.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="94" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3078">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="centerpane.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="centerpane.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/centerpane.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="218" column="16" selection-start="9410" selection-end="9410" vertical-scroll-proportion="-6.7777777" vertical-offset="3959" max-vertical-offset="8056">
+            <state vertical-scroll-proportion="0.36314848">
+              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="diffgauge.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/diffgauge.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="12" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1653">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gviz.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/gviz.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="8" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2470">
-              <folding>
-                <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="statuspane.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/statuspane.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="950">
-              <folding>
-                <element signature="n#!!doc;n#StatusPane#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gamehistoryitem.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="32" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="2698">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html-frag/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="29" selection-start="3115" selection-end="3115" vertical-scroll-proportion="-6.392857" vertical-offset="1265" max-vertical-offset="3401">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ratinggraph.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ratinggraph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/ratinggraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="8" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1368">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="20" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -152,64 +104,35 @@
       <MyDateState />
     </option>
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="ajax.googleapis.com/ajax/libs/dojo/1.9.2/dojo/dojo.js.uncompressed.js" />
-        <option value="$PROJECT_DIR$/mods/mod1.js" />
-        <option value="$PROJECT_DIR$/require/r.js" />
-        <option value="$PROJECT_DIR$/dojo-index.html" />
-        <option value="$PROJECT_DIR$/html-frag/list.html" />
-        <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/w2ui-index.html" />
-        <option value="$PROJECT_DIR$/libs/jquery.layout-latest.js" />
-        <option value="$PROJECT_DIR$/css/layout-default-latest.css" />
-        <option value="$PROJECT_DIR$/testlayout.html" />
-        <option value="$PROJECT_DIR$/html-frag/top.html" />
-        <option value="$PROJECT_DIR$/libs/masonry.pkgd.min.js" />
-        <option value="$PROJECT_DIR$/html-frag/videotile.js" />
-        <option value="$PROJECT_DIR$/libs/isotope.pkgd.min.js" />
-        <option value="$PROJECT_DIR$/libs/isotope.pkgd.js" />
-        <option value="$PROJECT_DIR$/libs/jquery.isotope.min.js" />
-        <option value="$PROJECT_DIR$/html-frag/srchres.html" />
-        <option value="$PROJECT_DIR$/js/relateditemmap.js" />
-        <option value="$PROJECT_DIR$/libs/ba-tiny-pubsub.js" />
-        <option value="$PROJECT_DIR$/js/gigetter.js" />
-        <option value="$PROJECT_DIR$/js/ratingsUI.js" />
-        <option value="$PROJECT_DIR$/libs/pure.js" />
-        <option value="$PROJECT_DIR$/index-vidsfromxmlapi.html" />
-        <option value="$PROJECT_DIR$/libs/jquery.isotope.js" />
-        <option value="$PROJECT_DIR$/libs/jquery.isotope.v2.js" />
-        <option value="$PROJECT_DIR$/html-frag/videotile.html" />
-        <option value="$PROJECT_DIR$/html-frag/main-pure.html" />
-        <option value="$PROJECT_DIR$/index-pure.html" />
-        <option value="$PROJECT_DIR$/js/headerpane.js" />
-        <option value="$PROJECT_DIR$/libs/jquery.cookie.js" />
-        <option value="$PROJECT_DIR$/js/longclick.js" />
-        <option value="$PROJECT_DIR$/libs/jquery.timer.js" />
-        <option value="$PROJECT_DIR$/js/gamelist-ui.js" />
-        <option value="$PROJECT_DIR$/html-frag/gamlelist.xml" />
-        <option value="$PROJECT_DIR$/js/accessutil.js" />
-        <option value="$PROJECT_DIR$/html-frag/status.html" />
-        <option value="$PROJECT_DIR$/js/gamelists.js" />
-        <option value="$PROJECT_DIR$/html-frag/listitem.html" />
-        <option value="$PROJECT_DIR$/js/gamelistdisplayer.js" />
-        <option value="$PROJECT_DIR$/js/listpane.js" />
-        <option value="$PROJECT_DIR$/js/gamehistoryitem.js" />
-        <option value="$PROJECT_DIR$/less/style.less" />
-        <option value="$PROJECT_DIR$/js/ratinggraph.js" />
-        <option value="$PROJECT_DIR$/html-frag/main.html" />
-        <option value="$PROJECT_DIR$/js/diffgauge.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/gviz.js" />
-        <option value="$PROJECT_DIR$/js/centerpane.js" />
-        <option value="$PROJECT_DIR$/xdproxy/proxy.php" />
-        <option value="$PROJECT_DIR$/js/statuspane.js" />
+        <option value="$PROJECT_DIR$/js/gamelists.js" />
         <option value="$PROJECT_DIR$/js/gameinfo.js" />
+        <option value="$PROJECT_DIR$/js/accessutil.js" />
+        <option value="$PROJECT_DIR$/js/centerpane.js" />
       </list>
     </option>
   </component>
+  <component name="JsBowerSettings">
+    <exe-path>C:\Users\paul\AppData\Roaming\npm\bower.cmd</exe-path>
+    <config-path>C:\Users\paul\Documents\GitHub\brgjq\bower.json</config-path>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="6" />
     <option name="width" value="1411" />
     <option name="height" value="1054" />
   </component>
@@ -264,7 +187,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -276,30 +199,15 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="brgjq" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brgjq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="google-viz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -340,9 +248,64 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html-frag" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brgjq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,7 +314,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editor.preferences.smartKeys" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/googleviz-autocomplete.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bower.json" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="last.edited.regexp" value="Sample Text" />
@@ -362,23 +325,26 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="167" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="173" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="177" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="833" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="167" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="173" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="177" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="833" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="SearchEverywhereHistory" value="&lt;h" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -393,40 +359,361 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="name" value="Dart" />
-      <option name="saveOutputToFile" value="false" />
-      <option name="showConsoleOnStdErr" value="false" />
-      <option name="showConsoleOnStdOut" value="false" />
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="MongoRunConfiguration" factoryName="Mongo">
+      <setting name="path" value="" />
+      <setting name="shellParams" value="" />
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <browser start="false" url="" with-js-debugger="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="brgjq" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
     <list size="1">
@@ -439,120 +726,153 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="" />
       <created>1387842966589</created>
+      <option name="number" value="Default" />
       <updated>1387842966589</updated>
+      <workItem from="1428283466616" duration="13572000" />
+      <workItem from="1428305143293" duration="8793000" />
     </task>
     <task id="LOCAL-00001" summary="Just trying to get started">
       <created>1387844918546</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
       <updated>1387844918546</updated>
     </task>
     <task id="LOCAL-00002" summary="Main image display&#10;locate by id&#10;search and show right hand list&#10;jump to selected search result&#10;start of rank display">
       <created>1388130901082</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
       <updated>1388130901082</updated>
     </task>
     <task id="LOCAL-00003" summary="Main image display&#10;locate by id&#10;search and show right hand list&#10;jump to selected search result&#10;start of rank display">
       <created>1388131214702</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
       <updated>1388131214702</updated>
     </task>
     <task id="LOCAL-00004" summary="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight">
       <created>1388178788908</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
       <updated>1388178788908</updated>
     </task>
     <task id="LOCAL-00005" summary="Rank list&#10;&#10;Bootstrap templates&#10;">
       <created>1388387963114</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
       <updated>1388387963114</updated>
     </task>
     <task id="LOCAL-00006" summary="JQuery layout&#10;&#10;Integrate jQuery layout as replacement for w2ui.  &#10;Get header for search/rank list working">
       <created>1388634747263</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
       <updated>1388634747263</updated>
     </task>
     <task id="LOCAL-00007" summary="Rank navigation buttons&#10;&#10;Nav rank shows and search hides up and down buttons for the rank list.&#10;North and east panes open and close, but do not resize.">
       <created>1388646151798</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
       <updated>1388646151798</updated>
     </task>
     <task id="LOCAL-00008" summary="Gauge and sorted reviews&#10;&#10;Completed gauge with AmCharts (boo Google Visualization)&#10;Reviews are now sorted by popularity.&#10;Jump to BGG">
       <created>1388792978170</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
       <updated>1388792978170</updated>
     </task>
     <task id="LOCAL-00009" summary="Videos&#10;&#10;Display videos in thumbed order&#10;Show thumbnails and links&#10;Jump to additional videos on bgg game page&#10;">
       <created>1388881684310</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
       <updated>1388881684310</updated>
     </task>
     <task id="LOCAL-00010" summary="Back and Forward&#10;&#10;Implement control that allows you to look at the previous game you loaded or, if you have already backed up, the next one.&#10;The list grows without end unlike the forward and back browser buttons.  If you back up and then go forward, it does not remove your prior forward items.  That is, if I get item1 and them item2, thenI back up to item1, and then get item3, forward will still be possible and will go to item2.">
       <created>1390087345375</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
       <updated>1390087345375</updated>
     </task>
     <task id="LOCAL-00011" summary="Google Gauge&#10;&#10;Replace AmCharts with Google visualization gauge&#10;Encapsulate gauge drawing to a separate class&#10;* only expose one method to update the difficulty&#10;* other methods are private&#10;&#10;Refactor gi to a class called GameInfo">
       <created>1390116393805</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
       <updated>1390116393805</updated>
     </task>
     <task id="LOCAL-00012" summary="Related Items&#10;&#10;* Hover over tag shows related items in a dropdown list.&#10;* Relations with multiple objects show in a submenu&#10;* Items are clickable&#10;* Game items jump to target game&#10;* Groups or families show list of items in right hand pane">
       <created>1390367148985</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
       <updated>1390367148985</updated>
     </task>
     <task id="LOCAL-00013" summary="Related People&#10;&#10;* Refactor list calls in the main page to parameterized calls to a single function&#10;* Support pagination for family lists as well as for rank lists&#10;* Support showing lists for designers and artists (aka people)&#10;* Remove comments from srchres.html&#10;* Attempt to fix video list layout issue: probably didn't work.">
       <created>1390439293461</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
       <updated>1390439293461</updated>
     </task>
     <task id="LOCAL-00014" summary="Refactor for pub-sub&#10;&#10;* Create classes for each pane, header, main and list&#10;* Establish messages for each pane:&#10;   - header can update contents of each edit, update status message and show loading gif&#10;   - main can set the game information&#10;   - list can show rank, search or family/person list&#10;* Split gigetter into three classes&#10;   - gameinfo.js gets game related information&#10;   - gamelist.js gets list related info&#10;   - accessutil.js has common methods for manipulating returned text&#10;* index.html now only creates the layout and pane classes and provides support for layout manipulation requests&#10;* No more global variables other than App. (Except for relateditemmap)&#10;">
       <created>1390796172143</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
       <updated>1390796172143</updated>
     </task>
     <task id="LOCAL-00015" summary="Pure,js (for some things) and game history navigation&#10;&#10;* Added game history status in south pane&#10;* Pure.js for game information, although not for search lists&#10;* Can't do pure for the related items since the tree is too complex&#10;* Dropdown for history on forward and back (homegrown timer implementation)&#10;* Factored out display of lists so that the history dropdown could use the same code as the list pane">
       <created>1391375698284</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
       <updated>1391375698284</updated>
     </task>
     <option name="localTasksCounter" value="16" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="22365000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1411" height="1054" extended-state="0" />
-    <editor active="true" />
+    <frame x="6" y="0" width="1411" height="1054" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3265306" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39849624" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21160042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20990312" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53713673" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53739315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140648" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32618025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22900215" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32615715" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38841203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10795155" sideWeight="0.43683085" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38841203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3265306" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
   </component>
@@ -560,9 +880,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="Just trying to get started" />
     <MESSAGE value="Main image display&#10;locate by id&#10;search and show right hand list&#10;jump to selected search result&#10;start of rank display" />
     <MESSAGE value="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight" />
@@ -589,21 +906,88 @@
       </breakpoints-dialog>
       <option name="time" value="22" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="218" column="16" selection-start-line="218" selection-start-column="16" selection-end-line="218" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/diffgauge.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gviz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/statuspane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#StatusPane#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratinggraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="6908" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="20" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="2750" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="2" selection-start="2096" selection-end="2096" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1672" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dojo/dojo.js.uncompressed.js">
@@ -613,52 +997,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dojo-index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="6" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0011520737" vertical-offset="169" max-vertical-offset="1938" />
+        <state vertical-scroll-proportion="0.0011520737">
+          <caret line="10" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mods/mod1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="707" selection-end="3238" vertical-scroll-proportion="0.96570796" vertical-offset="555" max-vertical-offset="1530" />
+        <state vertical-scroll-proportion="0.96570796">
+          <caret line="84" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.layout-latest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="82" selection-start="3605" selection-end="3605" vertical-scroll-proportion="2.1107383" vertical-offset="0" max-vertical-offset="101048" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3910" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/srchres-w2ui.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/masonry.pkgd.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24748" selection-start="24884" selection-end="24884" vertical-scroll-proportion="0.15212528" vertical-offset="0" max-vertical-offset="894" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/isotope.pkgd.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3394" selection-start="35519" selection-end="35519" vertical-scroll-proportion="0.13310961" vertical-offset="0" max-vertical-offset="894" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/isotope.pkgd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3854" column="13" selection-start="126028" selection-end="126028" vertical-scroll-proportion="0.97651005" vertical-offset="64645" max-vertical-offset="65620" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="15714" selection-start="16033" selection-end="16033" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/bgplogo.png">
@@ -666,47 +1035,17 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/ba-tiny-pubsub.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="11" selection-start="417" selection-end="417" vertical-scroll-proportion="0.4079096" vertical-offset="0" max-vertical-offset="885" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1368" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/top.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="128" selection-end="196" vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="399" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="687" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1078" column="0" selection-start="38630" selection-end="38630" vertical-scroll-proportion="0.6632184" vertical-offset="19905" max-vertical-offset="26847" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.isotope.v2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3876" column="13" selection-start="126945" selection-end="126945" vertical-scroll-proportion="0.97126436" vertical-offset="72799" max-vertical-offset="73758">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-3.392857">
+          <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/pure.js">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="0" selection-start="4590" selection-end="4590" vertical-scroll-proportion="0.0" vertical-offset="2427" max-vertical-offset="16264">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -717,193 +1056,250 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/videotile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="6" selection-start="0" selection-end="485" vertical-scroll-proportion="-11.535714" vertical-offset="0" max-vertical-offset="437">
-          <folding />
+        <state vertical-scroll-proportion="-11.535714">
+          <caret line="17" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index-pure.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1940" selection-end="2011" vertical-scroll-proportion="-15.5" vertical-offset="250" max-vertical-offset="3724">
+        <state vertical-scroll-proportion="-15.5">
+          <caret line="36" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="4" selection-start="3685" selection-end="3685" vertical-scroll-proportion="0.9719731" vertical-offset="1337" max-vertical-offset="2318" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/headerpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="890" selection-end="938" vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="1976">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.timer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="11" selection-start="4002" selection-end="4002" vertical-scroll-proportion="0.9719731" vertical-offset="1223" max-vertical-offset="2204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="384" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="342">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/status.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="23" selection-start="436" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamelists.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="27" selection-start="6571" selection-end="6571" vertical-scroll-proportion="0.0" vertical-offset="2588" max-vertical-offset="5377">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/listpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="62" selection-start="5119" selection-end="5119" vertical-scroll-proportion="0.0" vertical-offset="2398" max-vertical-offset="4161">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/gamelist.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="63" selection-end="63" vertical-scroll-proportion="0.06842737" vertical-offset="0" max-vertical-offset="833">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/listitem.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="5" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="152" max-vertical-offset="266">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamelistdisplayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1123" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="931">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="11" selection-start="708" selection-end="708" vertical-scroll-proportion="0.34309134" vertical-offset="619" max-vertical-offset="2983">
+        <state vertical-scroll-proportion="0.34309134">
+          <caret line="48" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xdproxy/proxy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="94" selection-start-line="24" selection-start-column="94" selection-end-line="24" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/diffgauge.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main-jq.html">
+    <entry file="file://$PROJECT_DIR$/bower_components/isotope/js/isotope.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="16" selection-start="277" selection-end="280" vertical-scroll-proportion="0.18073721" vertical-offset="0" max-vertical-offset="2641">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamelist-ui.js">
+    <entry file="file://$PROJECT_DIR$/bower_components/jquery/dist/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0861678" vertical-offset="0" max-vertical-offset="882">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+    <entry file="file://$PROJECT_DIR$/bower_components/jquery-layout/source/stable/layout-default.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="6" selection-start="2719" selection-end="2719" vertical-scroll-proportion="1.6961452" vertical-offset="43" max-vertical-offset="1691">
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
+    <entry file="file://$PROJECT_DIR$/bower_components/jquery-layout/source/stable/jquery.layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="32" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="2698">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/jquery.layout-latest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6514286">
+          <caret line="111" column="82" selection-start-line="111" selection-start-column="82" selection-end-line="111" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="81" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-10.5" vertical-offset="390" max-vertical-offset="2299">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="88" selection-start-line="79" selection-start-column="88" selection-end-line="79" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
+    <entry file="file://$PROJECT_DIR$/js/listpane.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="19" selection-start="851" selection-end="851" vertical-scroll-proportion="0.15986395" vertical-offset="391" max-vertical-offset="1273">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xdproxy/proxy.php">
+    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="94" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3078">
+        <state vertical-scroll-proportion="-1.6433666">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+    <entry file="file://$PROJECT_DIR$/js/gamelist-ui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="29" selection-start="3115" selection-end="3115" vertical-scroll-proportion="-6.392857" vertical-offset="1265" max-vertical-offset="3401">
+        <state vertical-scroll-proportion="0.09700428">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gviz.js">
+    <entry file="file://$PROJECT_DIR$/js/gamelistdisplayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2470">
-          <folding>
-            <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.49072754">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/headerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30584708">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratingsUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3651926">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/statuspane.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="950">
+        <state vertical-scroll-proportion="0.15178572">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc;n#StatusPane#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+    <entry file="file://$PROJECT_DIR$/js/gamelists.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="16" selection-start="9410" selection-end="9410" vertical-scroll-proportion="-6.7777777" vertical-offset="3959" max-vertical-offset="8056">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/diffgauge.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="12" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1653">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ratinggraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="8" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1368">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="32" selection-start="6179" selection-end="6179" vertical-scroll-proportion="0.33274338" vertical-offset="2187" max-vertical-offset="6992">
+        <state vertical-scroll-proportion="-10.941176">
+          <caret line="329" column="18" selection-start-line="329" selection-start-column="18" selection-end-line="329" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="73" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/gamelist.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05691964">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.715311">
+          <caret line="165" column="56" selection-start-line="165" selection-start-column="53" selection-end-line="165" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main-jq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75598085">
+          <caret line="127" column="56" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gviz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.153457">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7200675">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ratinggraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36314848">
+          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
   </component>
 </project>
-
