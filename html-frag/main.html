@@ -1,4 +1,4 @@
-<div>
+<div id="bbgg-mainwindow">
     <span class="gameitemnav" style="display: inline">
         <h2 style="display: inline">
             <a class="gamenavarrows">
@@ -43,7 +43,10 @@
                         <table border="0">
                             <tr>
                                 <td>
-                                    <h4>Rating: <span id="gamestat-rating"></span></h4>
+                                    <div id="gamestat-rating-block">
+                                        <h4 class="bbgg-interesting">Rating: <span id="gamestat-rating"></span></h4>
+                                        <div id="gamestat-rating-chart" class="hideuntilhovered"></div>
+                                    </div>
                                 </td>
                                 <td >
                                     <span id="gamerankparent">
@@ -63,7 +66,10 @@
                         <h4>Boardgame Rank: <a id="gamestat-rank"></a></h4>
                     </td>
                     <td>
-                        <h4 id="gamestat-numplayers"/>
+                        <div id="gamestat-numplayers-block">
+                            <h4 id="gamestat-numplayers" class="bbgg-interesting"/>
+                            <div id="gamestat-numplayers-chart" class="hideuntilhovered"></div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -71,16 +77,21 @@
                         <h4>Number of Raters: <span id="gamestat-raters"></span></h4>
                     </td>
                     <td>
-                        <h4>
-                            Minimum Age:
-                            <span id="gamestat-minage"></span>
-                            <div id="gamestat-minchart" style="display: none; position: absolute"></div>
-                        </h4>
+                        <div id="gamestat-minage-block">
+                            <h4 class="bbgg-interesting">
+                                Minimum Age:
+                                <span id="gamestat-minage"></span>
+                            </h4>
+                            <div id="gamestat-minchart" class="hideuntilhovered"></div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4 id="gamestat-difficulty">Game Difficulty</h4>
+                        <div id="gamestat-difficulty-block">
+                            <h4 id="gamestat-difficulty" class="bbgg-interesting">Game Difficulty</h4>
+                            <div id="gamestat-difficulty-chart" class="hideuntilhovered"></div>
+                        </div>
                     </td>
                     <td>
                         <div id="difficultygauge-g"></div>
@@ -90,8 +101,8 @@
         </td>
         <td class="alignedtop">
             <div id="gamestat-related-block" style="padding: 1px">
-                <h4 id="gamestat-related">Related Items</h4>
-                <ul id="gamestat-related-list"/>
+                <h4 id="gamestat-related" class="bbgg-interesting">Related Items</h4>
+                <ul id="gamestat-related-list" class="hideuntilhovered"/>
             </div>
         </td>
     </tr>
@@ -101,7 +112,7 @@
     <h3 data-toggle="collapse" data-target="#gamestat-description">
         Description
         <a class="pull-right">
-            <span class="glyphicon glyphicon-chevron-up"
+            <span class="glyphicon glyphicon-chevron-up bbgg-interesting"
                   ></span>
         </a>
     </h3>
@@ -112,7 +123,7 @@
     <h3 data-toggle="collapse" data-target="#gamestat-reviews">
         Reviews
         <a class="pull-right">
-            <span class="glyphicon glyphicon-chevron-up"></span>
+            <span class="glyphicon glyphicon-chevron-up bbgg-interesting"></span>
         </a>
     </h3>
 </div>
@@ -122,7 +133,7 @@
     <h3 data-toggle="collapse" data-target="#gamestat-videos-container">
         Videos
         <a class="pull-right">
-            <span class="glyphicon glyphicon-chevron-up"></span>
+            <span class="glyphicon glyphicon-chevron-up bbgg-interesting"></span>
         </a>
     </h3>
 </div>

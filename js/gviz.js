@@ -7,12 +7,15 @@ function GoogleVisualizations () {
     var gvizinited = false;
     var vizs = [];
     var debug = function (msg) {
-        console.log('At '+msg+', Queue has '+ q.queue().length+' items\nQ='+ q.queue());
+        if (q) {
+            console.log('At '+msg+', Queue has '+ q.queue().length+' items\nQ='+ q.queue());
+        } else {
+            console.log('At '+msg+', no q');
+        }
     };
 
     function DiffGauge () {
         var gvgauge;
-//        var diff = 1.001;
         var data;
         var initialized = false;
 
@@ -34,7 +37,6 @@ function GoogleVisualizations () {
             width: 160
         };
         var drawgauge = function (diff) {
-
             // Update and draw the visualization.
             try {
                 data.setValue(0, 1, diff);
@@ -47,9 +49,9 @@ function GoogleVisualizations () {
 
         return {
             "initialize": function (targetid) {
-                debug('init');
+                debug('dg init');
                 q.queue(function (next) {
-                    debug('init 2');
+                    debug('dg init 2');
                     if (!initialized) {
                         gvgauge = new google.visualization.Gauge(document.getElementById(targetid));
                         data = google.visualization.arrayToDataTable([
@@ -66,10 +68,10 @@ function GoogleVisualizations () {
                     console.error("Invalid data to gauge="+data);
                     return;
                 }
-                debug('draw 1');
+                debug('dg draw 1');
                 this.initialize(targetid);
                 q.queue(function (next) {
-                    debug('draw 2');
+                    debug('dg draw 2');
                     drawgauge(data);
                     next();
                 });
@@ -89,34 +91,237 @@ function GoogleVisualizations () {
             },
             "reinit": function () {
                 initialized = false;
-            }
+            },
+            "name": "gauge"
         };
 
     }
 
+    function AgePollChart (title, quantity, type) {
+        var gvagepoll;
+        var initialized = false;
 
-    q.queue(function (next) {
-        google.load("visualization", "1", {"packages": ["gauge"], "callback": function() {
-            var dg =  new DiffGauge();
-            vizs.gauge = dg;
+        var options = {
+            height: 200,
+            width: 320,
+            title: title,
+            hAxis: {title: 'Votes'},
+            legend: {position: 'none'}
+        };
+        var drawagepoll = function (apdata) {
+
+            // Update and draw the visualization.
+            try {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', quantity);
+                data.addColumn('number', 'Votes');
+                $.each(apdata, function(i, val) {
+                    var $val = $(val);
+                    var age = $val.attr('value');
+                    var votes = $val.attr('numvotes');
+                    data.addRow([age, parseInt(votes)]);
+                });
+                gvagepoll.draw(data, options);
+            } catch (e) {
+                alert('age poll chart error: '+ e+'\nData:\n'+JSON.stringify(apdata));
+            }
+
+        };
+
+        return {
+            "initialize": function (targetid) {
+                debug('ap init');
+                q.queue(function (next) {
+                    debug('ap init 2');
+                    if (!initialized) {
+                        gvagepoll = new google.visualization.BarChart(document.getElementById(targetid));
+                        initialized = true;
+                    }
+                    next();
+                });
+            },
+            "draw": function(data, targetid) {
+                if (!this.validateinput(data)) {
+                    console.error("Invalid data to age poll="+data);
+                    return;
+                }
+                debug('ap draw 1');
+                this.initialize(targetid);
+                q.queue(function (next) {
+                    debug('ap draw 2');
+                    drawagepoll(data);
+                    next();
+                });
+            },
+            "validateinput": function (data) {
+                if (typeof data === "object") {
+                    if (data.length > 0) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            "reinit": function () {
+                initialized = false;
+            },
+            "name": type
+        };
+
+    }
+
+    function NPPollChart () {
+        var gvnppoll;
+        var initialized = false;
+        var currtarget;
+
+        var options = {
+            height: 200,
+            width: 400,
+            isStacked: true,
+            colors: ['red', 'green', 'yellow'],
+            hAxis: {
+                title: "Votes"
+            },
+            vAxis: {
+                title: 'Number of Players'
+            },
+            title: 'Best with'
+//            ,
+//            legend: {
+//                position: 'top'
+//            }
+        };
+        var drawnppoll = function ($nppdata) {
+
+            // Update and draw the visualization.
+            try {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Players');
+                data.addColumn('number', 'Bad');
+                data.addColumn('number', 'Best');
+                data.addColumn('number', 'Good');
+                $nppdata.each( function(i, val) {
+                    var $val = $(val);
+                    var players = $val.attr('numplayers');
+//                    var votes = $val.attr('numvotes');
+                    var nr = $val.find("[value='Not Recommended']").attr('numvotes');
+                    var b = $val.find("[value='Best']").attr('numvotes');
+                    var r = $val.find("[value='Recommended']").attr('numvotes');
+                    data.addRow([players, -parseInt(nr), parseInt(b), parseInt(r)]);
+                });
+                var $root = $('#'+currtarget);
+                $root.addClass('chartdisplay');
+                gvnppoll.draw(data, options);
+                $root.removeClass('chartdisplay');
+            } catch (e) {
+                alert('num players poll chart error: '+ e+'\nData:\n'+JSON.stringify($nppdata));
+            }
+
+        };
+
+        return {
+            "initialize": function (targetid) {
+                debug('npp init');
+                q.queue(function (next) {
+                    debug('npp init 2');
+                    if (!initialized) {
+                        currtarget = targetid;
+                        gvnppoll = new google.visualization.BarChart(document.getElementById(targetid));
+                        initialized = true;
+                    }
+                    next();
+                });
+            },
+            "draw": function(data, targetid) {
+                if (!this.validateinput(data)) {
+                    console.error("Invalid data to num players poll="+data);
+                    return;
+                }
+                debug('npp draw 1');
+                this.initialize(targetid);
+                q.queue(function (next) {
+                    debug('npp draw 2');
+                    drawnppoll(data);
+                    next();
+                });
+            },
+            "validateinput": function (data) {
+                if (typeof data === "object") {
+                    if (data.length > 0) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            "reinit": function () {
+                initialized = false;
+            },
+            "name": "nppoll"
+        };
+
+    }
+
+//    q.queue(function (next) {
+//        debug("google load start");
+//        google.load("visualization", "1",
+//            {
+//                "packages": ["gauge", "corechart"],
+//                "callback": q.queue(function() {
+//                    debug("GV onload");
+//                    var dg =  new DiffGauge();
+//                    vizs[dg.name] = dg;
+//                    var ap = new AgePollChart();
+//                    vizs[ap.name] = ap;
+//                    var npp = new NPPollChart();
+//                    vizs[npp.name] = npp;
+//                    debug("GV objs created");
+//                    gvizinited = true;
+//                    next();
+//                })
+//            });
+//    });
+
+
+    var dg = new DiffGauge();
+    vizs[dg.name] = dg;
+    var ap = new AgePollChart('No Younger Than', 'Age', 'agepoll');
+    vizs[ap.name] = ap;
+    var rp = new AgePollChart('Rating Distribution', 'Rating', 'ratingpoll');
+    vizs[rp.name] = rp;
+    var npp = new NPPollChart();
+    vizs[npp.name] = npp;
+    var wp = new AgePollChart('Weight', 'Weight', 'weightpoll');
+    vizs[wp.name] = wp;
+    debug("GV objs created");
+    gvizinited = true;
+
+    var updfunc = function (name, value, targetid) {
+        debug('u 1');
+        q.queue(function(next) {
+            debug('u 2');
+            if (!vizs || !vizs[name]) {
+                if (gvizinited) {
+                    debug('bad name: ' + name);
+                } else {
+                    debug('retry update');
+                    updfunc(name, value, targetid);
+                }
+            } else {
+                vizs[name].draw(value, targetid);
+            }
             next();
-        }});
-    });
+        });
+        debug('u 3');
+        q.dequeue();
+
+    };
 
     return {
-        updategauge: function (value, targetid) {
-            debug('ug 1');
-            q.queue(function(next) {
-                debug('ug 2');
-                vizs.gauge.draw(value, targetid);
-            });
-            debug('ug 3');
-            q.dequeue();
-        },
-        gaugereinit: function () {
+        update: updfunc,
+        reinit: function (name) {
             q.queue(function (n) {
-                if (vizs && vizs.gauge) {
-                    vizs.gauge.reinit();
+                if (vizs && vizs[name]) {
+                    vizs[name].reinit();
                 }
                 n();
             });

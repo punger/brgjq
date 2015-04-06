@@ -3,14 +3,17 @@
  */
 
 function AccessUtil  () {
-    var respAsXML = function (response) {
-        var respXmlString;
+    var stripHtmlTag = function (response) {
         var htmLoc = response.indexOf('<html');
         if (htmLoc < 0) {
-            respXmlString = response;
+            return response;
         } else {
-            respXmlString = response.substr(0, htmLoc);
+            return response.substr(0, htmLoc);
         }
+
+    };
+    var respAsXML = function (response) {
+        var respXmlString = stripHtmlTag(response);
         try {
             // Embedded script tags make the xml parsing barf
             var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
@@ -22,6 +25,9 @@ function AccessUtil  () {
 
     };
     return {
+        "htmlResp": function (response) {
+            return stripHtmlTag(response);
+        },
         "$xResp": function (response) {
             return $(respAsXML(response));
         },
@@ -38,6 +44,10 @@ function AccessUtil  () {
                 respJsonString = response.substr(0, htmLoc);
             }
             return $.parseJSON(respJsonString);
+        },
+        "$jqResp": function(response) {
+            var respNoScript = response.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+            return $(respNoScript);
         },
         "slugify": function (str) {
             str = str.replace(/^\s+|\s+$/g, ''); // trim

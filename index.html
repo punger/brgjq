@@ -20,6 +20,7 @@
     <script type="application/javascript" src="bower_components/jquery-layout/source/stable/jquery.layout_and_plugins.js"></script>
     <script type="application/javascript" src="bower_components/jquery-cookie/jquery.cookie.js"></script>
     <script type="application/javascript" src="bower_components/jquery-tiny-pubsub/dist/ba-tiny-pubsub.js"></script>
+    <script type="application/javascript" src="bower_components/URIjs/src/URI.js"></script>
 
     <!-- Local scripts -->
     <script type="application/javascript" src="js/relateditemmap.js"></script>
@@ -36,6 +37,7 @@
     <script type="application/javascript" src="js/statuspane.js"></script>
 <!--    <script type="application/javascript" src="js/diffgauge.js"></script> -->
     <script type="application/javascript" src="js/gviz.js"></script>
+    <script type="application/javascript" src="js/gamecategories.js"></script>
 
     <script type="application/javascript" src="bower_components/jcanvas/jcanvas.js"></script>
     <script type="application/javascript" src="bower_components/beebole-pure/libs/pure.js"></script>
@@ -46,6 +48,8 @@
 <body class="container">
 
 <script type="text/javascript">
+google.load("visualization", "1", {"packages": ["gauge", "corechart"]});
+google.setOnLoadCallback(
 $( function () {
     var App = {};
 
@@ -99,7 +103,8 @@ $( function () {
     App.list = new ListPane('.ui-layout-east');
 
     App.head = new HeaderPane('.ui-layout-north', window.location.search.substring(1));
-});
+})
+);
 
 </script>
 

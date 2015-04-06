@@ -92,12 +92,12 @@ html, body {
   overflow:		hidden !important;
 }
 
-#gamestat-related-block #gamestat-related-list {
+#gamestat-related-block .hideuntilhovered {
   display: none;
   position: absolute;
 }
 
-#gamestat-related-block:hover #gamestat-related-list {
+#gamestat-related-block:hover .hideuntilhovered {
   display: block;
   position: absolute;
 }
@@ -137,7 +137,6 @@ html, body {
 }
 
 #gamestat-related {
-  background-color: #eeeeee;
   padding: 5px;
   top: -5px;
   position: relative;
@@ -148,4 +147,68 @@ a { cursor: pointer; }
 .gamenavarrows {
   background-color: #eeeeee;
   display: inline;
+}
+
+.bbgg-interesting {
+  background-color: #eeeeee;
+}
+
+.hideuntilhovered {
+  z-index: 100;
+}
+
+#gamestat-minage-block {
+  position: relative;
+}
+
+#gamestat-minage-block:hover .hideuntilhovered {
+  display: block;
+  position: absolute;
+}
+
+#gamestat-minage-block .hideuntilhovered {
+   display: none;
+  position: absolute;
+  left: 150px;
+}
+
+#gamestat-numplayers-block, #gamestat-rating-block, #gamestat-difficulty-block {
+  position: relative;
+}
+
+#gamestat-numplayers-block:hover .hideuntilhovered {
+  display: block;
+  position: absolute;
+}
+
+#gamestat-numplayers-block .hideuntilhovered {
+  display: none;
+  position: absolute;
+  left: 150px;
+}
+
+#gamestat-rating-block:hover .hideuntilhovered {
+  display: block;
+  position: absolute;
+}
+
+#gamestat-rating-block .hideuntilhovered {
+  display: none;
+  position: absolute;
+  left: 150px;
+}
+
+#gamestat-difficulty-block:hover .hideuntilhovered {
+  display: block;
+  position: absolute;
+}
+
+#gamestat-difficulty-block .hideuntilhovered {
+  display: none;
+  position: absolute;
+  left: 150px;
+}
+
+.chartdisplay {
+  display: block;
 }

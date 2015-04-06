@@ -6,6 +6,8 @@ function HeaderPane(paneselector, arg) {
     var pane = paneselector;
     var showCount = 0;
     var $ld;
+    var catLister;
+
     $.get("html-frag/top.html", function (r) {
         $(pane).html(r);
         $ld = $('#loading');
@@ -49,6 +51,13 @@ function HeaderPane(paneselector, arg) {
     $.subscribe('gamesearchchange', function(_, searchstring) {
         $("#gamesearch").val(searchstring);
     });
+    $.subscribe('categories.ready', function() {
+        // ready to do something with the categories
+        console.log(catLister.listTypes());
+        console.log("Categories\n"+JSON.stringify(catLister.catList()));
+    });
+
+    catLister = new GameCategories();
 
     $(document).on('keypress', '#gamenum', function (e){
         if (e.which === 13) {

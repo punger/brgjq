@@ -92,7 +92,7 @@ function CenterPane(parentpaneselector) {
                 $.publish('gamenumchange', gameNo);
                 try {
                     // Basic game info
-                    $m.render(gameinfo, gamestatDirective);
+                    $("#bbgg-mainwindow").render(gameinfo, gamestatDirective);
                 } catch (e) {
                     console.error('pure error '+e);
                 }
@@ -121,13 +121,15 @@ function CenterPane(parentpaneselector) {
                 eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
                 // The target parameter to the following is a target id not a selector
                 if (parseFloat(gameinfo.difficulty) !== 0.0) {
-                    gv.gaugereinit().updategauge(gameinfo.difficulty, "difficultygauge-g");
+                    gv.reinit("gauge").update("gauge", gameinfo.difficulty, "difficultygauge-g");
                 } else {
                     // No real need for an indication here
                     console.log('No difficulty value found');
                 }
 //                diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
-                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
+//                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
+                gv.reinit("agepoll").update("agepoll", gameinfo.$agepoll, "gamestat-minchart");
+                gv.reinit("nppoll").update("nppoll", gameinfo.$nplyrpoll, "gamestat-numplayers-chart");
 
                 // Related items
                 var relatedmap = {};
@@ -226,6 +228,8 @@ function CenterPane(parentpaneselector) {
                 var gamename = $(vidlistobj.videos[0].objectlink).text();
                 gi.hotvideos(gameNo, gamename, function(vidinfo) {
                     pseudo_vidinfo = vidinfo;
+		    // if there are more videos than fit on the first page, 
+		    // then extend with a dummy video that goes to bgg
                     if (vidinfo.length < vidlistobj.videos.length) {
                         vidlistobj.videos.slice(0, vidinfo.length);
                         vidlistobj.videos[vidinfo.length] = {
@@ -260,18 +264,14 @@ function CenterPane(parentpaneselector) {
                     }
                 });
             });
+            // Rating detail
+            gi.ratingDetail(gameNo, 'graphstats', function(ratingmap){
+                gv.reinit("ratingpoll").update("ratingpoll", ratingmap, "gamestat-rating-chart");
+            });
+            gi.ratingDetail(gameNo, 'collection/weightgraph', function(ratingmap){
+                gv.reinit("weightpoll").update("weightpoll", ratingmap, "gamestat-difficulty-chart");
+            });
         });
-
-        // Clean up any existing info
-//        $('#gamestat-reviews').find('li').remove();
-//        $('#gamestat-related-list').find('li').remove();
-//        var $viditems = $('#gamestat-videos').find('.gameviditem');
-//        if ($viditems.length) {
-//            $('#gamestat-videos').isotope('destroy');
-//            $viditems.remove();
-//        } else {
-//            $('#gamestat-videos >').remove();
-//        }
 
     };
 
@@ -296,6 +296,10 @@ function CenterPane(parentpaneselector) {
             },
             true
         ]);
+    });
+
+    $(document).on('click', "#gamestat-related", function() {
+        $("#gamestat-related-list").toggle();
     });
 
     var longpresstimer;

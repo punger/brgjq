@@ -68,11 +68,41 @@ function GameInfo () {
             );
             return info;
         },
-        ratingDetail: function (gamenum, cb) {
+        /**
+         * Gets the contents of a BGG graph in Google Charts format
+         * @param gamenum
+         * @param target a string: either 'graphstats' for ratings or
+         * 'collection/weightgraph' for weight
+         * @param cb callback with data
+         */
+        ratingDetail: function (gamenum, target, cb) {
             // http://boardgamegeek.com/graphstats/thing/6749?ajax=1
             // img src extract chm=
-            // 14,000000,0,0,12|t19,000000,0,1,12|t16,000000,0,2,12|t33,000000,0,3,12|t30,000000,0,4,12|
+            // t14,000000,0,0,12|t19,000000,0,1,12|t16,000000,0,2,12|t33,000000,0,3,12|t30,000000,0,4,12|
             // t38,000000,0,5,12|t18,000000,0,6,12|t8,000000,0,7,12|t4,000000,0,8,12|t6,000000,0,9,12
+            $.get("/PHP/proxy.php",
+                'http://boardgamegeek.com/'+target+'/thing/' +gamenum+'&ajax=1',
+                function (response) {
+                    var $r = au.$jqResp(response);
+                    var chartArg = $r.find('#main_content').find('img').attr('src');
+                    var chartUri = new URI(chartArg);
+                    var splitArgs = chartUri.search(true);
+                    var ratingArg = splitArgs["chm"];
+                    var ratingsArr = ratingArg.split('|');
+                    var ratingData = [];
+                    var labels = splitArgs["chxl"].split(':')[1].split('|');
+                    $.each(ratingsArr, function (i, el) {
+                        var ratingComponents = el.split(',');
+                        ratingData.push(
+                            $('<result/>', {
+                            "numvotes": ratingComponents[0].substr(1),
+                            "value": labels[i+1]
+                        })[0]);
+                    });
+                    cb(ratingData);
+                },
+                'html'
+            );
 
         },
         gamereviewsJSON: function (gamenum, gamename, cb) {
