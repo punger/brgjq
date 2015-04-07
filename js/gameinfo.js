@@ -5,6 +5,40 @@
 function GameInfo () {
     var au;
     au = new AccessUtil();
+    var PAGESIZE=100;
+    var outstanding = 0;
+
+    var gethist100 = function(gameno, page, cbend) {
+        outstanding++;
+        var statarray = [];
+        $.get("/PHP/proxy.php",
+            'http://www.rpggeek.com/xmlapi2/thing?id='+gameno+'&stats=1&historical=1' +
+            '&pagesize='+PAGESIZE+'&page='+page,
+            function (response) {
+                var $respJq = au.$xResp(response);
+                var stats = $respJq.find('statistics ratings');
+                if (stats.length >= PAGESIZE) {
+                    gethist100(gameno, page+1, cbend);
+                }
+                stats.each(function(index, element) {
+                    statarray[index] = {};
+                    var $this = $(element);
+                    statarray[index].date = $this.attr('date');
+                    statarray[index].usersrated = $this.find('usersrated').attr('value');
+                    statarray[index].average = $this.find('average').attr('value');
+                    statarray[index].bayesaverage = $this.find('bayesaverage').attr('value');
+                    statarray[index].rank = $this.find('ranks #1').attr('value');
+
+                });
+                cbend(statarray, page);
+
+            },
+            "html"
+
+        );
+
+
+    };
 
     return {
         gameinfo: function (gamenum, cb) {
@@ -109,18 +143,12 @@ function GameInfo () {
             $.get("/PHP/proxy.php",
                 'http://www.boardgamegeek.com/xmlapi2/forumlist?id=' + gamenum +
                     '&type=thing',
-            //$.get("/xdproxy/proxy.php",
-            //    {
-            //        id: gamenum,
-            //        type: 'thing',
-            //        destination: 'http://www.boardgamegeek.com/xmlapi2/forumlist'
-            //    },
                 function (response) {
                     var $respJq = au.$xResp(response);
                     var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
                     var uri = forumid+'/'+au.slugify(gamename)+'/reviews';
                     var u = "/PHP/proxy.php?https://www.boardgamegeek.com/forum/"+uri;
-                    console.log("Troublesome URL (gamereviewsJSON) "+u);
+                    //console.log("Troublesome URL (gamereviewsJSON) "+u);
                     $.ajax({
                         url: u,
                         //data: {
@@ -413,6 +441,18 @@ function GameInfo () {
                 },
                 'html'
             );
+        },
+        ratinghistory: function(gameno, cb) {
+            var statarray = [];
+            gethist100(gameno, 1, function (statpiece, pagenum) {
+                statpiece.forEach(function (cur, index, arr) {
+                    statarray[PAGESIZE * (pagenum - 1) + index] = cur;
+                });
+                outstanding--;
+                if (outstanding <= 0) {
+                    cb(statarray);
+                }
+            });
         }
 
     };

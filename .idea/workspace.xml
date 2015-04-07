@@ -4,16 +4,13 @@
     <bookmark url="file://$PROJECT_DIR$/js/statuspane.js" line="32" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Bring back up in IntelliJ&#10;&#10;Replace local includes with bower includes&#10;Replace xdproxy with PHP proxy from https://github.com/Esri/resource-proxy&#10;Fix boardgameprices.com search URL&#10;Modify slugging to remove articles and prepositions&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/accessutil.js" afterPath="$PROJECT_DIR$/js/accessutil.js" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/centerpane.js" afterPath="$PROJECT_DIR$/js/centerpane.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gameinfo.js" afterPath="$PROJECT_DIR$/js/gameinfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gviz.js" afterPath="$PROJECT_DIR$/js/gviz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/headerpane.js" afterPath="$PROJECT_DIR$/js/headerpane.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/relateditemmap.js" afterPath="$PROJECT_DIR$/js/relateditemmap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -36,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33563218">
-              <caret line="22" column="80" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+            <state vertical-scroll-proportion="-18.115385">
+              <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -49,29 +46,17 @@
       <file leaf-file-name="gameinfo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.470588">
-              <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accessutil.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/accessutil.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gamelists.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/gamelists.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding>
+                <element signature="e#1420#4426#0" expanded="false" />
+                <element signature="e#4436#4702#0" expanded="false" />
+                <element signature="e#4756#6191#0" expanded="false" />
+                <element signature="e#11531#17895#0" expanded="false" />
+                <element signature="e#17944#18409#0" expanded="false" />
+                <element signature="e#18450#19933#0" expanded="false" />
+                <element signature="e#19986#21366#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,29 +64,40 @@
       <file leaf-file-name="centerpane.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/centerpane.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.970588">
-              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-8.529411">
+              <caret line="275" column="95" selection-start-line="275" selection-start-column="95" selection-end-line="275" selection-end-column="95" />
+              <folding>
+                <element signature="e#9669#11923#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gamecategories.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/gamecategories.js">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html-frag/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-              <folding />
+            <state vertical-scroll-proportion="-31.384615">
+              <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="45" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ratinggraph.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/ratinggraph.js">
+      <file leaf-file-name="gviz.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/gviz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="20" />
-              <folding />
+            <state vertical-scroll-proportion="0.39174107">
+              <caret line="289" column="53" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
+              <folding>
+                <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
+                <element signature="n#!!block;n#DiffGauge#0;n#!!block;n#GoogleVisualizations#0" expanded="false" />
+                <element signature="n#!!block;n#NPPollChart#0;n#!!block;n#GoogleVisualizations#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,11 +132,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/js/gamelists.js" />
-        <option value="$PROJECT_DIR$/js/centerpane.js" />
         <option value="$PROJECT_DIR$/js/gamecategories.js" />
         <option value="$PROJECT_DIR$/js/accessutil.js" />
+        <option value="$PROJECT_DIR$/js/relateditemmap.js" />
         <option value="$PROJECT_DIR$/js/gameinfo.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/html-frag/main.html" />
+        <option value="$PROJECT_DIR$/js/centerpane.js" />
+        <option value="$PROJECT_DIR$/js/gviz.js" />
       </list>
     </option>
   </component>
@@ -325,20 +324,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brgjq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brgjq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -774,7 +759,7 @@
       <option name="number" value="Default" />
       <updated>1387842966589</updated>
       <workItem from="1428283466616" duration="13572000" />
-      <workItem from="1428305143293" duration="12858000" />
+      <workItem from="1428305143293" duration="27262000" />
     </task>
     <task id="LOCAL-00001" summary="Just trying to get started">
       <created>1387844918546</created>
@@ -872,15 +857,21 @@
       <option name="project" value="LOCAL" />
       <updated>1428331285201</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Merge back popup charts for rating, difficulty and age.&#10;&#10;Permit making a jquery object from a response by stripping out scripts&#10;">
+      <created>1428350395698</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1428350395698</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26430000" />
+    <option name="totallyTimeSpent" value="40834000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="0" width="1411" height="1054" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -896,7 +887,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22900215" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22900215" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615715" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -942,7 +933,8 @@
     <MESSAGE value="Pure,js (for some things) and game history navigation&#10;&#10;* Added game history status in south pane&#10;* Pure.js for game information, although not for search lists&#10;* Can't do pure for the related items since the tree is too complex&#10;* Dropdown for history on forward and back (homegrown timer implementation)&#10;* Factored out display of lists so that the history dropdown could use the same code as the list pane" />
     <MESSAGE value="Implement general Google Visualization wrapper using queued requests&#10;&#10;* GoogleVisualization class centralizes calls to Google Visualization functions&#10;* Rather than invoking classes directly, multiple GV classes can be embedded and their calls are serialized using a jquery function queue&#10;* Add proxy.php to the project&#10;* Update proxy.php to identify BGG redirects and change them to reinvocations of proxy with the proper address" />
     <MESSAGE value="Bring back up in IntelliJ&#10;&#10;Replace local includes with bower includes&#10;Replace xdproxy with PHP proxy from https://github.com/Esri/resource-proxy&#10;Fix boardgameprices.com search URL&#10;Modify slugging to remove articles and prepositions&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bring back up in IntelliJ&#10;&#10;Replace local includes with bower includes&#10;Replace xdproxy with PHP proxy from https://github.com/Esri/resource-proxy&#10;Fix boardgameprices.com search URL&#10;Modify slugging to remove articles and prepositions&#10;" />
+    <MESSAGE value="Merge back popup charts for rating, difficulty and age.&#10;&#10;Permit making a jquery object from a response by stripping out scripts&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge back popup charts for rating, difficulty and age.&#10;&#10;Permit making a jquery object from a response by stripping out scripts&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,6 +1163,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,38 +1248,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.715311">
-          <caret line="165" column="56" selection-start-line="165" selection-start-column="53" selection-end-line="165" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/main-jq.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75598085">
           <caret line="127" column="56" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gviz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.153457">
-          <caret line="19" column="15" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="15" />
-          <folding>
-            <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7200675">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1299,25 +1264,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+    <entry file="file://$PROJECT_DIR$/js/relateditemmap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.970588">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamecategories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.85379463">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/accessutil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.6964286">
           <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
           <folding />
         </state>
@@ -1325,25 +1282,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/gamelists.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-2.5044644">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gamecategories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15178572">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.470588">
-          <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#1420#4426#0" expanded="false" />
+            <element signature="e#4436#4702#0" expanded="false" />
+            <element signature="e#4756#6191#0" expanded="false" />
+            <element signature="e#11531#17895#0" expanded="false" />
+            <element signature="e#17944#18409#0" expanded="false" />
+            <element signature="e#18450#19933#0" expanded="false" />
+            <element signature="e#19986#21366#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33563218">
-          <caret line="22" column="80" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+        <state vertical-scroll-proportion="-18.115385">
+          <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-31.384615">
+          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.529411">
+          <caret line="275" column="95" selection-start-line="275" selection-start-column="95" selection-end-line="275" selection-end-column="95" />
+          <folding>
+            <element signature="e#9669#11923#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gviz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39174107">
+          <caret line="289" column="53" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
+            <element signature="n#!!block;n#DiffGauge#0;n#!!block;n#GoogleVisualizations#0" expanded="false" />
+            <element signature="n#!!block;n#NPPollChart#0;n#!!block;n#GoogleVisualizations#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

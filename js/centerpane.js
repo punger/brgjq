@@ -271,6 +271,11 @@ function CenterPane(parentpaneselector) {
             gi.ratingDetail(gameNo, 'collection/weightgraph', function(ratingmap){
                 gv.reinit("weightpoll").update("weightpoll", ratingmap, "gamestat-difficulty-chart");
             });
+            gi.ratinghistory(gameNo, function(histstats) {
+                console.log('Got '+histstats.length+' history items');
+                gv.reinit("rathist").update("rathist", histstats, "gamestat-ratinghistory-chart");
+
+            });
         });
 
     };

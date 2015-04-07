@@ -260,6 +260,89 @@ function GoogleVisualizations () {
         };
 
     }
+    function RatingsHistoryChart () {
+        var gvnrathist;
+        var initialized = false;
+        var currtarget;
+
+        var options = {
+            chart: {
+                title: 'Ratings over time'
+            },
+            width: 900,
+            height: 500
+        };
+
+        var drawrathist = function (rhdata) {
+
+            // Update and draw the visualization.
+            try {
+                var data = new google.visualization.DataTable();
+                data.addColumn('date', 'Date');
+                data.addColumn('number', 'Average');
+                data.addColumn('number', 'BGGAvg');
+                rhdata.forEach(function (cur, index, arr) {
+                    var d = new Date(cur.date.slice(0,4), parseInt(cur.date.slice(4,6))-1, cur.date.slice(6,8));
+                    var avg = parseFloat(cur.average);
+                    var bavg =  parseFloat(cur.bayesaverage);
+                    if (avg > 0) {
+                        if (bavg === 0)
+                            data.addRow([d, avg, null]);
+                        else
+                            data.addRow([d, avg, bavg]);
+                    }
+                });
+                var $root = $('#'+currtarget);
+                $root.addClass('chartdisplay');
+                gvnrathist.draw(data, options);
+                $root.removeClass('chartdisplay');
+            } catch (e) {
+                alert('ratings history chart error: '+ e+'\nData:\n'+JSON.stringify(rhdata));
+            }
+
+        };
+
+        return {
+            "initialize": function (targetid) {
+                debug('rh init');
+                q.queue(function (next) {
+                    debug('rh init 2');
+                    if (!initialized) {
+                        currtarget = targetid;
+                        gvnrathist = new google.charts.Line(document.getElementById(targetid));
+                        initialized = true;
+                    }
+                    next();
+                });
+            },
+            "draw": function(data, targetid) {
+                if (!this.validateinput(data)) {
+                    console.error("Invalid data to ratings history="+data);
+                    return;
+                }
+                debug('rh draw 1');
+                this.initialize(targetid);
+                q.queue(function (next) {
+                    debug('rh draw 2');
+                    drawrathist(data);
+                    next();
+                });
+            },
+            "validateinput": function (data) {
+                if (typeof data === "object") {
+                    if (data.length > 0) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            "reinit": function () {
+                initialized = false;
+            },
+            "name": "rathist"
+        };
+
+    }
 
 //    q.queue(function (next) {
 //        debug("google load start");
@@ -292,6 +375,8 @@ function GoogleVisualizations () {
     vizs[npp.name] = npp;
     var wp = new AgePollChart('Weight', 'Weight', 'weightpoll');
     vizs[wp.name] = wp;
+    var rh = new RatingsHistoryChart();
+    vizs[rh.name] = rh;
     debug("GV objs created");
     gvizinited = true;
 

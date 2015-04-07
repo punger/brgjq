@@ -60,6 +60,11 @@ var relateditemmap = {
         "listtype": "none",
         "relatedprompt" : 'Contains: ',
         "relatedtitle" : 'Containing '
+    },
+    "boardgameintegration": {
+        "listtype": "none",
+        "relatedprompt" : 'Integrates: ',
+        "relatedtitle" : 'Integrating'
     }
 
 
