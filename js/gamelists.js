@@ -43,24 +43,10 @@ function GameLister() {
                     "year": year
                 };
             },
-//            $additem: function (gameNo, name, year) {
-//                gamecount++;
-//                var $curritem = $("<item/>", {
-//                    id: gameNo
-//                });
-//                $curritem.append($("<name/>", {
-//                    value: name
-//                }));
-//                $curritem.append($('<yearpublished/>', {
-//                    value: year
-//                }));
-//                $gamelist.append($curritem);
-//
-//            },
+
             $getparent: function (cb) {
                 loadtemplate(function() {
-//                    var me = asObj();
-//                    $jqtemplate.render(me, glDir);
+
                     var $items = $jqtemplate.find('items');
                     $items.attr('total', gamecount);
                     var $item = $jqtemplate.find('item');
@@ -74,10 +60,6 @@ function GameLister() {
                     });
                     cb($jqtemplate);
                 });
-//                var $gamelist = $('<items/>');
-//                $gamelist.attr("total", gamecount);
-//                $dummy.append($gamelist);
-//                return $dummy;
             },
             getparent: function () {
                 return asObj();
@@ -88,12 +70,8 @@ function GameLister() {
     return {
         gamesearch: function (query, cb) {
             $.get("/PHP/proxy.php",
-                'http://www.rpggeek.com/xmlapi2/search?type=boardgame&query='+query.replace(" ", "+"),
-                //{
-                //    type: "boardgame",
-                //    query: query.replace(" ", "+"),
-                //    destination: 'http://www.rpggeek.com/xmlapi2/search'
-                //},
+                'http://www.rpggeek.com/xmlapi2/search?type=boardgame&query='+
+                query.replace(" ", "+"),
                 function (response) {
                     var itemlist = new BgList();
                     var $respJq = au.$xResp(response);
@@ -115,12 +93,6 @@ function GameLister() {
             // http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank=222
             $.get("/PHP/proxy.php",
                 'http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank='+rankid,
-                //{
-                //    sort: "rank",
-                //    rankobjectid: 1,
-                //    rank: rankid,
-                //    destination: 'http://rpggeek.com/browse/boardgame'
-                //},
                 function (response) {
                     var $rankPage = $(response);
                     var $colltable = $rankPage.find("#maincontent #main_content #collection #collectionitems #row_");
@@ -156,36 +128,19 @@ function GameLister() {
             var view = (lt === "person") ? ftype : 'boardgames';
             $.get("/PHP/proxy.php",
                 'http://boardgamegeek.com/geekitem.php' +
-                '?instanceid=5'+
-                '&objecttype='+objtype +
-                '&objectid='+fid+
-                '&subtype='+ftype+
-                '&pageid='+page+
-                '&sort=rank'+
-                '&view='+view+
-                '&modulename=linkeditems'+
-                '&callback='+
-                '&showcount='+count+
-                '&filters[categoryfilter]=' +
-                '&filters[mechanicfilter]=' +
-                '&action=linkeditems&ajax=1',
-                //{
-                //    destination:  'http://boardgamegeek.com/geekitem.php',
-                //    instanceid: 5,      // not relevant?
-                //    objecttype: objtype,
-                //    objectid: fid,
-                //    subtype: ftype,
-                //    pageid: page,
-                //    sort: 'rank',
-                //    view: view,
-                //    modulename: 'linkeditems',
-                //    callback: '',
-                //    showcount: count,
-                //    "filters[categoryfilter]": '',
-                //    "filters[mechanicfilter]": '',
-                //    action: 'linkeditems',
-                //    ajax: 1
-                //},
+                    '?instanceid=5'+
+                    '&objecttype='+objtype +
+                    '&objectid='+fid+
+                    '&subtype='+ftype+
+                    '&pageid='+page+
+                    '&sort=rank'+
+                    '&view='+view+
+                    '&modulename=linkeditems'+
+                    '&callback='+
+                    '&showcount='+count+
+                    '&filters[categoryfilter]=' +
+                    '&filters[mechanicfilter]=' +
+                    '&action=linkeditems&ajax=1',
                 function(response) {
                     var $rankPage = $(response);
                     var $colltable = $rankPage.find(".innermoduletable > tbody > tr");

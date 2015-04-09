@@ -228,8 +228,8 @@ function CenterPane(parentpaneselector) {
                 var gamename = $(vidlistobj.videos[0].objectlink).text();
                 gi.hotvideos(gameNo, gamename, function(vidinfo) {
                     pseudo_vidinfo = vidinfo;
-		    // if there are more videos than fit on the first page, 
-		    // then extend with a dummy video that goes to bgg
+                    // if there are more videos than fit on the first page,
+                    // then extend with a dummy video that goes to bgg
                     if (vidinfo.length < vidlistobj.videos.length) {
                         vidlistobj.videos.slice(0, vidinfo.length);
                         vidlistobj.videos[vidinfo.length] = {
@@ -271,11 +271,17 @@ function CenterPane(parentpaneselector) {
             gi.ratingDetail(gameNo, 'collection/weightgraph', function(ratingmap){
                 gv.reinit("weightpoll").update("weightpoll", ratingmap, "gamestat-difficulty-chart");
             });
-            gi.ratinghistory(gameNo, function(histstats) {
-                console.log('Got '+histstats.length+' history items');
-                gv.reinit("rathist").update("rathist", histstats, "gamestat-ratinghistory-chart");
+            var ratingsGraph = gv.reinit("rathist");
+            gi.ratinghistory(
+                gameNo,
+                function(histstats) {
+                    console.log('Got '+histstats.length+' history items so far');
+                    ratingsGraph.update("rathist", histstats, "gamestat-ratinghistory-chart");
+                },
+                function(finalstats) {
 
-            });
+                }
+            );
         });
 
     };

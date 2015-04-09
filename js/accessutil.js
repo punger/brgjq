@@ -78,6 +78,7 @@ function AccessUtil  () {
                 .replace(/\ba\b/gi, '-')
                 .replace(/\ban\b/gi, '-')
                 .replace(/-+/g, '-')    // collapse dashes
+                .replace(/-$/, '')      // remove dash at the end
                 .replace(/^-/, '');     // remove a dash at the beginning
 
             return str.substr(0, 50);

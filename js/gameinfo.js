@@ -6,19 +6,33 @@ function GameInfo () {
     var au;
     au = new AccessUtil();
     var PAGESIZE=100;
+    var MILLISINADAY=86400000;
     var outstanding = 0;
+    var totalentries = -1;
 
-    var gethist100 = function(gameno, page, cbend) {
+    var daysuntilnow = function(start) {
+        var d = new Date(start.slice(0,4), parseInt(start.slice(4,6))-1, start.slice(6,8));
+        return (Date.now() - d.getTime()) / MILLISINADAY;
+    };
+
+    var gethistPage = function(gameno, page, cbend) {
         outstanding++;
         var statarray = [];
-        $.get("/PHP/proxy.php",
-            'http://www.rpggeek.com/xmlapi2/thing?id='+gameno+'&stats=1&historical=1' +
-            '&pagesize='+PAGESIZE+'&page='+page,
-            function (response) {
+        $.ajax({
+            url: "/PHP/proxy.php",
+            data: 'http://www.rpggeek.com/xmlapi2/thing?id='+gameno+'&stats=1&historical=1' +
+                '&pagesize='+PAGESIZE+'&page='+page,
+            dataType: 'html',
+            timeout: 60000,
+            success: function (response) {
                 var $respJq = au.$xResp(response);
                 var stats = $respJq.find('statistics ratings');
-                if (stats.length >= PAGESIZE) {
-                    gethist100(gameno, page+1, cbend);
+                if (page === 1 && stats.length > 0) {
+                    var startdate = $(stats[0]).attr('date');
+                    totalentries = daysuntilnow(startdate);
+                    for (var iPage = 2; iPage < (totalentries - 1) / PAGESIZE + 1; iPage++) {
+                        gethistPage(gameno, iPage, cbend);
+                    }
                 }
                 stats.each(function(index, element) {
                     statarray[index] = {};
@@ -28,15 +42,15 @@ function GameInfo () {
                     statarray[index].average = $this.find('average').attr('value');
                     statarray[index].bayesaverage = $this.find('bayesaverage').attr('value');
                     statarray[index].rank = $this.find('ranks #1').attr('value');
-
                 });
                 cbend(statarray, page);
-
             },
-            "html"
+            error: function (jqXHR, textStatus,  errorThrown) {
+                var rh = jqXHR.getAllResponseHeaders();
+                cbend(statarray, page);
+            }
 
-        );
-
+        });
 
     };
 
@@ -417,7 +431,7 @@ function GameInfo () {
             dest += gameno + '/';
             dest += au.slugify(gamename);
             $.get("/PHP/proxy.php",
-                dest+'?sort=hot&date=alltime&galler=&B1=Go',
+                dest+'?sort=hot&date=alltime&gallery=&B1=Go',
                 //{
                 //    destination:  dest,
                 //    sort: 'hot',
@@ -442,15 +456,16 @@ function GameInfo () {
                 'html'
             );
         },
-        ratinghistory: function(gameno, cb) {
+        ratinghistory: function(gameno, cbinterim, cbend) {
             var statarray = [];
-            gethist100(gameno, 1, function (statpiece, pagenum) {
+            gethistPage(gameno, 1, function (statpiece, pagenum) {
                 statpiece.forEach(function (cur, index, arr) {
                     statarray[PAGESIZE * (pagenum - 1) + index] = cur;
                 });
+                cbinterim(statarray);
                 outstanding--;
                 if (outstanding <= 0) {
-                    cb(statarray);
+                    cbend(statarray);
                 }
             });
         }

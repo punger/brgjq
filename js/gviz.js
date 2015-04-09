@@ -123,7 +123,7 @@ function GoogleVisualizations () {
                 });
                 gvagepoll.draw(data, options);
             } catch (e) {
-                alert('age poll chart error: '+ e+'\nData:\n'+JSON.stringify(apdata));
+                console.error('age poll chart error: '+ e+'\nData:\n'+JSON.stringify(apdata));
             }
 
         };
@@ -214,7 +214,7 @@ function GoogleVisualizations () {
                 gvnppoll.draw(data, options);
                 $root.removeClass('chartdisplay');
             } catch (e) {
-                alert('num players poll chart error: '+ e+'\nData:\n'+JSON.stringify($nppdata));
+                console.error('num players poll chart error: '+ e+'\nData:\n'+JSON.stringify($nppdata));
             }
 
         };
@@ -264,40 +264,87 @@ function GoogleVisualizations () {
         var gvnrathist;
         var initialized = false;
         var currtarget;
+        var $ratingtooltiptemplate;
 
         var options = {
             chart: {
                 title: 'Ratings over time'
             },
+            tooltip: {isHtml: true},
             width: 900,
-            height: 500
+            height: 500,
+            hAxis: {format: "MMM yyyy"},
+            allowHtml: true
         };
 
+        q.queue(function(next) {
+            debug('rh template');
+            $.get('html-frag/ratingtooltip.html',
+                function(r) {
+                    $ratingtooltiptemplate =  $(r);
+                    next();
+                }
+            );
+        });
+
+
         var drawrathist = function (rhdata) {
+
+            //var loadtemplate = function(templatefile, cb) {
+            //    $.get('html-frag/'+templatefile, function(r) {
+            //        var $jqtemplate = $(r);
+            //        if (cb) {
+            //            cb($jqtemplate);
+            //        }
+            //    });
+            //};
+            //
+            var gettooltip = function (date, value, ratings, type) {
+                //return '<span>yay</span>span>';
+                var $tt = $ratingtooltiptemplate.clone();
+                $tt.find('.rating-tooltip-date').text(date.toLocaleDateString('en-US'));
+                $tt.find('.rating-tooltip-type').text(type);
+                $tt.find('.rating-tooltip-numraters-value').text(ratings);
+                $tt.find('.rating-tooltip-value').text(value.toFixed(2));
+                return $tt[0].outerHTML;
+            };
 
             // Update and draw the visualization.
             try {
                 var data = new google.visualization.DataTable();
-                data.addColumn('date', 'Date');
-                data.addColumn('number', 'Average');
-                data.addColumn('number', 'BGGAvg');
+                data.addColumn({"label": "Date", "type": 'date', "pattern": "M/d/yyyy"});
+                data.addColumn({"label": "Average", "type": 'number', "pattern": "#0.00"});
+                //data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
+                data.addColumn({"label": "BGGAvg", "type": 'number', "pattern": "#0.00"});
+                data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
                 rhdata.forEach(function (cur, index, arr) {
                     var d = new Date(cur.date.slice(0,4), parseInt(cur.date.slice(4,6))-1, cur.date.slice(6,8));
                     var avg = parseFloat(cur.average);
                     var bavg =  parseFloat(cur.bayesaverage);
                     if (avg > 0) {
-                        if (bavg === 0)
-                            data.addRow([d, avg, null]);
-                        else
-                            data.addRow([d, avg, bavg]);
+                        //var avgtt = gettooltip(d, avg, cur.usersrated, 'Average');
+                        if (bavg === 0) {
+                            data.addRow([d, { v: avg, f: avg.toFixed(2)}, null, '<span>yay</span>']);
+                            //data.addRow([d, avg, avgtt, null, null]);
+                        }
+                        else {
+                            var bavgtt = gettooltip(d, bavg, cur.usersrated, 'BBGAvg');
+                            data.addRow([d, { v: avg, f: avg.toFixed(2)}, { v: bavg, f: bavg.toFixed(2)}, bavgtt]);
+                            //data.addRow([d, avg, avgtt, bavg, bavgtt]);
+                        }
                     }
                 });
+                //var dateFormatter = new google.visualization.DateFormat("M/d/yyy");
+                //dateFormatter.format(data, 0);
+                //var ratingsFormatter = new google.visualization.NumberFormat("#0.00");
+                //ratingsFormatter.format(data, 1);
+                //ratingsFormatter.format(data, 2);
                 var $root = $('#'+currtarget);
                 $root.addClass('chartdisplay');
                 gvnrathist.draw(data, options);
                 $root.removeClass('chartdisplay');
             } catch (e) {
-                alert('ratings history chart error: '+ e+'\nData:\n'+JSON.stringify(rhdata));
+                console.error('ratings history chart error: '+ e+'\nData:\n'+JSON.stringify(rhdata));
             }
 
         };
@@ -309,7 +356,7 @@ function GoogleVisualizations () {
                     debug('rh init 2');
                     if (!initialized) {
                         currtarget = targetid;
-                        gvnrathist = new google.charts.Line(document.getElementById(targetid));
+                        gvnrathist = new google.visualization.LineChart(document.getElementById(targetid));
                         initialized = true;
                     }
                     next();
@@ -343,27 +390,6 @@ function GoogleVisualizations () {
         };
 
     }
-
-//    q.queue(function (next) {
-//        debug("google load start");
-//        google.load("visualization", "1",
-//            {
-//                "packages": ["gauge", "corechart"],
-//                "callback": q.queue(function() {
-//                    debug("GV onload");
-//                    var dg =  new DiffGauge();
-//                    vizs[dg.name] = dg;
-//                    var ap = new AgePollChart();
-//                    vizs[ap.name] = ap;
-//                    var npp = new NPPollChart();
-//                    vizs[npp.name] = npp;
-//                    debug("GV objs created");
-//                    gvizinited = true;
-//                    next();
-//                })
-//            });
-//    });
-
 
     var dg = new DiffGauge();
     vizs[dg.name] = dg;
