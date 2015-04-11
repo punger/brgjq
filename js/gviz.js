@@ -7,11 +7,11 @@ function GoogleVisualizations () {
     var gvizinited = false;
     var vizs = [];
     var debug = function (msg) {
-        if (q) {
-            console.log('At '+msg+', Queue has '+ q.queue().length+' items\nQ='+ q.queue());
-        } else {
-            console.log('At '+msg+', no q');
-        }
+        //if (q) {
+        //    console.log('At '+msg+', Queue has '+ q.queue().length+' items\nQ='+ q.queue());
+        //} else {
+        //    console.log('At '+msg+', no q');
+        //}
     };
 
     function DiffGauge () {
@@ -264,7 +264,10 @@ function GoogleVisualizations () {
         var gvnrathist;
         var initialized = false;
         var currtarget;
-        var $ratingtooltiptemplate;
+        //var $ratingtooltiptemplate;
+        var ratingttstring;
+        var tags = ['type', 'date', 'raters', 'rank', 'value'];
+        var template = [];
 
         var options = {
             chart: {
@@ -281,68 +284,200 @@ function GoogleVisualizations () {
             debug('rh template');
             $.get('html-frag/ratingtooltip.html',
                 function(r) {
-                    $ratingtooltiptemplate =  $(r);
+                    var dollarloc = 0;
+                    var remaining = r;
+                    var piececount = 0;
+                    while (remaining.length > 0) {
+                        var nextloc = remaining.indexOf('$$');
+                        if (nextloc < 0) {
+                            template[piececount++] =
+                            {
+                                'type': 'frag',
+                                'val': remaining
+                            };
+                            remaining = '';
+                        } else {
+                            template[piececount++] =
+                            {
+                                'type': 'frag',
+                                'val': remaining.substring(0, nextloc)
+                            };
+                            remaining = remaining.substr(nextloc+2);
+                            var tag = "";
+                            tags.forEach(function(cur, index, arr) {
+                                if (remaining.substring(0, cur.length) === cur) {
+                                    template[piececount++] =
+                                    {
+                                        'type': 'val',
+                                        'val': cur
+                                    };
+                                    tag = cur;
+                                }
+                            });
+                            remaining = remaining.substr(tag.length);
+                        }
+                    }
+                    ratingttstring = r;
+                    //$ratingtooltiptemplate =  $(r);
                     next();
                 }
             );
         });
 
+        var gettooltip = function (date, value, ratings, rank, type) {
+            //var tt = ratingttstring.substr(0);
+            //var tt = new String(ratingttstring);
+            var tt = '';
+            for (var i = 0; i < template.length; i++) {
+                var t = template[i];
+                if (t.type === 'frag') {
+                    tt += t.val;
+                } else {
+                    switch (t.val) {
+                        case 'type':   tt += type; break;
+                        case 'date':   tt += date.toLocaleDateString('en-US'); break;
+                        case 'raters': tt += ratings; break;
+                        case 'rank':   tt += rank; break;
+                        case 'value':  tt += value.toFixed(2); break;
+                    }
+                }
+            }
+            return tt;
+            //return ratingttstring
+            //    .replace('$$type', type)
+            //    .replace('$$date', date.toLocaleDateString('en-US'))
+            //    .replace('$$raters', ratings)
+            //    .replace('$$rank', rank)
+            //    .replace('$$value', value.toFixed(2))
+            //;
+            //return '<span>yay</span>';
+            /*
+            var $tt = $ratingtooltiptemplate.clone();
+            $tt.find('.rating-tooltip-date').text(date.toLocaleDateString('en-US'));
+            $tt.find('.rating-tooltip-type').text(type);
+            $tt.find('.rating-tooltip-numraters-value').text(ratings);
+            $tt.find('.rating-tooltip-rank').text(rank);
+            $tt.find('.rating-tooltip-value').text(value.toFixed(2));
+            return $tt[0].outerHTML;
+            */
+        };
+        var composeDataTable = function (rhdata) {
+            var cols = [
+                {"id": "rhdate", "label": "Date", "type": "date", "pattern": "M\/d\/yy"},
+                {"id": "rhavg", "label": "Average", "type": 'number', "pattern": "#0.00"},
+                //{"id": "rhttp", 'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
+                {"id": "rhbavg", "label": "BGGAvg", "type": 'number', "pattern": "#0.00"},
+                //{"id": "rhbttp", 'type': 'string', 'role': 'tooltip', 'p': {'html': true, "role": "tooltip"}}
+                {"id": "rhraters", "label": "Raters", "type": 'string'},
+                {"id": "rhrank", "label": "Rank", "type": 'string'}
 
-        var drawrathist = function (rhdata) {
-
-            //var loadtemplate = function(templatefile, cb) {
-            //    $.get('html-frag/'+templatefile, function(r) {
-            //        var $jqtemplate = $(r);
-            //        if (cb) {
-            //            cb($jqtemplate);
-            //        }
-            //    });
-            //};
-            //
-            var gettooltip = function (date, value, ratings, type) {
-                //return '<span>yay</span>span>';
-                var $tt = $ratingtooltiptemplate.clone();
-                $tt.find('.rating-tooltip-date').text(date.toLocaleDateString('en-US'));
-                $tt.find('.rating-tooltip-type').text(type);
-                $tt.find('.rating-tooltip-numraters-value').text(ratings);
-                $tt.find('.rating-tooltip-value').text(value.toFixed(2));
-                return $tt[0].outerHTML;
+            ];
+            var rows = [];
+            var rowcount = 0;
+            var thinner = (rhdata.length / 500 + 1).toFixed(0);
+            rhdata.forEach(function (cur, index, arr) {
+                if (thinner === 1 || index % thinner === 0) {
+                    var d = new Date(cur.date.slice(0, 4), parseInt(cur.date.slice(4, 6)) - 1, cur.date.slice(6, 8));
+                    var avg = parseFloat(cur.average);
+                    var bavg = parseFloat(cur.bayesaverage);
+                    if (avg > 0) {
+//                        var avgtt = gettooltip(d, avg, cur.usersrated, cur.rank, 'Average');
+                        var c;
+                        if (bavg === 0) {
+                            c = {
+                                "c": [
+                                    {"v": d},
+                                    {"v": avg, "f": avg.toFixed(2)},
+                                    null,
+                                    {"v": cur.usersrated},
+                                    {"v": cur.rank}
+                                ]
+                            };
+                        }
+                        else {
+//                            var bavgtt = gettooltip(d, bavg, cur.usersrated, cur.rank, 'BBGAvg');
+                            c = {
+                                "c": [
+                                    {"v": d},
+                                    {"v": avg, "f": avg.toFixed(2)},
+                                    {"v": bavg, "f": avg.toFixed(2)},
+                                    {"v": cur.usersrated},
+                                    {"v": cur.rank}
+                                ]
+                            };
+                        }
+                        rows[rowcount] = c;
+                        rowcount++;
+                    }
+                };
+            });
+            return {
+                "cols": cols, "rows": rows
             };
+
+        };
+        //var gettooltip = function (date, value, ratings, rank, type) {
+        var calctooltip = function(dt, row, type) {
+            return gettooltip(
+                dt.getValue(row, 0),
+                type === "Average" ? dt.getValue(row, 1) : dt.getValue(row,2),
+                dt.getValue(row, 3),
+                dt.getValue(row, 4),
+                type
+            );
+        };
+        var drawrathist = function (rhdata) {
 
             // Update and draw the visualization.
             try {
-                var data = new google.visualization.DataTable();
-                data.addColumn({"label": "Date", "type": 'date', "pattern": "M/d/yyyy"});
-                data.addColumn({"label": "Average", "type": 'number', "pattern": "#0.00"});
-                //data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-                data.addColumn({"label": "BGGAvg", "type": 'number', "pattern": "#0.00"});
-                data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-                rhdata.forEach(function (cur, index, arr) {
-                    var d = new Date(cur.date.slice(0,4), parseInt(cur.date.slice(4,6))-1, cur.date.slice(6,8));
-                    var avg = parseFloat(cur.average);
-                    var bavg =  parseFloat(cur.bayesaverage);
-                    if (avg > 0) {
-                        //var avgtt = gettooltip(d, avg, cur.usersrated, 'Average');
-                        if (bavg === 0) {
-                            data.addRow([d, { v: avg, f: avg.toFixed(2)}, null, '<span>yay</span>']);
-                            //data.addRow([d, avg, avgtt, null, null]);
+                var starttime = Date.now();
+                var dt = composeDataTable(rhdata);
+                var lasttime = Date.now();
+                console.log("Took "+(lasttime - starttime) + "ms to compose data");
+                var data = new google.visualization.DataTable(dt);
+                var newtime = Date.now();
+                console.log("Took "+(newtime - lasttime) + "ms to instantiate table");
+                lasttime = newtime;
+                var dv = new google.visualization.DataView(data);
+                dv.setColumns(
+                    [0, 1,
+                        {
+                            "calc": function(dt, row) {
+                                //return '<span>yay</span>>';
+                                return calctooltip(dt, row, "Average");
+                            },
+                            "type": "string",
+                            "properties": {
+                                "html": true,
+                                "role": "tooltip"
+                            },
+                            "role": "tooltip"
+                        },
+                    2,
+                        {
+                            "calc": function(dt, row) {
+                                if (dt.getValue(row, 2)) {
+                                    return calctooltip(dt, row, "BBGAvg");
+                                }
+                                return null;
+                            },
+                            "type": "string",
+                            "properties": {
+                                "html": true,
+                                "role": "tooltip"
+                            },
+                            "role": "tooltip"
                         }
-                        else {
-                            var bavgtt = gettooltip(d, bavg, cur.usersrated, 'BBGAvg');
-                            data.addRow([d, { v: avg, f: avg.toFixed(2)}, { v: bavg, f: bavg.toFixed(2)}, bavgtt]);
-                            //data.addRow([d, avg, avgtt, bavg, bavgtt]);
-                        }
-                    }
-                });
-                //var dateFormatter = new google.visualization.DateFormat("M/d/yyy");
-                //dateFormatter.format(data, 0);
-                //var ratingsFormatter = new google.visualization.NumberFormat("#0.00");
-                //ratingsFormatter.format(data, 1);
-                //ratingsFormatter.format(data, 2);
+                    ]
+                );
+                //console.log("Ratings history data table\n"+data.toJSON());
                 var $root = $('#'+currtarget);
                 $root.addClass('chartdisplay');
-                gvnrathist.draw(data, options);
+                gvnrathist.draw(dv, options);
                 $root.removeClass('chartdisplay');
+                newtime = Date.now();
+                console.log("Took "+(newtime - lasttime) + "ms to draw the chart with "+ dt.rows.length+" rows");
+                console.log("Took "+(newtime - starttime) + "ms to draw entire ratings chart");
             } catch (e) {
                 console.error('ratings history chart error: '+ e+'\nData:\n'+JSON.stringify(rhdata));
             }
