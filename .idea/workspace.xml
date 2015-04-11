@@ -4,12 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/js/statuspane.js" line="32" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html-frag/ratingtooltip-jqbak.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+    <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="Rating history speedup&#10;&#10;Turns out templating, string replacement, they're all too slow, so I had to do something homegrown.&#10;Google visualizations DataView renders everything at the start so it doesn't get around the problem&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/centerpane.js" afterPath="$PROJECT_DIR$/js/centerpane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gameinfo.js" afterPath="$PROJECT_DIR$/js/gameinfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gviz.js" afterPath="$PROJECT_DIR$/js/gviz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/ratingtooltip.html" afterPath="$PROJECT_DIR$/html-frag/ratingtooltip.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brgjq.iws" />
@@ -31,22 +30,34 @@
     <favorites_list name="brgjq" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42712066">
+    <splitter split-orientation="horizontal" split-proportion="0.47371566">
       <split-first>
         <leaf>
           <file leaf-file-name="gameinfo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+                  <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
                   <folding>
-                    <element signature="e#2176#5182#0" expanded="false" />
-                    <element signature="e#5192#5458#0" expanded="false" />
-                    <element signature="e#12287#18651#0" expanded="false" />
-                    <element signature="e#18700#19165#0" expanded="false" />
-                    <element signature="e#19206#20689#0" expanded="false" />
-                    <element signature="e#20742#22123#0" expanded="false" />
+                    <element signature="e#2144#5150#0" expanded="false" />
+                    <element signature="e#5160#5426#0" expanded="false" />
+                    <element signature="e#5480#6915#0" expanded="false" />
+                    <element signature="e#6975#12199#0" expanded="false" />
+                    <element signature="e#12255#18619#0" expanded="false" />
+                    <element signature="e#18668#19133#0" expanded="false" />
+                    <element signature="e#19174#20657#0" expanded="false" />
+                    <element signature="e#20710#22091#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="centerpane.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.919426">
+                  <caret line="279" column="99" selection-start-line="279" selection-start-column="99" selection-end-line="279" selection-end-column="99" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -61,35 +72,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ratingtooltip-jqbak.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip-jqbak.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.576923">
-                  <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-                  <folding>
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#span#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ratingtooltip.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ratingtooltip.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5022727">
+                <state vertical-scroll-proportion="-17.0">
                   <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+          <file leaf-file-name="listpane.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/listpane.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-2.6538463">
-                  <caret line="33" column="54" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="54" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -99,11 +96,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="gviz.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="gviz.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/gviz.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.2869757">
-                  <caret line="316" column="64" selection-start-line="316" selection-start-column="64" selection-end-line="316" selection-end-column="64" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="275" column="26" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
                   <folding>
                     <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
                   </folding>
@@ -111,11 +108,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/index.html">
+          <file leaf-file-name="accessutil.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/accessutil.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.65384614">
-                  <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+                <state vertical-scroll-proportion="1.1633554">
+                  <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
                   <folding />
                 </state>
               </provider>
@@ -164,12 +161,12 @@
         <option value="$PROJECT_DIR$/html-frag/main.html" />
         <option value="$PROJECT_DIR$/js/accessutil.js" />
         <option value="$PROJECT_DIR$/js/gamelists.js" />
-        <option value="$PROJECT_DIR$/js/centerpane.js" />
-        <option value="$PROJECT_DIR$/js/gameinfo.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/less/style.less" />
         <option value="$PROJECT_DIR$/html-frag/ratingtooltip.html" />
         <option value="$PROJECT_DIR$/html-frag/ratingtooltip-jq.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/centerpane.js" />
+        <option value="$PROJECT_DIR$/js/gameinfo.js" />
         <option value="$PROJECT_DIR$/js/gviz.js" />
       </list>
     </option>
@@ -807,7 +804,7 @@
       <updated>1387842966589</updated>
       <workItem from="1428283466616" duration="13572000" />
       <workItem from="1428305143293" duration="41374000" />
-      <workItem from="1428538284801" duration="27191000" />
+      <workItem from="1428538284801" duration="39332000" />
     </task>
     <task id="LOCAL-00001" summary="Just trying to get started">
       <created>1387844918546</created>
@@ -923,11 +920,17 @@
       <option name="project" value="LOCAL" />
       <updated>1428575978222</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Rating history speedup&#10;&#10;Turns out templating, string replacement, they're all too slow, so I had to do something homegrown.&#10;Google visualizations DataView renders everything at the start so it doesn't get around the problem&#10;">
+      <created>1428728204116</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1428728204116</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82137000" />
+    <option name="totallyTimeSpent" value="94278000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1064" extended-state="6" />
@@ -996,14 +999,15 @@
     <MESSAGE value="Merge back popup charts for rating, difficulty and age.&#10;&#10;Permit making a jquery object from a response by stripping out scripts&#10;" />
     <MESSAGE value="First implementation of rating history chart&#10;" />
     <MESSAGE value="FUrther ratings history improvements&#10;&#10;Changed back from line to linechart&#10;Got tooltips working&#10;Progressive display." />
-    <option name="LAST_COMMIT_MESSAGE" value="FUrther ratings history improvements&#10;&#10;Changed back from line to linechart&#10;Got tooltips working&#10;Progressive display." />
+    <MESSAGE value="Rating history speedup&#10;&#10;Turns out templating, string replacement, they're all too slow, so I had to do something homegrown.&#10;Google visualizations DataView renders everything at the start so it doesn't get around the problem&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rating history speedup&#10;&#10;Turns out templating, string replacement, they're all too slow, so I had to do something homegrown.&#10;Google visualizations DataView renders everything at the start so it doesn't get around the problem&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="22" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1132,13 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1197,14 +1194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6514286">
           <caret line="111" column="82" selection-start-line="111" selection-start-column="82" selection-end-line="111" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/listpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1296,14 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/listitem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1327,22 +1308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="231" column="23" selection-start-line="231" selection-start-column="23" selection-end-line="231" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/less/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.23077">
@@ -1359,48 +1324,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
-          <folding>
-            <element signature="e#2176#5182#0" expanded="false" />
-            <element signature="e#5192#5458#0" expanded="false" />
-            <element signature="e#12287#18651#0" expanded="false" />
-            <element signature="e#18700#19165#0" expanded="false" />
-            <element signature="e#19206#20689#0" expanded="false" />
-            <element signature="e#20742#22123#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip-jqbak.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923">
           <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5022727">
+        <state vertical-scroll-proportion="-17.0">
           <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42045453">
+          <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17386363">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/listpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+          <folding>
+            <element signature="e#2144#5150#0" expanded="false" />
+            <element signature="e#5160#5426#0" expanded="false" />
+            <element signature="e#5480#6915#0" expanded="false" />
+            <element signature="e#6975#12199#0" expanded="false" />
+            <element signature="e#12255#18619#0" expanded="false" />
+            <element signature="e#18668#19133#0" expanded="false" />
+            <element signature="e#19174#20657#0" expanded="false" />
+            <element signature="e#20710#22091#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.919426">
+          <caret line="279" column="99" selection-start-line="279" selection-start-column="99" selection-end-line="279" selection-end-column="99" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/gviz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2869757">
-          <caret line="316" column="64" selection-start-line="316" selection-start-column="64" selection-end-line="316" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="275" column="26" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1633554">
+          <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>

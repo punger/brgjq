@@ -12,12 +12,11 @@ function GameInfo () {
 
     var daysuntilnow = function(start) {
         var d = new Date(start.slice(0,4), parseInt(start.slice(4,6))-1, start.slice(6,8));
-        return (Date.now() - d.getTime()) / MILLISINADAY;
+        return ((Date.now() - d.getTime()) / MILLISINADAY).toFixed(0);
     };
 
     var gethistPage = function(gameno, page, cbend) {
         outstanding++;
-        var statarray = [];
         $.ajax({
             url: "/PHP/proxy.php",
             data: 'http://www.rpggeek.com/xmlapi2/thing?id='+gameno+'&stats=1&historical=1' +
@@ -25,14 +24,15 @@ function GameInfo () {
             dataType: 'html',
             timeout: 60000,
             success: function (response) {
+                var statarray = [];
                 var $respJq = au.$xResp(response);
                 var stats = $respJq.find('statistics ratings');
                 if (page === 1 && stats.length > 0) {
                     var startdate = $(stats[0]).attr('date');
                     totalentries = daysuntilnow(startdate);
-                    for (var iPage = 2; iPage < (totalentries - 1) / PAGESIZE + 1; iPage++) {
-                        gethistPage(gameno, iPage, cbend);
-                    }
+                }
+                if (page * PAGESIZE < totalentries) {
+                   gethistPage(gameno, page + 1, cbend);
                 }
                 stats.each(function(index, element) {
                     statarray[index] = {};
@@ -47,7 +47,7 @@ function GameInfo () {
             },
             error: function (jqXHR, textStatus,  errorThrown) {
                 var rh = jqXHR.getAllResponseHeaders();
-                cbend(statarray, page);
+                cbend([], page);
             }
 
         });
@@ -459,10 +459,11 @@ function GameInfo () {
         ratinghistory: function(gameno, cbinterim, cbend) {
             var statarray = [];
             gethistPage(gameno, 1, function (statpiece, pagenum) {
+                if (statpiece.length === 0) debugger;
                 statpiece.forEach(function (cur, index, arr) {
                     statarray[PAGESIZE * (pagenum - 1) + index] = cur;
                 });
-                cbinterim(statarray);
+                cbinterim(statarray, pagenum);
                 outstanding--;
                 if (outstanding <= 0) {
                     cbend(statarray);

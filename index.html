@@ -82,6 +82,9 @@ $( function () {
 
     $.subscribe('layout.addclosebutton', function (_, srchbtnselector) {
 //        App.pg.addCloseBtn(srchbtnselector, 'east');  // problem with jquery.layout...
+        $(document).on('click', srchbtnselector, function () {
+            App.pg.close('east');
+        });
     });
 
     $.subscribe('layout.showmodal', function () {

@@ -272,10 +272,12 @@ function CenterPane(parentpaneselector) {
                 gv.reinit("weightpoll").update("weightpoll", ratingmap, "gamestat-difficulty-chart");
             });
             var ratingsGraph = gv.reinit("rathist");
+            var piecearray = [];
             gi.ratinghistory(
                 gameNo,
-                function(histstats) {
-                    console.log('Got '+histstats.length+' history items so far');
+                function(histstats, pagenum) {
+                    piecearray.push(pagenum);
+                    console.log('%s %0','Got '+histstats.length+' history items so far', piecearray);
                     ratingsGraph.update("rathist", histstats, "gamestat-ratinghistory-chart");
                 },
                 function(finalstats) {
