@@ -10,8 +10,12 @@ function GameInfo () {
     var outstanding = 0;
     var totalentries = -1;
 
+    var stringtodate = function(ds) {
+        return new Date(ds.slice(0,4), parseInt(ds.slice(4,6))-1, ds.slice(6,8));
+    };
+
     var daysuntilnow = function(start) {
-        var d = new Date(start.slice(0,4), parseInt(start.slice(4,6))-1, start.slice(6,8));
+        var d = stringtodate(start);
         return ((Date.now() - d.getTime()) / MILLISINADAY).toFixed(0);
     };
 
@@ -31,9 +35,6 @@ function GameInfo () {
                     var startdate = $(stats[0]).attr('date');
                     totalentries = daysuntilnow(startdate);
                 }
-                if (page * PAGESIZE < totalentries) {
-                   gethistPage(gameno, page + 1, cbend);
-                }
                 stats.each(function(index, element) {
                     statarray[index] = {};
                     var $this = $(element);
@@ -43,6 +44,10 @@ function GameInfo () {
                     statarray[index].bayesaverage = $this.find('bayesaverage').attr('value');
                     statarray[index].rank = $this.find('ranks #1').attr('value');
                 });
+                if (page * PAGESIZE < totalentries &&
+                     Date.now() - stringtodate(statarray[statarray.length - 1].date).getTime() > MILLISINADAY) {
+                   gethistPage(gameno, page + 1, cbend);
+                }
                 cbend(statarray, page);
             },
             error: function (jqXHR, textStatus,  errorThrown) {

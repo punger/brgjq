@@ -243,7 +243,7 @@ function CenterPane(parentpaneselector) {
 
                     try {
                         $("#gamestat-videos").render(vidlistobj, vidlistDirective);
-                        console.log("After render\n"+$vidparent[0]);
+                        console.log('%s %o',"After render\n",$vidparent[0]);
                     } catch (e) {
                         console.error('pure error (videos) '+e);
                     }
