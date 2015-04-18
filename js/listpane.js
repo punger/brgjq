@@ -135,6 +135,22 @@ function ListPane(parentpaneselector) {
             false);
 
     };
+    var showcollection = function (user) {
+        if (!user || !user.trim()) {
+            $.publish('statusmessage', ["No user specified"]);
+            return;
+        }
+        showgamelist(
+            "Retrieving collection ...",
+            user+"'s Game Collection",
+            'collection',
+            1,
+            1000,
+            user,
+            false);
+
+
+    };
 
     $(document).on('click', '.gameitem', function () {
         var $this = $( this );
@@ -201,6 +217,10 @@ function ListPane(parentpaneselector) {
     });
     $.subscribe('list.rank', function (_, rid) {
         showranklist(rid);
+    });
+
+    $.subscribe('list.collection', function (_, user) {
+        showcollection(user);
     });
 
     return {

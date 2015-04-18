@@ -81,6 +81,17 @@ function HeaderPane(paneselector, arg) {
         $.publish('list.search', [q]);
     });
 
+    $(document).on('keypress', '#bgguser', function (e){
+        if (e.which === 13) {
+            var q = $("#bgguser").val();
+            $.publish('list.collection', [q]);
+        }
+    });
+    $(document).on('click', "#searchUser", function () {
+        var q = $("#bgguser").val();
+        $.publish('list.collection', [q]);
+    });
+
     return {
         getGameNo: function () {
             return $("#gamenum").val();

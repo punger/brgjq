@@ -89,6 +89,60 @@ function GameLister() {
                 "html"
             );
         },
+        collection: function (user, cb, delay) {
+            if (delay > 5000) {
+                cb(null);
+                $.publish('statusmessage', ['Collection retrieval timed out']);
+                return;
+            }
+            $.ajax("/PHP/proxy.php",
+                {
+                    context: this,
+                    data: 'http://www.rpggeek.com/xmlapi2/collection?username='+user,
+                    dataType: 'text',
+                    success: function (response) {
+                        var $respJq = au.$xResp(response);
+                        var $resptype = $respJq.find('items');
+                        if ($resptype[0]) {
+                            var itemlist = new BgList();
+                            $respJq.find("item").each(function(i, item){
+                                var $item = $(item);
+                                itemlist.additem(
+                                    $item.attr('objectid'),
+                                    $item.find('name').text(),
+                                    $item.find('yearpublished').text()
+                                );
+                            });
+                            cb(itemlist.getparent());
+                            return;
+                        }
+
+                        //<message>Your request for this collection has been accepted and will be processed.
+                        // Please try again later for access.</message>
+                        $resptype = $respJq.find('message');
+                        if ($resptype[0]) {
+                            if ($resptype.text().indexOf('try again later') >= 0) {
+                                var me = this;
+                                setTimeout(
+                                    function() {
+                                        me.collection(user, cb, delay + 500);
+                                    },
+                                    500);
+                            } else {
+                                $.publish('statusmessage', [$resptype.text()]);  // invalid user
+                                cb(null);
+                            }
+                            return;
+                        }
+                        $resptype = $respJq.find('error');
+                        if ($resptype[0]) {
+                            $.publish('statusmessage', [$resptype.text()]);  // invalid user
+                            cb(null);
+                        }
+                    }
+                }
+            );
+        },
         gamerank: function (rankid, cb) {
             // http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank=222
             $.get("/PHP/proxy.php",
@@ -239,6 +293,13 @@ function GameLister() {
                     this.familylist(args.fid, args.ftype, start, count, cb);
                     break;
                 case 'person':
+                    break;
+                case 'collection':
+                    if (typeof start === "string") {
+                        this.collection(start, cb);
+                    } else if (typeof start === "number" && typeof args === "string") {
+                        this.collection(args, cb);
+                    }
                     break;
                 default:
             }

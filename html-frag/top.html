@@ -7,10 +7,15 @@
     </div>
     <button id="getGame" type="button" class="btn btn-default" value="Get Game Info">Get Game Info</button>
     <div class="form-group form-inline">
-        <label class="sr-only" for="gamesearch">Game ID number</label>
+        <label class="sr-only" for="gamesearch">Game name</label>
         <input id="gamesearch" class="form-control" type="text" placeholder="Game name"/>
     </div>
-    <button id="searchGame" type="button" class="btn btn-default">Search for a board game</button>
+    <button id="searchGame" type="button" class="btn btn-default">Search</button>
+    <div class="form-group form-inline">
+        <label class="sr-only" for="bgguser">User</label>
+        <input id="bgguser" class="form-control" type="text" placeholder="User"/>
+    </div>
+    <button id="searchUser" type="button" class="btn btn-default">User</button>
     <img id="loading" src="resources/ajax-loader.gif" hidden showcount="0"/>
     <span id="brgmessage"></span>
 </form>
