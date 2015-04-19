@@ -105,6 +105,14 @@ $( function () {
 
     App.list = new ListPane('.ui-layout-east');
 
+//    $(document).on('mouseover', ".gameitem", function() {
+//            App.pg.allowOverflow('east');
+//        }
+//    );
+//    $(document).on('mouseout', ".gameitem", function() {
+//        App.pg.resetOverflow('east');
+//    });
+//
     App.head = new HeaderPane('.ui-layout-north', window.location.search.substring(1));
 })
 );
@@ -118,7 +126,7 @@ $( function () {
 <div class="ui-layout-south">South</div>
 <div class="ui-layout-east">East</div>
 
-<div id="uselessdiv"/>
+<div id="uselessdiv"></div>
 
 </body>
 </html>

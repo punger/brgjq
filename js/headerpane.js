@@ -84,11 +84,13 @@ function HeaderPane(paneselector, arg) {
     $(document).on('keypress', '#bgguser', function (e){
         if (e.which === 13) {
             var q = $("#bgguser").val();
+            $.cookie('bgguser', q);
             $.publish('list.collection', [q]);
         }
     });
     $(document).on('click', "#searchUser", function () {
         var q = $("#bgguser").val();
+        $.cookie('bgguser', q);
         $.publish('list.collection', [q]);
     });
 

@@ -3,6 +3,22 @@
  */
 
 function GameListDisplayer() {
+
+    var tooltiplist = function () {
+        var privatedata = $(this).attr('data-private');
+        if (!privatedata) {
+            return '<span hidden="true"></span>';
+        }
+        var data = JSON.parse(privatedata);
+        var items = '';
+        for (var setting in data) {
+            if (data.hasOwnProperty(setting)) {
+                items += '<dt>'+ setting+'</dt>';
+                items += '<dd>'+data[setting]+'</dd>';
+            }
+        }
+        return '<dl class="gameitem-tooltip">'+ items+'</dl>';
+    };
     return {
         "writelistitems": function($gamelist, $parent) {
             $parent.empty();
@@ -36,7 +52,20 @@ function GameListDisplayer() {
                     $newGameItem.find(".listitem-year").text(item.year);
                     // present for a list from the history, absent otherwise
                     $newGameItem.find(".listitem-histindex").text(item.index);
-                    $parent.append($newGameItem);
+                    if (item.hasOwnProperty('data') && item.data) {
+                        // data-toggle="tooltip" title="Some tooltip text!" data-delay='{ "show": 500, "hide": 100 }'
+                        $newGameItem.attr('data-toggle', 'tooltip');
+                        $newGameItem.attr('data-delay', '{ "show": 500, "hide": 100 }');
+                        $newGameItem.attr('data-html', 'true');
+                        //$newGameItem.attr('data-viewport', '{ "selector": "body", "padding": 0 }');
+                        $newGameItem.attr('data-placement', 'bottom');//
+                        $newGameItem.attr('data-private', JSON.stringify(item.data));
+                        $newGameItem.attr('data-title', tooltiplist);
+                        $parent.append($newGameItem);
+                        $parent.find('.gameitem').tooltip();
+                    } else {
+                        $parent.append($newGameItem);
+                    }
                 }
             });
         }

@@ -3,7 +3,19 @@
  */
 
 function GameLister() {
+    var MAXDELAY = 5000;
+    var RETRYINTERVAL = MAXDELAY / 10;
     var au = new AccessUtil();
+
+    var wishlistarray = [
+        "",
+        "Must have",
+        "Love to have",
+        "Like to have",
+        "Thinking about it",
+        "Don't buy this"
+    ];
+
     var BgList = function() {
         var gamecount = 0;
         var gamelist = [];
@@ -36,11 +48,12 @@ function GameLister() {
 //        };
 
         return {
-            additem: function (gameNo, name, year) {
+            additem: function (gameNo, name, year, data) {
                 gamelist[gamecount++] = {
                     "name": name,
                     "gameNo": gameNo,
-                    "year": year
+                    "year": year,
+                    "data": data
                 };
             },
 
@@ -67,6 +80,64 @@ function GameLister() {
         };
     };
 
+    var getcollection = function(user, game, cb, delay) {
+        if (delay > MAXDELAY) {
+            cb('Collection retrieval timed out');
+            return;
+        }
+        var gamesuffix = '';
+        if (game) {
+            gamesuffix = '&id='+game;
+        }
+        $.ajax("/PHP/proxy.php",
+            {
+                //context: this,
+                data: 'http://www.rpggeek.com/xmlapi2/collection?username='+user + gamesuffix,
+                dataType: 'text',
+                success: function (response) {
+                    var $respJq = au.$xResp(response);
+                    var $resptype = $respJq.find('items');
+                    if ($resptype[0]) {
+                        var itemlist = new BgList();
+                        $respJq.find("item").each(function(i, item){
+                            var $item = $(item);
+                            itemlist.additem(
+                                $item.attr('objectid'),
+                                $item.find('name').text(),
+                                $item.find('yearpublished').text(),
+                                {
+                                    collid: $item.attr('objectid'),
+                                    own: $item.find('status').attr('own') === '1',
+                                    date: $item.find('status').attr('lastmodified'),
+                                    wishlist: $item.find('status').attr('wishlistpriority'),
+                                    wishcomment: wishlistarray[parseInt($item.find('status').attr('wishlistpriority'))]
+                                }
+                            );
+                        });
+                        cb(itemlist.getparent());
+                        return;
+                    }
+
+                    //<message>Your request for this collection has been accepted and will be processed.
+                    // Please try again later for access.</message>
+                    $resptype = $respJq.find('message');
+                    if ($resptype[0]) {
+                        if ($resptype.text().indexOf('try again later') >= 0) {
+                            setTimeout(
+                                function() {
+                                    getcollection(user, game, cb, delay + RETRYINTERVAL);
+                                },
+                                RETRYINTERVAL);
+                        } else {
+                            cb($resptype.text());
+                        }
+                    }
+                }
+            }
+        );
+
+    };
+
     return {
         gamesearch: function (query, cb) {
             $.get("/PHP/proxy.php",
@@ -89,60 +160,60 @@ function GameLister() {
                 "html"
             );
         },
-        collection: function (user, cb, delay) {
-            if (delay > 5000) {
-                cb(null);
-                $.publish('statusmessage', ['Collection retrieval timed out']);
-                return;
-            }
-            $.ajax("/PHP/proxy.php",
-                {
-                    context: this,
-                    data: 'http://www.rpggeek.com/xmlapi2/collection?username='+user,
-                    dataType: 'text',
-                    success: function (response) {
-                        var $respJq = au.$xResp(response);
-                        var $resptype = $respJq.find('items');
-                        if ($resptype[0]) {
-                            var itemlist = new BgList();
-                            $respJq.find("item").each(function(i, item){
-                                var $item = $(item);
-                                itemlist.additem(
-                                    $item.attr('objectid'),
-                                    $item.find('name').text(),
-                                    $item.find('yearpublished').text()
-                                );
-                            });
-                            cb(itemlist.getparent());
-                            return;
-                        }
-
-                        //<message>Your request for this collection has been accepted and will be processed.
-                        // Please try again later for access.</message>
-                        $resptype = $respJq.find('message');
-                        if ($resptype[0]) {
-                            if ($resptype.text().indexOf('try again later') >= 0) {
-                                var me = this;
-                                setTimeout(
-                                    function() {
-                                        me.collection(user, cb, delay + 500);
-                                    },
-                                    500);
-                            } else {
-                                $.publish('statusmessage', [$resptype.text()]);  // invalid user
-                                cb(null);
-                            }
-                            return;
-                        }
-                        $resptype = $respJq.find('error');
-                        if ($resptype[0]) {
-                            $.publish('statusmessage', [$resptype.text()]);  // invalid user
-                            cb(null);
-                        }
-                    }
-                }
-            );
-        },
+        //collection: function (user, cb, delay) {
+        //    if (delay > MAXDELAY) {
+        //        cb(null);
+        //        $.publish('statusmessage', ['Collection retrieval timed out']);
+        //        return;
+        //    }
+        //    $.ajax("/PHP/proxy.php",
+        //        {
+        //            context: this,
+        //            data: 'http://www.rpggeek.com/xmlapi2/collection?username='+user,
+        //            dataType: 'text',
+        //            success: function (response) {
+        //                var $respJq = au.$xResp(response);
+        //                var $resptype = $respJq.find('items');
+        //                if ($resptype[0]) {
+        //                    var itemlist = new BgList();
+        //                    $respJq.find("item").each(function(i, item){
+        //                        var $item = $(item);
+        //                        itemlist.additem(
+        //                            $item.attr('objectid'),
+        //                            $item.find('name').text(),
+        //                            $item.find('yearpublished').text()
+        //                        );
+        //                    });
+        //                    cb(itemlist.getparent());
+        //                    return;
+        //                }
+        //
+        //                //<message>Your request for this collection has been accepted and will be processed.
+        //                // Please try again later for access.</message>
+        //                $resptype = $respJq.find('message');
+        //                if ($resptype[0]) {
+        //                    if ($resptype.text().indexOf('try again later') >= 0) {
+        //                        var me = this;
+        //                        setTimeout(
+        //                            function() {
+        //                                me.collection(user, cb, delay + 500);
+        //                            },
+        //                            500);
+        //                    } else {
+        //                        $.publish('statusmessage', [$resptype.text()]);  // invalid user
+        //                        cb(null);
+        //                    }
+        //                    return;
+        //                }
+        //                $resptype = $respJq.find('error');
+        //                if ($resptype[0]) {
+        //                    $.publish('statusmessage', [$resptype.text()]);  // invalid user
+        //                    cb(null);
+        //                }
+        //            }
+        //        }
+        //    );
+        //},
         gamerank: function (rankid, cb) {
             // http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank=222
             $.get("/PHP/proxy.php",
@@ -156,12 +227,19 @@ function GameLister() {
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
-                            var $gamelink = $(gamerow).find("div[id*='results_objectname'] a");
-                            var gameyear = $(gamerow).find("div[id*='results_objectname'] span").text();
+                            var $gamerow = $(gamerow);
+                            var $gamelink = $gamerow.find("div[id*='results_objectname'] a");
+                            var gameyear = $gamerow.find("div[id*='results_objectname'] span").text();
                             gameyear = gameyear.replace(/\(|\)/g, '');
                             var linkval = $gamelink.attr('href');
                             var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
-                            gamelist.additem(gameNo,  $gamelink.text(), gameyear);
+                            var $stats = $gamerow.find('.collection_bggrating');
+                            var gamedata = {
+                                rating: $stats.get(1).innerHTML.trim(),
+                                bggrating: $stats.get(0).innerHTML.trim(),
+                                raters: $stats.get(2).innerHTML.trim()
+                            };
+                            gamelist.additem(gameNo,  $gamelink.text(), gameyear, gamedata);
                         } catch (err) {
                             console.log('rank list error '+ err);
                             console.log("At game number " + gamecount++);
@@ -209,11 +287,18 @@ function GameLister() {
                             var gameNo = linkval.match(/\/([0-9]+)/gi)[0].substr(1);
 
                             var $statstable = $gr.find('.sf');
+                            var $firstcol = $($statstable[0].rows[0].cells[0]);
+                            var data = {
+                                rank: $($firstcol.find('table'))[0].rows[0].cells[1].innerHTML.trim(),
+                                raters: $($($firstcol.find('table'))[0].rows[1].cells[1].innerHTML).text().trim(),
+                                rating: $($firstcol.find('table'))[0].rows[2].cells[1].innerHTML.trim(),
+                                weight: $($firstcol.find('table'))[0].rows[3].cells[1].innerHTML.trim()
+                            };
                             var $thirdcol = $($statstable[0].rows[0].cells[2]);
                             var gameyear = $($thirdcol.find('table')[0].rows[2].cells[1]).text().trim();
                             //$gr.find("div[id*='results_objectname'] span").text();
 
-                            gamelist.additem(gameNo,  $gamelink.text(), gameyear);
+                            gamelist.additem(gameNo,  $gamelink.text(), gameyear, data);
                         } catch (err) {
                             console.log("At game number " + gamecount++);
                             console.log(gamerow);
@@ -277,6 +362,16 @@ function GameLister() {
              &ajax=1
              */
         },
+        gameforuser: function(user, game, cb) {
+            getcollection(user, game, function(resp){
+                if (typeof resp === 'string') {
+                    $.publish('stausmessage', [resp]);
+                    cb(null);
+                } else {
+                    cb(resp);
+                }
+            }, 0);
+        },
         gamelist: function (listtype, cb, start, count, args) {
             switch (listtype) {
                 case 'search':
@@ -296,9 +391,21 @@ function GameLister() {
                     break;
                 case 'collection':
                     if (typeof start === "string") {
-                        this.collection(start, cb);
+                        this.gameforuser(start, null, cb);
                     } else if (typeof start === "number" && typeof args === "string") {
-                        this.collection(args, cb);
+                        this.gameforuser(args, null, cb);
+                    }
+                    //if (typeof start === "string") {
+                    //    this.collection(start, cb);
+                    //} else if (typeof start === "number" && typeof args === "string") {
+                    //    this.collection(args, cb);
+                    //}
+                    break;
+                case 'usergame':
+                    if (typeof start === 'object') {
+                        this.gameforuser(start.user, start.game, cb);
+                    } else if (typeof args === 'object') {
+                        this.gameforuser(args.user, args.game, cb);
                     }
                     break;
                 default:

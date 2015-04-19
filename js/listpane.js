@@ -37,28 +37,6 @@ function ListPane(parentpaneselector) {
         );
     };
 
-//    var displaygameitems = function($gamelist, $parent) {
-//        $parent.empty();
-//
-//        var numGames = $gamelist.find('items').attr("total");
-//        if (!numGames) {
-//            $.publish('statusmessage', ["No games found"]);  //$("#brgmessage").html("No games found");
-//            return;
-//        }
-//        $.publish('statusmessage', [""+numGames +" games found"]);
-//        $.get("html-frag/listitem.html", function (r) {
-//            var $gameitem = $(r);
-//
-//            for (var srchlistindex = 0; srchlistindex < numGames; srchlistindex++) {
-//                var $newGameItem = $gameitem.clone();
-//                var $item = $gamelist.find('item').eq(srchlistindex);
-//                $newGameItem.find(".listitem-id").text($item.attr("id"));
-//                $newGameItem.find(".listitem-name").text($item.find('name').attr('value'));
-//                $newGameItem.find(".listitem-year").text($item.find('yearpublished').attr('value'));
-//                $parent.append($newGameItem);
-//            }
-//        });
-//    };
 
     var displaygamelist = function (gamelist) {
         var numGames = gamelist.total;

@@ -19,7 +19,7 @@ function GameInfo () {
         return ((Date.now() - d.getTime()) / MILLISINADAY).toFixed(0);
     };
 
-    var gethistPage = function(gameno, page, cbend) {
+    var gethistPage = function(gameno, page, cbend, repeat) {
         outstanding++;
         $.ajax({
             url: "/PHP/proxy.php",
@@ -31,6 +31,14 @@ function GameInfo () {
                 var statarray = [];
                 var $respJq = au.$xResp(response);
                 var stats = $respJq.find('statistics ratings');
+                if (stats.length === 0) {
+                    if (repeat) {
+                        cbend(statarray, page);
+                    } else {
+                        gethistPage(gameno,page, cbend, true);
+                    }
+                    return;
+                }
                 if (page === 1 && stats.length > 0) {
                     var startdate = $(stats[0]).attr('date');
                     totalentries = daysuntilnow(startdate);
@@ -44,9 +52,14 @@ function GameInfo () {
                     statarray[index].bayesaverage = $this.find('bayesaverage').attr('value');
                     statarray[index].rank = $this.find('ranks #1').attr('value');
                 });
-                if (page * PAGESIZE < totalentries &&
-                     Date.now() - stringtodate(statarray[statarray.length - 1].date).getTime() > MILLISINADAY) {
-                   gethistPage(gameno, page + 1, cbend);
+                if (statarray.length === 0) {
+                    console.err('statarray has zero length: game='+
+                        gameno+', page='+page+', expected total entries='+totalentries);
+                } else {
+                    if (page * PAGESIZE < totalentries &&
+                         Date.now() - stringtodate(statarray[statarray.length - 1].date).getTime() > MILLISINADAY) {
+                       gethistPage(gameno, page + 1, cbend);
+                    }
                 }
                 cbend(statarray, page);
             },
@@ -181,7 +194,7 @@ function GameInfo () {
                             var actualreviewcount = 0;
                             var $reviewitems = $reviewtable.find('> tbody > tr');
                             var revarray = [];
-                            $reviewitems.each(function (index) {
+                            $reviewitems.each(function () {
                                 var $cells = $(this).find ('> td');
                                 var thumbs = parseInt($cells.eq(0).text());
                                 if (!thumbs) {
@@ -291,7 +304,7 @@ function GameInfo () {
                             var actualreviewcount = 0;
                             var $reviewitems = $reviewtable.find('> tbody > tr');
                             var revarray = [];
-                            $reviewitems.each(function (index) {
+                            $reviewitems.each(function () {
                                 var $cells = $(this).find ('> td');
                                 var thumbs = parseInt($cells.eq(0).text());
                                 if (!thumbs) {
@@ -300,13 +313,12 @@ function GameInfo () {
                                 var $thread = $cells.find('span[class="forum_index_subject"] a');
                                 var revurl = $thread.attr('href');
                                 var threadid = revurl.match(/\/([0-9]+)/gi)[0].substr(1);
-                                var $item = $('<thread/>',{
+                                revarray[actualreviewcount] = $('<thread/>',{
                                     id: threadid,
                                     subject: $thread.text(),
                                     thumbs: thumbs,
                                     replies: $cells.eq(2).text()
                                 });
-                                revarray[actualreviewcount] = $item;
                                 actualreviewcount++;
                             });
                             var sortedrevs = revarray.sort(function ($a, $b) {
@@ -465,7 +477,7 @@ function GameInfo () {
             var statarray = [];
             gethistPage(gameno, 1, function (statpiece, pagenum) {
                 if (statpiece.length === 0) debugger;
-                statpiece.forEach(function (cur, index, arr) {
+                statpiece.forEach(function (cur, index, ) {
                     statarray[PAGESIZE * (pagenum - 1) + index] = cur;
                 });
                 cbinterim(statarray, pagenum);

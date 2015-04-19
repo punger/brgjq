@@ -5,14 +5,15 @@
 function CenterPane(parentpaneselector) {
     var pane = parentpaneselector;
     var gi = new GameInfo();
-//    var diffgauge = new DiffGauge();
-//    var gamehistory = new GameHistory();
     var gv = new GoogleVisualizations();
     var eyecandy = new EyeCandy();
     var agepollgraph = new RatingGraph();
     var gld = new GameListDisplayer();
     var currGame = -1;
-
+    var currcollid = -1;
+    var getbgguser = function () {
+        return $.cookie('bgguser');
+    };
 
     // PURE directives
     var pseudo_vidinfo;
@@ -202,7 +203,7 @@ function CenterPane(parentpaneselector) {
                         $rellink.data(relations[0]);
                         $rellink.text(
                             relateditemmap[section].relatedprompt +
-                                '"' + $rellink.data('family') + '"');
+                            '"' + $rellink.data('family') + '"');
                     }
                     $relatedlinkparent.append($rellink);
 
@@ -218,11 +219,12 @@ function CenterPane(parentpaneselector) {
             });
             // Video list
             gi.vidlist(gameNo, function (vidlistobj) {
+                var $vidnone = $("#gamestat-videos-none");
                 if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length === 0) {
-                    $("#gamestat-videos-none").show();
+                    $vidnone.show();
                     return;
                 }
-                $("#gamestat-videos-none").hide();
+                $vidnone.hide();
                 var $vidparent = $("#gamestat-videos");
                 $vidparent.show();
                 var gamename = $(vidlistobj.videos[0].objectlink).text();
@@ -264,6 +266,16 @@ function CenterPane(parentpaneselector) {
                     }
                 });
             });
+            var curruser = getbgguser();
+            if (curruser) {
+                (new GameLister()).gameforuser(curruser, gameNo, function (resp) {
+                   if (resp) {
+                       console.log('user '+curruser+'owns game' + gameNo);
+                   } else {
+                       console.log('user '+curruser+"doesn't own game" + gameNo);
+                   }
+                });
+            }
             // Rating detail
             gi.ratingDetail(gameNo, 'graphstats', function(ratingmap){
                 gv.reinit("ratingpoll").update("ratingpoll", ratingmap, "gamestat-rating-chart");
@@ -367,11 +379,11 @@ function CenterPane(parentpaneselector) {
         }
     });
 
-    $(document).on('click', "#gametitle", function (evt) {
+    $(document).on('click', "#gametitle", function () {
         window.open('http://boardgamegeek.com/boardgame/'+currGame);
     });
 
-    $(document).on('click', "#bgplink", function (evt) {
+    $(document).on('click', "#bgplink", function () {
         var gamename = $("#gamename").data('gname');
         window.open('http://boardgameprices.com/compare-prices-for-'+gamename);
     });
@@ -387,7 +399,7 @@ function CenterPane(parentpaneselector) {
         }
     });
 
-    $(document).on('click', '.review-item', function (evt) {
+    $(document).on('click', '.review-item', function () {
         var $this = $( this );
         var revid = $this.find('.review-id').html();
         gi.threadcontent(revid, function($resp) {
@@ -402,11 +414,11 @@ function CenterPane(parentpaneselector) {
         });
     });
 
-    $(document).on('click', '#reviewModal', function(evt) {
+    $(document).on('click', '#reviewModal', function() {
         $("#reviewModal").modal('hide');
     });
 
-    $(document).on('hidden.bs.modal', '#reviewModal', function(evt) {
+    $(document).on('hidden.bs.modal', '#reviewModal', function() {
         $.publish ('layout.hidemodal');   // pg.resetOverflow('center');
     });
 
