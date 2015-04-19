@@ -477,7 +477,7 @@ function GameInfo () {
             var statarray = [];
             gethistPage(gameno, 1, function (statpiece, pagenum) {
                 if (statpiece.length === 0) debugger;
-                statpiece.forEach(function (cur, index, ) {
+                statpiece.forEach(function (cur, index ) {
                     statarray[PAGESIZE * (pagenum - 1) + index] = cur;
                 });
                 cbinterim(statarray, pagenum);
