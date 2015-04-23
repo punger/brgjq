@@ -72,6 +72,224 @@ function CenterPane(parentpaneselector) {
     };
 
     // The local functions
+    var fillinvidlist = function(gameNo) {
+        // Video list
+        vidDirFn = $p("#gamestat-videos").compile(vidlistDirective);
+        gi.vidlist(gameNo, function (vidlistobj) {
+            var $vidnone = $("#gamestat-videos-none");
+            if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length === 0) {
+                $vidnone.show();
+                return;
+            }
+            $vidnone.hide();
+            var $vidparent = $("#gamestat-videos");
+            $vidparent.show();
+            var gamename = $(vidlistobj.videos[0].objectlink).text();
+            gi.hotvideos(gameNo, gamename, function(vidinfo) {
+                pseudo_vidinfo = vidinfo;
+                // if there are more videos than fit on the first page,
+                // then extend with a dummy video that goes to bgg
+                if (vidinfo.length < vidlistobj.videos.length) {
+                    vidlistobj.videos.slice(0, vidinfo.length);
+                    vidlistobj.videos[vidinfo.length] = {
+                        "numrecommend": "0",
+                        "comments": "0",
+                        "bgglink": "http://boardgamegeek.com/boardgame/"+gameNo + "#videos",
+                        "bggpic": "resources/bgg_cornerlogo.png",
+                        "title": "More ..."
+                    };
+                }
+
+                try {
+                    $("#gamestat-videos").render(vidlistobj, vidlistDirective);
+                    console.log('%s %o',"After render\n",$vidparent[0]);
+                } catch (e) {
+                    console.error('pure error (videos) '+e);
+                }
+                try {
+                    $("#gamestat-videos").isotope({
+                        "itemSelector": '.gameviditem',
+                        "layoutMode": 'fitRows',
+                        "getSortData": {
+                            "ord": '[data-ordinal] parseInt',
+                            "numthumbs": '[data-thumbs] parseInt'
+                        },
+                        "sortBy": 'original-order'
+//                                , resizable: true
+                    });
+//                        $vidparent.isotope('bindResize');
+                } catch (err) {
+                    console.log("vid layout err "+err);
+                }
+            });
+        });
+
+    };
+
+    var fillinmaininfo = function(gameNo, bNoAdd) {
+        gi.gameinfo(gameNo, function (gameinfo) {
+            $.publish('gamenumchange', gameNo);
+            try {
+                // Basic game info
+                $("#bbgg-mainwindow").render(gameinfo, gamestatDirective);
+            } catch (e) {
+                console.error('pure error '+e);
+            }
+            if (typeof gameinfo.name === "undefined") {
+                console.log("game id "+gameNo+" looks like it's undefined");
+                return;
+            }
+            // Reviews
+            gi.gamereviewsJSON(gameNo, gameinfo.name, function (revList) {
+                var $reviewlisthtml = $("#gamestat-reviews");
+                // I could externalize this with another html fragment, but it seems like overkill
+                var $reviewitem = $("<li/>", {
+                    html: "<span hidden class='review-id'/><a class='review-title'/>",
+                    "class": "review-item"
+                });
+                $reviewlisthtml.append($reviewitem);
+                try {
+                    $reviewlisthtml.render(revList, reviewDirective);
+                } catch (e) {
+                    console.error('pure error (reviews) '+e);
+                }
+
+            });
+
+            // Graphics
+            eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
+            // The target parameter to the following is a target id not a selector
+            if (parseFloat(gameinfo.difficulty) !== 0.0) {
+                gv.reinit("gauge").update("gauge", gameinfo.difficulty, "difficultygauge-g");
+            } else {
+                // No real need for an indication here
+                console.log('No difficulty value found');
+            }
+            gv.reinit("agepoll").update("agepoll", gameinfo.$agepoll, "gamestat-minchart");
+            gv.reinit("nppoll").update("nppoll", gameinfo.$nplyrpoll, "gamestat-numplayers-chart");
+
+            // Related items
+            var relatedmap = {};
+            gameinfo.$links.each(function (index, linkitem) {
+                var $linkitem = $(linkitem);
+                var famtype = $linkitem.attr("type");
+//                    var famname = $linkitem.attr('value');
+                var baseid = 0;
+                console.log('Family type: '+famtype);
+                var linktypeoverride = relateditemmap[famtype].renameoninbound;
+                if (linktypeoverride) {
+                    if ($linkitem.attr('inbound')) {
+                        famtype = linktypeoverride;
+                    }
+                    baseid = $linkitem.attr('id');
+                }
+                if (typeof relatedmap[famtype] === "undefined") {
+                    relatedmap[famtype] = [];
+                }
+                relatedmap[famtype].push({
+                    "familytype": famtype,
+                    "famid": $linkitem.attr('id'),
+                    "family": $linkitem.attr('value'),
+                    "familylisttitle": relateditemmap[famtype].relatedtitle +
+                    '"' + $linkitem.attr('value') + '"',
+                    "baseid": baseid
+                });
+            });
+            /**
+             * Structure:
+             * div                      id="gamestat-related-block"
+             *  ul                      id="gamestat-related-list"
+             *      li                  class="gamestat-related-item-parent"
+             *          div             class="gamestat-related-itemsblock"
+             *              ul          class="gamestat-related-items"
+             *                  li      class="gamestat-related-item"
+             * OR
+             *      li                  class="gamestat-related-item gamestat-related-item-parent"
+             */
+            var $relatedlinkparent = $('#gamestat-related-list');
+            for (var section in relatedmap) {
+                var $rellink;
+                var relations = relatedmap[section];
+                if (relations.length > 1) {
+                    var $relul = $('<ul/>', {
+                        "class": "gamestat-related-items"  // this class may be unused
+                    });
+                    var $relitemproto = $('<li/>', {
+                        "class": "gamestat-related-item"
+                    });
+                    for (var i = 0; i < relations.length; i++) {
+                        var $relitem = $relitemproto.clone();
+                        $relitem.data(relations[i]);
+                        $relitem.text($relitem.data('family'));
+                        $relul.append($relitem);
+                    }
+                    var $reldiv = $('<div/>', {
+                        "class": "gamestat-related-itemsblock"
+                    });
+                    $reldiv.append($relul);
+                    $rellink = $('<li/>', {
+                        "class": 'gamestat-related-item-parent'
+                    });
+                    $rellink.text(relateditemmap[section].relatedprompt);
+                    $rellink.append($reldiv);
+                } else {
+                    $rellink = $('<li/>', {
+                        "class": 'gamestat-related-item gamestat-related-item-parent'
+                    });
+                    $rellink.data(relations[0]);
+                    $rellink.text(
+                        relateditemmap[section].relatedprompt +
+                        '"' + $rellink.data('family') + '"');
+                }
+                $relatedlinkparent.append($rellink);
+
+            }
+
+            // Add to game history list unless we were told not to
+            if (!bNoAdd) {
+                gamehistory.add({
+                    "gameNo":gameNo,
+                    "name": gameinfo.name,
+                    "year": gameinfo.yearpublished
+                });
+            }
+
+        });
+
+    };
+
+    var fillinownership = function(gameNo) {
+        var curruser = getbgguser();
+        if (curruser) {
+            (new GameLister()).gameforuser(curruser, gameNo, function (resp) {
+                var $gameownershp = $('#gameownership');
+                if (resp && resp.total > 0) {
+                    $gameownershp.attr('data-collectionid', resp.items[0].data.collid);
+                    if (resp.items[0].data.own) {
+                        $gameownershp.attr('data-collectionid', resp.items[0].data.collid);
+                        console.log('user '+curruser+' owns game ' + gameNo);
+                        $gameownershp.attr('data-owngame', true);
+                        $gameownershp.attr('title', curruser + ' owns this');
+                        $gameownershp.find('img').attr('src','resources/traffic-lights-green-icon.png');
+                    } else if (resp.items[0].data.wishlist) {
+                        $gameownershp.attr('data-owngame', false);
+                        console.log('user '+curruser+' wants game ' + gameNo);
+                        $gameownershp.attr('title', curruser + ' '+resp.items[0].data.wishcomment + ' this');
+                        $gameownershp.find('img').attr('src','resources/traffic-lights-yellow-icon.png');
+                    }
+                } else {
+                    $gameownershp.attr('data-owngame', false);
+                    $gameownershp.attr('data-collectionid', '');
+                    $gameownershp.attr('title', curruser + " doesn't own this");
+                    console.log('user '+curruser+" doesn't own game " + gameNo);
+                    $gameownershp.find('img').attr('src','resources/traffic-lights-red-icon.png');
+                }
+            });
+        }
+
+    };
+
+    // fills the center pane
     var fillingameinfo = function (gameNo, bNoAdd) {
         if (!gameNo) {
             return;
@@ -87,195 +305,14 @@ function CenterPane(parentpaneselector) {
             }
             currGame = gameNo;
             $.publish('statusmessage', ["Retrieving game information ..."]);
-//            diffgauge.reinit();
-            vidDirFn = $p("#gamestat-videos").compile(vidlistDirective);
-            gi.gameinfo(gameNo, function (gameinfo) {
-                $.publish('gamenumchange', gameNo);
-                try {
-                    // Basic game info
-                    $("#bbgg-mainwindow").render(gameinfo, gamestatDirective);
-                } catch (e) {
-                    console.error('pure error '+e);
-                }
-                if (typeof gameinfo.name === "undefined") {
-                    console.log("game id "+gameNo+" looks like it's undefined");
-                    return;
-                }
-                // Reviews
-                gi.gamereviewsJSON(gameNo, gameinfo.name, function (revList) {
-                    var $reviewlisthtml = $("#gamestat-reviews");
-                    // I could externalize this with another html fragment, but it seems like overkill
-                    var $reviewitem = $("<li/>", {
-                        html: "<span hidden class='review-id'/><a class='review-title'/>",
-                        "class": "review-item"
-                    });
-                    $reviewlisthtml.append($reviewitem);
-                    try {
-                        $reviewlisthtml.render(revList, reviewDirective);
-                    } catch (e) {
-                        console.error('pure error (reviews) '+e);
-                    }
 
-                });
+            fillinmaininfo(gameNo, bNoAdd);
 
-                // Graphics
-                eyecandy.showRating(gameinfo.rating, $("#gamerankparent"));
-                // The target parameter to the following is a target id not a selector
-                if (parseFloat(gameinfo.difficulty) !== 0.0) {
-                    gv.reinit("gauge").update("gauge", gameinfo.difficulty, "difficultygauge-g");
-                } else {
-                    // No real need for an indication here
-                    console.log('No difficulty value found');
-                }
-//                diffgauge.updategauge("difficultygauge-g", gameinfo.difficulty);
-//                agepollgraph.updategraph('gamestat-minchart', gameinfo.$agepoll);
-                gv.reinit("agepoll").update("agepoll", gameinfo.$agepoll, "gamestat-minchart");
-                gv.reinit("nppoll").update("nppoll", gameinfo.$nplyrpoll, "gamestat-numplayers-chart");
+            fillinvidlist(gameNo);
 
-                // Related items
-                var relatedmap = {};
-                gameinfo.$links.each(function (index, linkitem) {
-                    var $linkitem = $(linkitem);
-                    var famtype = $linkitem.attr("type");
-//                    var famname = $linkitem.attr('value');
-                    var baseid = 0;
-                    console.log('Family type: '+famtype);
-                    var linktypeoverride = relateditemmap[famtype].renameoninbound;
-                    if (linktypeoverride) {
-                        if ($linkitem.attr('inbound')) {
-                            famtype = linktypeoverride;
-                        }
-                        baseid = $linkitem.attr('id');
-                    }
-                    if (typeof relatedmap[famtype] === "undefined") {
-                        relatedmap[famtype] = [];
-                    }
-                    relatedmap[famtype].push({
-                        "familytype": famtype,
-                        "famid": $linkitem.attr('id'),
-                        "family": $linkitem.attr('value'),
-                        "familylisttitle": relateditemmap[famtype].relatedtitle +
-                            '"' + $linkitem.attr('value') + '"',
-                        "baseid": baseid
-                    });
-                });
-                /**
-                 * Structure:
-                 * div                      id="gamestat-related-block"
-                 *  ul                      id="gamestat-related-list"
-                 *      li                  class="gamestat-related-item-parent"
-                 *          div             class="gamestat-related-itemsblock"
-                 *              ul          class="gamestat-related-items"
-                 *                  li      class="gamestat-related-item"
-                 * OR
-                 *      li                  class="gamestat-related-item gamestat-related-item-parent"
-                 */
-                var $relatedlinkparent = $('#gamestat-related-list');
-                for (var section in relatedmap) {
-                    var $rellink;
-                    var relations = relatedmap[section];
-                    if (relations.length > 1) {
-                        var $relul = $('<ul/>', {
-                            "class": "gamestat-related-items"  // this class may be unused
-                        });
-                        var $relitemproto = $('<li/>', {
-                            "class": "gamestat-related-item"
-                        });
-                        for (var i = 0; i < relations.length; i++) {
-                            var $relitem = $relitemproto.clone();
-                            $relitem.data(relations[i]);
-                            $relitem.text($relitem.data('family'));
-                            $relul.append($relitem);
-                        }
-                        var $reldiv = $('<div/>', {
-                            "class": "gamestat-related-itemsblock"
-                        });
-                        $reldiv.append($relul);
-                        $rellink = $('<li/>', {
-                            "class": 'gamestat-related-item-parent'
-                        });
-                        $rellink.text(relateditemmap[section].relatedprompt);
-                        $rellink.append($reldiv);
-                    } else {
-                        $rellink = $('<li/>', {
-                            "class": 'gamestat-related-item gamestat-related-item-parent'
-                        });
-                        $rellink.data(relations[0]);
-                        $rellink.text(
-                            relateditemmap[section].relatedprompt +
-                            '"' + $rellink.data('family') + '"');
-                    }
-                    $relatedlinkparent.append($rellink);
+            // Ownership
+            fillinownership(gameNo);
 
-                }
-                if (!bNoAdd) {
-                    gamehistory.add({
-                        "gameNo":gameNo,
-                        "name": gameinfo.name,
-                        "year": gameinfo.yearpublished
-                    });
-                }
-
-            });
-            // Video list
-            gi.vidlist(gameNo, function (vidlistobj) {
-                var $vidnone = $("#gamestat-videos-none");
-                if (!vidlistobj || !vidlistobj.videos || vidlistobj.videos.length === 0) {
-                    $vidnone.show();
-                    return;
-                }
-                $vidnone.hide();
-                var $vidparent = $("#gamestat-videos");
-                $vidparent.show();
-                var gamename = $(vidlistobj.videos[0].objectlink).text();
-                gi.hotvideos(gameNo, gamename, function(vidinfo) {
-                    pseudo_vidinfo = vidinfo;
-                    // if there are more videos than fit on the first page,
-                    // then extend with a dummy video that goes to bgg
-                    if (vidinfo.length < vidlistobj.videos.length) {
-                        vidlistobj.videos.slice(0, vidinfo.length);
-                        vidlistobj.videos[vidinfo.length] = {
-                            "numrecommend": "0",
-                            "comments": "0",
-                            "bgglink": "http://boardgamegeek.com/boardgame/"+gameNo + "#videos",
-                            "bggpic": "resources/bgg_cornerlogo.png",
-                            "title": "More ..."
-                        };
-                    }
-
-                    try {
-                        $("#gamestat-videos").render(vidlistobj, vidlistDirective);
-                        console.log('%s %o',"After render\n",$vidparent[0]);
-                    } catch (e) {
-                        console.error('pure error (videos) '+e);
-                    }
-                    try {
-                        $("#gamestat-videos").isotope({
-                            "itemSelector": '.gameviditem',
-                            "layoutMode": 'fitRows',
-                            "getSortData": {
-                                "ord": '[data-ordinal] parseInt',
-                                "numthumbs": '[data-thumbs] parseInt'
-                            },
-                            "sortBy": 'original-order'
-//                                , resizable: true
-                        });
-//                        $vidparent.isotope('bindResize');
-                    } catch (err) {
-                        console.log("vid layout err "+err);
-                    }
-                });
-            });
-            var curruser = getbgguser();
-            if (curruser) {
-                (new GameLister()).gameforuser(curruser, gameNo, function (resp) {
-                   if (resp) {
-                       console.log('user '+curruser+'owns game' + gameNo);
-                   } else {
-                       console.log('user '+curruser+"doesn't own game" + gameNo);
-                   }
-                });
-            }
             // Rating detail
             gi.ratingDetail(gameNo, 'graphstats', function(ratingmap){
                 gv.reinit("ratingpoll").update("ratingpoll", ratingmap, "gamestat-rating-chart");
@@ -283,6 +320,8 @@ function CenterPane(parentpaneselector) {
             gi.ratingDetail(gameNo, 'collection/weightgraph', function(ratingmap){
                 gv.reinit("weightpoll").update("weightpoll", ratingmap, "gamestat-difficulty-chart");
             });
+
+            // Ratings history graph
             var ratingsGraph = gv.reinit("rathist");
             var piecearray = [];
             gi.ratinghistory(
@@ -428,6 +467,37 @@ function CenterPane(parentpaneselector) {
             $.publish('list.rank', [currgamerank]);
         }
         return false;
+    });
+
+    //https://boardgamegeek.com/geekcollection.php?ajax=1&addowned=true&instanceid=19&objectid=163968&objecttype=thing&action=additem
+    $(document).on('click', '#gameownership', function() {
+        var $this = $(this);
+        //var collid = $this.attr('data-collectionid');
+        var owns = $this.attr('data-owngame') === 'true';
+        var curruser = getbgguser();
+        if (owns || !curruser) {
+            return;
+        }
+        var win = window.open('https://boardgamegeek.com/geekcollection.php' +
+                '?ajax=1&addowned=true&instanceid=19&objectid='+currGame+
+                '&objecttype=thing&action=additem',
+            '_blank');
+        if (win) {
+            setTimeout(function() {
+                win.close();
+                fillinownership(currGame);
+            }, 2000);
+        }
+        win.focus();
+        //$.ajax('/PHP/proxy.php', {
+        //    data: 'https://boardgamegeek.com/geekcollection.php?ajax=1&addowned=true&instanceid=19&objectid='+currGame+'&objecttype=thing&action=additem',
+        //    success: function (resp) {
+        //        fillinownership(currGame);
+        //    },
+        //    error: function() {
+        //        $.publish('statusmessage', ["Couldn't add game to "+curruser+"'s collection"]);
+        //    }
+        //});
     });
 
     // Initialize

@@ -1,6 +1,9 @@
-<h1 id="greeting">Better Board Game Geek </h1>
+<!--<h1 id="greeting">Better Board Game Geek </h1>-->
 
 <form class="form-inline" role="form">
+    <div style="display: inline">
+        <img style="max-height: 50px; margin-right: 25px" src="resources/bbgg-logo1.png">
+    </div>
     <div class="form-group form-inline">
         <label class="sr-only" for="gamenum">Game ID number</label>
         <input id="gamenum" placeholder="Game id" type="number" class="form-control" value="102794"/>
@@ -18,4 +21,7 @@
     <button id="searchUser" type="button" class="btn btn-default">User</button>
     <img id="loading" src="resources/ajax-loader.gif" hidden showcount="0"/>
     <span id="brgmessage"></span>
+    <span data-toggle="tooltip" title="Click to show the Hotness"
+          id="hotness-list" style="font-size: 30px; margin-top: 25px"
+          class="gamenavarrows pull-right glyphicon glyphicon-fire"></span>
 </form>

@@ -60,9 +60,8 @@ function AccessUtil  () {
                 str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
             }
 
-            str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-                .replace(/\s+/g, '-') // collapse whitespace and replace by -
-                .replace(/\bthe\b/gi, '-')
+            str = str
+                .replace(/\bthe\b/gi, '-')  // prepositions and articles
                 .replace(/\bin\b/gi, '-')
                 .replace(/\bof\b/gi, '-')
                 .replace(/\bto\b/gi, '-')
@@ -77,6 +76,8 @@ function AccessUtil  () {
                 .replace(/\blike\b/gi, '-')
                 .replace(/\ba\b/gi, '-')
                 .replace(/\ban\b/gi, '-')
+                .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                .replace(/\s+/g, '-') // collapse whitespace and replace by -
                 .replace(/-+/g, '-')    // collapse dashes
                 .replace(/-$/, '')      // remove dash at the end
                 .replace(/^-/, '');     // remove a dash at the beginning

@@ -23,11 +23,19 @@
             <img src="resources/bgplogo.png" height="40px"/>
         </span>
         <span id="gametitle">
-            <span><span id="gamename">No Game Selected</span> (<span id="gameyear"></span>)</span>
+            <span>
+                <span id="gamename">No Game Selected</span>
+                (<span id="gameyear"></span>)
+            </span>
             <span class="pull-right">
                 <span>
                     <img height="40px" src="resources/bgg_cornerlogo.png"/>
                 </span>
+            </span>
+        </span>
+        <span class="pull-left">
+            <span id="gameownership" data-toggle="tooltip" title="" data-collectionid="">
+                <img id="gameownership-image" height="40px" src="resources/traffic-lights-grey-icon.png"/>
             </span>
         </span>
     </h2>
@@ -67,7 +75,7 @@
                     </td>
                     <td>
                         <div id="gamestat-numplayers-block">
-                            <h4 id="gamestat-numplayers" class="bbgg-interesting"/>
+                            <h4 id="gamestat-numplayers" class="bbgg-interesting"></h4>
                             <div id="gamestat-numplayers-chart" class="hideuntilhovered"></div>
                         </div>
                     </td>
@@ -102,7 +110,7 @@
         <td class="alignedtop">
             <div id="gamestat-related-block" style="padding: 1px">
                 <h4 id="gamestat-related" class="bbgg-interesting">Related Items</h4>
-                <ul id="gamestat-related-list" class="hideuntilhovered"/>
+                <ul id="gamestat-related-list" class="hideuntilhovered"></ul>
             </div>
         </td>
     </tr>
@@ -132,7 +140,7 @@
         </a>
     </h3>
 </div>
-<p id="gamestat-description" class="collapse in"/>
+<p id="gamestat-description" class="collapse in"></p>
 
 <div class="gameregion">
     <h3 data-toggle="collapse" data-target="#gamestat-reviews">
@@ -142,7 +150,7 @@
         </a>
     </h3>
 </div>
-<ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"/>
+<ol style="list-style-type: none" id="gamestat-reviews" class="collapse in"></ol>
 
 <div class="gameregion">
     <h3 data-toggle="collapse" data-target="#gamestat-videos-container">
@@ -167,7 +175,7 @@
                     <tr>
                         <td>
                             <a class="gamevidlink" href="#" target="_blank">
-                                <h4 class="gamevidtitle"/>
+                                <h4 class="gamevidtitle"></h4>
                             </a>
                         </td>
                     </tr>

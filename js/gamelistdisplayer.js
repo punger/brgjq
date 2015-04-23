@@ -55,11 +55,13 @@ function GameListDisplayer() {
                     if (item.hasOwnProperty('data') && item.data) {
                         // data-toggle="tooltip" title="Some tooltip text!" data-delay='{ "show": 500, "hide": 100 }'
                         $newGameItem.attr('data-toggle', 'tooltip');
-                        $newGameItem.attr('data-delay', '{ "show": 500, "hide": 100 }');
+                        $newGameItem.attr('data-delay', '{ "show": 300, "hide": 100 }');
                         $newGameItem.attr('data-html', 'true');
                         //$newGameItem.attr('data-viewport', '{ "selector": "body", "padding": 0 }');
                         $newGameItem.attr('data-placement', 'bottom');//
                         $newGameItem.attr('data-private', JSON.stringify(item.data));
+                        if (item.data.own)
+                            $newGameItem.addClass('listitem-owned');
                         $newGameItem.attr('data-title', tooltiplist);
                         $parent.append($newGameItem);
                         $parent.find('.gameitem').tooltip();

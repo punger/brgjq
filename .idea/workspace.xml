@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1f7b2c1-c73f-4bd2-9bf3-fbbdd9263e43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/requirejsPlugin.xml" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\css\layout-default-latest.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\dojo-index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\index-pure.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\js\gamelist-ui.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\libs\jquery.layout-latest.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\paul\Documents\GitHub\brgjq\mods\mod1.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/traffic-lights-green-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/traffic-lights-grey-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/traffic-lights-red-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/traffic-lights-yellow-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/accessutil.js" afterPath="$PROJECT_DIR$/js/accessutil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/centerpane.js" afterPath="$PROJECT_DIR$/js/centerpane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gameinfo.js" afterPath="$PROJECT_DIR$/js/gameinfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gamelistdisplayer.js" afterPath="$PROJECT_DIR$/js/gamelistdisplayer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gamelists.js" afterPath="$PROJECT_DIR$/js/gamelists.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/headerpane.js" afterPath="$PROJECT_DIR$/js/headerpane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/listpane.js" afterPath="$PROJECT_DIR$/js/listpane.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/main.html" afterPath="$PROJECT_DIR$/html-frag/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/style.less" afterPath="$PROJECT_DIR$/less/style.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html-frag/top.html" afterPath="$PROJECT_DIR$/html-frag/top.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -37,54 +39,22 @@
     <favorites_list name="brgjq" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47371566">
+    <splitter split-orientation="horizontal" split-proportion="0.5098915">
       <split-first>
         <leaf>
           <file leaf-file-name="gameinfo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="47" column="78" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
+                  <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
                   <folding>
-                    <element signature="e#2330#5336#0" expanded="false" />
-                    <element signature="e#5346#5612#0" expanded="false" />
-                    <element signature="e#5666#7101#0" expanded="false" />
-                    <element signature="e#7161#12385#0" expanded="false" />
-                    <element signature="e#12441#18805#0" expanded="false" />
-                    <element signature="e#18854#19319#0" expanded="false" />
-                    <element signature="e#19360#20843#0" expanded="false" />
-                    <element signature="e#20896#22277#0" expanded="false" />
+                    <element signature="e#2886#5892#0" expanded="false" />
+                    <element signature="e#5902#6168#0" expanded="false" />
+                    <element signature="e#6222#7657#0" expanded="false" />
+                    <element signature="e#19349#19814#0" expanded="false" />
+                    <element signature="e#19855#21338#0" expanded="false" />
+                    <element signature="e#21391#22772#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.52040815">
-                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="top.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/top.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="15" column="26" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gamelist.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html-frag/gamelist.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -93,10 +63,33 @@
             <entry file="file://$PROJECT_DIR$/js/listpane.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="144" column="21" selection-start-line="144" selection-start-column="21" selection-end-line="144" selection-end-column="21" />
+                  <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/html-frag/main.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.46167248">
+                  <caret line="37" column="94" selection-start-line="37" selection-start-column="94" selection-end-line="37" selection-end-column="94" />
                   <folding>
-                    <element signature="e#2737#3896#0" expanded="false" />
+                    <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#ol#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gamelistdisplayer.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/gamelistdisplayer.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="22" column="16" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="23" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -105,43 +98,58 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="gviz.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/gviz.js">
+          <file leaf-file-name="headerpane.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/headerpane.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="275" column="26" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
+                  <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gamelists.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/gamelists.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="top.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html-frag/top.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-1.9615384">
+                  <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
                   <folding>
-                    <element signature="n#!!doc;n#GoogleVisualizations#0" expanded="false" />
+                    <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#span#1;n#form#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="centerpane.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="centerpane.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/centerpane.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="245" column="74" selection-start-line="245" selection-start-column="74" selection-end-line="245" selection-end-column="74" />
-                  <folding />
+                <state vertical-scroll-proportion="0.33215547">
+                  <caret line="277" column="87" selection-start-line="277" selection-start-column="87" selection-end-line="277" selection-end-column="87" />
+                  <folding>
+                    <element signature="e#7036#8127#0" expanded="false" />
+                    <element signature="e#8844#10484#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="headerpane.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/headerpane.js">
+          <file leaf-file-name="accessutil.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/accessutil.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gamelists.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/js/gamelists.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.1292135">
-                  <caret line="309" column="0" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="1" />
+                  <caret line="63" column="72" selection-start-line="63" selection-start-column="72" selection-end-line="63" selection-end-column="72" />
                   <folding />
                 </state>
               </provider>
@@ -193,21 +201,23 @@
       <list>
         <option value="$PROJECT_DIR$/js/gamecategories.js" />
         <option value="$PROJECT_DIR$/js/relateditemmap.js" />
-        <option value="$PROJECT_DIR$/html-frag/main.html" />
-        <option value="$PROJECT_DIR$/js/accessutil.js" />
-        <option value="$PROJECT_DIR$/less/style.less" />
         <option value="$PROJECT_DIR$/html-frag/ratingtooltip-jq.html" />
         <option value="$PROJECT_DIR$/js/gviz.js" />
-        <option value="$PROJECT_DIR$/js/centerpane.js" />
-        <option value="$PROJECT_DIR$/js/gameinfo.js" />
         <option value="$PROJECT_DIR$/html-frag/ratingtooltip.html" />
-        <option value="$PROJECT_DIR$/html-frag/top.html" />
-        <option value="$PROJECT_DIR$/js/headerpane.js" />
-        <option value="$PROJECT_DIR$/js/gamelists.js" />
-        <option value="$PROJECT_DIR$/js/listpane.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/js/listpane.js" />
+        <option value="$PROJECT_DIR$/js/headerpane.js" />
+        <option value="$PROJECT_DIR$/html-frag/listitem.html" />
+        <option value="$PROJECT_DIR$/js/accessutil.js" />
+        <option value="$PROJECT_DIR$/js/gameinfo.js" />
+        <option value="$PROJECT_DIR$/js/centerpane.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/html-frag/top.html" />
+        <option value="$PROJECT_DIR$/js/gamelistdisplayer.js" />
+        <option value="$PROJECT_DIR$/less/style.less" />
+        <option value="$PROJECT_DIR$/js/gamelists.js" />
+        <option value="$PROJECT_DIR$/html-frag/main.html" />
       </list>
     </option>
   </component>
@@ -321,7 +331,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="less" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -336,7 +346,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editor.preferences.smartKeys" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="last.edited.regexp" value="Sample Text" />
@@ -679,7 +689,7 @@
       <workItem from="1428305143293" duration="41374000" />
       <workItem from="1428538284801" duration="65199000" />
       <workItem from="1429323299700" duration="808000" />
-      <workItem from="1429324141061" duration="1449000" />
+      <workItem from="1429324141061" duration="53250000" />
     </task>
     <task id="LOCAL-00001" summary="Just trying to get started">
       <created>1387844918546</created>
@@ -819,44 +829,62 @@
       <option name="project" value="LOCAL" />
       <updated>1428871135969</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add User collection listing&#10;Remove dead files">
+      <created>1429325705255</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1429325705255</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added cool  tooltips to lists.&#10;Redid collection implementation to support retrieving only one game so that I can tell if the current user owns the current game.&#10;Some level of protection and retry against history that comes back fucked up.&#10;Capture the current user, if one was set.&#10;A little JSHint cleanup.&#10;">
+      <created>1429422018756</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1429422018756</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Oopsie, forgot to delete a comma.">
+      <created>1429422078435</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1429422078435</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122402000" />
+    <option name="totallyTimeSpent" value="174203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1064" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615715" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39849624" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39829606" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20660277" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53713673" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20660277" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5367412" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18385416" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18385416" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3258786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10795155" sideWeight="0.43683085" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38841203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38841203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -871,9 +899,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Just trying to get started" />
-    <MESSAGE value="Main image display&#10;locate by id&#10;search and show right hand list&#10;jump to selected search result&#10;start of rank display" />
-    <MESSAGE value="Add LESS and loading GIF&#10;&#10;Style sheets are now compiled from LESS.&#10;Loading GIF runs while AJAX calls are in flight" />
     <MESSAGE value="Rank list&#10;&#10;Bootstrap templates&#10;" />
     <MESSAGE value="JQuery layout&#10;&#10;Integrate jQuery layout as replacement for w2ui.  &#10;Get header for search/rank list working" />
     <MESSAGE value="Rank navigation buttons&#10;&#10;Nav rank shows and search hides up and down buttons for the rank list.&#10;North and east panes open and close, but do not resize." />
@@ -895,7 +920,11 @@
     <MESSAGE value="Rating history speedup&#10;&#10;Turns out templating, string replacement, they're all too slow, so I had to do something homegrown.&#10;Google visualizations DataView renders everything at the start so it doesn't get around the problem&#10;" />
     <MESSAGE value="Fast enough ratings history chart rendering&#10;&#10;Who knew that most of the cost was in Date.toLocaleString()?&#10;Replace jquery.layout's failing addCloseBtn call with a manual call" />
     <MESSAGE value="Adjust ratings popup&#10;Protect against retrieving history in the future if the history isn't exactly one entry per day.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjust ratings popup&#10;Protect against retrieving history in the future if the history isn't exactly one entry per day.&#10;" />
+    <MESSAGE value="Add User collection listing&#10;Remove dead files" />
+    <MESSAGE value="Added cool  tooltips to lists.&#10;Redid collection implementation to support retrieving only one game so that I can tell if the current user owns the current game.&#10;Some level of protection and retry against history that comes back fucked up.&#10;Capture the current user, if one was set.&#10;" />
+    <MESSAGE value="Added cool  tooltips to lists.&#10;Redid collection implementation to support retrieving only one game so that I can tell if the current user owns the current game.&#10;Some level of protection and retry against history that comes back fucked up.&#10;Capture the current user, if one was set.&#10;A little JSHint cleanup.&#10;" />
+    <MESSAGE value="Oopsie, forgot to delete a comma." />
+    <option name="LAST_COMMIT_MESSAGE" value="Oopsie, forgot to delete a comma." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -915,7 +944,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="245" column="74" selection-start-line="245" selection-start-column="74" selection-end-line="245" selection-end-column="74" />
-          <folding />
+          <folding>
+            <element signature="e#7036#8127#0" expanded="false" />
+            <element signature="e#8844#10484#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -981,20 +1013,6 @@
     <entry file="http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dojo/dojo.js.uncompressed.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres-w2ui.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/bgplogo.png">
@@ -1091,27 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/listitem.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077">
-          <caret line="151" column="27" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6538463">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip-jqbak.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923">
@@ -1119,64 +1116,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17386363">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/main-jq.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7977273">
-          <caret line="127" column="56" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="78" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
-          <folding>
-            <element signature="e#2330#5336#0" expanded="false" />
-            <element signature="e#5346#5612#0" expanded="false" />
-            <element signature="e#5666#7101#0" expanded="false" />
-            <element signature="e#7161#12385#0" expanded="false" />
-            <element signature="e#12441#18805#0" expanded="false" />
-            <element signature="e#18854#19319#0" expanded="false" />
-            <element signature="e#19360#20843#0" expanded="false" />
-            <element signature="e#20896#22277#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html-frag/ratingtooltip.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.692307">
           <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/gamelist.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5717439">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,42 +1143,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="245" column="74" selection-start-line="245" selection-start-column="74" selection-end-line="245" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/gamecategories.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15333334">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html-frag/top.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamelistdisplayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52538633">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/headerpane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,29 +1164,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/gamelists.js">
+    <entry file="file://$PROJECT_DIR$/html-frag/main-jq.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1292135">
-          <caret line="309" column="0" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="1" />
+        <state vertical-scroll-proportion="3.761324">
+          <caret line="127" column="56" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres-w2ui.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/srchres.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2665505">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gamehistoryitem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30573952">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5216668">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/gamelist.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/accessutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="72" selection-start-line="63" selection-start-column="72" selection-end-line="63" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gameinfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+          <folding>
+            <element signature="e#2886#5892#0" expanded="false" />
+            <element signature="e#5902#6168#0" expanded="false" />
+            <element signature="e#6222#7657#0" expanded="false" />
+            <element signature="e#19349#19814#0" expanded="false" />
+            <element signature="e#19855#21338#0" expanded="false" />
+            <element signature="e#21391#22772#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/headerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.576923">
+          <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/top.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#form#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/listpane.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="21" selection-start-line="144" selection-start-column="21" selection-end-line="144" selection-end-column="21" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html-frag/listitem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9613636">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gamelistdisplayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/gamelists.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/centerpane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33215547">
+          <caret line="277" column="87" selection-start-line="277" selection-start-column="87" selection-end-line="277" selection-end-column="87" />
           <folding>
-            <element signature="e#2737#3896#0" expanded="false" />
+            <element signature="e#7036#8127#0" expanded="false" />
+            <element signature="e#8844#10484#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/html-frag/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52040815">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.46167248">
+          <caret line="37" column="94" selection-start-line="37" selection-start-column="94" selection-end-line="37" selection-end-column="94" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ol#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

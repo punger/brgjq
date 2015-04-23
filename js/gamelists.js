@@ -6,6 +6,7 @@ function GameLister() {
     var MAXDELAY = 5000;
     var RETRYINTERVAL = MAXDELAY / 10;
     var au = new AccessUtil();
+    var ownersmap = {};
 
     var wishlistarray = [
         "",
@@ -76,6 +77,31 @@ function GameLister() {
             },
             getparent: function () {
                 return asObj();
+            },
+            findgame: function(gameno) {
+                for (var i = 0; i < gamecount; i++) {
+                    if (gamelist[i].gameNo === gameno) {
+                        return gamelist[i];
+                    }
+                }
+                return null;
+            },
+            containsgame: function(gameno) {
+                return this.findgame(gameno) !== null;
+            },
+            ownsgame: function (gameno) {
+                var gameitem = this.findgame(gameno);
+                if (!gameitem) return false;
+                if (!gameitem.data) return false;
+                return gameitem.data.own;
+            },
+            tomap: function () {
+                var gamemap = {};
+                for (var i = 0; i < gamecount; i++) {
+                    var item = gamelist[i];
+                    gamemap[item.gameNo] = item;
+                }
+                return gamemap;
             }
         };
     };
@@ -114,6 +140,18 @@ function GameLister() {
                                 }
                             );
                         });
+                        // either this is the entire collection, so cache it
+                        if (!game) {
+                            ownersmap[user] = itemlist.tomap();
+
+                        } else {
+                            // or it's a single game update, so overwrite the last retrieved
+                            // status of the game because it could be ab update
+                            var userscoll = ownersmap[user];
+                            if (userscoll) {
+                                userscoll[game] = itemlist.getparent().items[0];
+                            }
+                        }
                         cb(itemlist.getparent());
                         return;
                     }
@@ -140,6 +178,12 @@ function GameLister() {
 
     return {
         gamesearch: function (query, cb) {
+            var currcoll = null;
+            var user = $.cookie('bgguser');
+            if (user) {
+                if (ownersmap.hasOwnProperty(user))
+                    currcoll = ownersmap[user];
+            }
             $.get("/PHP/proxy.php",
                 'http://www.rpggeek.com/xmlapi2/search?type=boardgame&query='+
                 query.replace(" ", "+"),
@@ -148,72 +192,24 @@ function GameLister() {
                     var $respJq = au.$xResp(response);
                     $respJq.find("item").each(function(i, item){
                         var $item = $(item);
+                        var gameno = $item.attr('id');
+                        var data = null;
+                        if (currcoll) {
+                            if (currcoll.hasOwnProperty(gameno))
+                                data = currcoll[gameno].data;
+                        }
                         itemlist.additem(
-                            $item.attr('id'),
+                            gameno,
                             $item.find('name').attr('value'),
-                            $item.find('yearpublished').attr('value')
+                            $item.find('yearpublished').attr('value'),
+                            data
                         );
                     });
                     cb(itemlist.getparent());
-//                    itemlist.$getparent(cb);
                 },
                 "html"
             );
         },
-        //collection: function (user, cb, delay) {
-        //    if (delay > MAXDELAY) {
-        //        cb(null);
-        //        $.publish('statusmessage', ['Collection retrieval timed out']);
-        //        return;
-        //    }
-        //    $.ajax("/PHP/proxy.php",
-        //        {
-        //            context: this,
-        //            data: 'http://www.rpggeek.com/xmlapi2/collection?username='+user,
-        //            dataType: 'text',
-        //            success: function (response) {
-        //                var $respJq = au.$xResp(response);
-        //                var $resptype = $respJq.find('items');
-        //                if ($resptype[0]) {
-        //                    var itemlist = new BgList();
-        //                    $respJq.find("item").each(function(i, item){
-        //                        var $item = $(item);
-        //                        itemlist.additem(
-        //                            $item.attr('objectid'),
-        //                            $item.find('name').text(),
-        //                            $item.find('yearpublished').text()
-        //                        );
-        //                    });
-        //                    cb(itemlist.getparent());
-        //                    return;
-        //                }
-        //
-        //                //<message>Your request for this collection has been accepted and will be processed.
-        //                // Please try again later for access.</message>
-        //                $resptype = $respJq.find('message');
-        //                if ($resptype[0]) {
-        //                    if ($resptype.text().indexOf('try again later') >= 0) {
-        //                        var me = this;
-        //                        setTimeout(
-        //                            function() {
-        //                                me.collection(user, cb, delay + 500);
-        //                            },
-        //                            500);
-        //                    } else {
-        //                        $.publish('statusmessage', [$resptype.text()]);  // invalid user
-        //                        cb(null);
-        //                    }
-        //                    return;
-        //                }
-        //                $resptype = $respJq.find('error');
-        //                if ($resptype[0]) {
-        //                    $.publish('statusmessage', [$resptype.text()]);  // invalid user
-        //                    cb(null);
-        //                }
-        //            }
-        //        }
-        //    );
-        //},
         gamerank: function (rankid, cb) {
             // http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank=222
             $.get("/PHP/proxy.php",

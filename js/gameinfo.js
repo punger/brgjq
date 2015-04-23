@@ -53,7 +53,7 @@ function GameInfo () {
                     statarray[index].rank = $this.find('ranks #1').attr('value');
                 });
                 if (statarray.length === 0) {
-                    console.err('statarray has zero length: game='+
+                    console.error('statarray has zero length: game='+
                         gameno+', page='+page+', expected total entries='+totalentries);
                 } else {
                     if (page * PAGESIZE < totalentries &&
