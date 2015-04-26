@@ -4,24 +4,32 @@
     <div style="display: inline">
         <img style="max-height: 50px; margin-right: 25px" src="resources/bbgg-logo1.png">
     </div>
-    <div class="form-group form-inline">
+    <div class="form-group form-inline" style="display: none" hidden>
         <label class="sr-only" for="gamenum">Game ID number</label>
         <input id="gamenum" placeholder="Game id" type="number" class="form-control" value="102794"/>
     </div>
-    <button id="getGame" type="button" class="btn btn-default" value="Get Game Info">Get Game Info</button>
+    <button id="getGame" style="display: none" hidden type="button" class="btn btn-default" value="Get Game Info">Get Game Info</button>
     <div class="form-group form-inline">
         <label class="sr-only" for="gamesearch">Game name</label>
         <input id="gamesearch" class="form-control" type="text" placeholder="Game name"/>
     </div>
     <button id="searchGame" type="button" class="btn btn-default">Search</button>
-    <div class="form-group form-inline">
+    <div class="form-group form-inline" style="padding-left: 20px">
         <label class="sr-only" for="bgguser">User</label>
         <input id="bgguser" class="form-control" type="text" placeholder="User"/>
     </div>
     <button id="searchUser" type="button" class="btn btn-default">User</button>
     <img id="loading" src="resources/ajax-loader.gif" hidden showcount="0"/>
     <span id="brgmessage"></span>
-    <span data-toggle="tooltip" title="Click to show the Hotness"
-          id="hotness-list" style="font-size: 30px; margin-top: 25px"
-          class="gamenavarrows pull-right glyphicon glyphicon-fire"></span>
+    <span class="pull-right" style=" margin-top: 10px">
+        <a><span data-toggle="tooltip" title="Click to show the Hotness"
+                    id="hotness-list" style="font-size: 30px"
+                    class="gamenavarrows glyphicon glyphicon-fire">
+        </span></a>
+        <a><span data-toggle="tooltip" title="Help"
+                    id="help" style="font-size: 30px"
+                    class="gamenavarrows glyphicon glyphicon-question-sign">
+        </span></a>
+        <!--<img src="resources/help.png">-->
+    </span>
 </form>

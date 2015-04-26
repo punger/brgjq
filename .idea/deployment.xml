@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="bgxamp" createEmptyFolders="true" showNewOnTargetInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="bgxamp" createEmptyFolders="true" compareModeInSync="TIMESTAMP" showNewOnSourceInSync="false" showNewOnTargetInSync="false">
     <serverData>
       <paths name="bgxamp">
         <serverdata>
           <mappings>
             <mapping deploy="\" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="pjuname">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/bbgg" local="$PROJECT_DIR$" web="/bbgg" />
           </mappings>
         </serverdata>
       </paths>

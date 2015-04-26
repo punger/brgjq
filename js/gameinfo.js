@@ -68,7 +68,8 @@ function GameInfo () {
                 cbend([], page);
             }
 
-        });
+        })
+            .retry({times:3, timeout:3000, statusCodes: [502, 503]});
 
     };
 
@@ -131,7 +132,8 @@ function GameInfo () {
                 },
                 "html"
 
-            );
+            )
+                .retry({times:3, timeout:3000, statusCodes: [502, 503]});
             return info;
         },
         /**
@@ -151,7 +153,14 @@ function GameInfo () {
                 function (response) {
                     var $r = au.$jqResp(response);
                     var chartArg = $r.find('#main_content').find('img').attr('src');
-                    var chartUri = new URI(chartArg);
+                    var chartUri;
+                    try {
+                        chartUri = new URI(chartArg);
+                    } catch (e) {
+                        console.log('Failed getting rating detail because of bad source URI:"'+chartArg+'"');
+                        cb([]);
+                        return;
+                    }
                     var splitArgs = chartUri.search(true);
                     var ratingArg = splitArgs["chm"];
                     var ratingsArr = ratingArg.split('|');

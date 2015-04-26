@@ -93,6 +93,13 @@ function HeaderPane(paneselector, arg) {
         $.cookie('bgguser', q);
         $.publish('list.collection', [q]);
     });
+    $(document).on('click', "#hotness-list", function () {
+        $.publish('list.hotness', []);
+    });
+    $(document).on('click', "#help", function () {
+        alert('Only weenies whine for help.  Oh, well, coming soon, I guess.');
+    });
+
 
     return {
         getGameNo: function () {

@@ -200,6 +200,16 @@ function ListPane(parentpaneselector) {
     $.subscribe('list.collection', function (_, user) {
         showcollection(user);
     });
+    $.subscribe('list.hotness', function () {
+        showgamelist(
+            "Retrieving the Hotness ...",
+            "The Hotness",
+            'hotness',
+            1,
+            1000,
+            null,
+            false);
+    });
 
     return {
         showlist: function () {},

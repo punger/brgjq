@@ -3,6 +3,5 @@
   <component name="RequirejsProjectComponent">
     <option name="publicPath" value="." />
     <option name="baseUrl" value="bower_components" />
-    <option name="pluginEnabled" value="true" />
   </component>
 </project>

@@ -332,7 +332,6 @@ function GoogleVisualizations () {
             //var tt = ratingttstring.substr(0);
             //var tt = new String(ratingttstring);
             var ttarr = [];
-            var tt = '';
             for (var i = 0; i < template.length; i++) {
                 var t = template[i];
                 if (t.type === 'frag') {
@@ -422,7 +421,7 @@ function GoogleVisualizations () {
                         rows[rowcount] = c;
                         rowcount++;
                     }
-                };
+                }
             });
             return {
                 "cols": cols, "rows": rows
@@ -514,7 +513,7 @@ function GoogleVisualizations () {
             },
             "draw": function(data, targetid) {
                 if (!this.validateinput(data)) {
-                    console.error("Invalid data to ratings history="+data);
+                    console.log('%s %O', "Invalid data to ratings history=", data);
                     return;
                 }
                 debug('rh draw 1');

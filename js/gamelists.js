@@ -176,39 +176,56 @@ function GameLister() {
 
     };
 
+    var getcurcoll = function() {
+        var user = $.cookie('bgguser');
+        if (user) {
+            if (ownersmap.hasOwnProperty(user))
+                return ownersmap[user];
+        }
+        return null;
+    };
+
+    var mixedgamedata = function(data, gameno, currcoll) {
+        if (currcoll) {
+            if (currcoll.hasOwnProperty(gameno)) {
+                return $.extend({}, data, currcoll[gameno].data);
+            }
+        }
+        return data;
+    };
+
+    var getsimplelist = function(url, cb) {
+        $.get("/PHP/proxy.php",
+            url,
+            function (response) {
+                var currcoll = getcurcoll();
+                var itemlist = new BgList();
+                var $respJq = au.$xResp(response);
+                $respJq.find("item").each(function(i, item){
+                    var $item = $(item);
+                    var gameno = $item.attr('id');
+                    itemlist.additem(
+                        gameno,
+                        $item.find('name').attr('value'),
+                        $item.find('yearpublished').attr('value'),
+                        mixedgamedata(null, gameno, currcoll)
+                    );
+                });
+                cb(itemlist.getparent());
+            },
+            "html"
+        );
+
+    };
+
     return {
         gamesearch: function (query, cb) {
-            var currcoll = null;
-            var user = $.cookie('bgguser');
-            if (user) {
-                if (ownersmap.hasOwnProperty(user))
-                    currcoll = ownersmap[user];
-            }
-            $.get("/PHP/proxy.php",
+            getsimplelist(
                 'http://www.rpggeek.com/xmlapi2/search?type=boardgame&query='+
-                query.replace(" ", "+"),
-                function (response) {
-                    var itemlist = new BgList();
-                    var $respJq = au.$xResp(response);
-                    $respJq.find("item").each(function(i, item){
-                        var $item = $(item);
-                        var gameno = $item.attr('id');
-                        var data = null;
-                        if (currcoll) {
-                            if (currcoll.hasOwnProperty(gameno))
-                                data = currcoll[gameno].data;
-                        }
-                        itemlist.additem(
-                            gameno,
-                            $item.find('name').attr('value'),
-                            $item.find('yearpublished').attr('value'),
-                            data
-                        );
-                    });
-                    cb(itemlist.getparent());
-                },
-                "html"
-            );
+                query.replace(" ", "+"), cb);
+        },
+        hotness: function (query, cb) {
+            getsimplelist('http://www.rpggeek.com/xmlapi2/hotness?type=boardgame', cb);
         },
         gamerank: function (rankid, cb) {
             // http://rpggeek.com/browse/boardgame?sort=rank&rankobjectid=1&rank=222
@@ -220,6 +237,7 @@ function GameLister() {
                     var gamecount = 0;
                     // The following might be wrong
                     var gamelist = new BgList();
+                    var currcoll = getcurcoll();
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
@@ -235,6 +253,7 @@ function GameLister() {
                                 bggrating: $stats.get(0).innerHTML.trim(),
                                 raters: $stats.get(2).innerHTML.trim()
                             };
+                            gamedata = mixedgamedata(gamedata, gameNo, currcoll);
                             gamelist.additem(gameNo,  $gamelink.text(), gameyear, gamedata);
                         } catch (err) {
                             console.log('rank list error '+ err);
@@ -274,6 +293,7 @@ function GameLister() {
                     var $colltable = $rankPage.find(".innermoduletable > tbody > tr");
                     var gamecount = 0;
                     var gamelist = new BgList();
+                    var currcoll = getcurcoll();
                     $colltable.each(function (index, gamerow) {
                         try {
                             gamecount++;
@@ -293,7 +313,7 @@ function GameLister() {
                             var $thirdcol = $($statstable[0].rows[0].cells[2]);
                             var gameyear = $($thirdcol.find('table')[0].rows[2].cells[1]).text().trim();
                             //$gr.find("div[id*='results_objectname'] span").text();
-
+                            data = mixedgamedata(data, gameNo, currcoll);
                             gamelist.additem(gameNo,  $gamelink.text(), gameyear, data);
                         } catch (err) {
                             console.log("At game number " + gamecount++);
@@ -403,6 +423,10 @@ function GameLister() {
                     } else if (typeof args === 'object') {
                         this.gameforuser(args.user, args.game, cb);
                     }
+                    break;
+                case 'hotness':
+                    getsimplelist(
+                        'http://www.rpggeek.com/xmlapi2/hotness?type=boardgame', cb);
                     break;
                 default:
             }

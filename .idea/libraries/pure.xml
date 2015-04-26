@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="pure" type="javaScript">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/pure.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/dojo.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/domassistant.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/jquery.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/json2.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/mootools.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/prototype.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/pure.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/sizzle.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/libs/sly.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/beebole-pure/node/test.js" />
+    </SOURCES>
+  </library>
+</component>
