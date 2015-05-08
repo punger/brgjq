@@ -1,0 +1,42 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/js/gameinfo.min.js" />
+        <item url="file://$PROJECT_DIR$/js/gviz.min.js" />
+        <item url="file://$PROJECT_DIR$/js/statuspane.min.js" />
+        <item url="file://$PROJECT_DIR$/js/relateditemmap.min.js" />
+        <item url="file://$PROJECT_DIR$/js/ratingsUI.min.js" />
+        <item url="file://$PROJECT_DIR$/js/ratinggraph.min.js" />
+        <item url="file://$PROJECT_DIR$/js/listpane.min.js" />
+        <item url="file://$PROJECT_DIR$/js/headerpane.min.js" />
+        <item url="file://$PROJECT_DIR$/js/gamehistoryitem.min.js" />
+        <item url="file://$PROJECT_DIR$/js/gamelistdisplayer.min.js" />
+        <item url="file://$PROJECT_DIR$/js/diffgauge.min.js" />
+        <item url="file://$PROJECT_DIR$/js/centerpane.min.js" />
+        <item url="file://$PROJECT_DIR$/js/gamelists.min.js" />
+        <item url="file://$PROJECT_DIR$/js/accessutil.min.js" />
+        <item url="file://$PROJECT_DIR$/js/gamecategories.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/js/gameinfo.min.js" />
+      <root url="file://$PROJECT_DIR$/js/gviz.min.js" />
+      <root url="file://$PROJECT_DIR$/js/statuspane.min.js" />
+      <root url="file://$PROJECT_DIR$/js/relateditemmap.min.js" />
+      <root url="file://$PROJECT_DIR$/js/ratingsUI.min.js" />
+      <root url="file://$PROJECT_DIR$/js/ratinggraph.min.js" />
+      <root url="file://$PROJECT_DIR$/js/listpane.min.js" />
+      <root url="file://$PROJECT_DIR$/js/headerpane.min.js" />
+      <root url="file://$PROJECT_DIR$/js/gamehistoryitem.min.js" />
+      <root url="file://$PROJECT_DIR$/js/gamelistdisplayer.min.js" />
+      <root url="file://$PROJECT_DIR$/js/diffgauge.min.js" />
+      <root url="file://$PROJECT_DIR$/js/centerpane.min.js" />
+      <root url="file://$PROJECT_DIR$/js/gamelists.min.js" />
+      <root url="file://$PROJECT_DIR$/js/accessutil.min.js" />
+      <root url="file://$PROJECT_DIR$/js/gamecategories.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

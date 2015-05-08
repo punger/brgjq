@@ -30,7 +30,6 @@ function RatingGraph () {
     var drawgraph = function (inputmap) {
         // Update and draw the visualization.
         try {
-//            data.setValue(0, 1, diff);
             data = convertToGDataTable(inputmap);
             gvgraph.draw(data, options);
         } catch (e) {

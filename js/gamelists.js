@@ -2,6 +2,11 @@
  * Created by paul on 1/26/14.
  */
 
+/**
+ * Surfaces methods to retrieve lists of games
+ * @returns {{gamesearch: Function, hotness: Function, gamerank: Function, familylist: Function, gameforuser: Function, gamelist: Function}}
+ * @constructor
+ */
 function GameLister() {
     var MAXDELAY = 5000;
     var RETRYINTERVAL = MAXDELAY / 10;
@@ -21,7 +26,6 @@ function GameLister() {
         var gamecount = 0;
         var gamelist = [];
         var $jqtemplate;
-//        $jqtemplate.load('html-frag/gamelist.xml');
         var loadtemplate = function(cb) {
             $.get('html-frag/gamelist.xml', function(r) {
                 $jqtemplate = $(r);
@@ -411,11 +415,6 @@ function GameLister() {
                     } else if (typeof start === "number" && typeof args === "string") {
                         this.gameforuser(args, null, cb);
                     }
-                    //if (typeof start === "string") {
-                    //    this.collection(start, cb);
-                    //} else if (typeof start === "number" && typeof args === "string") {
-                    //    this.collection(args, cb);
-                    //}
                     break;
                 case 'usergame':
                     if (typeof start === 'object') {

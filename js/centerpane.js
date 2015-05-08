@@ -2,6 +2,12 @@
  * Created by paul on 1/25/14.
  */
 
+/**
+ *
+ * @param parentpaneselector
+ * @returns {{setgame: Function}}
+ * @constructor
+ */
 function CenterPane(parentpaneselector) {
     var pane = parentpaneselector;
     var gi = new GameInfo();
@@ -328,7 +334,7 @@ function CenterPane(parentpaneselector) {
                 gameNo,
                 function(histstats, pagenum) {
                     piecearray.push(pagenum);
-                    console.log('%s %0','Got '+histstats.length+' history items so far', piecearray);
+                    console.log('%s %O','Got '+histstats.length+' history items so far', piecearray);
                     ratingsGraph.update("rathist", histstats, "gamestat-ratinghistory-chart");
                 },
                 function(finalstats) {

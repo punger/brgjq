@@ -142,7 +142,7 @@ function GoogleVisualizations () {
             },
             "draw": function(data, targetid) {
                 if (!this.validateinput(data)) {
-                    console.error("Invalid data to age poll="+data);
+                    console.log('%s %o', "Invalid data to age poll=", data);
                     return;
                 }
                 debug('ap draw 1');
@@ -321,7 +321,6 @@ function GoogleVisualizations () {
                         }
                     }
                     ratingttstring = r;
-                    //$ratingtooltiptemplate =  $(r);
                     next();
                 }
             );
@@ -348,7 +347,6 @@ function GoogleVisualizations () {
                 }
             }
             return ttarr.join('');
-            //return ratingttstring
             //    .replace('$$type', type)
             //    .replace('$$date', date.toLocaleDateString('en-US'))
             //    .replace('$$raters', ratings)

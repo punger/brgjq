@@ -2,6 +2,13 @@
  * Created by paul on 1/25/14.
  */
 
+/**
+ *
+ * @param paneselector
+ * @param arg
+ * @returns {{getGameNo: Function, setGameNo: Function, getSearchString: Function, ajaxmore: Function, ajaxless: Function}}
+ * @constructor
+ */
 function HeaderPane(paneselector, arg) {
     var pane = paneselector;
     var showCount = 0;

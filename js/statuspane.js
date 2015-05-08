@@ -2,6 +2,11 @@
  * Created by paul on 2/1/14.
  */
 
+/**
+ *
+ * @param parentpaneselector
+ * @constructor
+ */
 function StatusPane(parentpaneselector) {
     var pane = parentpaneselector;
 

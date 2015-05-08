@@ -2,6 +2,11 @@
  * Created by paul on 2/1/14.
  */
 
+/**
+ *
+ * @returns {{writelistitems: Function, writelistitems_obj: Function}}
+ * @constructor
+ */
 function GameListDisplayer() {
 
     var tooltiplist = function () {
@@ -60,8 +65,9 @@ function GameListDisplayer() {
                         //$newGameItem.attr('data-viewport', '{ "selector": "body", "padding": 0 }');
                         $newGameItem.attr('data-placement', 'bottom');//
                         $newGameItem.attr('data-private', JSON.stringify(item.data));
-                        if (item.data.own)
+                        if (item.data.own) {
                             $newGameItem.addClass('listitem-owned');
+                        }
                         $newGameItem.attr('data-title', tooltiplist);
                         $parent.append($newGameItem);
                         $parent.find('.gameitem').tooltip();

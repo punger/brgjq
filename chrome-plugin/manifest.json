@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+
+    "name": "Jump to BBGG",
+    "description": "Add context menu that allows selected string to be searched on BBGG.",
+    "version": "1.0",
+
+    "permissions": [
+        "contextMenus",
+        "http://pju.name/"
+    ],
+    "icons": {
+        "16": "Spiral16.png",
+        "48": "Spiral48.png",
+        "128": "Spiral128.png"
+    },
+    "background": {
+        "scripts": ["bggsrch.js"]
+    }
+}

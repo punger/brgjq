@@ -2,6 +2,12 @@
  * Created by paul on 1/25/14.
  */
 
+/**
+ *
+ * @param parentpaneselector
+ * @returns {{showlist: Function, loadandshowlist: Function}}
+ * @constructor
+ */
 function ListPane(parentpaneselector) {
     var ptsel = parentpaneselector;
     var gl = new GameLister();

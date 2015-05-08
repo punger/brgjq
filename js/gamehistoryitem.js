@@ -2,6 +2,12 @@
  * Created by paul on 1/18/14.
  */
 
+/**
+ * Represents the local history of games loaded
+ * @param shouldset
+ * @returns {{add: Function, get: Function, select: Function, clear: Function, all: Function, before: Function, after: Function, prev: Function, next: Function, empty: Function, getindex: Function}|*}
+ * @constructor
+ */
 function GameHistory (shouldset) {
     var storedgames = $.cookie("gameslist");
     var gameindex = -1;
@@ -32,9 +38,13 @@ function GameHistory (shouldset) {
     };
 
     var findByGameId = function (gno) {
-        if (!games) return -1;
+        if (!games) {
+            return -1;
+        }
         for (var i = 0; i < games.length; i++) {
-            if (games[i].gameNo === gno) return i;
+            if (games[i].gameNo === gno) {
+                return i;
+            }
         }
         return -1;
     };

@@ -2,6 +2,11 @@
  * Created by paul on 1/26/14.
  */
 
+/**
+ *
+ * @returns {{htmlResp: Function, $xResp: Function, xmlResp: Function, jResp: Function, $jqResp: Function, slugify: Function}}
+ * @constructor
+ */
 function AccessUtil  () {
     var stripHtmlTag = function (response) {
         var htmLoc = response.indexOf('<html');
@@ -17,14 +22,18 @@ function AccessUtil  () {
         try {
             // Embedded script tags make the xml parsing barf
             var rxmlnoscript = respXmlString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-            var respXml = $.parseXML(rxmlnoscript);
-            return respXml;
+            return $.parseXML(rxmlnoscript);
         } catch (e) {
             alert('xml parse problem: '+ e);
         }
 
     };
     return {
+        /**
+         * Strip scripts out of html strings
+         * @param response input html
+         * @returns string html without embedded scripts
+         */
         "htmlResp": function (response) {
             return stripHtmlTag(response);
         },

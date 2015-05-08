@@ -2,6 +2,10 @@
  * Created by paul on 1/20/14.
  */
 
+/**
+ * Helps displaying related items and driving theor lists
+ * @type {{boardgamecategory: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamemechanic: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameexpansion: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgame: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamedesigner: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameartist: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamefamily: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameimplbase: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameimplementation: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgamecompilation: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgamecompilationgroup: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameintegration: {listtype: string, relatedprompt: string, relatedtitle: string}}}
+ */
 var relateditemmap = {
     "boardgamecategory": {
         "listtype": "family",

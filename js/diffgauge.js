@@ -2,6 +2,11 @@
  * Created by paul on 1/19/14.
  */
 
+/**
+ * Difficulty gauge
+ * @returns {{updategauge: Function, reinit: Function}}
+ * @constructor
+ */
 function DiffGauge () {
     var gaugeinited = false;
     var gvgauge;
