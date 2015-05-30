@@ -1,8 +1,4 @@
 /**
- * Created by paul on 1/25/14.
- */
-
-/**
  *
  * @param parentpaneselector
  * @returns {{showlist: Function, loadandshowlist: Function}}

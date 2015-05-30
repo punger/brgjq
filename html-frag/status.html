@@ -6,12 +6,23 @@
         of
         <span id="status-gamecount"></span>
     </h2>
-    <table id="status-table">
+    <table style="border: 0">
         <tr>
-            <th class="status-colheader"><span class="status-colhdrval"></span> </th>
+            <td style="width: 100%">
+                <table id="status-table">
+                    <tr>
+                        <th class="status-colheader"><span class="status-colhdrval"></span> </th>
+                    </tr>
+                    <tr>
+                        <td class="status-entry"><span class="status-gamename"></span> </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 200px">
+                <div>
+                    <ol id="status-ajaxlist"></ol>
+                </div>
+            </td>
         </tr>
-        <tr>
-            <td class="status-entry"><span class="status-gamename"></span> </td>
-        </tr>
-    </table>
+        </table>
 </div>

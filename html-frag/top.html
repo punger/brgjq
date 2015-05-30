@@ -23,13 +23,34 @@
     <span id="brgmessage"></span>
     <span class="pull-right" style=" margin-top: 10px">
         <a><span data-toggle="tooltip" title="Click to show the Hotness"
-                    id="hotness-list" style="font-size: 30px"
-                    class="gamenavarrows glyphicon glyphicon-fire">
+                    id="hotness-list"
+                    class="gamenavarrows glyph-buttons glyphicon glyphicon-fire">
         </span></a>
         <a><span data-toggle="tooltip" title="Help"
-                    id="help" style="font-size: 30px"
-                    class="gamenavarrows glyphicon glyphicon-question-sign">
+                    id="help"
+                    class="gamenavarrows glyph-buttons glyphicon glyphicon-question-sign">
         </span></a>
-        <!--<img src="resources/help.png">-->
+        <a><span data-toggle="tooltip" title="Communications"
+                    id="show-comm"
+                    class="gamenavarrows glyph-buttons glyphicon glyphicon-sort">
+        </span></a>
     </span>
+    <div class="modal fade" id="commModal" tabindex="-1" role="dialog" aria-labelledby="commdisplaySubjectModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="commdisplaySubjectModal">Modal title</h4>
+                </div>
+                <div id="commdisplaycontent" class="modal-body">
+                    <div id="commtracer"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>

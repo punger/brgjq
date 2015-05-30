@@ -17,7 +17,9 @@
     <orderEntry type="library" name="less" level="application" />
     <orderEntry type="library" name="google.visualization-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="google-viz" level="project" />
-    <orderEntry type="library" name="jQuery" level="application" />
     <orderEntry type="library" name="isotope" level="project" />
+    <orderEntry type="library" name="pure" level="project" />
+    <orderEntry type="library" name="jquery.cookie-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="Generated files" level="project" />
   </component>
 </module>

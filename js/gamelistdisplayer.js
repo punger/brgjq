@@ -1,8 +1,4 @@
 /**
- * Created by paul on 2/1/14.
- */
-
-/**
  *
  * @returns {{writelistitems: Function, writelistitems_obj: Function}}
  * @constructor

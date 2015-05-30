@@ -1,8 +1,4 @@
 /**
- * Created by paul on 2/11/14.
- */
-
-/**
  * Load static category information
  * @returns {{catList: Function, entries: Function, listTypes: Function}}
  * @constructor

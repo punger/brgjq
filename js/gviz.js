@@ -1,7 +1,8 @@
 /**
- * Created by paul on 2/3/14.
+ *
+ * @returns {{update: Function, reinit: Function}}
+ * @constructor
  */
-
 function GoogleVisualizations () {
     var q = $({});
     var gvizinited = false;
@@ -113,6 +114,7 @@ function GoogleVisualizations () {
             // Update and draw the visualization.
             try {
                 var data = new google.visualization.DataTable();
+                //var data = new google.visualization.DataTable();
                 data.addColumn('string', quantity);
                 data.addColumn('number', 'Votes');
                 $.each(apdata, function(i, val) {
@@ -290,6 +292,16 @@ function GoogleVisualizations () {
                     var dollarloc = 0;
                     var remaining = r;
                     var piececount = 0;
+                    var replacer = function(cur, index, arr) {
+                        if (remaining.substring(0, cur.length) === cur) {
+                            template[piececount++] =
+                            {
+                                'type': 'val',
+                                'val': cur
+                            };
+                            tag = cur;
+                        }
+                    };
                     while (remaining.length > 0) {
                         var nextloc = remaining.indexOf('$$');
                         if (nextloc < 0) {
@@ -307,16 +319,7 @@ function GoogleVisualizations () {
                             };
                             remaining = remaining.substr(nextloc+2);
                             var tag = "";
-                            tags.forEach(function(cur, index, arr) {
-                                if (remaining.substring(0, cur.length) === cur) {
-                                    template[piececount++] =
-                                    {
-                                        'type': 'val',
-                                        'val': cur
-                                    };
-                                    tag = cur;
-                                }
-                            });
+                            tags.forEach(replacer);
                             remaining = remaining.substr(tag.length);
                         }
                     }
@@ -443,10 +446,10 @@ function GoogleVisualizations () {
                 var starttime = Date.now();
                 var dt = composeDataTable(rhdata);
                 var lasttime = Date.now();
-                console.log("Took "+(lasttime - starttime) + "ms to compose data");
+                //console.log("Took "+(lasttime - starttime) + "ms to compose data");
                 var data = new google.visualization.DataTable(dt);
                 var newtime = Date.now();
-                console.log("Took "+(newtime - lasttime) + "ms to instantiate table");
+                //console.log("Took "+(newtime - lasttime) + "ms to instantiate table");
                 lasttime = newtime;
                 //var dv = new google.visualization.DataView(data);
                 //dv.setColumns(
@@ -488,8 +491,8 @@ function GoogleVisualizations () {
                 //gvnrathist.draw(dv, options);
                 $root.removeClass('chartdisplay');
                 newtime = Date.now();
-                console.log("Took "+(newtime - lasttime) + "ms to draw the chart with "+ dt.rows.length+" rows");
-                console.log("Took "+(newtime - starttime) + "ms to draw entire ratings chart");
+                //console.log("Took "+(newtime - lasttime) + "ms to draw the chart with "+ dt.rows.length+" rows");
+                //console.log("Took "+(newtime - starttime) + "ms to draw entire ratings chart");
             } catch (e) {
                 console.error('ratings history chart error: '+ e+'\nData:\n'+JSON.stringify(rhdata));
             }

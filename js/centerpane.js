@@ -1,8 +1,4 @@
 /**
- * Created by paul on 1/25/14.
- */
-
-/**
  *
  * @param parentpaneselector
  * @returns {{setgame: Function}}
@@ -61,7 +57,11 @@ function CenterPane(parentpaneselector) {
         "#gamestat-rank, #gamestat-rank@data-rank": 'rank',
         "#gamestat-length": "playingtime",
         "#gamestat-description": function (g) {
-            return g.context.description.replace(/&#10;/g, "<br/>");
+            if (g.context.hasOwnProperty("description")){
+                return g.context.description.replace(/&#10;/g, "<br/>");
+            } else {
+                return "No description";
+            }
         },
         "#gamestat-numplayers": function (g) {
             return "Players: " + g.context.minplayers +
@@ -108,7 +108,7 @@ function CenterPane(parentpaneselector) {
 
                 try {
                     $("#gamestat-videos").render(vidlistobj, vidlistDirective);
-                    console.log('%s %o',"After render\n",$vidparent[0]);
+                    //console.log('%s %o',"After render\n",$vidparent[0]);
                 } catch (e) {
                     console.error('pure error (videos) '+e);
                 }
@@ -181,25 +181,29 @@ function CenterPane(parentpaneselector) {
                 var famtype = $linkitem.attr("type");
 //                    var famname = $linkitem.attr('value');
                 var baseid = 0;
-                console.log('Family type: '+famtype);
-                var linktypeoverride = relateditemmap[famtype].renameoninbound;
-                if (linktypeoverride) {
-                    if ($linkitem.attr('inbound')) {
-                        famtype = linktypeoverride;
+                if (relateditemmap.hasOwnProperty(famtype)) {
+
+                    var linktypeoverride = relateditemmap[famtype].renameoninbound;
+                    if (linktypeoverride) {
+                        if ($linkitem.attr('inbound')) {
+                            famtype = linktypeoverride;
+                        }
+                        baseid = $linkitem.attr('id');
                     }
-                    baseid = $linkitem.attr('id');
+                    if (typeof relatedmap[famtype] === "undefined") {
+                        relatedmap[famtype] = [];
+                    }
+                    relatedmap[famtype].push({
+                        "familytype": famtype,
+                        "famid": $linkitem.attr('id'),
+                        "family": $linkitem.attr('value'),
+                        "familylisttitle": relateditemmap[famtype].relatedtitle +
+                        '"' + $linkitem.attr('value') + '"',
+                        "baseid": baseid
+                    });
+                } else {
+                    console.log('Unknown family type: '+famtype);
                 }
-                if (typeof relatedmap[famtype] === "undefined") {
-                    relatedmap[famtype] = [];
-                }
-                relatedmap[famtype].push({
-                    "familytype": famtype,
-                    "famid": $linkitem.attr('id'),
-                    "family": $linkitem.attr('value'),
-                    "familylisttitle": relateditemmap[famtype].relatedtitle +
-                    '"' + $linkitem.attr('value') + '"',
-                    "baseid": baseid
-                });
             });
             /**
              * Structure:
@@ -484,7 +488,7 @@ function CenterPane(parentpaneselector) {
         if (owns || !curruser) {
             return;
         }
-        var win = window.open('https://boardgamegeek.com/geekcollection.php' +
+        var win = window.open('http://boardgamegeek.com/geekcollection.php' +
                 '?ajax=1&addowned=true&instanceid=19&objectid='+currGame+
                 '&objecttype=thing&action=additem',
             '_blank');

@@ -1,12 +1,9 @@
 /**
- * Created by paul on 1/25/14.
- */
-
-/**
  *
  * @param paneselector
  * @param arg
- * @returns {{getGameNo: Function, setGameNo: Function, getSearchString: Function, ajaxmore: Function, ajaxless: Function}}
+ * @returns {{getGameNo: Function, setGameNo: Function, getSearchString: Function,
+ * ajaxmore: Function, ajaxless: Function}}
  * @constructor
  */
 function HeaderPane(paneselector, arg) {
@@ -14,6 +11,8 @@ function HeaderPane(paneselector, arg) {
     var showCount = 0;
     var $ld;
     var catLister;
+    var callid = 0;
+    var ajaxtracker;
 
     $.get("html-frag/top.html", function (r) {
         $(pane).html(r);
@@ -23,11 +22,14 @@ function HeaderPane(paneselector, arg) {
          * It turns out that you need to keep a use count because more than one of these fires.
          */
         $(document)
-            .bind("ajaxSend", function() {
+            .bind("ajaxSend", function( event, request, settings ) {
+                settings.privatecallid = ++callid;
+                $.publish('ajaxcall.start', [settings.url, callid]);
                 showCount++;
                 $ld.show();
             })
-            .bind("ajaxComplete", function() {
+            .bind("ajaxComplete", function( event, request, settings ) {
+                $.publish('ajaxcall.end', [settings.url, settings.privatecallid, request.status]);
                 if (showCount <= 1) {
                     showCount = 0;
                     $ld.hide();
@@ -35,6 +37,10 @@ function HeaderPane(paneselector, arg) {
                     showCount--;
                 }
             });
+        if (!ajaxtracker) {
+            ajaxtracker = new AjaxTracker("commtracer");
+        }
+        ajaxtracker.init();
         if (arg) {
             var gameNo = parseInt(arg);
             if (gameNo) {
@@ -106,6 +112,20 @@ function HeaderPane(paneselector, arg) {
     $(document).on('click', "#help", function () {
         alert('Only weenies whine for help.  Oh, well, coming soon, I guess.');
     });
+    $(document).on('click', "#show-comm", function () {
+        $.publish('layout.showmodal', 'north'); // pg.allowOverflow('north');
+        $('#commModal').modal({
+            backdrop: false // only this seems to work
+        }).draggable();
+    });
+    $(document).on('click', '#commModal', function() {
+        $("#commModal").modal('hide');
+    });
+
+    $(document).on('hidden.bs.modal', '#commModal', function() {
+        $.publish ('layout.hidemodal', 'north');   // pg.resetOverflow('north');
+    });
+
 
 
     return {

@@ -11,6 +11,7 @@ function StatusPane(parentpaneselector) {
     var pane = parentpaneselector;
 
     var currghl;
+    var ajaxtracker;
 
     var statDirective = {
         "#status-gameindex": function (i) {return i.context.gameindex + 1;},
@@ -28,7 +29,6 @@ function StatusPane(parentpaneselector) {
             }
         }
     };
-
     var showlist = function (ghl) {
         $(pane).empty();
         $.get("html-frag/status.html", function (r) {
@@ -36,6 +36,10 @@ function StatusPane(parentpaneselector) {
             $(pane).append($statbody);
             $statbody.render(ghl.all(), statDirective);
             $(".status-entry").eq(ghl.getindex()).css('background-color',  '#ff8080');
+            //if (!ajaxtracker) {
+            //    ajaxtracker = new AjaxTracker("status-ajaxlist");
+            //}
+            //ajaxtracker.init();
         });
 
     };

@@ -1,8 +1,4 @@
 /**
- * Created by paul on 1/26/14.
- */
-
-/**
  * Represents game information and provides access to game characteristics
  * @returns {{gameinfo: Function, ratingDetail: Function, gamereviewsJSON: Function, gamereviews: Function, threadcontent: Function, vidlist: Function, hotvideos: Function, ratinghistory: Function}}
  * @constructor
@@ -25,6 +21,9 @@ function GameInfo () {
     };
 
     var gethistPage = function(gameno, page, cbend, repeat) {
+        cbend([], page);
+        return;
+/*
         outstanding++;
         $.ajax({
             url: "/PHP/proxy.php",
@@ -76,63 +75,99 @@ function GameInfo () {
         })
             .retry({times:3, timeout:3000, statusCodes: [502, 503]});
 
+*/
+    };
+
+    var procapi1 = function(response) {
+        var info = {};
+        var $respJq = au.$xResp(response).find("boardgame");
+        info.name = $respJq.find('[primary]').text();
+        info.minage = $respJq.find('age').text();
+        info.imageUrl = $respJq.find('image').text();
+        var $stats = $respJq.find("statistics ratings");
+        info.rating = $stats.find("average").text();
+        info.bggrating = $stats.find("bayesaverage").text();
+        info.difficulty = parseFloat($stats.find("averageweight").text()).toFixed(2);
+        info.rank = $stats.find('rank[type="subtype"]').attr("value");
+        info.numraters = $stats.find("usersrated").text();
+        info.description = $respJq.find('description').text();
+        info.yearpublished = $respJq.find('yearpublished').text();
+        info.playingtime = $respJq.find('playingtime').text();
+        info.minplayers = $respJq.find('minplayers').text();
+        info.maxplayers = $respJq.find('maxplayers').text();
+        info.$videos = $respJq.find('videos');
+        //info.$links = $respJq.find('link').filter('[type!="boardgamepublisher"]');
+        info.$agepoll = $respJq.find('poll').filter('[name="suggested_playerage"]').find('result');
+        info.$nplyrpoll = $respJq.find('poll').filter('[name="suggested_numplayers"]').find('results');
+        var $x1 = $respJq.children().filter(
+            function() {
+                var $x = $(this);
+                var nodename = $x.prop('nodeName');
+                return nodename.substr(0,8) ==="boardgam";
+            }
+        );
+        var $x2 = $x1.map(function(index, item ){
+            var $item = $(item);
+            return $('<link/>', {
+                "type": $item.prop("nodeName"),
+                "id": $item.attr("objectid"),
+                "value": $item.text()
+            })[0];
+        });
+        info.$links = $x2;
+        return info;
+    };
+
+    var procapi2 = function(response) {
+        var info = {};
+        var $respJq = au.$xResp(response);
+        info.name = $respJq.find('name[type="primary"]').attr('value');
+        info.minage = $respJq.find('minage').attr('value');
+        info.imageUrl = $respJq.find('image').text();
+        var $stats = $respJq.find("statistics ratings");
+        info.rating = $stats.find("average").attr("value");
+        info.bggrating = $stats.find("bayesaverage").attr("value");
+        info.difficulty = parseFloat($stats.find("averageweight").attr("value")).toFixed(2);
+        info.rank = $stats.find('rank[type="subtype"]').attr("value");
+        info.numraters = $stats.find("usersrated").attr("value");
+        info.description = $respJq.find('description').text();
+        info.yearpublished = $respJq.find('yearpublished').attr("value");
+        info.playingtime = $respJq.find('playingtime').attr("value");
+        info.minplayers = $respJq.find('minplayers').attr('value');
+        info.maxplayers = $respJq.find('maxplayers').attr('value');
+        info.$videos = $respJq.find('videos');
+        info.$links = $respJq.find('link').filter('[type!="boardgamepublisher"]');
+        info.$agepoll = $respJq.find('poll').filter('[name="suggested_playerage"]').find('result');
+        info.$nplyrpoll = $respJq.find('poll').filter('[name="suggested_numplayers"]').find('results');
+        return info;
+    };
+
+    var retrievegameinfo = function(cb, url, responseprocessor) {
+        $.get("/PHP/proxy.php", url,
+            function (response) {
+                try {
+                    cb(responseprocessor(response));
+                } catch (err) {
+                    var txt = "There was an error on this page.\n\n";
+                    txt += "Error description: " + err.message + "\n\n";
+                    txt += "Click OK to continue.\n\n";
+                    alert(txt);
+                    cb({"valid": false, "message": txt});
+                }
+            },
+            "html"
+        ).retry({times:3, timeout:3000, statusCodes: [502, 503]});
     };
 
     return {
-        gameinfo: function (gamenum, cb) {
-            var info = {
-                id: gamenum,
-                name: 'Some game name',
-                imageUrl: '',
-                minage: 12,
-                difficulty: 2.8,
-                rating: 7.33,
-                rank: -1,
-                bggrating: 9.1,
-                numraters: 100,
-                valid: true,
-                message: ''
-            };
-            $.get("/PHP/proxy.php",
-                'http://www.rpggeek.com/xmlapi2/thing?id='+gamenum +
-                    '&stats=1&videos=1',
-                function (response) {
-                    try {
-                        var $respJq = au.$xResp(response);
-                        info.name = $respJq.find('name[type="primary"]').attr('value');
-                        info.minage = $respJq.find('minage').attr('value');
-                        info.imageUrl = $respJq.find('image').text();
-                        var $stats = $respJq.find("statistics ratings");
-                        info.rating = $stats.find("average").attr("value");
-                        info.bggrating = $stats.find("bayesaverage").attr("value");
-                        info.difficulty = parseFloat($stats.find("averageweight").attr("value")).toFixed(2);
-                        info.rank = $stats.find('rank[type="subtype"]').attr("value");
-                        info.numraters = $stats.find("usersrated").attr("value");
-                        info.description = $respJq.find('description').text();
-                        info.yearpublished = $respJq.find('yearpublished').attr("value");
-                        info.playingtime = $respJq.find('playingtime').attr("value");
-                        info.minplayers = $respJq.find('minplayers').attr('value');
-                        info.maxplayers = $respJq.find('maxplayers').attr('value');
-                        info.$videos = $respJq.find('videos');
-                        info.$links = $respJq.find('link').filter('[type!="boardgamepublisher"]');
-                        info.$agepoll = $respJq.find('poll').filter('[name="suggested_playerage"]').find('result');
-                        info.$nplyrpoll = $respJq.find('poll').filter('[name="suggested_numplayers"]').find('results');
-                    }
-                    catch (err) {
-                        var txt = "There was an error on this page.\n\n";
-                        txt += "Error description: " + err.message + "\n\n";
-                        txt += "Click OK to continue.\n\n";
-                        alert(txt);
-                        info.valid = false;
-                        info.message = txt;
-                    }
-                    cb(info);
-                },
-                "html"
-
-            )
-                .retry({times:3, timeout:3000, statusCodes: [502, 503]});
-            return info;
+        gameinfo: function (gamenum, cb, use1) {
+            var url = 'http://www.rpggeek.com/xmlapi2/thing?id='+gamenum +'&stats=1&videos=1';
+            if (!use1) {
+                url = 'http://www.rpggeek.com/xmlapi/boardgame/'+gamenum +'&stats=1';
+                retrievegameinfo(cb, url, procapi1);
+            } else {
+                retrievegameinfo(cb, url, procapi2);
+            }
         },
         /**
          * Gets the contents of a BGG graph in Google Charts format
@@ -186,7 +221,7 @@ function GameInfo () {
                     var $respJq = au.$xResp(response);
                     var forumid = $respJq.find('forum[title="Reviews"]').attr('id');
                     var uri = forumid+'/'+au.slugify(gamename)+'/reviews';
-                    var u = "/PHP/proxy.php?https://www.boardgamegeek.com/forum/"+uri;
+                    var u = "/PHP/proxy.php?http://www.boardgamegeek.com/forum/"+uri;
                     //console.log("Troublesome URL (gamereviewsJSON) "+u);
                     $.ajax({
                         url: u,
@@ -216,9 +251,6 @@ function GameInfo () {
                                 };
                                 actualreviewcount++;
                             });
-//                            var sortedrevs = revarray.sort(function (a, b) {
-//                                return  parseInt(b.thumbs) - parseInt(a.thumbs);
-//                            });
                             var revlist = {
                                 "numReviews": actualreviewcount,
                                 "reviews": revarray
@@ -293,10 +325,6 @@ function GameInfo () {
         threadcontent: function (threadid, cb) {
             $.get("/PHP/proxy.php",
                 'http://www.boardgamegeek.com/xmlapi2/thread?id='+threadid,
-                //{
-                //    id: threadid,
-                //    destination: 'http://www.boardgamegeek.com/xmlapi2/thread'
-                //},
                 function (response) {
                     var $respJq = au.$xResp(response);
                     cb($respJq);
@@ -315,23 +343,6 @@ function GameInfo () {
                 '&ajax=1&domain=&filter={"languagefilter":0,"categoryfilter":0}&filter_objecttype=' +
                 '&gallery=all&languageid=0&nosession=1&objecttype=thing&pageid=1&showcount=16' +
                 '&sort=hot&subdomainid=&version=v2',
-            //$.get('/xdproxy/proxy.php', {
-            //        destination: 'http://boardgamegeek.com/video/module',
-            //        ajax: 1,
-            //        domain: '',
-            //        filter: '{"languagefilter":0,"categoryfilter":0}',
-            //        filter_objecttype: '',
-            //        gallery: 'all',
-            //        languageid: 0,
-            //        nosession: 1,
-            //        objectid: gameno,
-            //        objecttype: 'thing',
-            //        pageid: 1,
-            //        showcount: 16,
-            //        sort: 'hot',
-            //        subdomainid: '',
-            //        version: 'v2'
-            //    },
                 function (resp) {
                     cb(au.jResp(resp));
                 },
@@ -345,13 +356,6 @@ function GameInfo () {
             dest += au.slugify(gamename);
             $.get("/PHP/proxy.php",
                 dest+'?sort=hot&date=alltime&gallery=&B1=Go',
-                //{
-                //    destination:  dest,
-                //    sort: 'hot',
-                //    date: 'alltime',
-                //    gallery: '',
-                //    B1: 'Go'
-                //},
                 function (response) {
                     var $respJq = $(response);
                     var $vidtable = $respJq.find('#maincontent #main_content .forum_table a[href*="/video"]');

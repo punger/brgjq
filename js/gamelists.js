@@ -150,7 +150,7 @@ function GameLister() {
 
                         } else {
                             // or it's a single game update, so overwrite the last retrieved
-                            // status of the game because it could be ab update
+                            // status of the game because it could be an update
                             var userscoll = ownersmap[user];
                             if (userscoll) {
                                 userscoll[game] = itemlist.getparent().items[0];
