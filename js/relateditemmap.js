@@ -1,6 +1,5 @@
 /**
  * Helps displaying related items and driving their lists
- * @type {{boardgamecategory: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamemechanic: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameexpansion: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgame: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamedesigner: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameartist: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgamefamily: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameimplbase: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameimplementation: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgamecompilation: {listtype: string, relatedprompt: string, relatedtitle: string, renameoninbound: string}, boardgamecompilationgroup: {listtype: string, relatedprompt: string, relatedtitle: string}, boardgameintegration: {listtype: string, relatedprompt: string, relatedtitle: string}}}
  */
 var relateditemmap = {
     "boardgamecategory": {
@@ -8,19 +7,29 @@ var relateditemmap = {
         "relatedprompt" : 'In the category: ',
         "relatedtitle" : 'Category '
     },
+    "boardgamesubdomain": {
+        "listtype": "family",
+        "relatedprompt" : 'In the domain: ',
+        "relatedtitle" : 'Subdomain '
+    },
+    "boardgamehonor": {
+        "listtype": "honor",
+        "relatedprompt" : 'Won: ',
+        "relatedtitle" : 'Award '
+    },
     "boardgamemechanic": {
         "listtype": "family",
         "relatedprompt" : 'Using the mechanic: ',
         "relatedtitle" : 'Mechanic '
     },
     "boardgameexpansion": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Expanded by: ',
         "relatedtitle" : '',
         "renameoninbound": "boardgame"
     },
     "boardgame": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Expands: ',
         "relatedtitle" : ''
     },
@@ -34,35 +43,40 @@ var relateditemmap = {
         "relatedprompt" : 'Art by: ',
         "relatedtitle" : 'Artist '
     },
+    "boardgamepublisher": {
+        "listtype": "family",
+        "relatedprompt" : 'Published by: ',
+        "relatedtitle" : 'Publisher '
+    },
     "boardgamefamily": {
         "listtype": "family",
         "relatedprompt" : 'In the family: ',
         "relatedtitle" : 'Family '
     },
     "boardgameimplbase": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Reimplements: ',
         "relatedtitle" : 'Reimplementing '
     },
     "boardgameimplementation": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Is implemented by: ',
         "relatedtitle" : 'Implemented by ',
         "renameoninbound": "boardgameimplbase"
     },
     "boardgamecompilation": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Is contained in: ',
         "relatedtitle" : 'In ',
         "renameoninbound": "boardgamecompilationgroup"
     },
     "boardgamecompilationgroup": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Contains: ',
         "relatedtitle" : 'Containing '
     },
     "boardgameintegration": {
-        "listtype": "none",
+        "listtype": "boardgame",
         "relatedprompt" : 'Integrates: ',
         "relatedtitle" : 'Integrating'
     }

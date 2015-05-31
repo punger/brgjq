@@ -272,11 +272,12 @@ function GameLister() {
             );
 
         },
-        familylist: function(fid, ftype, start, count, cb) {
+        familylist: function(fid, ftype, start, count, cb, order) {
             var page = Math.floor(start / count) +1 ;
             var lt = relateditemmap[ftype].listtype;
             var objtype = (lt === "person") ? 'person' : 'property';
             var view = (lt === "person") ? ftype : 'boardgames';
+            order = order || "rank";
             $.get("/PHP/proxy.php",
                 'http://boardgamegeek.com/geekitem.php' +
                     '?instanceid=5'+
@@ -284,7 +285,7 @@ function GameLister() {
                     '&objectid='+fid+
                     '&subtype='+ftype+
                     '&pageid='+page+
-                    '&sort=rank'+
+                    '&sort='+order+
                     '&view='+view+
                     '&modulename=linkeditems'+
                     '&callback='+
@@ -405,7 +406,7 @@ function GameLister() {
                     this.gamerank(start, cb);
                     break;
                 case 'family':
-                    this.familylist(args.fid, args.ftype, start, count, cb);
+                    this.familylist(args.fid, args.ftype, start, count, cb, args.sortorder);
                     break;
                 case 'person':
                     break;

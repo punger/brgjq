@@ -22,6 +22,7 @@ function ListPane(parentpaneselector) {
     // Local functions
     var initlist = function (listheader) {
         $('.gameranknav').hide();
+        $('#listitem-sortcriteria').hide();
         $("#sidelistheader").html(listheader);
     };
 
@@ -65,6 +66,7 @@ function ListPane(parentpaneselector) {
         gl.gamelist(
             listtype,
             function($gl) {
+                //var order = (arg ? (arg.sortorder || 'rank') : 'rank');
                 var liststate = {
                     processprompt: processprompt,
                     listheader: listheader,
@@ -77,6 +79,11 @@ function ListPane(parentpaneselector) {
                 $srchlist.data(liststate);
                 $srchlist.attr('start', start);
                 displaygamelist($gl);
+                if (listtype === "family") {
+                    $('#listitem-sortcriteria').show();
+                } else {
+                    $('#listitem-sortcriteria').hide();
+                }
                 if (!bcontinue) {
                     $('.gameranknav').hide();
                 } else {
@@ -165,6 +172,24 @@ function ListPane(parentpaneselector) {
             listparams.listheader,
             listparams.listtype,
             nextbase,
+            listparams.count,
+            listparams.arg,
+            listparams.bcontinue);
+    });
+    $(document).on('click', '.item-sort-order', function () {
+        var listparams = $srchlist.data();
+        if (listparams.hasOwnProperty("arg")) {
+            var order = $(this).data('itemordering');
+            if (order === listparams.arg.sortorder) {
+                return;
+            }
+            listparams.arg.sortorder = order;
+            $('#item-sort-name').text($(this).text());
+        }
+        showgamelist(listparams.processprompt,
+            listparams.listheader,
+            listparams.listtype,
+            listparams.start,
             listparams.count,
             listparams.arg,
             listparams.bcontinue);

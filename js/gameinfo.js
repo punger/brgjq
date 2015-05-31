@@ -96,14 +96,13 @@ function GameInfo () {
         info.minplayers = $respJq.find('minplayers').text();
         info.maxplayers = $respJq.find('maxplayers').text();
         info.$videos = $respJq.find('videos');
-        //info.$links = $respJq.find('link').filter('[type!="boardgamepublisher"]');
         info.$agepoll = $respJq.find('poll').filter('[name="suggested_playerage"]').find('result');
         info.$nplyrpoll = $respJq.find('poll').filter('[name="suggested_numplayers"]').find('results');
+        // Need to reformat the entries to conform to what api2 gives natively
         var $x1 = $respJq.children().filter(
             function() {
-                var $x = $(this);
-                var nodename = $x.prop('nodeName');
-                return nodename.substr(0,8) ==="boardgam";
+                var nodename = $(this).prop('nodeName');
+                return nodename.substr(0,9) === "boardgame";
             }
         );
         var $x2 = $x1.map(function(index, item ){

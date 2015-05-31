@@ -202,7 +202,7 @@ function CenterPane(parentpaneselector) {
                         "baseid": baseid
                     });
                 } else {
-                    console.log('Unknown family type: '+famtype);
+                    console.log('Unsupported family type: '+famtype);
                 }
             });
             /**
@@ -217,15 +217,15 @@ function CenterPane(parentpaneselector) {
              *      li                  class="gamestat-related-item gamestat-related-item-parent"
              */
             var $relatedlinkparent = $('#gamestat-related-list');
+            var $relitemproto = $('<li/>', {
+                "class": "gamestat-related-item"
+            });
             for (var section in relatedmap) {
                 var $rellink;
                 var relations = relatedmap[section];
                 if (relations.length > 1) {
                     var $relul = $('<ul/>', {
                         "class": "gamestat-related-items"  // this class may be unused
-                    });
-                    var $relitemproto = $('<li/>', {
-                        "class": "gamestat-related-item"
                     });
                     for (var i = 0; i < relations.length; i++) {
                         var $relitem = $relitemproto.clone();
@@ -356,6 +356,9 @@ function CenterPane(parentpaneselector) {
         var gameNo = $this.data('baseid');
         if (gameNo) {
             fillingameinfo(gameNo);
+            return;
+        }
+        if ( $this.data('familytype') === "boardgamehonor") {
             return;
         }
         $.publish('list.gamelist', [

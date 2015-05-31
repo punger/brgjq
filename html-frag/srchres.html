@@ -6,7 +6,29 @@
 <a style="float: right">
     <span hidden id="prevranklist" class="gameranknav glyphicon glyphicon-chevron-left"></span>
 </a>
-<button id="srchlistclose" style="margin-bottom: 3px" type="button" class="btn btn-primary btn-sm" >Hide list</button>
+<button id="srchlistclose" style="margin-bottom: 3px" type="button" class="btn btn-primary btn-xs" title="Hide List">
+    <span class="glyphicon glyphicon-backward"></span>
+</button>
+<div hidden id="listitem-sortcriteria" class="dropdown item-sort" style="display: inline-block" aria-hidden="true">
+    <button class="btn  btn-primary btn-xs dropdown-toggle" type="button" id="sortmenu" data-toggle="dropdown" aria-expanded="true">
+        Sort by <span id="item-sort-name">Rank</span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="sortmenu">
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="name">Name</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="rank">Rank</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="usersrated">Num ratings</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="average">Average rating</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="avgweight">Average weight</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numowned">Num owned</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numprevowned">Prev. owned</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numtrading">For trade</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numwanting">Want in trade</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numwish">Wishlist</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="numcomments">Comments</a></li>
+        <li role="presentation"><a class="item-sort-order" role="menuitem" tabindex="-1" data-itemordering="yearpublished">Year published</a></li>
+    </ul>
+</div>
 <div class="content">
     <ol id="searchresults"></ol>
 </div>
