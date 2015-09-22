@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script type="application/javascript" src="bower_components/isotope/dist/isotope.pkgd.min.js"></script>
     <script type="application/javascript" src="bower_components/jquery-layout/source/stable/jquery.layout_and_plugins.min.js"></script>
     <script type="application/javascript" src="bower_components/jquery-cookie/jquery.cookie.js"></script>
@@ -88,12 +89,20 @@ $( function () {
         });
     });
 
-    $.subscribe('layout.showmodal', function () {
+    $.subscribe('layout.showmodal', function (_, pane) {
+        if (pane) {
+            App.pg.allowOverflow(pane);
+        } else {
         App.pg.allowOverflow('center');
+        }
     });
 
-    $.subscribe('layout.hidemodal', function () {
+    $.subscribe('layout.hidemodal', function (_, pane) {
+        if (pane) {
+            App.pg.resetOverflow(pane);
+        } else {
         App.pg.resetOverflow('center');
+        }
     });
     $.subscribe('layout.showlist', function () {
         App.pg.open('east');
@@ -106,14 +115,7 @@ $( function () {
 
     App.list = new ListPane('.ui-layout-east');
 
-//    $(document).on('mouseover', ".gameitem", function() {
-//            App.pg.allowOverflow('east');
-//        }
-//    );
-//    $(document).on('mouseout', ".gameitem", function() {
-//        App.pg.resetOverflow('east');
-//    });
-//
+
     App.head = new HeaderPane('.ui-layout-north', window.location.search.substring(1));
 })
 );
